@@ -1,5 +1,6 @@
 #include "text.h"
 
-Text::Text()
+Text::Text(const QString value) : mValue(value)
 {
+
 }

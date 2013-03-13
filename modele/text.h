@@ -1,6 +1,9 @@
 #ifndef TEXT_H
 #define TEXT_H
 
+#include <QString>
+#include "champ.h"
+
 class Text : public Champ
 {
 public:

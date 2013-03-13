@@ -3,6 +3,7 @@
 
 #include "champ.h"
 #include <QMultiMap>
+#include <QString>
 
 class Contact
 {

@@ -1,0 +1,37 @@
+#include "controleur.h"
+#include "modele/modeleaffichercontact.h"
+#include "modele/modelelistecontacts.h"
+#include "modele/contact.h"
+#include "modele/texte.h"
+
+Controleur::Controleur(QObject *parent) :
+    QObject(parent)
+{
+    ModeleListeContacts * modeleListeContacts=new ModeleListeContacts(mContacts);
+    mVue.setModeleListeContacts(modeleListeContacts);
+
+
+    Texte * valeur1=new Texte("valeur1");
+    Texte * valeur2=new Texte("valeur2");
+
+    Contact * contact1=new Contact();
+    contact1->ajouterChamp("champ1",valeur1);
+    contact1->ajouterChamp("champ2",valeur2);
+    Contact * contact2=new Contact();
+    mContacts.ajouterContact(contact1);
+    mContacts.ajouterContact(contact2);
+    ModeleAfficherContact* c=new ModeleAfficherContact(contact1);
+    mVue.setModeleAfficherContact(c);
+
+    connect(&mVue,SIGNAL(contactActive(QModelIndex)),this,SLOT(afficherContact(QModelIndex)));
+}
+
+void Controleur::afficherContact(QModelIndex index)
+{
+    mVue.setModeleAfficherContact(new ModeleAfficherContact(mContacts[index.row()]));
+}
+
+void Controleur::run()
+{
+    mVue.show();
+}

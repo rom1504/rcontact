@@ -6,17 +6,16 @@ Contacts::Contacts(QObject *parent) :
 }
 
 
-void Contacts::ajouterContact(const Contact & contact)
+void Contacts::ajouterContact(Contact * contact)
 {
     mContacts<<contact;;
     emit dataChanged(mContacts.length()-1,mContacts.length()-1);
 }
 
-int Contacts::supprimerContact(const Contact & contact)
+void Contacts::supprimerContact(const int n)
 {
-    int nb=mContacts.removeAll(contact);
+    mContacts.removeAt(n);
     emit dataChanged(0,mContacts.length()-1);
-    return nb;
 }
 
 int Contacts::nombre() const
@@ -24,7 +23,7 @@ int Contacts::nombre() const
     return mContacts.length();
 }
 
-const Contact & Contacts::operator[](const int n) const
+const Contact * Contacts::operator[](const int n) const
 {
     return mContacts[n];
 }

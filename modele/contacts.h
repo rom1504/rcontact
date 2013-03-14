@@ -10,13 +10,13 @@ class Contacts : public QObject
     Q_OBJECT
 public:
     explicit Contacts(QObject *parent = 0);
-    void ajouterContact(const Contact & contact);
-    int supprimerContact(const Contact & contact);
+    void ajouterContact(Contact * contact);
+    void supprimerContact(const int n);
     int nombre() const;
-    const Contact & operator[](const int n) const;
+    const Contact * operator[](const int n) const;
 
 private:
-    QList<Contact> mContacts;
+    QList<Contact*> mContacts;
     
 signals:
     void dataChanged(int debut,int fin);

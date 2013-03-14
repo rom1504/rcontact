@@ -12,3 +12,8 @@ AfficherContact::~AfficherContact()
 {
     delete ui;
 }
+
+void AfficherContact::setModel ( QAbstractItemModel * model )
+{
+    ui->tableViewChamps->setModel(model);
+}

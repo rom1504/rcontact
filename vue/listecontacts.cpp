@@ -6,6 +6,7 @@ ListeContacts::ListeContacts(QWidget *parent) :
     ui(new Ui::ListeContacts)
 {
     ui->setupUi(this);
+    connect(ui->listeContacts,SIGNAL(activated(QModelIndex)),this,SIGNAL(contactActive(QModelIndex)));
 }
 
 ListeContacts::~ListeContacts()

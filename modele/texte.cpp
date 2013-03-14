@@ -10,3 +10,8 @@ bool Texte::operator==(const Texte & t) const
 {
     return mValue == t.mValue;
 }
+
+QString Texte::toString() const
+{
+    return mValue;
+}

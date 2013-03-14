@@ -10,7 +10,7 @@ class ModeleListeContacts : public QAbstractListModel
 public:
     explicit ModeleListeContacts(Contacts & contacts,QObject *parent=0);
     QVariant data ( const QModelIndex & index, int role = Qt::DisplayRole ) const;
-    int rowCount ( const QModelIndex & parent = QModelIndex() ) const;
+    int rowCount (const QModelIndex & = QModelIndex()) const;
     
 signals:
     

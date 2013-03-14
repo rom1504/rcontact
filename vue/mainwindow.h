@@ -17,6 +17,10 @@ public:
     ~MainWindow();
 
     void setModeleListeContacts ( QAbstractItemModel * model );
+    void setModeleAfficherContact ( QAbstractItemModel * model );
+
+signals:
+    void contactActive(const QModelIndex & index);
     
 private:
     Ui::MainWindow *ui;

@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    connect(ui->listeContacts,SIGNAL(contactActive(QModelIndex)),this,SIGNAL(contactActive(QModelIndex)));
 }
 
 MainWindow::~MainWindow()
@@ -17,4 +18,10 @@ MainWindow::~MainWindow()
 void MainWindow::setModeleListeContacts ( QAbstractItemModel * model )
 {
     ui->listeContacts->setModel(model);
+}
+
+
+void MainWindow::setModeleAfficherContact ( QAbstractItemModel * model )
+{
+    ui->afficherContact->setModel(model);
 }

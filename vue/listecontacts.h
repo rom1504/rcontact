@@ -17,6 +17,8 @@ public:
     ~ListeContacts();
     void setModel ( QAbstractItemModel * model );
 
+signals:
+    void contactActive(const QModelIndex & index);
     
 private:
     Ui::ListeContacts *ui;

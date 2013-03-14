@@ -6,3 +6,14 @@ bool Champ::operator ==(const Champ &) const
 {
     return 0;
 }
+
+QString Champ::toString() const
+{
+    return "il ne faut pas afficher ça...";
+}
+
+
+Champ::~Champ()
+{
+
+}

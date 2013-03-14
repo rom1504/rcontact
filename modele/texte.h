@@ -11,6 +11,7 @@ public:
     void setValue(const QString value);
     QString value() const;
     bool operator==(const Texte & t) const;
+    virtual QString toString() const;
 
 private:
     QString mValue;

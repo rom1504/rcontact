@@ -15,12 +15,12 @@ QVariant ModeleListeContacts::data(const QModelIndex & index,int role) const
          return QVariant();
 
      if (role == Qt::DisplayRole)
-         return mContacts[index.row()].nom();
+         return mContacts[index.row()]->nom();
      else
          return QVariant();
 }
 
-int ModeleListeContacts::rowCount ( const QModelIndex & parent) const
+int ModeleListeContacts::rowCount ( const QModelIndex & ) const
 {
     return mContacts.nombre();
 }

@@ -6,9 +6,9 @@
 class Champ
 {
 public:
-    bool operator==(const Champ &) const;
-    virtual QString toString() const;
-    virtual ~Champ();
+    virtual bool operator==(const Champ &) const = 0;
+    virtual QString toString() const = 0;
+    virtual ~Champ() = 0;
 };
 
 #endif // CHAMP_H

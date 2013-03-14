@@ -2,6 +2,7 @@
 Gestionnaire de contacts
 
 Organisation en vue/modèle
+
 Pour lier la vue au modèle on utilise des modèles Qt : 
 des classes qui héritent de QAbstractItemModel ( ou de qabstractlistmodel par exemple)
 
@@ -31,4 +32,4 @@ Classe générique qu'il faut hériter pour définir les types de champs
 Simple champ pour stocker du texte
 
 ###ModeleListeContacts
-Ce modèle Qt fait le lien entre la QListView présente dans ListeContacts et Contacts
+Ce modèle Qt fait le lien entre Contacts et la QListView présente dans ListeContacts

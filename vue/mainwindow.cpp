@@ -12,3 +12,9 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+
+void MainWindow::setModeleListeContacts ( QAbstractItemModel * model )
+{
+    ui->listeContacts->setModel(model);
+}

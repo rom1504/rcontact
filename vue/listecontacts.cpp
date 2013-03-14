@@ -12,3 +12,9 @@ ListeContacts::~ListeContacts()
 {
     delete ui;
 }
+
+
+void ListeContacts::setModel ( QAbstractItemModel * model )
+{
+    ui->listeContacts->setModel(model);
+}

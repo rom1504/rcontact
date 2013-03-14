@@ -16,13 +16,13 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="AfficherContact" name="widget" native="true"/>
+     <widget class="ListeContacts" name="listeContacts" native="true"/>
     </item>
     <item>
-     <widget class="EditerContact" name="widget_2" native="true"/>
+     <widget class="EditerContact" name="editerContact" native="true"/>
     </item>
     <item>
-     <widget class="AfficherContact" name="widget_3" native="true"/>
+     <widget class="AfficherContact" name="afficherContact" native="true"/>
     </item>
    </layout>
   </widget>
@@ -32,7 +32,7 @@
      <x>0</x>
      <y>0</y>
      <width>652</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
@@ -106,6 +106,12 @@
    <class>AfficherContact</class>
    <extends>QWidget</extends>
    <header>vue/affichercontact.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ListeContacts</class>
+   <extends>QWidget</extends>
+   <header>vue/listecontacts.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

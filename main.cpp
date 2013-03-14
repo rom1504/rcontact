@@ -1,17 +1,30 @@
 #include "vue/mainwindow.h"
 #include <QApplication>
 
+#include "modele/modelelistecontacts.h"
+#include "modele/contacts.h"
+#include "modele/contact.h"
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+
+    Contacts contacts;
+
+
+
+    ModeleListeContacts * modeleListeContacts=new ModeleListeContacts(contacts);
     MainWindow vue;
+    vue.setModeleListeContacts(modeleListeContacts);
     vue.show();
 
-    // Contacts modele=new Contacts();
 
-    // Controleur controleur=new Controleur();
+    Contact contact1;
+    Contact contact2;
+    contacts.ajouterContact(contact1);
+    contacts.ajouterContact(contact2);
 
-    //QObject::connect(vue,SIGNAL(creationContact(,,,)),controleur,SLOT(creerContact(,,,)));
 
     return a.exec();
 }

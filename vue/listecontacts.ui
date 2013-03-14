@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QListView" name="listView"/>
+    <widget class="QListView" name="listeContacts"/>
    </item>
    <item>
     <widget class="QPushButton" name="pushButtonSupprimer">

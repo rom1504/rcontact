@@ -33,3 +33,9 @@ bool Contact::operator==(const Contact & c) const
     }
     return b;
 }
+
+
+QString Contact::nom() const
+{
+    return "NOOOOOOM";
+}

@@ -12,12 +12,14 @@ public:
     explicit Contacts(QObject *parent = 0);
     void ajouterContact(const Contact & contact);
     int supprimerContact(const Contact & contact);
+    int nombre() const;
+    const Contact & operator[](const int n) const;
 
 private:
     QList<Contact> mContacts;
-    QStringListModel mModeleListeContacts;
     
 signals:
+    void dataChanged(int debut,int fin);
     
 public slots:
     

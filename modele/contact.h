@@ -11,6 +11,7 @@ public:
     Contact();
     void ajouterChamp(const QString & nomChamp,const Champ & valeurChamp);
     void supprimerChamp(const QString & nomChamp);
+    QString nom() const;
 
     bool operator==(const Contact & c) const;
 

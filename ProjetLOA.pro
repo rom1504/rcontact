@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     vue/affichercontact.cpp \
     vue/editercontact.cpp \
     modele/champ.cpp \
-    modele/texte.cpp
+    modele/texte.cpp \
+    modele/modelelistecontacts.cpp
 
 HEADERS  += vue/mainwindow.h \
     modele/contacts.h \
@@ -30,7 +31,8 @@ HEADERS  += vue/mainwindow.h \
     vue/affichercontact.h \
     vue/editercontact.h \
     modele/champ.h \
-    modele/texte.h
+    modele/texte.h \
+    modele/modelelistecontacts.h
 
 FORMS    += vue/mainwindow.ui \
     vue/listecontacts.ui \

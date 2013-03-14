@@ -5,6 +5,8 @@ Organisation en vue/modèle
 
 Pour lier la vue au modèle on utilise des modèles Qt : 
 des classes qui héritent de QAbstractItemModel ( ou de qabstractlistmodel par exemple)
+, voir http://qt-project.org/doc/qt-4.8/model-view-programming.html en particulier le commentaire tout à la fin , 
+il faut voir les modèles Qt comme des adapteurs entre le "vrai" modèle qui contient les données et la vue.
 
 ##Vue
 ###AfficherContact

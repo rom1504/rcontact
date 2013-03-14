@@ -3,7 +3,8 @@
 
 class Champ
 {
-
+public:
+    bool operator==(const Champ &) const;
 };
 
 #endif // CHAMP_H

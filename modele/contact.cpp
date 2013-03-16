@@ -22,12 +22,6 @@ void Contact::ajouterChamp(const QString & nomChamp,Champ * valeurChamp)
     emit dataChanged(0,nombreValeurs()-1); // on peut sans doute faire mieux ici
 }
 
-void Contact::supprimerChamp(const QString & nomChamp)
-{
-    mChamps.remove(nomChamp);
-    emit dataChanged(0,nombreValeurs()-1);
-}
-
 
 bool Contact::operator==(const Contact & c) const
 {

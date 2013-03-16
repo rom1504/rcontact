@@ -3,6 +3,9 @@
 
 #include <QString>
 
+/**
+ * @brief La classe Champ est la classe abstraite mère de toutes les classes symbolisant des champs de formulaire
+ */
 class Champ
 {
 public:

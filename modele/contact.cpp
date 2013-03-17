@@ -44,7 +44,7 @@ bool Contact::operator==(const Contact & c) const
 
 QString Contact::nom() const
 {
-    return "NOOOOOOM";
+    return mChamps.value("nom")->toString();
 }
 
 int Contact::nombreValeurs() const

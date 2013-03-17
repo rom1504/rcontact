@@ -23,6 +23,10 @@ Controleur::Controleur(QObject *parent) :
     Contact * contact1=new Contact();
     contact1->ajouterChamp("champ1",valeur1);
     contact1->ajouterChamp("champ2",valeur2);
+    Structure * nom1=new Structure();
+    nom1->ajouterChamp("Nom",new Texte("Beaumont"));
+    nom1->ajouterChamp("Prénom",new Texte("Romain"));
+    contact1->ajouterChamp("nom",nom1);
     Contact * contact2=new Contact();
     Structure * nom=new Structure();
     nom->ajouterChamp("Nom",new Texte("Roussel"));

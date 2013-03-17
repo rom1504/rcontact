@@ -10,8 +10,12 @@ Controleur::Controleur(QObject *parent) :
 {
     ModeleListeContacts * modeleListeContacts=new ModeleListeContacts(mContacts);
     mVue.setModeleListeContacts(modeleListeContacts);
+    connect(&mVue,SIGNAL(contactActive(QModelIndex)),this,SLOT(afficherContact(QModelIndex)));
+    connect(&mVue,SIGNAL(contactSupprime(QModelIndex)),this,SLOT(supprimerContact(QModelIndex)));
 
 
+
+    // exemples (voués à disparaitre grâce à l'ajout et à l'import)
     Texte * valeur1=new Texte("valeur1");
     Texte * valeur2=new Texte("valeur2");
 
@@ -26,15 +30,17 @@ Controleur::Controleur(QObject *parent) :
 
     mContacts.ajouterContact(contact1);
     mContacts.ajouterContact(contact2);
-    ModeleAfficherContact* c=new ModeleAfficherContact(contact1);
-    mVue.setModeleAfficherContact(c);
-
-    connect(&mVue,SIGNAL(contactActive(QModelIndex)),this,SLOT(afficherContact(QModelIndex)));
 }
 
 void Controleur::afficherContact(QModelIndex index)
 {
     mVue.setModeleAfficherContact(new ModeleAfficherContact(mContacts[index.row()]));
+}
+
+void Controleur::supprimerContact(QModelIndex index)
+{
+    mContacts.supprimerContact(index.row());
+    mVue.setModeleAfficherContact(NULL);
 }
 
 void Controleur::run()

@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->listeContacts,SIGNAL(contactActive(QModelIndex)),this,SIGNAL(contactActive(QModelIndex)));
+    connect(ui->listeContacts,SIGNAL(contactSupprime(QModelIndex)),this,SIGNAL(contactSupprime(QModelIndex)));
+    connect(ui->actionSupprimer,SIGNAL(triggered()),ui->listeContacts,SLOT(supprimerContactCourant()));
 }
 
 MainWindow::~MainWindow()

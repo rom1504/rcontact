@@ -21,6 +21,7 @@ public:
 
 signals:
     void contactActive(const QModelIndex & index);
+    void contactSupprime(const QModelIndex & index);
     
 private:
     Ui::MainWindow *ui;

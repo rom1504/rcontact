@@ -19,7 +19,11 @@ public:
 
 signals:
     void contactActive(const QModelIndex & index);
+    void contactSupprime(const QModelIndex & index);
     
+public slots:
+    void supprimerContactCourant();
+
 private:
     Ui::ListeContacts *ui;
 };

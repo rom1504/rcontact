@@ -31,7 +31,7 @@ public:
      * @param valeurChamp La valeur du champ à supprimer
      * @return le nombre de valeurs supprimées
      */
-    int supprimerChamp(const QString & nomChamp, const Champ * valeurChamp);
+    int supprimerChamp(const QString & nomChamp, Champ * valeurChamp);
 
     /**
      * @brief nombreValeurs
@@ -48,7 +48,7 @@ public:
     /**
      * @brief opérateur de comparaison
      */
-    bool operator==(const Contact & c) const;
+    bool operator==(const Contact & c) const; // problème : ne sera pas utilisé dans le QMultiMap car ce sont des pointeurs qui sont stockés... : à vérifier...
 
     /**
      * @brief opérateur d'accès

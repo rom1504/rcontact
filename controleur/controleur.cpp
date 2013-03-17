@@ -3,6 +3,7 @@
 #include "modele/modelelistecontacts.h"
 #include "modele/contact.h"
 #include "modele/texte.h"
+#include "modele/structure.h"
 
 Controleur::Controleur(QObject *parent) :
     QObject(parent)
@@ -18,6 +19,11 @@ Controleur::Controleur(QObject *parent) :
     contact1->ajouterChamp("champ1",valeur1);
     contact1->ajouterChamp("champ2",valeur2);
     Contact * contact2=new Contact();
+    Structure * nom=new Structure();
+    nom->ajouterChamp("Nom",new Texte("Roussel"));
+    nom->ajouterChamp("Prénom",new Texte("David"));
+    contact2->ajouterChamp("nom",nom);
+
     mContacts.ajouterContact(contact1);
     mContacts.ajouterContact(contact2);
     ModeleAfficherContact* c=new ModeleAfficherContact(contact1);

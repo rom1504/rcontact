@@ -24,7 +24,7 @@ void Contact::ajouterChamp(const QString & nomChamp,Champ * valeurChamp)
 
 
 bool Contact::operator==(const Contact & c) const
-{
+{ // pas bon
     bool b = false; // Mis à true si on trouve une correspondance
     QMultiMap<QString,Champ*>::const_iterator it1 = mChamps.begin();
     while (it1 != mChamps.end() && !b)
@@ -56,4 +56,11 @@ int Contact::nombreValeurs() const
 const QPair<QString,Champ*> Contact::operator[](const int n) const
 {
     return qMakePair((mChamps.keys())[n],(mChamps.values())[n]);
+}
+
+int Contact::supprimerChamp(const QString & nomChamp,Champ * valeurChamp)
+{
+    int nb=mChamps.remove(nomChamp,valeurChamp);// pas bon : que si même pointeur...
+    emit dataChanged(0,nombreValeurs()-1);
+    return nb;
 }

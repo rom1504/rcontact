@@ -22,6 +22,11 @@ QString Texte::toString() const
     return mValue;
 }
 
+void Texte::fromString(const QString s)
+{
+    mValue=s;
+}
+
 Texte::~Texte()
 {
 

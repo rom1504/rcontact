@@ -7,7 +7,9 @@ ListeContacts::ListeContacts(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->listeContacts,SIGNAL(activated(QModelIndex)),this,SIGNAL(contactActive(QModelIndex)));
+    connect(ui->pushButtonAfficher,SIGNAL(clicked()),this,SLOT(afficherContactCourant()));
     connect(ui->pushButtonSupprimer,SIGNAL(clicked()),this,SLOT(supprimerContactCourant()));
+    connect(ui->pushButtonEditer,SIGNAL(clicked()),this,SLOT(editerContactCourant()));
 }
 
 ListeContacts::~ListeContacts()
@@ -24,4 +26,14 @@ void ListeContacts::setModel ( QAbstractItemModel * model )
 void ListeContacts::supprimerContactCourant()
 {
     emit contactSupprime(ui->listeContacts->currentIndex());
+}
+
+void ListeContacts::afficherContactCourant()
+{
+    emit contactActive(ui->listeContacts->currentIndex());
+}
+
+void ListeContacts::editerContactCourant()
+{
+    emit contactEdite(ui->listeContacts->currentIndex());
 }

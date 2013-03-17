@@ -11,6 +11,7 @@ Controleur::Controleur(QObject *parent) :
     ModeleListeContacts * modeleListeContacts=new ModeleListeContacts(mContacts);
     mVue.setModeleListeContacts(modeleListeContacts);
     connect(&mVue,SIGNAL(contactActive(QModelIndex)),this,SLOT(afficherContact(QModelIndex)));
+    connect(&mVue,SIGNAL(contactEdite(QModelIndex)),this,SLOT(editerContact(QModelIndex)));
     connect(&mVue,SIGNAL(contactSupprime(QModelIndex)),this,SLOT(supprimerContact(QModelIndex)));
 
 
@@ -35,6 +36,13 @@ Controleur::Controleur(QObject *parent) :
 void Controleur::afficherContact(QModelIndex index)
 {
     mVue.setModeleAfficherContact(new ModeleAfficherContact(mContacts[index.row()]));
+}
+
+void Controleur::editerContact(QModelIndex index)
+{
+    ModeleAfficherContact * model=new ModeleAfficherContact(mContacts[index.row()]);
+    model->rendreEditable();
+    mVue.setModeleEditerContact(model);
 }
 
 void Controleur::supprimerContact(QModelIndex index)

@@ -4,7 +4,13 @@
 ModeleAfficherContact::ModeleAfficherContact(const Contact * contact,QObject *parent) :
     QAbstractTableModel(parent),mContact(contact)
 {
+    mEditable=false;
     connect(mContact,SIGNAL(dataChanged(int,int)),this,SLOT(dataChanged_(int,int)));
+}
+
+void ModeleAfficherContact::rendreEditable()
+{
+    mEditable=true;
 }
 
 int ModeleAfficherContact::rowCount ( const QModelIndex &) const
@@ -36,4 +42,21 @@ QVariant ModeleAfficherContact::data(const QModelIndex & index,int role) const
 void ModeleAfficherContact::dataChanged_(const int debut,const int fin)
 {
     emit dataChanged(createIndex(debut,0),createIndex(fin,1));
+}
+
+bool ModeleAfficherContact::setData ( const QModelIndex & index, const QVariant & value, int role)
+{
+    if (index.isValid() && role == Qt::EditRole)
+    {
+         if(index.column()==0) return false;
+         else (*mContact)[index.row()].second->fromString(value.toString());
+         emit dataChanged(index, index);
+         return true;
+    }
+    return false;
+}
+
+Qt::ItemFlags ModeleAfficherContact::flags ( const QModelIndex & index ) const
+{
+    return index.column()==1 && mEditable ? Qt::ItemIsEnabled|Qt::ItemIsSelectable|Qt::ItemIsEditable : Qt::ItemIsEnabled|Qt::ItemIsSelectable;
 }

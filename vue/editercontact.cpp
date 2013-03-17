@@ -12,3 +12,8 @@ EditerContact::~EditerContact()
 {
     delete ui;
 }
+
+void EditerContact::setModel ( QAbstractItemModel * model )
+{
+    ui->tableViewChamps->setModel(model);
+}

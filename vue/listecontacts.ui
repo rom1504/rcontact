@@ -18,6 +18,20 @@
     <widget class="QListView" name="listeContacts"/>
    </item>
    <item>
+    <widget class="QPushButton" name="pushButtonAfficher">
+     <property name="text">
+      <string>Afficher</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButtonEditer">
+     <property name="text">
+      <string>Editer</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QPushButton" name="pushButtonSupprimer">
      <property name="text">
       <string>Supprimer</string>

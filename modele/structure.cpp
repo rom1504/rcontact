@@ -1,4 +1,5 @@
 #include "structure.h"
+#include "texte.h"
 #include <QStringList>
 
 Structure::Structure()
@@ -48,7 +49,7 @@ bool Structure::operator==(const Champ & t) const
 QString Structure::toString() const
 {
     QString s="";
-    QStringList ks=mChamps.keys();
+    QStringList ks=mChamps.uniqueKeys();
     for (int i = 0; i < ks.size(); ++i)
     {
         QList<Champ*> vs=mChamps.values(ks[i]);
@@ -58,4 +59,21 @@ QString Structure::toString() const
         }
     }
     return s;
+}
+
+void Structure::fromString(const QString s)
+{
+    if(s.length()!=0)
+    {
+        QString s2=s;
+        s2.remove(s.length()-1,1);
+        QStringList l=s2.split(";");
+        for (int i = 0; i < l.size(); ++i)
+        {
+            QStringList l2=l[i].split(":");
+            Texte * t=new Texte(); // à changer
+            t->fromString(l2[1]);
+            ajouterChamp(l2[0],t);
+        }
+    }
 }

@@ -18,9 +18,11 @@ public:
 
     void setModeleListeContacts ( QAbstractItemModel * model );
     void setModeleAfficherContact ( QAbstractItemModel * model );
+    void setModeleEditerContact ( QAbstractItemModel * model );
 
 signals:
     void contactActive(const QModelIndex & index);
+    void contactEdite(const QModelIndex & index);
     void contactSupprime(const QModelIndex & index);
     
 private:

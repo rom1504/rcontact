@@ -15,6 +15,7 @@ public:
     int columnCount (const QModelIndex & = QModelIndex()) const;
     Qt::ItemFlags flags ( const QModelIndex & index ) const;
     void rendreEditable();
+    QVariant headerData ( int section, Qt::Orientation orientation, int role = Qt::DisplayRole ) const;
     
 signals:
     

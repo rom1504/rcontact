@@ -60,3 +60,8 @@ Qt::ItemFlags ModeleAfficherContact::flags ( const QModelIndex & index ) const
 {
     return index.column()==1 && mEditable ? Qt::ItemIsEnabled|Qt::ItemIsSelectable|Qt::ItemIsEditable : Qt::ItemIsEnabled|Qt::ItemIsSelectable;
 }
+
+QVariant ModeleAfficherContact::headerData ( int section, Qt::Orientation orientation, int role) const
+{
+    return role != Qt::DisplayRole ? QVariant() : (orientation == Qt::Horizontal ?( section==0 ? "Champ" : "Valeur") : QString::number(section));
+}

@@ -60,7 +60,7 @@ const QPair<QString,Champ*> Contact::operator[](const int n) const
 
 int Contact::supprimerChamp(const QString & nomChamp,Champ * valeurChamp)
 {
-    int nb=mChamps.remove(nomChamp,valeurChamp);// pas bon : que si même pointeur...
+    int nb=mChamps.remove(nomChamp,valeurChamp);// pas bon : que si même pointeur... : à faire en utilisant les iterateurs.
     emit dataChanged(0,nombreValeurs()-1);
     return nb;
 }

@@ -9,9 +9,9 @@
 class Champ
 {
 public:
-    virtual bool operator==(const Champ & c) const = 0;
+    virtual bool operator==(const Champ & c) const;
     virtual QString toString() const = 0;
-    virtual void fromString(const QString s)= 0;
+    virtual bool fromString(const QString s)= 0;
     virtual ~Champ() = 0;
 };
 

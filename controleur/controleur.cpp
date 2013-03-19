@@ -4,10 +4,17 @@
 #include "modele/contact.h"
 #include "modele/texte.h"
 #include "modele/structure.h"
+#include "modele/url.h"
+#include "modele/card.h"
+#include "modele/loc.h"
+#include "modele/timestamp.h"
+#include "modele/enum.h"
 
 Controleur::Controleur(QObject *parent) :
     QObject(parent)
 {
+
+    Enum::remplirEnums();
     ModeleListeContacts * modeleListeContacts=new ModeleListeContacts(mContacts);
     mVue.setModeleListeContacts(modeleListeContacts);
     connect(&mVue,SIGNAL(contactActive(QModelIndex)),this,SLOT(afficherContact(QModelIndex)));
@@ -23,6 +30,8 @@ Controleur::Controleur(QObject *parent) :
     Contact * contact1=new Contact();
     contact1->ajouterChamp("champ1",valeur1);
     contact1->ajouterChamp("champ2",valeur2);
+    contact1->ajouterChamp("url",new Url("http://www.google.fr/"));
+    contact1->ajouterChamp("achamp1",new Texte("test"));
     Structure * nom1=new Structure();
     nom1->ajouterChamp("Nom",new Texte("Beaumont"));
     nom1->ajouterChamp("Prénom",new Texte("Romain"));
@@ -32,6 +41,11 @@ Controleur::Controleur(QObject *parent) :
     nom->ajouterChamp("Nom",new Texte("Roussel"));
     nom->ajouterChamp("Prénom",new Texte("David"));
     contact2->ajouterChamp("nom",nom);
+    contact2->ajouterChamp("card",new Card(contact1));
+    contact2->ajouterChamp("loc",new Loc("66.6,42.0"));
+    contact2->ajouterChamp("date MAJ",new Timestamp("34343453"));
+
+    contact2->ajouterChamp("test enum type site",new Enum("google"));
 
     mContacts.ajouterContact(contact1);
     mContacts.ajouterContact(contact2);

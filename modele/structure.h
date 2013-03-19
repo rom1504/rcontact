@@ -11,10 +11,9 @@ public:
     void ajouterChamp(const QString & nomChamp,Champ * valeurChamp);
     int supprimerChamp(const QString & nomChamp, Champ *valeurChamp);
     bool operator==(const Structure & c) const;
-    bool operator==(const Champ & t) const;
-    virtual QString toString() const;
-    virtual void fromString(const QString s);
-    virtual ~Structure();
+    QString toString() const;
+    bool fromString(const QString s);
+    ~Structure();
 
 private:
     QMultiMap<QString,Champ*> mChamps;

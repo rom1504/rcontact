@@ -41,11 +41,6 @@ bool Structure::operator==(const Structure & c) const
     return b;
 }
 
-bool Structure::operator==(const Champ & t) const
-{
-    return toString()==t.toString();
-}
-
 QString Structure::toString() const
 {
     QString s="";
@@ -61,7 +56,7 @@ QString Structure::toString() const
     return s;
 }
 
-void Structure::fromString(const QString s)
+bool Structure::fromString(const QString s)
 {
     if(s.length()!=0)
     {
@@ -76,4 +71,5 @@ void Structure::fromString(const QString s)
             ajouterChamp(l2[0],t);
         }
     }
+    return true;
 }

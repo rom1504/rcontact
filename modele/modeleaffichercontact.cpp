@@ -49,9 +49,15 @@ bool ModeleAfficherContact::setData ( const QModelIndex & index, const QVariant 
     if (index.isValid() && role == Qt::EditRole)
     {
          if(index.column()==0) return false;
-         else (*mContact)[index.row()].second->fromString(value.toString());
-         emit dataChanged(index, index);
-         return true;
+         else
+         {
+             if((*mContact)[index.row()].second->fromString(value.toString()))
+             {
+                 emit dataChanged(index, index);
+                 return true;
+             }
+             else return false;
+         }
     }
     return false;
 }

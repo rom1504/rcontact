@@ -24,7 +24,12 @@ SOURCES += main.cpp\
     modele/modelelistecontacts.cpp \
     modele/modeleaffichercontact.cpp \
     controleur/controleur.cpp \
-    modele/structure.cpp
+    modele/structure.cpp \
+    modele/url.cpp \
+    modele/card.cpp \
+    modele/loc.cpp \
+    modele/timestamp.cpp \
+    modele/enum.cpp
 
 HEADERS  += vue/mainwindow.h \
     modele/contacts.h \
@@ -38,7 +43,12 @@ HEADERS  += vue/mainwindow.h \
     modele/modelelistecontacts.h \
     modele/modeleaffichercontact.h \
     controleur/controleur.h \
-    modele/structure.h
+    modele/structure.h \
+    modele/url.h \
+    modele/card.h \
+    modele/loc.h \
+    modele/timestamp.h \
+    modele/enum.h
 
 FORMS    += vue/mainwindow.ui \
     vue/listecontacts.ui \

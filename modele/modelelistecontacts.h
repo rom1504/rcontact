@@ -13,7 +13,7 @@ public:
     int rowCount (const QModelIndex & = QModelIndex()) const;
     
 signals:
-    
+    // connecter dataChanged de modeleafficherContact à un slot qui emet le bon dataChanged ici
 public slots:
 
 private slots:

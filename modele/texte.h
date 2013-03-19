@@ -10,13 +10,12 @@ public:
     Texte(const QString value="");
     void setValue(const QString value);
     QString value() const;
-    bool operator==(const Texte & t) const;
-    bool operator==(const Champ & t) const;
-    virtual QString toString() const;
-    virtual void fromString(const QString s);
-    virtual ~Texte();
+    virtual bool operator==(const Texte & t) const;
+    QString toString() const;
+    bool fromString(const QString s);
+    ~Texte();
 
-private:
+protected:
     QString mValue;
 };
 

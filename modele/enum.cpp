@@ -1,5 +1,4 @@
 #include "enum.h"
-#include <iostream>
 
 QStringList Enum::mEnumTypeListe;
 
@@ -32,7 +31,6 @@ void Enum::remplirEnums()
     QStringList typeDonnees;
     typeDonnees<<"voice"<<"data";
     mEnumListe<<typeDonnees;
-    std::cout<<mEnumListe.size()<<"\n";
 };
 
 

@@ -6,6 +6,7 @@ EditerContact::EditerContact(QWidget *parent) :
     ui(new Ui::EditerContact)
 {
     ui->setupUi(this);
+    ui->tableViewChamps->verticalHeader ()->hide();
 }
 
 EditerContact::~EditerContact()

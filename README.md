@@ -24,6 +24,25 @@ Classe abstraite qu'il faut hériter pour définir les types de champs
 ######Texte
 Simple champ pour stocker du texte
 
+######Card
+Carte de contact : fait un lien avec un contact
+
+######Enum
+Prend un nombre fini de valeur possible
+
+######Loc
+Stocke une latitude et une longitude
+
+######Structure
+Stocke des champs chacun associé à une clé : représenté comme une MultiMap<QString,Champ*>
+
+######Timestamp
+Stocke un time_t
+
+######Url
+Stocke une url (hérite de Texte)
+
+
 ###ModeleListeContacts
 Ce modèle Qt fait le lien entre Contacts et la QListView présente dans ListeContacts
 

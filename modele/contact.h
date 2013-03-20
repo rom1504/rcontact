@@ -33,6 +33,8 @@ public:
      */
     int supprimerChamp(const QString & nomChamp, Champ * valeurChamp);
 
+    int supprimerChamp(const int index);
+
     /**
      * @brief nombreValeurs
      * @return le nombre de valeur totales

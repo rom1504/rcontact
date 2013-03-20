@@ -17,9 +17,8 @@ private:
     Contacts mContacts;
     
 private slots:
-    void afficherContact(QModelIndex index);
-    void editerContact(QModelIndex index);
-    void supprimerContact(QModelIndex index);
+    void afficherContact(int index);
+    void editerContact(int index);
 
 signals:
     

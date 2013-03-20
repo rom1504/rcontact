@@ -16,9 +16,15 @@ public:
     explicit EditerContact(QWidget *parent = 0);
     ~EditerContact();
     void setModel ( QAbstractItemModel * model );
+
+private slots:
+    void supprimerChampCourant();
+
+signals:
     
 private:
     Ui::EditerContact *ui;
+
 };
 
 #endif // EDITERCONTACT_H

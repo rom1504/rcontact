@@ -6,10 +6,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    connect(ui->listeContacts,SIGNAL(contactActive(QModelIndex)),this,SIGNAL(contactActive(QModelIndex)));
-    connect(ui->listeContacts,SIGNAL(contactEdite(QModelIndex)),this,SIGNAL(contactEdite(QModelIndex)));
-    connect(ui->listeContacts,SIGNAL(contactSupprime(QModelIndex)),this,SIGNAL(contactSupprime(QModelIndex)));
+    connect(ui->listeContacts,SIGNAL(contactActive(int)),this,SIGNAL(contactActive(int)));
+    connect(ui->listeContacts,SIGNAL(contactEdite(int)),this,SIGNAL(contactEdite(int)));
     connect(ui->actionSupprimer,SIGNAL(triggered()),ui->listeContacts,SLOT(supprimerContactCourant()));
+    connect(ui->actionNouveau_contact,SIGNAL(triggered()),ui->listeContacts,SLOT(creerContact()));
     ui->afficherContact->hide();
     ui->editerContact->hide();
 }

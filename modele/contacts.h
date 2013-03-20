@@ -13,7 +13,7 @@ public:
     void ajouterContact(Contact * contact);
     void supprimerContact(const int n);
     int nombre() const;
-    const Contact * operator[](const int n) const;
+    Contact * operator[](const int n) const;
 
 private:
     QList<Contact*> mContacts;

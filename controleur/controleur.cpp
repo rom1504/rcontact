@@ -17,10 +17,8 @@ Controleur::Controleur(QObject *parent) :
     Enum::remplirEnums();
     ModeleListeContacts * modeleListeContacts=new ModeleListeContacts(mContacts);
     mVue.setModeleListeContacts(modeleListeContacts);
-    connect(&mVue,SIGNAL(contactActive(QModelIndex)),this,SLOT(afficherContact(QModelIndex)));
-    connect(&mVue,SIGNAL(contactEdite(QModelIndex)),this,SLOT(editerContact(QModelIndex)));
-    connect(&mVue,SIGNAL(contactSupprime(QModelIndex)),this,SLOT(supprimerContact(QModelIndex)));
-
+    connect(&mVue,SIGNAL(contactActive(int)),this,SLOT(afficherContact(int)));
+    connect(&mVue,SIGNAL(contactEdite(int)),this,SLOT(editerContact(int)));
 
 
     // exemples (voués à disparaitre grâce à l'ajout et à l'import)
@@ -51,22 +49,16 @@ Controleur::Controleur(QObject *parent) :
     mContacts.ajouterContact(contact2);
 }
 
-void Controleur::afficherContact(QModelIndex index)
+void Controleur::afficherContact(int index)
 {
-    mVue.setModeleAfficherContact(new ModeleAfficherContact(mContacts[index.row()]));
+    mVue.setModeleAfficherContact(index==-1 ? NULL : new ModeleAfficherContact(mContacts[index]));
 }
 
-void Controleur::editerContact(QModelIndex index)
+void Controleur::editerContact(int index)
 {
-    ModeleAfficherContact * model=new ModeleAfficherContact(mContacts[index.row()]);
+    ModeleAfficherContact * model=new ModeleAfficherContact(mContacts[index]);
     model->rendreEditable();
     mVue.setModeleEditerContact(model);
-}
-
-void Controleur::supprimerContact(QModelIndex index)
-{
-    mContacts.supprimerContact(index.row());
-    mVue.setModeleAfficherContact(NULL);
 }
 
 void Controleur::run()

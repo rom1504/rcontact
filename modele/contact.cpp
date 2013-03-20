@@ -19,7 +19,6 @@ Contact::Contact(const Contact & c,QObject *parent) : QObject(parent)
 void Contact::ajouterChamp(const QString & nomChamp,Champ * valeurChamp)
 {
     mChamps.insert(nomChamp,valeurChamp);
-    emit dataChanged(0,nombreValeurs()-1); // on peut sans doute faire mieux ici
 }
 
 
@@ -58,9 +57,15 @@ const QPair<QString,Champ*> Contact::operator[](const int n) const
     return qMakePair((mChamps.keys())[n],(mChamps.values())[n]);
 }
 
+int Contact::supprimerChamp(const int index)
+{
+    QPair<QString,Champ*> p=(*this)[index];
+    return supprimerChamp(p.first,p.second);
+}
+
 int Contact::supprimerChamp(const QString & nomChamp,Champ * valeurChamp)
 {
     int nb=mChamps.remove(nomChamp,valeurChamp);// pas bon : que si même pointeur... : à faire en utilisant les iterateurs.
-    emit dataChanged(0,nombreValeurs()-1);
+    //: en fait ça va : passer en privé ?
     return nb;
 }

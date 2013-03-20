@@ -16,16 +16,20 @@ public:
     explicit ListeContacts(QWidget *parent = 0);
     ~ListeContacts();
     void setModel ( QAbstractItemModel * model );
+    int indexContactCourant();
 
 signals:
-    void contactActive(const QModelIndex & index);
-    void contactEdite(const QModelIndex & index);
-    void contactSupprime(const QModelIndex & index);
+    void contactActive(const int index);
+    void contactEdite(const int index);
     
 public slots:
     void supprimerContactCourant();
     void editerContactCourant();
     void afficherContactCourant();
+    void creerContact();
+
+private slots:
+    void afficherContact(const QModelIndex & index);
 
 private:
     Ui::ListeContacts *ui;

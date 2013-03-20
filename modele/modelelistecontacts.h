@@ -11,6 +11,8 @@ public:
     explicit ModeleListeContacts(Contacts & contacts,QObject *parent=0);
     QVariant data ( const QModelIndex & index, int role = Qt::DisplayRole ) const;
     int rowCount (const QModelIndex & = QModelIndex()) const;
+    bool removeRows (int row, int count, const QModelIndex & parent = QModelIndex());
+    bool insertRows ( int row, int count, const QModelIndex & parent = QModelIndex() ) ;
     
 signals:
     // connecter dataChanged de modeleafficherContact à un slot qui emet le bon dataChanged ici

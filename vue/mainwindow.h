@@ -20,10 +20,11 @@ public:
     void setModeleAfficherContact ( QAbstractItemModel * model );
     void setModeleEditerContact ( QAbstractItemModel * model );
 
+private slots:
+
 signals:
-    void contactActive(const QModelIndex & index);
-    void contactEdite(const QModelIndex & index);
-    void contactSupprime(const QModelIndex & index);
+    void contactActive(const int index);
+    void contactEdite(const int index);
     
 private:
     Ui::MainWindow *ui;

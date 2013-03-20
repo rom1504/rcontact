@@ -1,7 +1,7 @@
 #include "modeleaffichercontact.h"
 #include <QPair>
 
-ModeleAfficherContact::ModeleAfficherContact(const Contact * contact,QObject *parent) :
+ModeleAfficherContact::ModeleAfficherContact(Contact * contact,QObject *parent) :
     QAbstractTableModel(parent),mContact(contact)
 {
     mEditable=false;
@@ -22,6 +22,15 @@ int ModeleAfficherContact::columnCount ( const QModelIndex &) const
 {
     return 2;
 }
+
+bool ModeleAfficherContact::removeRows (int row, int , const QModelIndex & parent)
+{
+    beginRemoveRows(parent,row,row);
+    bool r=mContact->supprimerChamp(row)==1;
+    endRemoveRows();
+    return r;
+}
+
 
 QVariant ModeleAfficherContact::data(const QModelIndex & index,int role) const
 {

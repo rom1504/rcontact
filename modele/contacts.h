@@ -32,17 +32,18 @@ public:
      * @return la taille de l'anuaire
      */
     int nombre() const;
+
     /**
      * @brief L'opérateur d'accès
      */
-    const Contact * operator[](const int n) const;
+    Contact * operator[](const int n) const;
 
 private:
     /**
      * @brief mContacts est la liste des contacts dans l'anuaire
      */
     QList<Contact*> mContacts;
-    
+
 signals:
     /**
      * @brief dataChanged est le signal émis lorsque des modifications sont faites dans la liste
@@ -51,9 +52,9 @@ signals:
      * @note Tous les éléments entre debut et fin ne sont pas forcément modifiés.
      */
     void dataChanged(int debut,int fin);
-    
+
 public slots:
-    
+
 };
 
 #endif // CONTACTS_H

@@ -31,28 +31,23 @@ private:
      * @brief mContacts contient le modèle
      */
     Contacts mContacts;
-    
+
 private slots:
     /**
      * @brief afficherContact est le slot appelé quand on souhaite afficher un contact
      * @param index est le numéro d'index dans le modèle du contact à afficher
      */
-    void afficherContact(QModelIndex index);
+    void afficherContact(int index);
     /**
      * @brief editerContact est le slot appelé quand on souhaite modifier un contact
      * @param index est le numéro d'index dans le modèle du contact à modifier
      */
-    void editerContact(QModelIndex index);
-    /**
-     * @brief supprimerContact est le slot appelé quand on souhaite supprimer un contact
-     * @param index est le numéro d'index dans le modèle du contact à supprimer
-     */
-    void supprimerContact(QModelIndex index);
+    void editerContact(int index);
 
 signals:
-    
+
 public slots:
-    
+
 };
 
 #endif // CONTROLEUR_H

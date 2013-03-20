@@ -14,7 +14,16 @@ class Contact : public QObject
 {
     Q_OBJECT
 public:
+    /**
+     * @brief Le constructeur par défaut de la classe
+     * @param parent Le QObject parent
+     */
     explicit Contact(QObject *parent = 0);
+    /**
+     * @brief Le constructeur de copie
+     * @param c le Contact a copier
+     * @param parent Le QObject parent
+     */
     Contact(const Contact & c,QObject *parent=0);
     ~Contact();
 
@@ -46,7 +55,7 @@ public:
     QString nom() const;
 
     /**
-     * @brief opérateur de comparaison
+     * @brief L'opérateur d'égalité
      */
     bool operator==(const Contact & c) const; // problème : ne sera pas utilisé dans le QMultiMap car ce sont des pointeurs qui sont stockés... : à vérifier...
 

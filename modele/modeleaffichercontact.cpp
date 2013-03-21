@@ -40,8 +40,8 @@ QVariant ModeleAfficherContact::data(const QModelIndex & index,int role) const
      if( index.row() >= mContact->nombreValeurs() || index.column()>=2 )
          return QVariant();
 
-     if (role == Qt::DisplayRole)
-         return index.column()==0 ? (*mContact)[index.row()].first : (*mContact)[index.row()].second->toString();
+     if (role == Qt::DisplayRole || role == Qt::EditRole)
+         return index.column()==0 ? (*mContact)[index.row()].first : (*mContact)[index.row()].second->toVariant();
      else
          return QVariant();
 }
@@ -60,7 +60,7 @@ bool ModeleAfficherContact::setData ( const QModelIndex & index, const QVariant 
          if(index.column()==0) return false;
          else
          {
-             if((*mContact)[index.row()].second->fromString(value.toString()))
+             if((*mContact)[index.row()].second->fromVariant(value))
              {
                  emit dataChanged(index, index);
                  return true;

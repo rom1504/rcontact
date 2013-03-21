@@ -1,4 +1,5 @@
 #include "timestamp.h"
+#include <QDateTime>
 
 Timestamp::Timestamp(const QString s)
 {
@@ -24,4 +25,15 @@ bool Timestamp::fromString(const QString s)
 Timestamp::~Timestamp()
 {
 
+}
+
+QVariant Timestamp::toVariant() const
+{
+    return QDateTime::fromTime_t(mT);
+}
+
+bool Timestamp::fromVariant(const QVariant v)
+{
+    mT=v.toDateTime().toTime_t();
+    return true;
 }

@@ -30,6 +30,8 @@ public:
      * @return true si la conversion a réussi, false sinon
      */
     bool fromString(const QString s);
+    virtual QVariant toVariant() const;
+    virtual bool fromVariant(const QVariant v);
     ~Timestamp();
 private:
     /**

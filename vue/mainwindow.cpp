@@ -1,10 +1,23 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDateTimeEdit>
+#include <QVariant>
+#include <QItemEditorFactory>
+#include <QItemEditorCreatorBase>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+//    QItemEditorFactory *factory = new QItemEditorFactory;
+
+//    QItemEditorCreatorBase *colorListCreator =
+//    new QStandardItemEditorCreator<QDateTimeEdit>();
+
+//    factory->registerEditor(QVariant::DateTime, colorListCreator);
+
+//    QItemEditorFactory::setDefaultFactory(factory);
     ui->setupUi(this);
     connect(ui->listeContacts,SIGNAL(contactActive(int)),this,SIGNAL(contactActive(int)));
     connect(ui->listeContacts,SIGNAL(contactEdite(int)),this,SIGNAL(contactEdite(int)));

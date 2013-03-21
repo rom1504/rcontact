@@ -2,6 +2,7 @@
 #define CHAMP_H
 
 #include <QString>
+#include <QVariant>
 
 /**
  * @brief La classe Champ est la classe abstraite mère de toutes les classes symbolisant des champs de formulaire
@@ -26,6 +27,9 @@ public:
      * @return true si la conversion a réussi, false sinon
      */
     virtual bool fromString(const QString)= 0;
+
+    virtual QVariant toVariant() const;
+    virtual bool fromVariant(const QVariant v);
     virtual ~Champ() = 0;
 };
 

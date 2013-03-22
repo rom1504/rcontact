@@ -4,20 +4,19 @@
 #include <QVariant>
 #include <QItemEditorFactory>
 #include <QItemEditorCreatorBase>
+#include <QLineEdit>
 
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-//    QItemEditorFactory *factory = new QItemEditorFactory;
+    QItemEditorFactory *factory = new QItemEditorFactory();
+    factory->registerEditor(QVariant::DateTime, new QStandardItemEditorCreator<QDateTimeEdit>());
+    factory->registerEditor(QVariant::String, new QStandardItemEditorCreator<QLineEdit>());
+    QItemEditorFactory::setDefaultFactory(factory);
 
-//    QItemEditorCreatorBase *colorListCreator =
-//    new QStandardItemEditorCreator<QDateTimeEdit>();
 
-//    factory->registerEditor(QVariant::DateTime, colorListCreator);
-
-//    QItemEditorFactory::setDefaultFactory(factory);
     ui->setupUi(this);
     connect(ui->listeContacts,SIGNAL(contactActive(int)),this,SIGNAL(contactActive(int)));
     connect(ui->listeContacts,SIGNAL(contactEdite(int)),this,SIGNAL(contactEdite(int)));

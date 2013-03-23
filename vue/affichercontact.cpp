@@ -6,7 +6,6 @@ AfficherContact::AfficherContact(QWidget *parent) :
     ui(new Ui::AfficherContact)
 {
     ui->setupUi(this);
-    ui->tableViewChamps->verticalHeader ()->hide();
 }
 
 AfficherContact::~AfficherContact()

@@ -16,6 +16,8 @@ public:
      * @param s La valeur par défaut (utilise fromString pour convertir la QString en le type approprié)
      */
     Enum(const QString s="");
+
+    Enum(const int enum_,const int valeur);
     /**
      * @brief L'opérateur d'égalité
      */
@@ -33,11 +35,19 @@ public:
     bool fromString(const QString s);
     ~Enum();
 
+    QStringList valeursPossibles() const;
+
+    int valeur() const;
+    int getEnum() const;
+
     /**
      * @brief remplirEnums initialise les énumérations
      * Elle est appelée une seul et unique fois, au début du programme, pour remplir mEnumTypeListe et mEnumListe des valeurs qu'on souhaite qu'elles prennent.
      */
     static void remplirEnums();
+
+    QVariant toVariant() const;
+    bool fromVariant(const QVariant v);
 
 private:
     /**
@@ -60,5 +70,7 @@ private:
      */
     int mValeur;
 };
+
+Q_DECLARE_METATYPE (Enum)
 
 #endif // ENUM_H

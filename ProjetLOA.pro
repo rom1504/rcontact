@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     modele/loc.cpp \
     modele/timestamp.cpp \
     modele/enum.cpp \
-    vue/locedit.cpp
+    vue/locedit.cpp \
+    vue/enumedit.cpp
 
 HEADERS  += vue/mainwindow.h \
     modele/contacts.h \
@@ -50,7 +51,8 @@ HEADERS  += vue/mainwindow.h \
     modele/loc.h \
     modele/timestamp.h \
     modele/enum.h \
-    vue/locedit.h
+    vue/locedit.h \
+    vue/enumedit.h
 
 FORMS    += vue/mainwindow.ui \
     vue/listecontacts.ui \

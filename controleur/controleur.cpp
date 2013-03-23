@@ -44,6 +44,7 @@ Controleur::Controleur(QObject *parent) :
     contact2->ajouterChamp("date MAJ",new Timestamp("34343453"));
 
     contact2->ajouterChamp("test enum type site",new Enum("google"));
+    contact2->ajouterChamp("test enum sexe",new Enum("homme"));
 
     mContacts.ajouterContact(contact1);
     mContacts.ajouterContact(contact2);

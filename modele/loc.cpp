@@ -18,11 +18,6 @@ QString Loc::toString() const
     return QString::number(mLatitude)+","+QString::number(mLongitude);
 }
 
-Loc Loc::operator=(QString & s)
-{
-    fromString(s);
-    return *this;
-}
 
 bool Loc::fromString(const QString s)
 {
@@ -57,7 +52,7 @@ QVariant Loc::toVariant() const
 
 bool Loc::fromVariant(const QVariant v)
 {
-    if(!(0<=v.value<Loc>().mLatitude && v.value<Loc>().mLatitude<=90 && -180<=v.value<Loc>().mLongitude && v.value<Loc>().mLongitude<=180)) return false;
+   if(!(0<=v.value<Loc>().mLatitude && v.value<Loc>().mLatitude<=90 && -180<=v.value<Loc>().mLongitude && v.value<Loc>().mLongitude<=180)) return false;
    mLatitude=v.value<Loc>().mLatitude;
    mLongitude=v.value<Loc>().mLongitude;
    return true;

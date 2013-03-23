@@ -34,10 +34,9 @@ public:
     double latitude() const;
     double longitude() const;
 
-    virtual QVariant toVariant() const;
-    virtual bool fromVariant(const QVariant v);
+    QVariant toVariant() const;
+    bool fromVariant(const QVariant v);
 
-    Loc operator=(QString & s);
     ~Loc();
 private:
     /**

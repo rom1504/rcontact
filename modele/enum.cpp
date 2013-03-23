@@ -31,7 +31,18 @@ void Enum::remplirEnums()
     QStringList typeDonnees;
     typeDonnees<<"voice"<<"data";
     mEnumListe<<typeDonnees;
+
+
+    mEnumTypeListe<<"sexe";
+    QStringList sexe;
+    sexe<<"homme"<<"femme";
+    mEnumListe<<sexe;
 };
+
+Enum::Enum(const int enum_,const int valeur) : mEnum(enum_),mValeur(valeur)
+{
+
+}
 
 
 Enum::Enum(const QString s)
@@ -41,6 +52,33 @@ Enum::Enum(const QString s)
         mEnum=0;
         mValeur=0;
     }
+}
+
+int Enum::valeur() const
+{
+    return mValeur;
+}
+
+int Enum::getEnum() const
+{
+    return mEnum;
+}
+
+QStringList Enum::valeursPossibles() const
+{
+    return mEnumListe[mEnum];
+}
+
+QVariant Enum::toVariant() const
+{
+    return QVariant::fromValue(*this);
+}
+
+bool Enum::fromVariant(const QVariant v)
+{
+   mEnum=v.value<Enum>().mEnum;
+   mValeur=v.value<Enum>().mValeur;
+   return true;
 }
 
 bool Enum::operator==(const Enum & c) const

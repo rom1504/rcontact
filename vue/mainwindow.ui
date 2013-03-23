@@ -61,34 +61,58 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionNouveau_contact"/>
+   <addaction name="actionCharger"/>
+   <addaction name="actionEnregistrer"/>
+   <addaction name="actionRechercher"/>
+   <addaction name="actionSupprimer"/>
+   <addaction name="actionQuitter"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNouveau_contact">
+   <property name="icon">
+    <iconset theme="contact-new"/>
+   </property>
    <property name="text">
     <string>Nouveau contact</string>
    </property>
   </action>
   <action name="actionCharger">
+   <property name="icon">
+    <iconset theme="document-open"/>
+   </property>
    <property name="text">
     <string>Charger</string>
    </property>
   </action>
   <action name="actionEnregistrer">
+   <property name="icon">
+    <iconset theme="document-save-as"/>
+   </property>
    <property name="text">
     <string>Enregistrer</string>
    </property>
   </action>
   <action name="actionRechercher">
+   <property name="icon">
+    <iconset theme="edit-find"/>
+   </property>
    <property name="text">
     <string>Rechercher</string>
    </property>
   </action>
   <action name="actionSupprimer">
+   <property name="icon">
+    <iconset theme="edit-delete"/>
+   </property>
    <property name="text">
     <string>Supprimer</string>
    </property>
   </action>
   <action name="actionQuitter">
+   <property name="icon">
+    <iconset theme="application-exit"/>
+   </property>
    <property name="text">
     <string>Quitter</string>
    </property>

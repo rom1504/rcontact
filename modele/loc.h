@@ -2,6 +2,7 @@
 #define LOC_H
 
 #include "champ.h"
+#include <QMetaType>
 
 /**
  * @brief La classe Loc représente un champ décrivant une position géographique
@@ -13,7 +14,7 @@ public:
      * @brief Le constructeur par défaut
      * @param s La valeur par défaut (utilise fromString pour convertir la QString en le type approprié)
      */
-    Loc(const QString s="");
+    Loc(const double latitude=0,const double longitude=0);
     /**
      * @brief L'opérateur de comparaison
      */
@@ -29,6 +30,14 @@ public:
      * @return true si la conversion a réussi, false sinon
      */
     bool fromString(const QString s);
+
+    double latitude() const;
+    double longitude() const;
+
+    virtual QVariant toVariant() const;
+    virtual bool fromVariant(const QVariant v);
+
+    Loc operator=(QString & s);
     ~Loc();
 private:
     /**
@@ -40,5 +49,7 @@ private:
      */
     double mLongitude;
 };
+
+Q_DECLARE_METATYPE (Loc)
 
 #endif // LOC_H

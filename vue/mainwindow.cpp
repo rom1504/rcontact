@@ -5,6 +5,7 @@
 #include <QItemEditorFactory>
 #include <QItemEditorCreatorBase>
 #include <QLineEdit>
+#include "locedit.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -14,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QItemEditorFactory *factory = new QItemEditorFactory();
     factory->registerEditor(QVariant::DateTime, new QStandardItemEditorCreator<QDateTimeEdit>());
     factory->registerEditor(QVariant::String, new QStandardItemEditorCreator<QLineEdit>());
+    factory->registerEditor((QVariant::Type)qMetaTypeId<Loc>(), new QStandardItemEditorCreator<LocEdit>());
     QItemEditorFactory::setDefaultFactory(factory);
 
 

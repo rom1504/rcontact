@@ -40,7 +40,7 @@ Controleur::Controleur(QObject *parent) :
     nom->ajouterChamp("Prénom",new Texte("David"));
     contact2->ajouterChamp("nom",nom);
     contact2->ajouterChamp("card",new Card(contact1));
-    contact2->ajouterChamp("loc",new Loc("66.6,42.0"));
+    contact2->ajouterChamp("loc",new Loc(66.6,42.0));
     contact2->ajouterChamp("date MAJ",new Timestamp("34343453"));
 
     contact2->ajouterChamp("test enum type site",new Enum("google"));

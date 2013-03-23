@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     modele/card.cpp \
     modele/loc.cpp \
     modele/timestamp.cpp \
-    modele/enum.cpp
+    modele/enum.cpp \
+    vue/locedit.cpp
 
 HEADERS  += vue/mainwindow.h \
     modele/contacts.h \
@@ -48,9 +49,11 @@ HEADERS  += vue/mainwindow.h \
     modele/card.h \
     modele/loc.h \
     modele/timestamp.h \
-    modele/enum.h
+    modele/enum.h \
+    vue/locedit.h
 
 FORMS    += vue/mainwindow.ui \
     vue/listecontacts.ui \
     vue/affichercontact.ui \
-    vue/editercontact.ui
+    vue/editercontact.ui \
+    vue/locedit.ui

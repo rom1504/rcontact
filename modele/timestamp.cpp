@@ -13,7 +13,7 @@ bool Timestamp::operator==(const Timestamp & c) const
 
 QString Timestamp::toString() const
 {
-    return QString::number(mT);
+    return QDateTime::fromTime_t(mT).toString();
 }
 
 bool Timestamp::fromString(const QString s)

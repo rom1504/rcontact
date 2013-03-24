@@ -14,7 +14,7 @@ AjouterChamp::AjouterChamp(QWidget *parent) :
 {
     ui->setupUi(this);
     QStringList list;
-    list<<"card"<<"enum"<<"loc"<<"structure"<<"texte"<<"timestamp"<<"url";
+    list<<"card"<<"enum"<<"loc"<<"structure"<<"texte"<<"timestamp"<<"url"<<"sexe"<<"tel";
     ui->comboBoxType->addItems(list);
 }
 
@@ -38,6 +38,17 @@ QPair<QString, Champ *> AjouterChamp::get()
         else if(type=="texte") champ=new Texte();
         else if(type=="timestamp") champ=new Timestamp();
         else if(type=="url") champ=new Url();
+        else if(type=="sexe") champ=new Enum("homme");
+        else if(type=="tel")
+        {
+            Structure * structure=new Structure();
+            structure->ajouterChamp("type",new Enum("work"));
+            structure->ajouterChamp("type tel",new Enum("fixe"));
+            structure->ajouterChamp("type données",new Enum("voice"));
+            structure->ajouterChamp("n°",new Texte(""));
+            champ=structure;
+
+        }
         else return qMakePair(QString(""),(Champ*)NULL);
         return qMakePair(nom,champ);
     }

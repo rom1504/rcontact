@@ -33,8 +33,8 @@ void StructureEdit::setStructure(Structure s)
 
 QSize StructureEdit::sizeHint() const
 {
-    QSize s=ui->tableViewChamps->sizeHint();//risque de poser pb... devrait être appelé seulement après le model défini/changé (un peu un hack)
-    return QSize(s.width()/2,s.height()/3);
+    QSize s=ui->tableViewChamps->sizeHint();
+    return QSize(s.width()/2,ui->tableViewChamps->model()->rowCount()*30);
 }
 
 void StructureEdit::redimensionner(QModelIndex index)

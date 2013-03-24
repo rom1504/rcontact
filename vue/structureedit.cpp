@@ -34,11 +34,14 @@ void StructureEdit::setStructure(Structure s)
 QSize StructureEdit::sizeHint() const
 {
     QSize s=ui->tableViewChamps->sizeHint();
-    return QSize(s.width(),s.height()/2);
+    return QSize(s.width()/2,s.height()/3);
 }
 
 void StructureEdit::redimensionner(QModelIndex index)
 {
-    ui->tableViewChamps->verticalHeader()->resizeSection(index.row(),max(ui->tableViewChamps->verticalHeader()->sectionSize(index.row()),ui->tableViewChamps->indexWidget(index)->sizeHint().height()));
-    ui->tableViewChamps->horizontalHeader()->resizeSection(index.column(),max(ui->tableViewChamps->horizontalHeader()->sectionSize(index.column()),ui->tableViewChamps->indexWidget(index)->sizeHint().width()));
+    if(index.column()!=0)
+    {
+        ui->tableViewChamps->verticalHeader()->resizeSection(index.row(),max(ui->tableViewChamps->verticalHeader()->sectionSize(index.row()),ui->tableViewChamps->indexWidget(index)->sizeHint().height()));
+        ui->tableViewChamps->horizontalHeader()->resizeSection(index.column(),max(ui->tableViewChamps->horizontalHeader()->sectionSize(index.column()),ui->tableViewChamps->indexWidget(index)->sizeHint().width()));
+    }
 }

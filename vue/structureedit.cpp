@@ -34,7 +34,7 @@ void StructureEdit::setStructure(Structure s)
 QSize StructureEdit::sizeHint() const
 {
     QSize s=ui->tableViewChamps->sizeHint();
-    return QSize(s.width()/2,ui->tableViewChamps->model()->rowCount()*30);
+    return QSize(s.width()*2,ui->tableViewChamps->model()->rowCount()*30);
 }
 
 void StructureEdit::redimensionner(QModelIndex index)

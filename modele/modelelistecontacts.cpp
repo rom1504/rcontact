@@ -45,12 +45,7 @@ bool ModeleListeContacts::insertRows ( int row, int count, const QModelIndex & p
     beginInsertRows (parent,row,row+count-1);
     for(int i=0;i<count;i++)
     {
-        Contact * nouveau=new Contact();
-        Structure * nom=new Structure();
-        nom->ajouterChamp("Nom",new Texte("Nom"));
-        nom->ajouterChamp("Prénom",new Texte("Prénom"));
-        nouveau->ajouterChamp("nom",nom);
-        mContacts.ajouterContact(nouveau);
+        mContacts.ajouterContact();
     }
     endInsertRows ();
     return true;

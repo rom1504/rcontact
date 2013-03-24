@@ -30,6 +30,8 @@ public:
      */
     void ajouterChamp(const QString & nomChamp,Champ * valeurChamp);
 
+    void ajouterChamp(const QString &nomChamp, const QString& type);
+
     /**
      * @brief supprimerChamp supprime le champ libelé nomChamp qui a la valeur valeurChamp
      * @param nomChamp Le nom du champ à supprimer

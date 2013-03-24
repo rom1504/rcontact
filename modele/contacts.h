@@ -22,6 +22,8 @@ public:
      * @param contact Un poiteur vers le contact à ajouter
      */
     void ajouterContact(Contact * contact);
+
+    void ajouterContact();
     /**
      * @brief supprimerContact supprime un contact dans la liste
      * @param n L'index du contact à supprimer

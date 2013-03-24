@@ -4,6 +4,7 @@
 
 Structure::Structure()
 {
+
 }
 
 Structure::~Structure()
@@ -20,6 +21,12 @@ void Structure::ajouterChamp(const QString & nomChamp,Champ * valeurChamp)
 int Structure::supprimerChamp(const QString & nomChamp, Champ * valeurChamp)
 {
     return mChamps.remove(nomChamp,valeurChamp);
+}
+
+int Structure::supprimerChamp(const int index)
+{
+    QPair<QString,Champ*> p=(*this)[index];
+    return supprimerChamp(p.first,p.second);
 }
 
 
@@ -41,6 +48,15 @@ bool Structure::operator==(const Structure & c) const
     return b;
 }
 
+/**
+ * @brief nombreValeurs
+ * @return le nombre de valeur totales
+ */
+int Structure::nombreValeurs() const
+{
+    return mChamps.count();
+}
+
 QString Structure::toString() const
 {
     QString s="";
@@ -54,6 +70,22 @@ QString Structure::toString() const
         }
     }
     return s;
+}
+
+QVariant Structure::toVariant() const
+{
+    return QVariant::fromValue(*this);
+}
+
+bool Structure::fromVariant(const QVariant v)
+{
+    mChamps=v.value<Structure>().mChamps;
+    return true;
+}
+
+const QPair<QString,Champ*> Structure::operator[](const int n) const
+{
+    return qMakePair((mChamps.keys())[n],(mChamps.values())[n]);
 }
 
 bool Structure::fromString(const QString s)

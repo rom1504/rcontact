@@ -18,6 +18,7 @@ public:
     void setModel ( QAbstractItemModel * model );
 
 private slots:
+    void redimensionner(QModelIndex index);
     void supprimerChampCourant();
 
 signals:

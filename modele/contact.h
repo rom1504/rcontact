@@ -1,7 +1,6 @@
 #ifndef CONTACT_H
 #define CONTACT_H
 
-#include <QObject>
 #include "champ.h"
 #include <QMultiMap>
 #include <QString>
@@ -10,21 +9,18 @@
 /**
  * @brief La classe Contact représente un contact enregistré, c'est à dire un multimap de champs.
  */
-class Contact : public QObject
+class Contact
 {
-    Q_OBJECT
 public:
     /**
      * @brief Le constructeur par défaut de la classe
-     * @param parent Le QObject parent
      */
-    explicit Contact(QObject *parent = 0);
+    explicit Contact();
     /**
      * @brief Le constructeur de copie
      * @param c le Contact a copier
-     * @param parent Le QObject parent
      */
-    Contact(const Contact & c,QObject *parent=0);
+    Contact(const Contact & c);
     ~Contact();
 
     /**
@@ -66,14 +62,6 @@ public:
      */
     const QPair<QString,Champ*> operator[](const int n) const;
 
-
-signals:
-    /**
-     * @brief dataChanged est le signal déclenché lorsqu'une donnée est modifiée
-     * @param debut
-     * @param fin
-     */
-    void dataChanged(int debut,int fin);
 
 private:
     /**

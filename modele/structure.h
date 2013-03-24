@@ -13,7 +13,7 @@ public:
     /**
      * @brief Le constructeur par défaut
      */
-    Structure();
+    explicit Structure();
     /**
      * @brief ajouterChamp ajoute un champ dans la structure.
      * Si le nom renseigné n'existe pas, il créer un champ portant ce nom, sinon il en augmente l'arité
@@ -28,6 +28,10 @@ public:
      * @return le nombre de champs supprimés
      */
     int supprimerChamp(const QString & nomChamp, Champ *valeurChamp);
+
+
+    int supprimerChamp(const int index);
+
     /**
      * @brief L'opérateur de comparaison
      */
@@ -45,11 +49,30 @@ public:
     bool fromString(const QString s);
     ~Structure();
 
+
+    /**
+     * @brief opérateur d'accès
+     */
+    const QPair<QString,Champ*> operator[](const int n) const;
+
+
+    QVariant toVariant() const;
+    bool fromVariant(const QVariant v);
+
+    /**
+     * @brief nombreValeurs
+     * @return le nombre de valeur totales
+     */
+    int nombreValeurs() const;
+
+
 private:
     /**
      * @brief mChamps contient la liste des champs contenu dans la structure
      */
     QMultiMap<QString,Champ*> mChamps;
 };
+
+Q_DECLARE_METATYPE (Structure)
 
 #endif // STRUCTURE_H

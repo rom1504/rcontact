@@ -31,7 +31,9 @@ SOURCES += main.cpp\
     modele/timestamp.cpp \
     modele/enum.cpp \
     vue/locedit.cpp \
-    vue/enumedit.cpp
+    vue/enumedit.cpp \
+    modele/modeleafficherstructure.cpp \
+    vue/structureedit.cpp
 
 HEADERS  += vue/mainwindow.h \
     modele/contacts.h \
@@ -52,10 +54,13 @@ HEADERS  += vue/mainwindow.h \
     modele/timestamp.h \
     modele/enum.h \
     vue/locedit.h \
-    vue/enumedit.h
+    vue/enumedit.h \
+    modele/modeleafficherstructure.h \
+    vue/structureedit.h
 
 FORMS    += vue/mainwindow.ui \
     vue/listecontacts.ui \
     vue/affichercontact.ui \
     vue/editercontact.ui \
-    vue/locedit.ui
+    vue/locedit.ui \
+    vue/structureedit.ui

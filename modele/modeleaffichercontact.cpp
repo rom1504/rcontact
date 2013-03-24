@@ -1,11 +1,11 @@
 #include "modeleaffichercontact.h"
 #include <QPair>
+#include <QSize>
 
 ModeleAfficherContact::ModeleAfficherContact(Contact * contact,QObject *parent) :
     QAbstractTableModel(parent),mContact(contact)
 {
     mEditable=false;
-    connect(mContact,SIGNAL(dataChanged(int,int)),this,SLOT(dataChanged_(int,int)));
 }
 
 void ModeleAfficherContact::rendreEditable()
@@ -46,13 +46,6 @@ QVariant ModeleAfficherContact::data(const QModelIndex & index,int role) const
          return index.column()==0 ? (*mContact)[index.row()].first : (*mContact)[index.row()].second->toVariant();
      else
          return QVariant();
-}
-
-
-
-void ModeleAfficherContact::dataChanged_(const int debut,const int fin)
-{
-    emit dataChanged(createIndex(debut,0),createIndex(fin,1));
 }
 
 bool ModeleAfficherContact::setData ( const QModelIndex & index, const QVariant & value, int role)

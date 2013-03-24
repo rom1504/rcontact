@@ -1,7 +1,6 @@
 #include "contact.h"
 
-Contact::Contact(QObject *parent) :
-    QObject(parent)
+Contact::Contact()
 {
 
 }
@@ -11,7 +10,7 @@ Contact::~Contact()
 
 }
 
-Contact::Contact(const Contact & c,QObject *parent) : QObject(parent)
+Contact::Contact(const Contact & c)
 {
     mChamps=c.mChamps;
 }

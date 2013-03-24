@@ -7,6 +7,7 @@
 #include <QLineEdit>
 #include "locedit.h"
 #include "enumedit.h"
+#include "structureedit.h"
 
 
 
@@ -19,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
     factory->registerEditor(QVariant::String, new QStandardItemEditorCreator<QLineEdit>());
     factory->registerEditor((QVariant::Type)qMetaTypeId<Loc>(), new QStandardItemEditorCreator<LocEdit>());
     factory->registerEditor((QVariant::Type)qMetaTypeId<Enum>(), new QStandardItemEditorCreator<EnumEdit>());
+    factory->registerEditor((QVariant::Type)qMetaTypeId<Structure>(), new QStandardItemEditorCreator<StructureEdit>());
     QItemEditorFactory::setDefaultFactory(factory);
 
 

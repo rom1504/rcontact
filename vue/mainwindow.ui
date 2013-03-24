@@ -13,16 +13,40 @@
   <property name="windowTitle">
    <string>Cards</string>
   </property>
+  <property name="windowIcon">
+   <iconset theme="preferences-desktop-personal"/>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="ListeContacts" name="listeContacts" native="true"/>
+     <widget class="ListeContacts" name="listeContacts" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
     </item>
     <item>
-     <widget class="EditerContact" name="editerContact" native="true"/>
+     <widget class="EditerContact" name="editerContact" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
     </item>
     <item>
-     <widget class="AfficherContact" name="afficherContact" native="true"/>
+     <widget class="AfficherContact" name="afficherContact" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

@@ -45,6 +45,8 @@ QVariant ModeleAfficherContact::data(const QModelIndex & index,int role) const
          return index.column()==0 ? (*mContact)[index.row()].first : (*mContact)[index.row()].second->toString();
      else if (role == Qt::EditRole)
          return index.column()==0 ? (*mContact)[index.row()].first : (*mContact)[index.row()].second->toVariant();
+     else if(role == Qt::ForegroundRole && index.column()==0)
+         return QColor("gray");
      else
          return QVariant();
 }
@@ -73,7 +75,12 @@ bool ModeleAfficherContact::insertRows ( int row, int count, const QModelIndex &
     for(int i=0;i<count;i++)
     {
         QPair<QString,Champ*> p=AjouterChamp::get();
-        mContact->ajouterChamp(p.first,p.second);
+        if(p.second!=NULL) mContact->ajouterChamp(p.first,p.second);
+        else
+        {
+            endInsertRows();
+            return false;
+        }
     }
     endInsertRows();
     return true;

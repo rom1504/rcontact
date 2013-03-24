@@ -31,6 +31,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionNouveau_contact,SIGNAL(triggered()),ui->listeContacts,SLOT(creerContact()));
     ui->afficherContact->hide();
     ui->editerContact->hide();
+    ui->horizontalLayout->setStretch(1,1);
+    ui->horizontalLayout->setStretch(2,1);
 }
 
 MainWindow::~MainWindow()

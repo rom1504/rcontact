@@ -1,5 +1,6 @@
 #include "editercontact.h"
 #include "ui_editercontact.h"
+#include "ajouterchamp.h"
 
 EditerContact::EditerContact(QWidget *parent) :
     QWidget(parent),
@@ -7,6 +8,7 @@ EditerContact::EditerContact(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->pushButtonSupprimerChamp,SIGNAL(pressed()),this,SLOT(supprimerChampCourant()));
+    connect(ui->pushButtonAjouterChamp,SIGNAL(pressed()),this,SLOT(ajouterChamp()));
 }
 
 EditerContact::~EditerContact()
@@ -25,6 +27,11 @@ void EditerContact::setModel ( QAbstractItemModel * model )
         connect(ui->tableViewChamps->model(),SIGNAL(dataChanged(QModelIndex,QModelIndex)),ui->tableViewChamps,SLOT(resizeColumnsToContents()));
         connect(ui->tableViewChamps->model(),SIGNAL(dataChanged(QModelIndex,QModelIndex)),ui->tableViewChamps,SLOT(resizeRowsToContents()));
     }
+}
+
+void EditerContact::ajouterChamp()
+{
+    ui->tableViewChamps->model()->insertRow(ui->tableViewChamps->model()->rowCount());
 }
 
 void EditerContact::supprimerChampCourant()

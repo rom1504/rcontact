@@ -13,7 +13,7 @@ public:
      * @brief Le constructeur par défaut
      * @param s La valeur par défaut (utilise fromString pour convertir la QString en le type approprié)
      */
-    Url(const QString value);
+    Url(const QString value="");
     /**
      * @brief fromString convertis un QString en Url
      * Elle vérifie que l'url est bien valide.

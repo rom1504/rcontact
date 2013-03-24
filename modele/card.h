@@ -12,10 +12,9 @@ class Card : public Champ
 public:
     /**
      * @brief Le constructeur de classe prenant en argument le Contact à stocker.
-     * Comme le Contact stocké est constant il doit obligatoirement être renseigné dans le constructeur
      * @param contact Le contact à enregistrer
      */
-    Card(const Contact * contact);
+    Card(const Contact * contact=NULL);
     /**
      * @brief L'opérateur d'égalité
      */

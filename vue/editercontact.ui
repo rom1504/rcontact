@@ -37,6 +37,13 @@
     </widget>
    </item>
    <item>
+    <widget class="QPushButton" name="pushButtonAjouterChamp">
+     <property name="text">
+      <string>Ajouter champ</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QPushButton" name="pushButtonSupprimerChamp">
      <property name="text">
       <string>Supprimer champ</string>

@@ -20,6 +20,7 @@ public:
 private slots:
     void redimensionner(QModelIndex index);
     void supprimerChampCourant();
+    void ajouterChamp();
 
 signals:
     

@@ -8,12 +8,12 @@ Card::Card(const Contact *contact) : mContact(contact)
 
 bool Card::operator==(const Card & c) const
 {
-    return (*mContact)==*(c.mContact);
+    return mContact!=NULL && c.mContact!=NULL && (*mContact)==*(c.mContact);
 }
 
 QString Card::toString() const
 {
-    return mContact->nom();
+    return mContact==NULL ? "" : mContact->nom();
 }
 
 bool Card::fromString(const QString)

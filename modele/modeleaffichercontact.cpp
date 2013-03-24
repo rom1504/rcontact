@@ -1,6 +1,7 @@
 #include "modeleaffichercontact.h"
 #include <QPair>
 #include <QSize>
+#include "../vue/ajouterchamp.h"
 
 ModeleAfficherContact::ModeleAfficherContact(Contact * contact,QObject *parent) :
     QAbstractTableModel(parent),mContact(contact)
@@ -64,6 +65,18 @@ bool ModeleAfficherContact::setData ( const QModelIndex & index, const QVariant 
          }
     }
     return false;
+}
+
+bool ModeleAfficherContact::insertRows ( int row, int count, const QModelIndex & parent  )
+{
+    beginInsertRows(parent,row,row+count-1);
+    for(int i=0;i<count;i++)
+    {
+        QPair<QString,Champ*> p=AjouterChamp::get();
+        mContact->ajouterChamp(p.first,p.second);
+    }
+    endInsertRows();
+    return true;
 }
 
 Qt::ItemFlags ModeleAfficherContact::flags ( const QModelIndex & index ) const

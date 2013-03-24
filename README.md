@@ -49,11 +49,21 @@ Ce modèle Qt fait le lien entre Contacts et la QListView présente dans ListeCo
 ###ModeleAfficherContact
 Fait le lien entre Contact et la QTableView présente dans AfficherContact
 
+###ModeleAfficherStructure
+Fait le lien entre Structure et la QTableView présente dans StructureEdit
 
 ##Vue
 ###AfficherContact
 
 ###EditerContact
+
+###AjouterContact
+
+###EnumEdit
+
+###LocEdit
+
+###StructureEdit
 
 ###ListeContacts
 Afficher les contacts

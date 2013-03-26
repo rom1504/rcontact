@@ -9,6 +9,7 @@ AjouterChamp::AjouterChamp(QWidget *parent) :
     QStringList list;
 //    list<<"card"<<"enum"<<"loc"<<"structure"<<"texte"<<"timestamp"<<"url";
     list<<"nom"<<"sexe"<<"tel"<<"adresse"<<"email"<<"site"<<"photo"<<"organisation"<<"type"<<"date MAJ"<<"note";
+    //olist<<"nom"<<"tel"<<"adresse"<<"email"<<"site"<<"logo"<<"organisation"<<"date MAJ"<<"note";
     ui->comboBoxType->addItems(list);
     ui->lineEditNom->setText("nom");
     connect(ui->comboBoxType,SIGNAL(currentIndexChanged(QString)),ui->lineEditNom,SLOT(setText(QString)));

@@ -3,6 +3,8 @@
 #include <QTextStream>
 #include "structure.h"
 #include "texte.h"
+#include "personne.h"
+#include "organisme.h"
 
 Contacts::Contacts(QObject *parent) :
     QObject(parent)
@@ -17,13 +19,7 @@ void Contacts::ajouterContact(Contact * contact)
 
 void Contacts::ajouterContact()
 {
-    Contact * nouveau=new Contact();
-    nouveau->ajouterChamp("nom","nom");
-    nouveau->ajouterChamp("sexe","sexe");
-    nouveau->ajouterChamp("tel","tel");
-    nouveau->ajouterChamp("adresse","adresse");
-    nouveau->ajouterChamp("email","email");
-    nouveau->ajouterChamp("date MAJ","date MAJ");
+    Contact * nouveau=Personne::creerDefaut();
     ajouterContact(nouveau);
 }
 

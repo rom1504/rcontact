@@ -28,6 +28,61 @@ void Contact::ajouterChamp(const QString & nomChamp, Champ* valeurChamp)
     mChamps.insert(nomChamp,valeurChamp);
 }
 
+Champ* Contact::tel(const QString type,const QString typeTel,const QString typeDonnees,const QString numero)
+{
+    Structure * structure=new Structure();
+    structure->ajouterChamp("type",new Enum(type));
+    structure->ajouterChamp("type tel",new Enum(typeTel));
+    structure->ajouterChamp("type données",new Enum(typeDonnees));
+    structure->ajouterChamp("n°",new Texte(numero));
+    return structure;
+}
+
+Champ* Contact::adresse(const QString type,const QString rue,const QString zipcode,const QString localite,const QString region,const QString pays,Loc * geo)
+{
+    Structure * structure=new Structure();
+    structure->ajouterChamp("type",new Enum(type));
+    structure->ajouterChamp("rue",new Texte(rue));
+    structure->ajouterChamp("zipcode",new Texte(zipcode));
+    structure->ajouterChamp("localité",new Texte(localite));
+    structure->ajouterChamp("Région",new Texte(region));
+    structure->ajouterChamp("pays",new Texte(pays));
+    structure->ajouterChamp("geo",geo);
+    return structure;
+}
+
+Champ* Contact::email(const QString nom,const QString domaine,const QString extension)
+{
+    Structure * structure=new Structure();
+    structure->ajouterChamp("nom",new Texte(nom));
+    structure->ajouterChamp("domaine",new Texte(domaine));
+    structure->ajouterChamp("extension",new Texte(extension));
+    return structure;
+}
+
+Champ* Contact::site(const QString type,const QString url)
+{
+    Structure * structure=new Structure();
+    structure->ajouterChamp("type",new Enum(type));
+    structure->ajouterChamp("url",new Url(url));
+    return structure;
+}
+
+Champ* Contact::gtype(const QString type)
+{
+    return new Texte(type);
+}
+
+Champ* Contact::date(const QString timestamp)
+{
+    return new Timestamp(timestamp);
+}
+
+Champ* Contact::note(const QString note)
+{
+    return new Texte(note);
+}
+
 Champ* Contact::creerChampFromType(const QString& type)
 {
     Champ * champ=NULL;
@@ -39,47 +94,13 @@ Champ* Contact::creerChampFromType(const QString& type)
     else if(type=="timestamp") champ=new Timestamp();
     else if(type=="url") champ=new Url();
     else */
-    if(type=="tel")
-    {
-        Structure * structure=new Structure();
-        structure->ajouterChamp("type",new Enum("work"));
-        structure->ajouterChamp("type tel",new Enum("fixe"));
-        structure->ajouterChamp("type données",new Enum("voice"));
-        structure->ajouterChamp("n°",new Texte(""));
-        champ=structure;
-
-    }
-    else if(type=="adresse")
-    {
-        Structure * structure=new Structure();
-        structure->ajouterChamp("type",new Enum("work"));
-        structure->ajouterChamp("rue",new Texte());
-        structure->ajouterChamp("zipcode",new Texte());
-        structure->ajouterChamp("localité",new Texte());
-        structure->ajouterChamp("Région",new Texte());
-        structure->ajouterChamp("pays",new Texte());
-        structure->ajouterChamp("geo",new Loc());
-        champ=structure;
-    }
-    else if(type=="email")
-    {
-        Structure * structure=new Structure();
-        structure->ajouterChamp("nom",new Texte());
-        structure->ajouterChamp("domaine",new Texte());
-        structure->ajouterChamp("extension",new Texte());
-        champ=structure;
-    }
-    else if(type=="site")
-    {
-        Structure * structure=new Structure();
-        structure->ajouterChamp("type",new Enum("web"));
-        structure->ajouterChamp("url",new Url());
-        champ=structure;
-    }
-    else if(type=="type") champ=new Texte();
-    else if(type=="date MAJ") champ=new Timestamp();
-    else if(type=="note") champ=new Texte();
-
+    if(type=="tel") champ=tel("work","fixe","voice","");
+    else if(type=="adresse") champ=adresse("work","","","","","");
+    else if(type=="email") champ=email("","","");
+    else if(type=="site") champ=site("web","");
+    else if(type=="type") champ=gtype("");
+    else if(type=="date MAJ") champ=date("");
+    else if(type=="note") champ=note("");
     return champ;
 }
 

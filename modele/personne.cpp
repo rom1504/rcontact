@@ -1,11 +1,4 @@
 #include "personne.h"
-#include "card.h"
-#include "enum.h"
-#include "loc.h"
-#include "structure.h"
-#include "texte.h"
-#include "timestamp.h"
-#include "url.h"
 
 Personne::Personne()
 {
@@ -28,28 +21,42 @@ Contact* Personne::creerDefaut()
     return nouveau;
 }
 
-void Personne::creerChamp(const QString& nom, const QString& type)
+Champ* Personne::gnom(const QString prefixe,const QString nom,const QString prenom,const QString surnom)
 {
-    Champ* champ = creerChampFromType(type);
+    Structure * structure=new Structure();
+    structure->ajouterChamp("Préfixe",new Texte(prefixe));
+    structure->ajouterChamp("Nom",new Texte(nom));
+    structure->ajouterChamp("Prénom",new Texte(prenom));
+    structure->ajouterChamp("Surnom",new Texte(surnom));
+    return structure;
+}
 
-    if(type=="nom")
-    {
-        Structure * structure=new Structure();
-        structure->ajouterChamp("Préfixe",new Texte());
-        structure->ajouterChamp("Nom",new Texte("Nom"));
-        structure->ajouterChamp("Prénom",new Texte("Prénom"));
-        structure->ajouterChamp("Surnom",new Texte());
-        champ=structure;
-    }
-    else if(type=="sexe") champ=new Enum("homme");
-    else if(type=="photo")
-    {
-        Structure * structure=new Structure();
-        structure->ajouterChamp("type",new Enum("JPEG"));
-        structure->ajouterChamp("url",new Url());
-    }
-    else if(type=="organisation") champ=new Card();
-    else if(type=="type") champ=new Texte();
+Champ* Personne::sexe(const QString sexe)
+{
+    return new Enum(sexe);
+}
 
-    ajouterChamp(nom, champ);
+Champ* Personne::photo(const QString type,const QString url)
+{
+    Structure * structure=new Structure();
+    structure->ajouterChamp("type",new Enum(type));
+    structure->ajouterChamp("url",new Url(url));
+    return structure;
+}
+
+Champ* Personne::organisation(Card *card)
+{
+    return card;
+}
+
+void Personne::creerChamp(const QString& nomChamp, const QString& type)
+{
+    Champ* champ = Contact::creerChampFromType(type);
+
+    if(type=="nom") champ=gnom("","Nom","Prénom","");
+    else if(type=="sexe") champ=sexe("homme");
+    else if(type=="photo") champ=photo("JPEG","");
+    else if(type=="organisation") champ=organisation();
+
+    ajouterChamp(nomChamp, champ);
 }

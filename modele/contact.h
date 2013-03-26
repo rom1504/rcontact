@@ -5,6 +5,13 @@
 #include <QMultiMap>
 #include <QString>
 #include <QPair>
+#include "card.h"
+#include "enum.h"
+#include "loc.h"
+#include "structure.h"
+#include "texte.h"
+#include "timestamp.h"
+#include "url.h"
 
 /**
  * @brief La classe Contact représente un contact enregistré, c'est à dire un multimap de champs.
@@ -73,6 +80,14 @@ public:
      */
     const QPair<QString,Champ*> operator[](const int n) const;
 
+    static Champ* tel(const QString type,const QString typeTel,const QString typeDonnees,const QString numero);
+    static Champ* adresse(const QString type,const QString rue,const QString zipcode,const QString localite,const QString region,const QString pays,Loc * geo=new Loc());
+    static Champ* email(const QString nom,const QString domaine,const QString extension);
+    static Champ* site(const QString type,const QString url);
+    static Champ* gtype(const QString type);
+    static Champ* date(const QString timestamp);
+    static Champ* note(const QString note);
+
 
 private:
     /**
@@ -88,7 +103,8 @@ protected:
      * @param type Le type du champ à créer
      * @return Le champ créé
      */
-    Champ* creerChampFromType(const QString& type);
+    static Champ* creerChampFromType(const QString& type);
+
 
 };
 

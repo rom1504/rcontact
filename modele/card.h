@@ -2,7 +2,8 @@
 #define CARD_H
 
 #include "champ.h"
-#include "contact.h"
+
+class Contact;
 
 /**
  * @brief La classe Card représente un champ contenant un contact (une personne ou une organisation)

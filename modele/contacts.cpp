@@ -50,33 +50,23 @@ void Contacts::charger(QString nomFichier)
     {
         ligne = flux.readLine();
         QStringList l=ligne.split(":");
-        QString nomChamp=(l.length()>1) ? l[0] : "";
-        QString valeurChamp=(l.length()>2) ? l[1] : "";
+        QString nomChamp=(l.length()>=1) ? l[0] : "";
+        QStringList nomsChamp=nomChamp.split(";");
+        QString vNomChamp=nomsChamp[0];
+        QString valeurChamp=(l.length()>=2) ? l[1] : "";
         QStringList valeursChamp=valeurChamp.split(";");
 
         if(nomChamp=="BEGIN" && valeurChamp=="VCARD") contact=new Personne();
-        if(nomChamp=="END" && valeurChamp=="VCARD" && contact!=NULL)
+        if(contact!=NULL)
         {
-            if(!(contact->aNom()))
+            if(nomChamp=="END" && valeurChamp=="VCARD")
             {
-                Structure * structure=new Structure();
-                structure->ajouterChamp("Préfixe",new Texte());
-                if(valeursChamp.length()>0) structure->ajouterChamp("Nom",new Texte("nom"));
-                if(valeursChamp.length()>1) structure->ajouterChamp("Prénom",new Texte("prénom"));
-                structure->ajouterChamp("Surnom",new Texte());
-                contact->ajouterChamp("nom",structure);
+                if(!(contact->aNom())) contact->ajouterChamp("nom",Personne::gnom("","","",""));
+                ajouterContact(contact);
+                contact=NULL;
             }
-            ajouterContact(contact);
-        }
-        if(nomChamp=="N"  && contact!=NULL)
-        {
-            Structure * structure=new Structure();
-
-            structure->ajouterChamp("Préfixe",new Texte());
-            structure->ajouterChamp("Nom",new Texte(valeursChamp.length()>0 ? valeursChamp[0] : ""));
-            structure->ajouterChamp("Prénom",new Texte(valeursChamp.length()>1 ? valeursChamp[1] : ""));
-            structure->ajouterChamp("Surnom",new Texte());
-            contact->ajouterChamp("nom",structure);
+            else if(vNomChamp=="N") contact->ajouterChamp("nom",Personne::gnom("",valeursChamp.length()>0 ? valeursChamp[0] : "",valeursChamp.length()>1 ? valeursChamp[1] : "",""));
+            else if(vNomChamp=="ADR") contact->ajouterChamp("adresse",Contact::adresse("home",valeursChamp[2],"","","",""));
         }
     }
 }

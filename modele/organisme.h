@@ -14,7 +14,11 @@ public:
      */
     static Contact* creerDefaut();
 
-    void creerChamp(const QString& nom, const QString& type);
+    static Champ* gnom(const QString nom,const QString raisonSociale);
+    static Champ* logo(const QString type,const QString url);
+    static Champ* membre(const QString fonction,Card * card=new Card());
+
+    void creerChamp(const QString& nomChamp, const QString& type);
 };
 
 #endif // ORGANISME_H

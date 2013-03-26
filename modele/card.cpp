@@ -1,4 +1,5 @@
 #include "card.h"
+#include "contact.h"
 
 Card::Card(const Contact *contact) : mContact(contact)
 {

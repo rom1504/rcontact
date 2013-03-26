@@ -14,7 +14,12 @@ public:
      */
     static Contact* creerDefaut();
 
-    void creerChamp(const QString& nom, const QString& type);
+    static Champ* gnom(const QString prefixe,const QString nom,const QString prenom,const QString surnom);
+    static Champ* sexe(const QString sexe);
+    static Champ* photo(const QString type,const QString url);
+    static Champ* organisation(Card *card=new Card());
+
+    void creerChamp(const QString& nomChamp, const QString& type);
 };
 
 #endif // PERSONNE_H

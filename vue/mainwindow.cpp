@@ -8,6 +8,7 @@
 #include "locedit.h"
 #include "enumedit.h"
 #include "structureedit.h"
+#include <QFileDialog>
 
 
 
@@ -59,4 +60,12 @@ void MainWindow::setModeleEditerContact ( QAbstractItemModel * model )
     ui->editerContact->show();
     ui->afficherContact->hide();
     ui->editerContact->setModel(model);
+}
+
+void MainWindow::on_actionCharger_triggered()
+{
+    QString nomFichier = QFileDialog::getOpenFileName(this, tr("Ouvrir fichier"),"",tr("vCard (*.vcf)"));
+    ui->afficherContact->hide();
+    ui->editerContact->hide();
+    emit chargerContacts(nomFichier);
 }

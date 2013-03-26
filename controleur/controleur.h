@@ -44,6 +44,8 @@ private slots:
      */
     void editerContact(int index);
 
+    void chargerContacts(QString nomFichier);
+
 signals:
 
 public slots:

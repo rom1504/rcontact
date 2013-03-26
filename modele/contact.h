@@ -54,6 +54,8 @@ public:
      */
     QString nom() const;
 
+    bool aNom() const;
+
     /**
      * @brief L'opérateur d'égalité
      */

@@ -127,6 +127,11 @@ int Contact::nombreValeurs() const
     return mChamps.count();
 }
 
+bool Contact::aNom() const
+{
+    return mChamps.contains("nom");
+}
+
 
 const QPair<QString,Champ*> Contact::operator[](const int n) const
 {

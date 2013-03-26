@@ -19,6 +19,7 @@ Controleur::Controleur(QObject *parent) :
     mVue.setModeleListeContacts(modeleListeContacts);
     connect(&mVue,SIGNAL(contactActive(int)),this,SLOT(afficherContact(int)));
     connect(&mVue,SIGNAL(contactEdite(int)),this,SLOT(editerContact(int)));
+    connect(&mVue,SIGNAL(chargerContacts(QString)),this,SLOT(chargerContacts(QString)));
 
 
     // exemples (voués à disparaitre grâce à l'ajout et à l'import)
@@ -53,6 +54,13 @@ Controleur::Controleur(QObject *parent) :
 void Controleur::afficherContact(int index)
 {
     mVue.setModeleAfficherContact(index==-1 ? NULL : new ModeleAfficherContact(mContacts[index]));
+}
+
+void Controleur::chargerContacts(QString nomFichier)
+{
+    mContacts.charger(nomFichier);
+    ModeleListeContacts * modeleListeContacts=new ModeleListeContacts(mContacts);
+    mVue.setModeleListeContacts(modeleListeContacts);
 }
 
 void Controleur::editerContact(int index)

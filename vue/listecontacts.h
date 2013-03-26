@@ -17,6 +17,7 @@ public:
     ~ListeContacts();
     void setModel ( QAbstractItemModel * model );
     int indexContactCourant();
+    void chargerContacts(QString nomFichier);
 
 signals:
     void contactActive(const int index);

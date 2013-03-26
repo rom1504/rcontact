@@ -35,6 +35,10 @@ public:
      */
     int nombre() const;
 
+    void charger(QString nomFichier);
+
+    void enregistrer(QString nomFichier) const;
+
     /**
      * @brief L'opérateur d'accès
      */

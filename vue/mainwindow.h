@@ -22,9 +22,12 @@ public:
 
 private slots:
 
+    void on_actionCharger_triggered();
+
 signals:
     void contactActive(const int index);
     void contactEdite(const int index);
+    void chargerContacts(const QString nomFichier);
     
 private:
     Ui::MainWindow *ui;

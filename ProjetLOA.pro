@@ -34,7 +34,9 @@ SOURCES += main.cpp\
     vue/enumedit.cpp \
     modele/modeleafficherstructure.cpp \
     vue/structureedit.cpp \
-    vue/ajouterchamp.cpp
+    vue/ajouterchamp.cpp \
+    modele/personne.cpp \
+    modele/organisme.cpp
 
 HEADERS  += vue/mainwindow.h \
     modele/contacts.h \
@@ -58,7 +60,9 @@ HEADERS  += vue/mainwindow.h \
     vue/enumedit.h \
     modele/modeleafficherstructure.h \
     vue/structureedit.h \
-    vue/ajouterchamp.h
+    vue/ajouterchamp.h \
+    modele/organisme.h \
+    modele/personne.h
 
 FORMS    += vue/mainwindow.ui \
     vue/listecontacts.ui \

@@ -1,7 +1,8 @@
 #include "controleur.h"
 #include "modele/modeleaffichercontact.h"
 #include "modele/modelelistecontacts.h"
-#include "modele/contact.h"
+#include "modele/personne.h"
+#include "modele/organisme.h"
 #include "modele/texte.h"
 #include "modele/structure.h"
 #include "modele/url.h"
@@ -25,7 +26,7 @@ Controleur::Controleur(QObject *parent) :
     Texte * valeur1=new Texte("valeur1");
     Texte * valeur2=new Texte("valeur2");
 
-    Contact * contact1=new Contact();
+    Contact * contact1=new Personne();
     contact1->ajouterChamp("champ1",valeur1);
     contact1->ajouterChamp("champ2",valeur2);
     contact1->ajouterChamp("url",new Url("http://www.google.fr/"));
@@ -34,7 +35,7 @@ Controleur::Controleur(QObject *parent) :
     nom1->ajouterChamp("Nom",new Texte("Beaumont"));
     nom1->ajouterChamp("Prénom",new Texte("Romain"));
     contact1->ajouterChamp("nom",nom1);
-    Contact * contact2=new Contact();
+    Contact * contact2=new Personne();
     Structure * nom=new Structure();
     nom->ajouterChamp("Nom",new Texte("Roussel"));
     nom->ajouterChamp("Prénom",new Texte("David"));

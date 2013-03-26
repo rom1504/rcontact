@@ -21,6 +21,7 @@ public:
      * @param c le Contact a copier
      */
     Contact(const Contact & c);
+
     ~Contact();
 
     /**
@@ -28,9 +29,15 @@ public:
      * @param nomChamp Le nom du champ à ajouter (ex : "nom", "téléphone", ...)
      * @param valeurChamp La valeur du champ à ajouter
      */
-    void ajouterChamp(const QString & nomChamp,Champ * valeurChamp);
+    void ajouterChamp(const QString & nomChamp, Champ* valeurChamp);
 
-    void ajouterChamp(const QString &nomChamp, const QString& type);
+    /**
+     * @brief creerChamp créé un champ à partir de son nom et son type, et l'ajoute
+     * @param nomChamp Le nom du champ à créer
+     * @param type Le type du champ à créer
+     */
+    virtual void creerChamp(const QString & nomChamp, const QString& type)=0;
+
 
     /**
      * @brief supprimerChamp supprime le champ libelé nomChamp qui a la valeur valeurChamp
@@ -71,6 +78,15 @@ private:
      */
     QMultiMap<QString,Champ*> mChamps;
 
+protected:
+
+    /**
+     * @brief creerChampFromType créé un champ de base à partir du type passé en paramètre.
+     * Utilisée uniquement dans la méthod créerChamp
+     * @param type Le type du champ à créer
+     * @return Le champ créé
+     */
+    Champ* creerChampFromType(const QString& type);
 
 };
 

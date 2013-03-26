@@ -54,7 +54,7 @@ void Contacts::charger(QString nomFichier)
         QString valeurChamp=(l.length()>2) ? l[1] : "";
         QStringList valeursChamp=valeurChamp.split(";");
 
-        if(nomChamp=="BEGIN" && valeurChamp=="VCARD") contact=new Contact();
+        if(nomChamp=="BEGIN" && valeurChamp=="VCARD") contact=new Personne();
         if(nomChamp=="END" && valeurChamp=="VCARD" && contact!=NULL)
         {
             if(!(contact->aNom()))

@@ -37,7 +37,6 @@ public:
     QVariant toVariant() const;
     bool fromVariant(const QVariant v);
 
-    ~Loc();
 private:
     /**
      * @brief mLatitude La latitude

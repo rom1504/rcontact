@@ -21,8 +21,3 @@ bool Card::fromString(const QString)
 {
     return false;
 }
-
-Card::~Card()
-{
-
-}

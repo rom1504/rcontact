@@ -23,7 +23,3 @@ bool Texte::fromString(const QString s)
     return true;
 }
 
-Texte::~Texte()
-{
-
-}

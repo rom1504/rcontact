@@ -7,12 +7,6 @@ Structure::Structure()
 
 }
 
-Structure::~Structure()
-{
-
-}
-
-
 void Structure::ajouterChamp(const QString & nomChamp,Champ * valeurChamp)
 {
     mChamps.insert(nomChamp,valeurChamp);

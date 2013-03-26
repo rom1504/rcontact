@@ -47,7 +47,6 @@ public:
      * @return true si la conversion a réussi, false sinon
      */
     bool fromString(const QString s);
-    ~Structure();
 
 
     /**

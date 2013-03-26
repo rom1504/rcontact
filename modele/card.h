@@ -30,7 +30,6 @@ public:
      * @return false
      */
     bool fromString(const QString);
-    ~Card();
 private:
     /**
      * @brief mContact est le contact reprsenté par le champ Card

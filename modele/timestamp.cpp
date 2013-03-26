@@ -23,10 +23,6 @@ bool Timestamp::fromString(const QString s)
     return true;
 }
 
-Timestamp::~Timestamp()
-{
-
-}
 
 QVariant Timestamp::toVariant() const
 {

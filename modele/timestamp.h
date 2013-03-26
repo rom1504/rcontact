@@ -32,7 +32,6 @@ public:
     bool fromString(const QString s);
     virtual QVariant toVariant() const;
     virtual bool fromVariant(const QVariant v);
-    ~Timestamp();
 private:
     /**
      * @brief mT est le timestamp au moment de la dernière modification

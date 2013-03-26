@@ -30,7 +30,7 @@ public:
 
     virtual QVariant toVariant() const;
     virtual bool fromVariant(const QVariant v);
-    virtual ~Champ() = 0;
+    virtual ~Champ();
 };
 
 #endif // CHAMP_H

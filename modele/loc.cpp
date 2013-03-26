@@ -40,11 +40,6 @@ double Loc::longitude() const
     return mLongitude;
 }
 
-Loc::~Loc()
-{
-
-}
-
 QVariant Loc::toVariant() const
 {
     return QVariant::fromValue(*this);

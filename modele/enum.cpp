@@ -107,8 +107,3 @@ bool Enum::fromString(const QString s)
     }
     return false;
 }
-
-Enum::~Enum()
-{
-
-}

@@ -27,7 +27,7 @@ Champ* Organisme::gnom(const QString nom,const QString raisonSociale)
     return structure;
 }
 
-Champ* Organisme::logo(const QString type,const QString url)
+Champ* Organisme::logo(const QString url, const QString type)
 {
     Structure * structure=new Structure();
     structure->ajouterChamp("type",new Enum(type));
@@ -48,8 +48,8 @@ void Organisme::creerChamp(const QString& nomChamp, const QString& type)
 {
     Champ* champ = Contact::creerChampFromType(type);
 
-    if(type=="nom") champ=gnom("Nom","Raison sociale");
-    else if(type=="logo") champ=logo("JPEG","");
-    else if(type=="membre") champ=membre("");
+    if(type=="nom") champ=gnom();
+    else if(type=="logo") champ=logo();
+    else if(type=="membre") champ=membre();
     ajouterChamp(nomChamp, champ);
 }

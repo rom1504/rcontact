@@ -28,7 +28,7 @@ void Contact::ajouterChamp(const QString & nomChamp, Champ* valeurChamp)
     mChamps.insert(nomChamp,valeurChamp);
 }
 
-Champ* Contact::tel(const QString type,const QString typeTel,const QString typeDonnees,const QString numero)
+Champ* Contact::tel(const QString numero, const QString type, const QString typeTel, const QString typeDonnees)
 {
     Structure * structure=new Structure();
     structure->ajouterChamp("type",new Enum(type));
@@ -38,7 +38,7 @@ Champ* Contact::tel(const QString type,const QString typeTel,const QString typeD
     return structure;
 }
 
-Champ* Contact::adresse(const QString type,const QString rue,const QString zipcode,const QString localite,const QString region,const QString pays,Loc * geo)
+Champ* Contact::adresse(const QString rue,const QString zipcode,const QString localite,const QString region,const QString pays,const QString type,Loc * geo)
 {
     Structure * structure=new Structure();
     structure->ajouterChamp("type",new Enum(type));
@@ -60,7 +60,7 @@ Champ* Contact::email(const QString nom,const QString domaine,const QString exte
     return structure;
 }
 
-Champ* Contact::site(const QString type,const QString url)
+Champ* Contact::site(const QString url, const QString type)
 {
     Structure * structure=new Structure();
     structure->ajouterChamp("type",new Enum(type));
@@ -83,6 +83,11 @@ Champ* Contact::note(const QString note)
     return new Texte(note);
 }
 
+Champ* Contact::url(const QString texte)
+{
+    return new Url(texte);
+}
+
 Champ* Contact::creerChampFromType(const QString& type)
 {
     Champ * champ=NULL;
@@ -94,15 +99,16 @@ Champ* Contact::creerChampFromType(const QString& type)
     else if(type=="timestamp") champ=new Timestamp();
     else if(type=="url") champ=new Url();
     else */
-    if(type=="tel") champ=tel("work","fixe","voice","");
-    else if(type=="adresse") champ=adresse("work","","","","","");
-    else if(type=="email") champ=email("","","");
-    else if(type=="site") champ=site("web","");
-    else if(type=="type") champ=gtype("");
-    else if(type=="date MAJ") champ=date("");
-    else if(type=="note") champ=note("");
+    if(type=="tel") champ=tel();
+    else if(type=="adresse") champ=adresse();
+    else if(type=="email") champ=email();
+    else if(type=="site") champ=site();
+    else if(type=="type") champ=gtype();
+    else if(type=="date MAJ") champ=date();
+    else if(type=="note") champ=note();
     return champ;
 }
+
 
 
 bool Contact::operator==(const Contact & c) const

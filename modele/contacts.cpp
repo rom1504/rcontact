@@ -5,6 +5,7 @@
 #include "texte.h"
 #include "personne.h"
 #include "organisme.h"
+#include <iostream>
 
 Contacts::Contacts(QObject *parent) :
     QObject(parent)
@@ -38,8 +39,14 @@ Contact * Contacts::operator[](const int n) const
     return mContacts[n];
 }
 
+QString parseString(QString s)
+{
+    return s.replace("\\n","\n").replace("\\,",",").replace("\\\"","\"");
+}
+
 void Contacts::charger(QString nomFichier)
 {
+
     mContacts.clear();
     QFile fichier(nomFichier);
     fichier.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -49,24 +56,42 @@ void Contacts::charger(QString nomFichier)
     while(! flux.atEnd())
     {
         ligne = flux.readLine();
+        QRegExp rx("^item[0-9]+\\.(.+)$");
+        if(rx.indexIn(ligne)!=-1) ligne=rx.cap(1);
         QStringList l=ligne.split(":");
-        QString nomChamp=(l.length()>=1) ? l[0] : "";
-        QStringList nomsChamp=nomChamp.split(";");
-        QString vNomChamp=nomsChamp[0];
-        QString valeurChamp=(l.length()>=2) ? l[1] : "";
-        QStringList valeursChamp=valeurChamp.split(";");
-
-        if(nomChamp=="BEGIN" && valeurChamp=="VCARD") contact=new Personne();
-        if(contact!=NULL)
+        QString nom=l.first();
+        l.pop_front();
+        QStringList noms=nom.split(";");
+        QString vnom=noms[0];
+        QString valeur=l.join(":");
+        QStringList valeurs=valeur.split(";");
+        QString version="";
+        if(nom=="BEGIN" && valeur=="VCARD") contact=new Personne();
+        else if(nom=="VERSION") version=valeur;
+        else if(contact!=NULL)
         {
-            if(nomChamp=="END" && valeurChamp=="VCARD")
+            if(nom=="END" && valeur=="VCARD")
             {
-                if(!(contact->aNom())) contact->ajouterChamp("nom",Personne::gnom("","","",""));
+                if(!(contact->aNom())) contact->ajouterChamp("nom",Personne::gnom("",""));
                 ajouterContact(contact);
                 contact=NULL;
             }
-            else if(vNomChamp=="N") contact->ajouterChamp("nom",Personne::gnom("",valeursChamp.length()>0 ? valeursChamp[0] : "",valeursChamp.length()>1 ? valeursChamp[1] : "",""));
-            else if(vNomChamp=="ADR") contact->ajouterChamp("adresse",Contact::adresse("home",valeursChamp[2],"","","",""));
+            else if(vnom=="N") contact->ajouterChamp("nom",Personne::gnom(valeurs.length()>0 ? valeurs[0] : "",valeurs.length()>1 ? valeurs[1] : ""));
+            else if(vnom=="ADR") contact->ajouterChamp("adresse",Contact::adresse(parseString(valeurs[2])));
+            else if(vnom=="NOTE")
+            {
+                while((ligne=flux.readLine())!="END:VCARD") valeur+=ligne;
+                contact->ajouterChamp("note",Contact::note(parseString(valeur))); // pb avec les notes multi lignes
+                if(!(contact->aNom())) contact->ajouterChamp("nom",Personne::gnom("",""));
+                ajouterContact(contact);
+                contact=NULL;
+            }
+            else if(vnom=="TEL") contact->ajouterChamp("tel",Contact::tel(valeur));
+            else if(vnom=="EMAIL") contact->ajouterChamp("mail",Contact::email(valeur));
+            else if(vnom=="BDAY") contact->ajouterChamp("date de naissance",Contact::date(valeur));
+            else if(vnom=="FN") 1; // que faire ????
+            else if(vnom=="URL") contact->ajouterChamp("url",Contact::url(valeur));
+//            else std::cout<<ligne.toStdString()<<"\n";
         }
     }
 }

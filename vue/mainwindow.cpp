@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    showMaximized();
     QItemEditorFactory *factory = new QItemEditorFactory();
     factory->registerEditor(QVariant::DateTime, new QStandardItemEditorCreator<QDateTimeEdit>());
     factory->registerEditor(QVariant::String, new QStandardItemEditorCreator<QLineEdit>());

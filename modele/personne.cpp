@@ -21,7 +21,7 @@ Contact* Personne::creerDefaut()
     return nouveau;
 }
 
-Champ* Personne::gnom(const QString prefixe,const QString nom,const QString prenom,const QString surnom)
+Champ* Personne::gnom(const QString nom, const QString prenom, const QString prefixe, const QString surnom)
 {
     Structure * structure=new Structure();
     structure->ajouterChamp("Préfixe",new Texte(prefixe));
@@ -36,7 +36,7 @@ Champ* Personne::sexe(const QString sexe)
     return new Enum(sexe);
 }
 
-Champ* Personne::photo(const QString type,const QString url)
+Champ* Personne::photo(const QString url, const QString type)
 {
     Structure * structure=new Structure();
     structure->ajouterChamp("type",new Enum(type));
@@ -53,9 +53,9 @@ void Personne::creerChamp(const QString& nomChamp, const QString& type)
 {
     Champ* champ = Contact::creerChampFromType(type);
 
-    if(type=="nom") champ=gnom("","Nom","Prénom","");
-    else if(type=="sexe") champ=sexe("homme");
-    else if(type=="photo") champ=photo("JPEG","");
+    if(type=="nom") champ=gnom();
+    else if(type=="sexe") champ=sexe();
+    else if(type=="photo") champ=photo();
     else if(type=="organisation") champ=organisation();
 
     ajouterChamp(nomChamp, champ);

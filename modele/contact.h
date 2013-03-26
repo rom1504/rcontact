@@ -80,13 +80,14 @@ public:
      */
     const QPair<QString,Champ*> operator[](const int n) const;
 
-    static Champ* tel(const QString type,const QString typeTel,const QString typeDonnees,const QString numero);
-    static Champ* adresse(const QString type,const QString rue,const QString zipcode,const QString localite,const QString region,const QString pays,Loc * geo=new Loc());
-    static Champ* email(const QString nom,const QString domaine,const QString extension);
-    static Champ* site(const QString type,const QString url);
-    static Champ* gtype(const QString type);
-    static Champ* date(const QString timestamp);
-    static Champ* note(const QString note);
+    static Champ* tel(const QString numero="",const QString type="work",const QString typeTel="fixe",const QString typeDonnees="voice");
+    static Champ* adresse(const QString rue="",const QString zipcode="",const QString localite="",const QString region="",const QString pays="",const QString type="home",Loc * geo=new Loc());
+    static Champ* email(const QString nom="",const QString domaine="",const QString extension="");
+    static Champ* site(const QString url="",const QString type="web");
+    static Champ* gtype(const QString type="");
+    static Champ* date(const QString timestamp="");
+    static Champ* note(const QString note="");
+    static Champ* url(const QString texte="");
 
 
 private:

@@ -14,9 +14,9 @@ public:
      */
     static Contact* creerDefaut();
 
-    static Champ* gnom(const QString nom,const QString raisonSociale);
-    static Champ* logo(const QString type,const QString url);
-    static Champ* membre(const QString fonction,Card * card=new Card());
+    static Champ* gnom(const QString nom="Nom",const QString raisonSociale="raison sociale");
+    static Champ* logo(const QString url="",const QString type="JPEG");
+    static Champ* membre(const QString fonction="",Card * card=new Card());
 
     void creerChamp(const QString& nomChamp, const QString& type);
 };

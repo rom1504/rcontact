@@ -170,6 +170,9 @@ public:
 
 
 signals:
+    /**
+     * @brief dataChanged est un signal déclenché quand un donnée du contact a été modifiées
+     */
     void dataChanged();
 
 private:

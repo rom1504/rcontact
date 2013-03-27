@@ -3,13 +3,18 @@
 
 #include <QString>
 #include <QVariant>
+#include <QObject>
 
 /**
  * @brief La classe Champ est la classe abstraite mère de toutes les classes symbolisant des champs de formulaire
  */
-class Champ
+class Champ : public QObject
 {
+    Q_OBJECT
 public:
+
+    Champ(QObject * parent=0);
+
     /**
      * @brief Cette implémentation permet de renvoyer false par défaut quand on compare deux champs
      * Les champs comparables sont seulement les champs qui on le même type, l'opérateur de comparaison générique renvoie donc false puis est surchargé dans chaque fille
@@ -32,7 +37,7 @@ public:
      * @brief toVariant convertit l'objet en QVariant
      * @return un QVariant décrivant exactement l'objet
      */
-    virtual QVariant toVariant() const;
+    virtual QVariant toVariant();
 
     /**
      * @brief fromVariant un QVariant en Champ
@@ -42,6 +47,9 @@ public:
     virtual bool fromVariant(const QVariant v);
 
     virtual ~Champ();
+
+signals:
+    void dataChanged();
 };
 
 #endif // CHAMP_H

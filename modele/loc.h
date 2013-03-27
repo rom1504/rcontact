@@ -9,12 +9,16 @@
  */
 class Loc : public Champ
 {
+    Q_OBJECT
 public:
     /**
      * @brief Le constructeur par défaut
      * @param s La valeur par défaut (utilise fromString pour convertir la QString en le type approprié)
      */
-    Loc(const double latitude=0,const double longitude=0);
+    Loc(const double latitude=0,const double longitude=0,QObject * parent=0);
+
+    Loc(const Loc & l,QObject * parent=0);
+
     /**
      * @brief L'opérateur de comparaison
      */
@@ -47,7 +51,7 @@ public:
      * @brief toVariant convertit l'objet en QVariant
      * @return Un QVariant qui décrit exactement l'objet
      */
-    QVariant toVariant() const;
+    QVariant toVariant();
 
     /**
      * @brief fromVariant convertit un QVariant en Loc
@@ -67,6 +71,6 @@ private:
     double mLongitude;
 };
 
-Q_DECLARE_METATYPE (Loc)
+Q_DECLARE_METATYPE (Loc*)
 
 #endif // LOC_H

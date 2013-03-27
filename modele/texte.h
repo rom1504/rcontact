@@ -9,12 +9,13 @@
  */
 class Texte : public Champ
 {
+    Q_OBJECT
 public:
     /**
      * @brief Le constructeur par défaut
      * @param s La valeur par défaut (utilise fromString pour convertir la QString en le type approprié)
      */
-    Texte(const QString value="");
+    Texte(const QString value="",QObject * parent=0);
     /**
      * @brief setValue modifie la valeur du texte contenu dan sla champ
      * @param value Le nouveau texte

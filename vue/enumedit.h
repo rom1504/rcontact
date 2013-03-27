@@ -16,19 +16,19 @@ public:
      */
     explicit EnumEdit(QWidget *parent = 0);
 
-    Q_PROPERTY(Enum enum READ getEnum WRITE setEnum USER true)
+    Q_PROPERTY(Enum* enum READ getEnum WRITE setEnum USER true)
 
     /**
      * @brief getEnum renvoie la valeur de la sélection de l'énumération
      * @return La valeur de la sélection
      */
-    Enum getEnum() const;
+    Enum * getEnum() const;
 
     /**
      * @brief setEnum initialise l'énumération
      * @param c L'énumération à afficher
      */
-    void setEnum(Enum c);
+    void setEnum(Enum *c);
 
     
 public slots:

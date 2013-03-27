@@ -1,8 +1,13 @@
 #include "loc.h"
 #include <QStringList>
 
-Loc::Loc(const double latitude, const double longitude)
-    : mLatitude(latitude),mLongitude(longitude)
+Loc::Loc(const double latitude, const double longitude, QObject *parent)
+    : Champ(parent),mLatitude(latitude),mLongitude(longitude)
+{
+
+}
+
+Loc::Loc(const Loc & l,QObject * parent) : Champ(parent),mLatitude(l.mLatitude),mLongitude(l.mLongitude)
 {
 
 }
@@ -27,6 +32,7 @@ bool Loc::fromString(const QString s)
     if(!(0<=l[0].toDouble() && l[0].toDouble()<=90 && -180<=l[1].toDouble() && l[1].toDouble()<=180)) return false;
     mLatitude=l[0].toDouble();
     mLongitude=l[1].toDouble();
+    emit dataChanged();
     return true;
 }
 
@@ -40,15 +46,19 @@ double Loc::longitude() const
     return mLongitude;
 }
 
-QVariant Loc::toVariant() const
+QVariant Loc::toVariant()
 {
-    return QVariant::fromValue(*this);
+    return QVariant::fromValue(this);
 }
 
 bool Loc::fromVariant(const QVariant v)
 {
-   if(!(0<=v.value<Loc>().mLatitude && v.value<Loc>().mLatitude<=90 && -180<=v.value<Loc>().mLongitude && v.value<Loc>().mLongitude<=180)) return false;
-   mLatitude=v.value<Loc>().mLatitude;
-   mLongitude=v.value<Loc>().mLongitude;
+   Loc * w=v.value<Loc*>();
+   double la=w->mLatitude;
+   double lo=w->mLongitude;
+   if(!(0<=la && la<=90 && -180<=lo && lo<=180)) return false;
+   mLatitude=la;
+   mLongitude=lo;
+   emit dataChanged();
    return true;
 }

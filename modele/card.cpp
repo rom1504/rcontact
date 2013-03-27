@@ -1,7 +1,7 @@
 #include "card.h"
 #include "contact.h"
 
-Card::Card(const Contact *contact) : mContact(contact)
+Card::Card(const Contact *contact, QObject *parent) : Champ(parent),mContact(contact)
 {
 
 }

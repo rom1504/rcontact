@@ -10,12 +10,13 @@ class Contact;
  */
 class Card : public Champ
 {
+    Q_OBJECT
 public:
     /**
      * @brief Le constructeur de classe prenant en argument le Contact à stocker.
      * @param contact Le contact à enregistrer
      */
-    Card(const Contact * contact=NULL);
+    Card(const Contact * contact=NULL,QObject * parent=0);
     /**
      * @brief L'opérateur d'égalité
      */

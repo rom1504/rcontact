@@ -9,11 +9,14 @@
  */
 class Structure : public Champ
 {
+    Q_OBJECT
 public:
     /**
      * @brief Constructeur vide
      */
-    explicit Structure();
+    explicit Structure(QObject * parent=0);
+
+    Structure(const Structure &s, QObject * parent=0);
     /**
      * @brief ajouterChamp ajoute un champ dans la structure.
      * Si le nom renseigné n'existe pas, il créer un champ portant ce nom, sinon il en augmente l'arité
@@ -55,7 +58,7 @@ public:
     const QPair<QString,Champ*> operator[](const int n) const;
 
 
-    QVariant toVariant() const;
+    QVariant toVariant();
     bool fromVariant(const QVariant v);
 
     /**
@@ -72,6 +75,6 @@ private:
     QMultiMap<QString,Champ*> mChamps;
 };
 
-Q_DECLARE_METATYPE (Structure)
+Q_DECLARE_METATYPE (Structure*)
 
 #endif // STRUCTURE_H

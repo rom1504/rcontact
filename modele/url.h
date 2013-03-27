@@ -8,12 +8,13 @@
  */
 class Url : public Texte
 {
+    Q_OBJECT
 public:
     /**
      * @brief Le constructeur par défaut
      * @param s La valeur par défaut (utilise fromString pour convertir la QString en le type approprié)
      */
-    Url(const QString value="");
+    Url(const QString value="",QObject * parent=0);
     /**
      * @brief fromString convertit un QString en Url
      * Elle vérifie que l'url est bien valide.

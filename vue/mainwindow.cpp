@@ -21,9 +21,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QItemEditorFactory *factory = new QItemEditorFactory();
     factory->registerEditor(QVariant::DateTime, new QStandardItemEditorCreator<QDateTimeEdit>());
     factory->registerEditor(QVariant::String, new QStandardItemEditorCreator<QLineEdit>());
-    factory->registerEditor((QVariant::Type)qMetaTypeId<Loc>(), new QStandardItemEditorCreator<LocEdit>());
-    factory->registerEditor((QVariant::Type)qMetaTypeId<Enum>(), new QStandardItemEditorCreator<EnumEdit>());
-    factory->registerEditor((QVariant::Type)qMetaTypeId<Structure>(), new QStandardItemEditorCreator<StructureEdit>());
+    factory->registerEditor((QVariant::Type)qMetaTypeId<Loc*>(), new QStandardItemEditorCreator<LocEdit>());
+    factory->registerEditor((QVariant::Type)qMetaTypeId<Enum*>(), new QStandardItemEditorCreator<EnumEdit>());
+    factory->registerEditor((QVariant::Type)qMetaTypeId<Structure*>(), new QStandardItemEditorCreator<StructureEdit>());
     QItemEditorFactory::setDefaultFactory(factory);
 
 

@@ -39,13 +39,18 @@ void Enum::remplirEnums()
     mEnumListe<<sexe;
 }
 
-Enum::Enum(const int enum_,const int valeur) : mEnum(enum_),mValeur(valeur)
+Enum::Enum(const int enum_,const int valeur,QObject * parent) : Champ(parent),mEnum(enum_),mValeur(valeur)
+{
+
+}
+
+Enum::Enum(const Enum & e,QObject * parent) : Champ(parent),mEnum(e.mEnum),mValeur(e.mValeur)
 {
 
 }
 
 
-Enum::Enum(const QString s)
+Enum::Enum(const QString s, QObject *parent) : Champ(parent)
 {
     if(!fromString(s))
     {
@@ -69,15 +74,15 @@ QStringList Enum::valeursPossibles() const
     return mEnumListe[mEnum];
 }
 
-QVariant Enum::toVariant() const
+QVariant Enum::toVariant()
 {
-    return QVariant::fromValue(*this);
+    return QVariant::fromValue(this);
 }
 
 bool Enum::fromVariant(const QVariant v)
 {
-   mEnum=v.value<Enum>().mEnum;
-   mValeur=v.value<Enum>().mValeur;
+   mEnum=v.value<Enum*>()->mEnum;
+   mValeur=v.value<Enum*>()->mValeur;
    return true;
 }
 

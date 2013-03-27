@@ -2,7 +2,12 @@
 #include "texte.h"
 #include <QStringList>
 
-Structure::Structure()
+Structure::Structure(QObject *parent) : Champ(parent)
+{
+
+}
+
+Structure::Structure(const Structure & s,QObject * parent) : Champ(parent),mChamps(s.mChamps)
 {
 
 }
@@ -10,11 +15,15 @@ Structure::Structure()
 void Structure::ajouterChamp(const QString & nomChamp,Champ * valeurChamp)
 {
     mChamps.insert(nomChamp,valeurChamp);
+    emit dataChanged();
+    connect(valeurChamp,SIGNAL(dataChanged()),this,SIGNAL(dataChanged()));
 }
 
 int Structure::supprimerChamp(const QString & nomChamp, Champ * valeurChamp)
 {
-    return mChamps.remove(nomChamp,valeurChamp);
+    int n=mChamps.remove(nomChamp,valeurChamp);
+    emit dataChanged();
+    return n;
 }
 
 int Structure::supprimerChamp(const int index)
@@ -67,14 +76,15 @@ QString Structure::toString() const
     return s;
 }
 
-QVariant Structure::toVariant() const
+QVariant Structure::toVariant()
 {
-    return QVariant::fromValue(*this);
+    return QVariant::fromValue(this);
 }
 
 bool Structure::fromVariant(const QVariant v)
 {
-    mChamps=v.value<Structure>().mChamps;
+    mChamps=v.value<Structure*>()->mChamps;
+    emit dataChanged();
     return true;
 }
 
@@ -98,5 +108,6 @@ bool Structure::fromString(const QString s) // pas utilisé normalement...
             ajouterChamp(l2[0],t);
         }
     }
+    emit dataChanged();
     return true;
 }

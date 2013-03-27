@@ -53,10 +53,6 @@ public:
      */
     void enregistrer(QString nomFichier) const;
 
-    /**
-     * @brief trier Trie les contacts de la liste, selon ordre et critère
-     */
-    void trier();
 
     void changerTri(bool ordre,QString critereTri);
 
@@ -64,6 +60,13 @@ public:
      * @brief L'opérateur d'accès
      */
     Contact * operator[](const int n) const;
+
+public slots:
+    /**
+     * @brief trier Trie les contacts de la liste, selon ordre et critère
+     */
+    void trier();
+
 
 private:
     /**

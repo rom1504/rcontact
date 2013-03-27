@@ -15,15 +15,15 @@ StructureEdit::~StructureEdit()
     delete ui;
 }
 
-Structure StructureEdit::structure() const
+Structure *StructureEdit::structure() const
 {
     return mStructure;
 }
 
-void StructureEdit::setStructure(Structure s)
+void StructureEdit::setStructure(Structure * s)
 {
     mStructure=s;
-    ui->tableViewChamps->setModel(new ModeleAfficherStructure(&mStructure));
+    ui->tableViewChamps->setModel(new ModeleAfficherStructure(mStructure));
     connect(ui->tableViewChamps->selectionModel(),SIGNAL(currentChanged(QModelIndex,QModelIndex)),this,SLOT(redimensionner(QModelIndex)));
     ui->tableViewChamps->resizeColumnsToContents();
     ui->tableViewChamps->resizeRowsToContents();

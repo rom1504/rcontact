@@ -48,21 +48,13 @@ public:
      * @param parent L'objeet parent
      * @return true si les lignes ont effectivement été insérées
      */
-    bool insertRows (int, int count, const QModelIndex & = QModelIndex()) ;
+    bool insertRows (int row, int count, const QModelIndex &parent) ;
     void charger(QString nomFichier);
     void changerTri(bool ordre,QString critereTri);
 
-signals:
-    // connecter dataChanged de modeleafficherContact à un slot qui emet le bon dataChanged ici
-public slots:
 
 private slots:
-    /**
-     * @brief dataChanged_ est le slot appelé quand on modifie une donnée susceptible d'être visible dans la liste des contacts
-     * @param debut
-     * @param fin
-     */
-    void dataChanged_(const int debut,const int fin);
+    void trier();
 
 private:
     /**

@@ -11,12 +11,12 @@ class LocEdit;
 class LocEdit : public QWidget
 {
     Q_OBJECT
-    Q_PROPERTY(Loc loc READ loc WRITE setLoc USER true)
+    Q_PROPERTY(Loc* loc READ loc WRITE setLoc USER true)
     
 public:
     explicit LocEdit(QWidget *parent = 0);
-    Loc loc() const;
-    void setLoc(Loc l);
+    Loc * loc() const;
+    void setLoc(Loc *l);
 
     ~LocEdit();
     

@@ -10,19 +10,23 @@
  */
 class Enum : public Champ
 {
+    Q_OBJECT
 public:
     /**
      * @brief Le contructeur de base de la classe
      * @param s La valeur par défaut (utilise fromString pour convertir la QString en le type approprié)
      */
-    Enum(const QString s="");
+    Enum(const QString s="",QObject * parent=0);
+
+
+    Enum(const Enum &e, QObject * parent=0);
 
     /**
      * @brief Un constructeur qui utilise les index pour initialiser l'enumération
      * @param enum_ L'index de type d'énumération
      * @param valeur L'index de valeur d'énumération
      */
-    Enum(const int enum_,const int valeur);
+    Enum(const int enum_,const int valeur,QObject * parent=0);
 
     /**
      * @brief L'opérateur d'égalité
@@ -70,7 +74,7 @@ public:
      * @brief toVariant convertit l'objet en QVariant
      * @return Un QVariant qui décrit exactement l'objet
      */
-    QVariant toVariant() const;
+    QVariant toVariant();
 
     /**
      * @brief fromVariant convertit un QVariant en Enum
@@ -104,6 +108,6 @@ private:
     int mValeur;
 };
 
-Q_DECLARE_METATYPE (Enum)
+Q_DECLARE_METATYPE (Enum*)
 
 #endif // ENUM_H

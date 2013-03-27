@@ -12,12 +12,12 @@ class StructureEdit;
 class StructureEdit : public QWidget
 {
     Q_OBJECT
-    Q_PROPERTY(Structure structure READ structure WRITE setStructure USER true)
+    Q_PROPERTY(Structure* structure READ structure WRITE setStructure USER true)
     
 public:
     explicit StructureEdit(QWidget *parent = 0);
-    Structure structure() const;
-    void setStructure(Structure s);
+    Structure * structure() const;
+    void setStructure(Structure *s);
     ~StructureEdit();
     QSize sizeHint() const;
 
@@ -26,7 +26,7 @@ private slots:
     
 private:
     Ui::StructureEdit *ui;
-    Structure mStructure;
+    Structure * mStructure;
 };
 
 int max(int a,int b);

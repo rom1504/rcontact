@@ -5,7 +5,7 @@
 ModeleListeContacts::ModeleListeContacts(Contacts & contacts,QObject *parent) :
     QAbstractListModel(parent),mContacts(contacts)
 {
-    connect(&mContacts,SIGNAL(dataChanged(int,int)),this,SLOT(dataChanged_(int,int)));
+    connect(&mContacts,SIGNAL(dataChanged()),this,SLOT(trier()));
 }
 
 QVariant ModeleListeContacts::data(const QModelIndex & index,int role) const
@@ -24,8 +24,17 @@ QVariant ModeleListeContacts::data(const QModelIndex & index,int role) const
 
 void ModeleListeContacts::charger(QString nomFichier)
 {
+    disconnect(&mContacts,SIGNAL(dataChanged()),this,SLOT(trier()));
     beginResetModel();
     mContacts.charger(nomFichier);
+    mContacts.trier();
+    endResetModel();
+    connect(&mContacts,SIGNAL(dataChanged()),this,SLOT(trier()));
+}
+
+void ModeleListeContacts::trier()
+{
+    beginResetModel();
     mContacts.trier();
     endResetModel();
 }
@@ -42,27 +51,22 @@ int ModeleListeContacts::rowCount ( const QModelIndex & ) const
     return mContacts.nombre();
 }
 
-void ModeleListeContacts::dataChanged_(const int debut,const int fin)
-{
-    emit dataChanged(createIndex(debut,0),createIndex(fin,0));
-}
 
 bool ModeleListeContacts::removeRows (int row, int count, const QModelIndex & parent)
 {
     beginRemoveRows(parent,row,row+count-1);
-    for(int i=0;i<count;i++) mContacts.supprimerContact(row+i);
+    for(int i=0;i<count;i++) mContacts.supprimerContact(row);
     endRemoveRows();
     return true;
 }
 
-bool ModeleListeContacts::insertRows ( int , int count, const QModelIndex &   )
+bool ModeleListeContacts::insertRows ( int row, int count, const QModelIndex &  parent )
 {
-    beginResetModel();
+    beginInsertRows(parent,row,row+count-1);
     for(int i=0;i<count;i++)
     {
         mContacts.ajouterContact();
     }
-    mContacts.trier();
-    endResetModel();
+    endInsertRows();
     return true;
 }

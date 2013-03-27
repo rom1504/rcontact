@@ -1,6 +1,6 @@
 #include "texte.h"
 
-Texte::Texte(const QString value) : mValue(value)
+Texte::Texte(const QString value, QObject *parent) : Champ(parent),mValue(value)
 {
 
 }
@@ -20,6 +20,7 @@ QString Texte::toString() const
 bool Texte::fromString(const QString s)
 {
     mValue=s;
+    emit dataChanged();
     return true;
 }
 

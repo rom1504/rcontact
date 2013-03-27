@@ -14,13 +14,13 @@ LocEdit::~LocEdit()
     delete ui;
 }
 
-Loc LocEdit::loc() const
+Loc *LocEdit::loc() const
 {
-    return Loc(ui->doubleSpinBoxLatitude->value(),ui->doubleSpinBoxLongitude->value());
+    return new Loc(ui->doubleSpinBoxLatitude->value(),ui->doubleSpinBoxLongitude->value());
 }
 
-void LocEdit::setLoc(Loc l)
+void LocEdit::setLoc(Loc * l)
 {
-    ui->doubleSpinBoxLatitude->setValue(l.latitude());
-    ui->doubleSpinBoxLongitude->setValue(l.longitude());
+    ui->doubleSpinBoxLatitude->setValue(l->latitude());
+    ui->doubleSpinBoxLongitude->setValue(l->longitude());
 }

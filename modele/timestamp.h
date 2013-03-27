@@ -9,12 +9,13 @@
  */
 class Timestamp : public Champ
 {
+    Q_OBJECT
 public:
     /**
      * @brief Le constructeur par défaut
      * @param s La valeur par défaut (utilise fromString pour convertir la QString en le type approprié)
      */
-    Timestamp(const QString s="");
+    Timestamp(const QString s="",QObject * parent=0);
     /**
      * @brief L'opérateur de comparaison
      */
@@ -35,7 +36,7 @@ public:
      * @brief toVariant convertit l'objet en QVariant
      * @return Un QVariant qui décrit exactement l'objet
      */
-    virtual QVariant toVariant() const;
+    virtual QVariant toVariant();
 
     /**
      * @brief fromVariant convertit un QVariant en Timestamp

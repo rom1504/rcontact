@@ -1,7 +1,7 @@
 #include "timestamp.h"
 #include <QDateTime>
 
-Timestamp::Timestamp(const QString s)
+Timestamp::Timestamp(const QString s, QObject *parent) : Champ(parent)
 {
      if(!fromString(s)) mT=0;
 }
@@ -20,11 +20,12 @@ bool Timestamp::fromString(const QString s)
 {
     mT=QDateTime::fromString(s).toTime_t();
     //mT=s.toUInt();
+    emit dataChanged();
     return true;
 }
 
 
-QVariant Timestamp::toVariant() const
+QVariant Timestamp::toVariant()
 {
     return QDateTime::fromTime_t(mT);
 }
@@ -32,5 +33,6 @@ QVariant Timestamp::toVariant() const
 bool Timestamp::fromVariant(const QVariant v)
 {
     mT=v.toDateTime().toTime_t();
+    emit dataChanged();
     return true;
 }

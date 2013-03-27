@@ -6,14 +6,14 @@ EnumEdit::EnumEdit(QWidget *parent) :
 }
 
 
-Enum EnumEdit::getEnum() const
+Enum *EnumEdit::getEnum() const
 {
-    return Enum(mEnum,currentIndex());
+    return new Enum(mEnum,currentIndex());
 }
 
-void EnumEdit::setEnum(Enum c)
+void EnumEdit::setEnum(Enum * c)
 {
-    addItems(c.valeursPossibles());
-    mEnum=c.getEnum();
-    setCurrentIndex(c.valeur());
+    addItems(c->valeursPossibles());
+    mEnum=c->getEnum();
+    setCurrentIndex(c->valeur());
 }

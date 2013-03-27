@@ -10,6 +10,7 @@
 #include "structureedit.h"
 #include <QFileDialog>
 #include "criterestri.h"
+#include "rechercher.h"
 
 
 
@@ -79,9 +80,17 @@ void MainWindow::on_actionCharger_triggered()
 
 void MainWindow::on_actionTrier_triggered()
 {
-    QPair<bool,QString> p=CriteresTri::get();
-    if(p.second!="")
-    {
-        mModelListeContacts->changerTri(p.first,p.second);
-    }
+    Comp * comp=CriteresTri::get();
+    if(comp!=NULL) mModelListeContacts->changerTri(comp);
+}
+
+void MainWindow::on_actionRechercher_triggered()
+{
+    Search * search=Rechercher::get();
+    if(search!=NULL) emit rechercherContacts(search);
+}
+
+void MainWindow::on_actionFinir_la_recherche_triggered()
+{
+    emit finirLaRecherche();
 }

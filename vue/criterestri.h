@@ -2,7 +2,7 @@
 #define CRITERESTRI_H
 
 #include <QDialog>
-#include <QPair>
+#include "../modele/comp.h"
 
 namespace Ui {
 class CriteresTri;
@@ -26,7 +26,7 @@ public:
      * @brief get ouvre la boîte de dialogue, attend que l'utilisateur confirme et renvoie les données qui en résulte
      * @return Les données entrée par l'utilisateur dans la boîte de dialogue
      */
-    static QPair<bool,QString> get();
+    static Comp * get();
     
 private:
     /**

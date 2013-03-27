@@ -38,7 +38,9 @@ SOURCES += main.cpp\
     modele/personne.cpp \
     modele/organisme.cpp \
     vue/criterestri.cpp \
-    modele/comp.cpp
+    modele/comp.cpp \
+    vue/rechercher.cpp \
+    modele/search.cpp
 
 HEADERS  += vue/mainwindow.h \
     modele/contacts.h \
@@ -66,7 +68,9 @@ HEADERS  += vue/mainwindow.h \
     modele/organisme.h \
     modele/personne.h \
     vue/criterestri.h \
-    modele/comp.h
+    modele/comp.h \
+    vue/rechercher.h \
+    modele/search.h
 
 FORMS    += vue/mainwindow.ui \
     vue/listecontacts.ui \
@@ -75,4 +79,7 @@ FORMS    += vue/mainwindow.ui \
     vue/locedit.ui \
     vue/structureedit.ui \
     vue/ajouterchamp.ui \
-    vue/criterestri.ui
+    vue/criterestri.ui \
+    vue/rechercher.ui
+
+QMAKE_CXXFLAGS += -std=c++11

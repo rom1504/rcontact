@@ -5,6 +5,7 @@
 #include <QStringListModel>
 #include "contact.h"
 #include "comp.h"
+#include "search.h"
 
 /**
  * @brief La classe Contacts représente un anuaire de contacts
@@ -54,7 +55,9 @@ public:
     void enregistrer(QString nomFichier) const;
 
 
-    void changerTri(bool ordre,QString critereTri);
+    void changerTri(Comp * comp);
+
+    Contacts * rechercher(Search * search) const;
 
     /**
      * @brief L'opérateur d'accès
@@ -74,8 +77,7 @@ private:
      */
     QList<Contact*> mContacts;
 
-    bool mOrdre;
-    QString mCritereTri;
+    Comp * mComp;
 
 signals:
     /**

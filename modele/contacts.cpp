@@ -7,10 +7,13 @@
 #include "organisme.h"
 #include <iostream>
 #include <algorithm>
+#include <iterator>
+#include "search.h"
 
 Contacts::Contacts(QObject *parent) :
-    QObject(parent),mOrdre(true),mCritereTri("nom")
+    QObject(parent)
 {
+    mComp=new Comp(true,"nom");
 }
 
 
@@ -48,10 +51,9 @@ QString parseString(QString s)
     return s.replace("\\n","\n").replace("\\,",",").replace("\\\"","\"");
 }
 
-void Contacts::changerTri(bool ordre,QString critereTri)
+void Contacts::changerTri(Comp * comp)
 {
-    mOrdre=ordre;
-    mCritereTri=critereTri;
+    mComp=comp;
     trier();
 }
 
@@ -115,6 +117,12 @@ void Contacts::enregistrer(QString nomFichier) const
 
 void Contacts::trier()
 {
-    Comp comp(mOrdre,mCritereTri);
-    std::stable_sort(mContacts.begin(), mContacts.end(), comp); // ne marche pas avec un std::sort , grand mystère
+    std::stable_sort(mContacts.begin(), mContacts.end(), *mComp); // ne marche pas avec un std::sort , grand mystère
+}
+
+Contacts * Contacts::rechercher(Search *search) const
+{
+    Contacts * nContacts=new Contacts();
+    std::copy_if(mContacts.begin(), mContacts.end(),std::inserter(nContacts->mContacts,nContacts->mContacts.begin()), *search);
+    return nContacts;
 }

@@ -16,10 +16,14 @@ Controleur::Controleur(QObject *parent) :
 {
 
     Enum::remplirEnums();
-    ModeleListeContacts * modeleListeContacts=new ModeleListeContacts(mContacts);
+    mContacts=new Contacts();
+    mContactsEntier=mContacts;
+    ModeleListeContacts * modeleListeContacts=new ModeleListeContacts(*mContacts);
     mVue.setModeleListeContacts(modeleListeContacts);
     connect(&mVue,SIGNAL(contactActive(int)),this,SLOT(afficherContact(int)));
     connect(&mVue,SIGNAL(contactEdite(int)),this,SLOT(editerContact(int)));
+    connect(&mVue,SIGNAL(rechercherContacts(Search *)),this,SLOT(rechercherContacts(Search *)));
+    connect(&mVue,SIGNAL(finirLaRecherche()),this,SLOT(finirLaRecherche()));
 
 
     // exemples (voués à disparaitre grâce à l'ajout et à l'import)
@@ -53,12 +57,12 @@ Controleur::Controleur(QObject *parent) :
 
 void Controleur::afficherContact(int index)
 {
-    mVue.setModeleAfficherContact(index==-1 ? NULL : new ModeleAfficherContact(mContacts[index]));
+    mVue.setModeleAfficherContact(index==-1 ? NULL : new ModeleAfficherContact((*mContacts)[index]));
 }
 
 void Controleur::editerContact(int index)
 {
-    ModeleAfficherContact * model=new ModeleAfficherContact(mContacts[index]);
+    ModeleAfficherContact * model=new ModeleAfficherContact((*mContacts)[index]);
     model->rendreEditable();
     mVue.setModeleEditerContact(model);
 }
@@ -66,4 +70,18 @@ void Controleur::editerContact(int index)
 void Controleur::run()
 {
     mVue.show();
+}
+
+void Controleur::rechercherContacts(Search *search)
+{
+    mContacts=mContactsEntier->rechercher(search);
+    ModeleListeContacts * modeleListeContacts=new ModeleListeContacts((*mContacts));
+    mVue.setModeleListeContacts(modeleListeContacts);
+}
+
+void Controleur::finirLaRecherche()
+{
+    mContacts=mContactsEntier;
+    ModeleListeContacts * modeleListeContacts=new ModeleListeContacts((*mContacts));
+    mVue.setModeleListeContacts(modeleListeContacts);
 }

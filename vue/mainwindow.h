@@ -27,9 +27,15 @@ private slots:
 
     void on_actionTrier_triggered();
 
+    void on_actionRechercher_triggered();
+
+    void on_actionFinir_la_recherche_triggered();
+
 signals:
     void contactActive(const int index);
     void contactEdite(const int index);
+    void rechercherContacts(Search * search);
+    void finirLaRecherche();
     
 private:
     Ui::MainWindow *ui;

@@ -14,15 +14,10 @@ CriteresTri::~CriteresTri()
 }
 
 
-QPair<bool,QString> CriteresTri::get()
+Comp * CriteresTri::get()
 {
-    bool ordre=true;
-    QString critereTri="";
     CriteresTri* criteresTri=new CriteresTri();
     if(criteresTri->exec() == QDialog::Accepted)
-    {
-        ordre=criteresTri->ui->radioButtonAscendant->isChecked();
-        critereTri=criteresTri->ui->comboBoxCritereTri->currentText();
-    }
-    return qMakePair(ordre,critereTri);
+        return new Comp(criteresTri->ui->radioButtonAscendant->isChecked(),criteresTri->ui->comboBoxCritereTri->currentText());
+    return NULL;
 }

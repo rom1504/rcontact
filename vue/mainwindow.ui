@@ -55,7 +55,7 @@
      <x>0</x>
      <y>0</y>
      <width>992</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
@@ -73,6 +73,7 @@
      <string>Edition</string>
     </property>
     <addaction name="actionRechercher"/>
+    <addaction name="actionFinir_la_recherche"/>
     <addaction name="actionSupprimer"/>
    </widget>
    <addaction name="menuFichier"/>
@@ -91,6 +92,7 @@
    <addaction name="actionRechercher"/>
    <addaction name="actionSupprimer"/>
    <addaction name="actionQuitter"/>
+   <addaction name="actionFinir_la_recherche"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNouveau_contact">
@@ -131,6 +133,11 @@
   <action name="actionTrier">
    <property name="text">
     <string>Trier</string>
+   </property>
+  </action>
+  <action name="actionFinir_la_recherche">
+   <property name="text">
+    <string>Finir la recherche</string>
    </property>
   </action>
  </widget>

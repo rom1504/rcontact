@@ -1,7 +1,6 @@
 #ifndef COMP_H
 #define COMP_H
 
-#include <cstdlib>
 #include <functional>
 #include "contact.h"
 

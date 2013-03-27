@@ -39,10 +39,10 @@ void ModeleListeContacts::trier()
     endResetModel();
 }
 
-void ModeleListeContacts::changerTri(bool ordre,QString critereTri)
+void ModeleListeContacts::changerTri(Comp * comp)
 {
     beginResetModel();
-    mContacts.changerTri(ordre,critereTri);
+    mContacts.changerTri(comp);
     endResetModel();
 }
 

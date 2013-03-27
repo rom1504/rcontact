@@ -30,7 +30,9 @@ private:
     /**
      * @brief mContacts contient le modèle
      */
-    Contacts mContacts;
+    Contacts * mContacts;
+
+    Contacts * mContactsEntier;
 
 private slots:
     /**
@@ -43,6 +45,10 @@ private slots:
      * @param index Le numéro d'index dans le modèle du contact à modifier
      */
     void editerContact(int index);
+
+    void rechercherContacts(Search * search);
+
+    void finirLaRecherche();
 
 signals:
 

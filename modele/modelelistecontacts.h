@@ -50,7 +50,7 @@ public:
      */
     bool insertRows (int row, int count, const QModelIndex &parent) ;
     void charger(QString nomFichier);
-    void changerTri(bool ordre,QString critereTri);
+    void changerTri(Comp *comp);
 
 
 private slots:

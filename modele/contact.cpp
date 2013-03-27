@@ -7,7 +7,7 @@
 #include "timestamp.h"
 #include "url.h"
 
-Contact::Contact()
+Contact::Contact(QObject *parent) : QObject(parent)
 {
 
 }
@@ -17,7 +17,7 @@ Contact::~Contact()
 
 }
 
-Contact::Contact(const Contact & c)
+Contact::Contact(const Contact & c,QObject * parent=0) : QObject(parent)
 {
     mChamps=c.mChamps;
 }
@@ -26,6 +26,7 @@ Contact::Contact(const Contact & c)
 void Contact::ajouterChamp(const QString & nomChamp, Champ* valeurChamp)
 {
     mChamps.insert(nomChamp,valeurChamp);
+    emit dataChanged();
 }
 
 Champ* Contact::tel(const QString numero, const QString type, const QString typeTel, const QString typeDonnees)

@@ -1,5 +1,5 @@
-#ifndef LISTECONTACTS_H
-#define LISTECONTACTS_H
+#ifndef MODELELISTECONTACTS_H
+#define MODELELISTECONTACTS_H
 
 #include <QAbstractListModel>
 #include "contacts.h"
@@ -12,7 +12,9 @@ public:
     QVariant data ( const QModelIndex & index, int role = Qt::DisplayRole ) const;
     int rowCount (const QModelIndex & = QModelIndex()) const;
     bool removeRows (int row, int count, const QModelIndex & parent = QModelIndex());
-    bool insertRows ( int row, int count, const QModelIndex & parent = QModelIndex() ) ;
+    bool insertRows (int, int count, const QModelIndex & = QModelIndex()) ;
+    void charger(QString nomFichier);
+    void changerTri(bool ordre,QString critereTri);
     
 signals:
     // connecter dataChanged de modeleafficherContact à un slot qui emet le bon dataChanged ici

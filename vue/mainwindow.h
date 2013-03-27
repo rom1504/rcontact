@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QAbstractItemModel>
+#include "../modele/modelelistecontacts.h"
 
 namespace Ui {
 class MainWindow;
@@ -16,7 +17,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    void setModeleListeContacts ( QAbstractItemModel * model );
+    void setModeleListeContacts ( ModeleListeContacts * model );
     void setModeleAfficherContact ( QAbstractItemModel * model );
     void setModeleEditerContact ( QAbstractItemModel * model );
 
@@ -29,11 +30,10 @@ private slots:
 signals:
     void contactActive(const int index);
     void contactEdite(const int index);
-    void chargerContacts(const QString nomFichier);
-    void trierContacts(bool,QString);
     
 private:
     Ui::MainWindow *ui;
+    ModeleListeContacts * mModelListeContacts;
 };
 
 #endif // MAINWINDOW_H

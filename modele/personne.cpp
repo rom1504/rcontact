@@ -1,6 +1,6 @@
 #include "personne.h"
 
-Personne::Personne()
+Personne::Personne(QObject * parent) : Contact(parent)
 {
 }
 

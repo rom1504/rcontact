@@ -39,7 +39,9 @@ public:
 
     void enregistrer(QString nomFichier) const;
 
-    void trier(bool ordre,QString critereTri);
+    void trier();
+
+    void changerTri(bool ordre,QString critereTri);
 
     /**
      * @brief L'opérateur d'accès
@@ -51,6 +53,9 @@ private:
      * @brief mContacts est la liste des contacts dans l'anuaire
      */
     QList<Contact*> mContacts;
+
+    bool mOrdre;
+    QString mCritereTri;
 
 signals:
     /**

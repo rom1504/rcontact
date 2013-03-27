@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QAbstractItemModel>
+#include "../modele/modelelistecontacts.h"
 
 namespace Ui {
 class ListeContacts;
@@ -15,7 +16,7 @@ class ListeContacts : public QWidget
 public:
     explicit ListeContacts(QWidget *parent = 0);
     ~ListeContacts();
-    void setModel ( QAbstractItemModel * model );
+    void setModel ( ModeleListeContacts * model );
     int indexContactCourant();
     void chargerContacts(QString nomFichier);
 
@@ -34,6 +35,7 @@ private slots:
 
 private:
     Ui::ListeContacts *ui;
+   ModeleListeContacts * mModel;
 };
 
 #endif // LISTECONTACTS_H

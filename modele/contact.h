@@ -16,18 +16,19 @@
 /**
  * @brief La classe Contact représente un contact enregistré, c'est à dire un multimap de champs.
  */
-class Contact
+class Contact : public QObject
 {
+    Q_OBJECT
 public:
     /**
      * @brief Le constructeur par défaut de la classe
      */
-    explicit Contact();
+    explicit Contact(QObject * parent=0);
     /**
      * @brief Le constructeur de copie
      * @param c le Contact a copier
      */
-    Contact(const Contact & c);
+    Contact(const Contact & c, QObject *parent);
 
     ~Contact();
 
@@ -90,6 +91,9 @@ public:
     static Champ* note(const QString note="");
     static Champ* url(const QString texte="");
 
+
+signals:
+    void dataChanged();
 
 private:
     /**

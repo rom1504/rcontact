@@ -19,6 +19,7 @@ int ModeleAfficherContact::rowCount ( const QModelIndex &) const
     return mContact->nombreValeurs();
 }
 
+
 int ModeleAfficherContact::columnCount ( const QModelIndex &) const
 {
     return 2;

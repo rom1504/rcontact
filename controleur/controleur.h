@@ -46,6 +46,8 @@ private slots:
 
     void chargerContacts(QString nomFichier);
 
+    void trierContacts(bool ordre,QString critereTri);
+
 signals:
 
 public slots:

@@ -36,7 +36,8 @@ SOURCES += main.cpp\
     vue/structureedit.cpp \
     vue/ajouterchamp.cpp \
     modele/personne.cpp \
-    modele/organisme.cpp
+    modele/organisme.cpp \
+    vue/criterestri.cpp
 
 HEADERS  += vue/mainwindow.h \
     modele/contacts.h \
@@ -62,7 +63,8 @@ HEADERS  += vue/mainwindow.h \
     vue/structureedit.h \
     vue/ajouterchamp.h \
     modele/organisme.h \
-    modele/personne.h
+    modele/personne.h \
+    vue/criterestri.h
 
 FORMS    += vue/mainwindow.ui \
     vue/listecontacts.ui \
@@ -70,4 +72,5 @@ FORMS    += vue/mainwindow.ui \
     vue/editercontact.ui \
     vue/locedit.ui \
     vue/structureedit.ui \
-    vue/ajouterchamp.ui
+    vue/ajouterchamp.ui \
+    vue/criterestri.ui

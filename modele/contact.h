@@ -79,6 +79,7 @@ public:
      * @brief opérateur d'accès
      */
     const QPair<QString,Champ*> operator[](const int n) const;
+    const Champ* operator[](const QString s) const;
 
     static Champ* tel(const QString numero="",const QString type="work",const QString typeTel="fixe",const QString typeDonnees="voice");
     static Champ* adresse(const QString rue="",const QString zipcode="",const QString localite="",const QString region="",const QString pays="",const QString type="home",Loc * geo=new Loc());

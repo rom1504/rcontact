@@ -39,6 +39,8 @@ public:
 
     void enregistrer(QString nomFichier) const;
 
+    void trier(bool ordre,QString critereTri);
+
     /**
      * @brief L'opérateur d'accès
      */

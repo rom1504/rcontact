@@ -21,6 +21,7 @@ Controleur::Controleur(QObject *parent) :
     connect(&mVue,SIGNAL(contactActive(int)),this,SLOT(afficherContact(int)));
     connect(&mVue,SIGNAL(contactEdite(int)),this,SLOT(editerContact(int)));
     connect(&mVue,SIGNAL(chargerContacts(QString)),this,SLOT(chargerContacts(QString)));
+    connect(&mVue,SIGNAL(trierContacts(bool,QString)),this,SLOT(trierContacts(bool,QString)));
 
 
     // exemples (voués à disparaitre grâce à l'ajout et à l'import)
@@ -74,4 +75,11 @@ void Controleur::editerContact(int index)
 void Controleur::run()
 {
     mVue.show();
+}
+
+void Controleur::trierContacts(bool ordre,QString critereTri)
+{
+    mContacts.trier(ordre,critereTri);
+    ModeleListeContacts * modeleListeContacts=new ModeleListeContacts(mContacts);
+    mVue.setModeleListeContacts(modeleListeContacts);
 }

@@ -88,6 +88,11 @@ Champ* Contact::url(const QString texte)
     return new Url(texte);
 }
 
+const Champ* Contact::operator[](const QString s) const
+{
+    return mChamps.value(s,NULL);
+}
+
 Champ* Contact::creerChampFromType(const QString& type)
 {
     Champ * champ=NULL;

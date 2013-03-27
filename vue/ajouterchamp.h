@@ -14,6 +14,7 @@ class AjouterChamp : public QDialog
     
 public:
     static QPair<QString, QString> get();
+
     
 private:
     explicit AjouterChamp(QWidget *parent = 0);

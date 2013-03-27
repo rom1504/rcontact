@@ -9,6 +9,7 @@
 #include "enumedit.h"
 #include "structureedit.h"
 #include <QFileDialog>
+#include "criterestri.h"
 
 
 
@@ -65,8 +66,20 @@ void MainWindow::setModeleEditerContact ( QAbstractItemModel * model )
 
 void MainWindow::on_actionCharger_triggered()
 {
-    QString nomFichier = QFileDialog::getOpenFileName(this, tr("Ouvrir fichier"),"",tr("vCard (*.vcf)"));
-    ui->afficherContact->hide();
-    ui->editerContact->hide();
-    emit chargerContacts(nomFichier);
+    QString nomFichier;
+    if((nomFichier = QFileDialog::getOpenFileName(this, tr("Ouvrir fichier"),"",tr("vCard (*.vcf)")))!="")
+    {
+        ui->afficherContact->hide();
+        ui->editerContact->hide();
+        emit chargerContacts(nomFichier);
+    }
+}
+
+void MainWindow::on_actionTrier_triggered()
+{
+    QPair<bool,QString> p=CriteresTri::get();
+    if(p.second!="")
+    {
+        emit trierContacts(p.first,p.second);
+    }
 }

@@ -72,6 +72,7 @@
     <addaction name="actionNouveau_contact"/>
     <addaction name="actionCharger"/>
     <addaction name="actionEnregistrer"/>
+    <addaction name="actionTrier"/>
     <addaction name="actionQuitter"/>
    </widget>
    <widget class="QMenu" name="menuEdition">
@@ -127,6 +128,16 @@
   <action name="actionQuitter">
    <property name="text">
     <string>Quitter</string>
+   </property>
+  </action>
+  <action name="actionTrier_par">
+   <property name="text">
+    <string>Trier par</string>
+   </property>
+  </action>
+  <action name="actionTrier">
+   <property name="text">
+    <string>Trier</string>
    </property>
   </action>
  </widget>

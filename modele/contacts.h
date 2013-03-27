@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QStringListModel>
 #include "contact.h"
+#include "comp.h"
 
 /**
  * @brief La classe Contacts représente un anuaire de contacts
@@ -23,22 +24,40 @@ public:
      */
     void ajouterContact(Contact * contact);
 
+    /**
+     * @brief ajouterContact ajoute un contact avec des valeurs par défaut
+     */
     void ajouterContact();
+
     /**
      * @brief supprimerContact supprime un contact dans la liste
      * @param n L'index du contact à supprimer
      */
     void supprimerContact(const int n);
+
     /**
-     * @brief nombre renvoie le nombre de contacts dan l'anuaire
+     * @brief nombre renvoie le nombre de contacts dans l'anuaire
      * @return la taille de l'anuaire
      */
     int nombre() const;
 
+    /**
+     * @brief charger charge un contact à partir d'un fichier au format vCard
+     * @param nomFichier Le nom du fichier contenant les informations de la liste de contacts à charger
+     */
     void charger(QString nomFichier);
 
+    /**
+     * @brief enregistrer sauvegarde un contact au format vCard dans un fichier
+     * @param nomFichier Le nom du fichier dans lequel on souhaite sauvegarder la liste de contacts
+     */
     void enregistrer(QString nomFichier) const;
 
+    /**
+     * @brief trier Trie les contacts de la liste, selon ordre et critère
+     * @param ordre L'ordre dans lequel on souhaite trier les contacts (true : ascendant, false : descendant)
+     * @param critereTri Le nom du champ servant de critère de tri
+     */
     void trier(bool ordre,QString critereTri);
 
     /**

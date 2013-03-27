@@ -37,7 +37,7 @@ void Enum::remplirEnums()
     QStringList sexe;
     sexe<<"homme"<<"femme";
     mEnumListe<<sexe;
-};
+}
 
 Enum::Enum(const int enum_,const int valeur) : mEnum(enum_),mValeur(valeur)
 {

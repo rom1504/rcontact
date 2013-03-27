@@ -15,7 +15,7 @@ public:
      */
     Url(const QString value="");
     /**
-     * @brief fromString convertis un QString en Url
+     * @brief fromString convertit un QString en Url
      * Elle vérifie que l'url est bien valide.
      * @param s La QString à convertir
      * @return true si la conversion a réussi, false sinon

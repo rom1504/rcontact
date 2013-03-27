@@ -14,7 +14,7 @@ class Controleur : public QObject
 public:
     /**
      * @brief Controleur est le constructeur de la classe
-     * @param parent est le Qobject parent (à laisser null par défaut)
+     * @param parent Le Qobject parent (à laisser null par défaut)
      */
     explicit Controleur(QObject *parent = 0);
     /**
@@ -35,17 +35,26 @@ private:
 private slots:
     /**
      * @brief afficherContact est le slot appelé quand on souhaite afficher un contact
-     * @param index est le numéro d'index dans le modèle du contact à afficher
+     * @param index Le numéro d'index dans le modèle du contact à afficher
      */
     void afficherContact(int index);
     /**
      * @brief editerContact est le slot appelé quand on souhaite modifier un contact
-     * @param index est le numéro d'index dans le modèle du contact à modifier
+     * @param index Le numéro d'index dans le modèle du contact à modifier
      */
     void editerContact(int index);
 
+    /**
+     * @brief chargerContacts est le le slot appelé quand on souhaite charger une liste de contacts depuis un format vCard
+     * @param nomFichier le nom du fichier à importer
+     */
     void chargerContacts(QString nomFichier);
 
+    /**
+     * @brief trierContacts trie les contacts de manière ascendante oou descendante selon le critère passé en paramètre
+     * @param ordre L'ordre de tri (true : ascendant, false : descendant)
+     * @param critereTri Le nom du champ servant de critère de comparaison pour le tri
+     */
     void trierContacts(bool ordre,QString critereTri);
 
 signals:

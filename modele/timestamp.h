@@ -20,17 +20,28 @@ public:
      */
     bool operator==(const Timestamp & c) const;
     /**
-     * @brief toString convertis l'objet en format lisible
+     * @brief toString convertit l'objet en format lisible
      * @return une QString contenant un format lisible du champ
      */
     QString toString() const;
     /**
-     * @brief fromString convertis un QString en Timestamps
+     * @brief fromString convertit un QString en Timestamps
      * @param s La QString à convertir
      * @return true si la conversion a réussi, false sinon
      */
     bool fromString(const QString s);
+
+    /**
+     * @brief toVariant convertit l'objet en QVariant
+     * @return Un QVariant qui décrit exactement l'objet
+     */
     virtual QVariant toVariant() const;
+
+    /**
+     * @brief fromVariant convertit un QVariant en Timestamp
+     * @param v Le QVariant à convertir
+     * @return true si la conversion a réussi
+     */
     virtual bool fromVariant(const QVariant v);
 private:
     /**

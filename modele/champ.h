@@ -17,19 +17,30 @@ public:
      */
     virtual bool operator==(const Champ &) const;
     /**
-     * @brief toString convertis l'objet en format lisible
+     * @brief toString convertit l'objet en format lisible
      * @return une QString contenant un format lisible du champ
      */
     virtual QString toString() const = 0;
     /**
-     * @brief fromString convertis un QString en Champ
+     * @brief fromString convertit un QString en Champ
      * Elle n'est pas implémentée pour toutes les filles.
      * @return true si la conversion a réussi, false sinon
      */
     virtual bool fromString(const QString)= 0;
 
+    /**
+     * @brief toVariant convertit l'objet en QVariant
+     * @return un QVariant décrivant exactement l'objet
+     */
     virtual QVariant toVariant() const;
+
+    /**
+     * @brief fromVariant un QVariant en Champ
+     * @param v le QVariant a convertir
+     * @return true si la conversion a réussi, false sinon
+     */
     virtual bool fromVariant(const QVariant v);
+
     virtual ~Champ();
 };
 

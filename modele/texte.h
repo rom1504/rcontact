@@ -30,12 +30,12 @@ public:
      */
     virtual bool operator==(const Texte & t) const;
     /**
-     * @brief toString convertis l'objet en format lisible
+     * @brief toString convertit l'objet en format lisible
      * @return une QString contenant un format lisible du champ
      */
     QString toString() const;
     /**
-     * @brief fromString convertis un QString en Texte
+     * @brief fromString convertit un QString en Texte
      * @param s La QString à convertir
      * @return true si la conversion a réussi, false sinon
      */

@@ -20,21 +20,40 @@ public:
      */
     bool operator==(const Loc & c) const;
     /**
-     * @brief toString convertis l'objet en format lisible
+     * @brief toString convertit l'objet en format lisible
      * @return une QString contenant un format lisible du champ
      */
     QString toString() const;
     /**
-     * @brief fromString convertis un QString en Loc
+     * @brief fromString convertit un QString en Loc
      * @param s La QString à convertir
      * @return true si la conversion a réussi, false sinon
      */
     bool fromString(const QString s);
 
+    /**
+     * @brief latitude renvoie la latitude
+     * @return La latitude
+     */
     double latitude() const;
+
+    /**
+     * @brief longitude renvoie la longitude
+     * @return La longitude
+     */
     double longitude() const;
 
+    /**
+     * @brief toVariant convertit l'objet en QVariant
+     * @return Un QVariant qui décrit exactement l'objet
+     */
     QVariant toVariant() const;
+
+    /**
+     * @brief fromVariant convertit un QVariant en Loc
+     * @param v Le QVariant à convertir
+     * @return true si la conversion a réussi
+     */
     bool fromVariant(const QVariant v);
 
 private:

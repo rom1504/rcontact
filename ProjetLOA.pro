@@ -37,7 +37,8 @@ SOURCES += main.cpp\
     vue/ajouterchamp.cpp \
     modele/personne.cpp \
     modele/organisme.cpp \
-    vue/criterestri.cpp
+    vue/criterestri.cpp \
+    modele/comp.cpp
 
 HEADERS  += vue/mainwindow.h \
     modele/contacts.h \
@@ -64,7 +65,8 @@ HEADERS  += vue/mainwindow.h \
     vue/ajouterchamp.h \
     modele/organisme.h \
     modele/personne.h \
-    vue/criterestri.h
+    vue/criterestri.h \
+    modele/comp.h
 
 FORMS    += vue/mainwindow.ui \
     vue/listecontacts.ui \

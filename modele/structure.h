@@ -11,7 +11,7 @@ class Structure : public Champ
 {
 public:
     /**
-     * @brief Le constructeur par défaut
+     * @brief Constructeur vide
      */
     explicit Structure();
     /**
@@ -37,12 +37,12 @@ public:
      */
     bool operator==(const Structure & c) const;
     /**
-     * @brief toString convertis l'objet en format lisible
+     * @brief toString convertit l'objet en format lisible
      * @return une QString contenant un format lisible du champ
      */
     QString toString() const;
     /**
-     * @brief fromString convertis un QString en Structure
+     * @brief fromString convertit un QString en Structure
      * @param s La QString à convertir
      * @return true si la conversion a réussi, false sinon
      */

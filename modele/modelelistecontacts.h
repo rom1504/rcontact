@@ -1,5 +1,5 @@
-#ifndef LISTECONTACTS_H
-#define LISTECONTACTS_H
+#ifndef MODELELISTECONTACTS_H
+#define MODELELISTECONTACTS_H
 
 #include <QAbstractListModel>
 #include "contacts.h"
@@ -48,8 +48,10 @@ public:
      * @param parent L'objeet parent
      * @return true si les lignes ont effectivement été insérées
      */
-    bool insertRows ( int row, int count, const QModelIndex & parent = QModelIndex() ) ;
-    
+    bool insertRows (int, int count, const QModelIndex & = QModelIndex()) ;
+    void charger(QString nomFichier);
+    void changerTri(bool ordre,QString critereTri);
+
 signals:
     // connecter dataChanged de modeleafficherContact à un slot qui emet le bon dataChanged ici
 public slots:
@@ -67,7 +69,7 @@ private:
     * @brief mContacts est le Contacts dont ce modèle est le modèle
     */
     Contacts & mContacts;
-    
+
 };
 
 #endif // LISTECONTACTS_H

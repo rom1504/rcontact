@@ -55,10 +55,10 @@ public:
 
     /**
      * @brief trier Trie les contacts de la liste, selon ordre et critère
-     * @param ordre L'ordre dans lequel on souhaite trier les contacts (true : ascendant, false : descendant)
-     * @param critereTri Le nom du champ servant de critère de tri
      */
-    void trier(bool ordre,QString critereTri);
+    void trier();
+
+    void changerTri(bool ordre,QString critereTri);
 
     /**
      * @brief L'opérateur d'accès
@@ -70,6 +70,9 @@ private:
      * @brief mContacts est la liste des contacts dans l'anuaire
      */
     QList<Contact*> mContacts;
+
+    bool mOrdre;
+    QString mCritereTri;
 
 signals:
     /**

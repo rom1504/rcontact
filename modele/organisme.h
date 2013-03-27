@@ -5,11 +5,12 @@
 
 class Organisme : public Contact
 {
+    Q_OBJECT
 public:
     /**
      * @brief Constructeur vide
      */
-    Organisme();
+    Organisme(QObject * parent=0);
 
     /**
      * @brief creerOrganisme créer un contact avec des champs caractéristiques d'un personne morale

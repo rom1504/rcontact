@@ -15,7 +15,7 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),mModelListeContacts(NULL)
 {
     showMaximized();
     QItemEditorFactory *factory = new QItemEditorFactory();
@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     ui->setupUi(this);
+
     connect(ui->listeContacts,SIGNAL(contactActive(int)),this,SIGNAL(contactActive(int)));
     connect(ui->listeContacts,SIGNAL(contactEdite(int)),this,SIGNAL(contactEdite(int)));
     connect(ui->actionSupprimer,SIGNAL(triggered()),ui->listeContacts,SLOT(supprimerContactCourant()));
@@ -44,8 +45,9 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::setModeleListeContacts ( QAbstractItemModel * model )
+void MainWindow::setModeleListeContacts (ModeleListeContacts *model )
 {
+    mModelListeContacts=model;
     ui->listeContacts->setModel(model);
 }
 
@@ -71,7 +73,7 @@ void MainWindow::on_actionCharger_triggered()
     {
         ui->afficherContact->hide();
         ui->editerContact->hide();
-        emit chargerContacts(nomFichier);
+        mModelListeContacts->charger(nomFichier);
     }
 }
 
@@ -80,6 +82,6 @@ void MainWindow::on_actionTrier_triggered()
     QPair<bool,QString> p=CriteresTri::get();
     if(p.second!="")
     {
-        emit trierContacts(p.first,p.second);
+        mModelListeContacts->changerTri(p.first,p.second);
     }
 }

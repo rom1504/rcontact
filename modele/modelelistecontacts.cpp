@@ -22,6 +22,21 @@ QVariant ModeleListeContacts::data(const QModelIndex & index,int role) const
          return QVariant();
 }
 
+void ModeleListeContacts::charger(QString nomFichier)
+{
+    beginResetModel();
+    mContacts.charger(nomFichier);
+    mContacts.trier();
+    endResetModel();
+}
+
+void ModeleListeContacts::changerTri(bool ordre,QString critereTri)
+{
+    beginResetModel();
+    mContacts.changerTri(ordre,critereTri);
+    endResetModel();
+}
+
 int ModeleListeContacts::rowCount ( const QModelIndex & ) const
 {
     return mContacts.nombre();
@@ -40,13 +55,14 @@ bool ModeleListeContacts::removeRows (int row, int count, const QModelIndex & pa
     return true;
 }
 
-bool ModeleListeContacts::insertRows ( int row, int count, const QModelIndex & parent  )
+bool ModeleListeContacts::insertRows ( int , int count, const QModelIndex &   )
 {
-    beginInsertRows (parent,row,row+count-1);
+    beginResetModel();
     for(int i=0;i<count;i++)
     {
         mContacts.ajouterContact();
     }
-    endInsertRows ();
+    mContacts.trier();
+    endResetModel();
     return true;
 }

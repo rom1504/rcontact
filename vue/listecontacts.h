@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QAbstractItemModel>
+#include "../modele/modelelistecontacts.h"
 
 namespace Ui {
 class ListeContacts;
@@ -14,7 +15,7 @@ class ListeContacts;
 class ListeContacts : public QWidget
 {
     Q_OBJECT
-    
+
 public:
     /**
      * @brief Le constructeur par défaut
@@ -26,7 +27,7 @@ public:
      * @brief setModel détermine le modèle à aficher
      * @param model Le modèle à afficher
      */
-    void setModel ( QAbstractItemModel * model );
+    void setModel ( ModeleListeContacts * model );
 
     /**
      * @brief indexContactCourant renvoie l'index du contact sélectionné
@@ -43,7 +44,7 @@ public:
 signals:
     void contactActive(const int index);
     void contactEdite(const int index);
-    
+
 public slots:
     void supprimerContactCourant();
     void editerContactCourant();
@@ -55,6 +56,7 @@ private slots:
 
 private:
     Ui::ListeContacts *ui;
+   ModeleListeContacts * mModel;
 };
 
 #endif // LISTECONTACTS_H

@@ -1,6 +1,6 @@
 #include "organisme.h"
 
-Organisme::Organisme()
+Organisme::Organisme(QObject * parent) : Contact(parent)
 {
 }
 

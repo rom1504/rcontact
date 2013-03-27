@@ -1,9 +1,10 @@
 #include "listecontacts.h"
 #include "ui_listecontacts.h"
+#include "../modele/modelelistecontacts.h"
 
 ListeContacts::ListeContacts(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::ListeContacts)
+    ui(new Ui::ListeContacts),mModel(NULL)
 {
     ui->setupUi(this);
     connect(ui->pushButtonAfficher,SIGNAL(clicked()),this,SLOT(afficherContactCourant()));
@@ -22,8 +23,9 @@ int ListeContacts::indexContactCourant()
 }
 
 
-void ListeContacts::setModel ( QAbstractItemModel * model )
+void ListeContacts::setModel ( ModeleListeContacts * model )
 {
+    mModel=model;
     ui->listeContacts->setModel(model);
     connect(ui->listeContacts->selectionModel(),SIGNAL(currentChanged(QModelIndex,QModelIndex)),this,SLOT(afficherContact(QModelIndex)));
 }

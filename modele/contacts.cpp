@@ -9,7 +9,7 @@
 #include <algorithm>
 
 Contacts::Contacts(QObject *parent) :
-    QObject(parent)
+    QObject(parent),mOrdre(true),mCritereTri("nom")
 {
 }
 
@@ -43,6 +43,13 @@ Contact * Contacts::operator[](const int n) const
 QString parseString(QString s)
 {
     return s.replace("\\n","\n").replace("\\,",",").replace("\\\"","\"");
+}
+
+void Contacts::changerTri(bool ordre,QString critereTri)
+{
+    mOrdre=ordre;
+    mCritereTri=critereTri;
+    trier();
 }
 
 void Contacts::charger(QString nomFichier)
@@ -103,8 +110,8 @@ void Contacts::enregistrer(QString nomFichier) const
 }
 
 
-void Contacts::trier(bool ordre, QString critereTri)
+void Contacts::trier()
 {
-    Comp comp(ordre,critereTri);
+    Comp comp(mOrdre,mCritereTri);
     std::stable_sort(mContacts.begin(), mContacts.end(), comp); // ne marche pas avec un std::sort , grand mystère
 }

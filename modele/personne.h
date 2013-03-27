@@ -5,12 +5,13 @@
 
 class Personne : public Contact
 {
+    Q_OBJECT
 public:
 
     /**
      * @brief Le constructeur par défaut
      */
-    Personne();
+    Personne(QObject * parent=0);
 
     /**
      * @brief creerPersonne créer un contact avec des champs caractéristiques d'un personne physique

@@ -77,11 +77,9 @@ private:
 signals:
     /**
      * @brief dataChanged est le signal émis lorsque des modifications sont faites dans la liste
-     * @param debut L'index du premier élément modifié
-     * @param fin L'index du dernier élément modifié
      * @note Tous les éléments entre debut et fin ne sont pas forcément modifiés.
      */
-    void dataChanged(int debut,int fin);
+    void dataChanged();
 
 public slots:
 

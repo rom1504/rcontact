@@ -27,6 +27,7 @@ void Contact::ajouterChamp(const QString & nomChamp, Champ* valeurChamp)
 {
     mChamps.insert(nomChamp,valeurChamp);
     emit dataChanged();
+    connect(valeurChamp,SIGNAL(dataChanged()),this,SIGNAL(dataChanged()));
 }
 
 Champ* Contact::tel(const QString numero, const QString type, const QString typeTel, const QString typeDonnees)
@@ -159,6 +160,7 @@ const QPair<QString,Champ*> Contact::operator[](const int n) const
 
 int Contact::supprimerChamp(const int index)
 {
+
     QPair<QString,Champ*> p=(*this)[index];
     return supprimerChamp(p.first,p.second);
 }
@@ -167,5 +169,6 @@ int Contact::supprimerChamp(const QString & nomChamp,Champ * valeurChamp)
 {
     int nb=mChamps.remove(nomChamp,valeurChamp);// pas bon : que si même pointeur... : à faire en utilisant les iterateurs.
     //: en fait ça va : passer en privé ?
+    emit dataChanged();
     return nb;
 }

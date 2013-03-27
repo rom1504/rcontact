@@ -17,6 +17,8 @@ Contacts::Contacts(QObject *parent) :
 void Contacts::ajouterContact(Contact * contact)
 {
     mContacts<<contact;
+    emit dataChanged();
+    connect(contact,SIGNAL(dataChanged()),this,SIGNAL(dataChanged()));
 }
 
 void Contacts::ajouterContact()
@@ -28,6 +30,7 @@ void Contacts::ajouterContact()
 void Contacts::supprimerContact(const int n)
 {
     mContacts.removeAt(n);
+    emit dataChanged();
 }
 
 int Contacts::nombre() const

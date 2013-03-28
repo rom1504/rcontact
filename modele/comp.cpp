@@ -7,7 +7,7 @@ Comp::Comp(bool ordre, QString critereTri)
 
 bool Comp::operator()(Contact * a,Contact * b)
 {
-    if(a==NULL || b==NULL) exit(1);
+//    if(a==NULL || b==NULL) exit(1);
     const Champ * c=(*a)[mCritereTri];
     if(c==NULL) return mOrdre;
     const Champ * d=(*b)[mCritereTri];

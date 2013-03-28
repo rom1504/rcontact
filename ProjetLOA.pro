@@ -82,7 +82,6 @@ FORMS    += vue/mainwindow.ui \
     vue/criterestri.ui \
     vue/rechercher.ui
 
-QMAKE_CXXFLAGS += -std=c++11
 
 TRANSLATIONS = ProjetLOA_en.ts
 

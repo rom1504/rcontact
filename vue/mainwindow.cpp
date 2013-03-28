@@ -94,3 +94,12 @@ void MainWindow::on_actionFinir_la_recherche_triggered()
 {
     emit finirLaRecherche();
 }
+
+void MainWindow::on_actionEnregistrer_triggered()
+{
+    QString nomFichier;
+    if((nomFichier = QFileDialog::getSaveFileName(this, tr("Enregistrer fichier"),"",tr("vCard (*.vcf)")))!="")
+    {
+        emit enregistrerContacts(nomFichier);
+    }
+}

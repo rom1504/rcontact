@@ -31,11 +31,14 @@ private slots:
 
     void on_actionFinir_la_recherche_triggered();
 
+    void on_actionEnregistrer_triggered();
+
 signals:
     void contactActive(const int index);
     void contactEdite(const int index);
     void rechercherContacts(Search * search);
     void finirLaRecherche();
+    void enregistrerContacts(QString nomFichier);
     
 private:
     Ui::MainWindow *ui;

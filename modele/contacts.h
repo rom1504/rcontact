@@ -48,11 +48,6 @@ public:
      */
     void charger(QString nomFichier);
 
-    /**
-     * @brief enregistrer sauvegarde un contact au format vCard dans un fichier
-     * @param nomFichier Le nom du fichier dans lequel on souhaite sauvegarder la liste de contacts
-     */
-    void enregistrer(QString nomFichier) const;
 
 
     void changerTri(Comp * comp);
@@ -69,6 +64,12 @@ public slots:
      * @brief trier Trie les contacts de la liste, selon ordre et critère
      */
     void trier();
+
+    /**
+     * @brief enregistrer sauvegarde un contact au format vCard dans un fichier
+     * @param nomFichier Le nom du fichier dans lequel on souhaite sauvegarder la liste de contacts
+     */
+    void enregistrer(QString nomFichier) const;
 
 
 private:

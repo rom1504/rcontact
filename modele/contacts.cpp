@@ -107,11 +107,23 @@ void Contacts::charger(QString nomFichier)
 //            else std::cout<<ligne.toStdString()<<"\n";
         }
     }
+    fichier.close();
 }
 
 void Contacts::enregistrer(QString nomFichier) const
 {
-
+    QFile fichier(nomFichier);
+    fichier.open(QIODevice::WriteOnly | QIODevice::Text);
+    QTextStream flux(&fichier);
+    for (int i = 0; i < mContacts.size(); ++i)
+    {
+        flux<<"BEGIN:VCARD\n";
+        Contact * contact=mContacts[i];
+        const Champ * champ=NULL;
+        if((champ=(*contact)["nom"])) flux<<"N:"<<champ->toString()<<"\n"; // pas encore ça
+        flux<<"END:VCARD\n";
+    }
+    fichier.close();
 }
 
 

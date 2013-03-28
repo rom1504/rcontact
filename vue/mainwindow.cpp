@@ -29,6 +29,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     ui->setupUi(this);
+    setWindowIcon(QIcon::fromTheme("preferences-desktop-personal"));
+    ui->actionNouveau_contact->setIcon(QIcon::fromTheme("contact-new"));
+    ui->actionCharger->setIcon(QIcon::fromTheme("document-open"));
+    ui->actionEnregistrer->setIcon(QIcon::fromTheme("document-save-as"));
+    ui->actionRechercher->setIcon(QIcon::fromTheme("edit-find"));
+    ui->actionSupprimer->setIcon(QIcon::fromTheme("edit-delete"));
+    ui->actionQuitter->setIcon(QIcon::fromTheme("application-exit"));
+    ui->actionFinir_la_recherche->setIcon(QIcon::fromTheme("go-previous"));
+    ui->actionTrier->setIcon(QIcon::fromTheme("view-sort-ascending"));
 
     connect(ui->listeContacts,SIGNAL(contactActive(int)),this,SIGNAL(contactActive(int)));
     connect(ui->listeContacts,SIGNAL(contactEdite(int)),this,SIGNAL(contactEdite(int)));

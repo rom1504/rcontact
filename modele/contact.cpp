@@ -33,40 +33,40 @@ void Contact::ajouterChamp(const QString & nomChamp, Champ* valeurChamp)
 Champ* Contact::tel(const QString numero, const QString type, const QString typeTel, const QString typeDonnees)
 {
     Structure * structure=new Structure();
-    structure->ajouterChamp("type",new Enum(type));
-    structure->ajouterChamp("type tel",new Enum(typeTel));
-    structure->ajouterChamp("type données",new Enum(typeDonnees));
-    structure->ajouterChamp("n°",new Texte(numero));
+    structure->ajouterChamp(tr("type"),new Enum(type));
+    structure->ajouterChamp(tr("type tel"),new Enum(typeTel));
+    structure->ajouterChamp(tr("type données"),new Enum(typeDonnees));
+    structure->ajouterChamp(tr("n°"),new Texte(numero));
     return structure;
 }
 
 Champ* Contact::adresse(const QString rue,const QString zipcode,const QString localite,const QString region,const QString pays,const QString type,Loc * geo)
 {
     Structure * structure=new Structure();
-    structure->ajouterChamp("type",new Enum(type));
-    structure->ajouterChamp("rue",new Texte(rue));
-    structure->ajouterChamp("zipcode",new Texte(zipcode));
-    structure->ajouterChamp("localité",new Texte(localite));
-    structure->ajouterChamp("Région",new Texte(region));
-    structure->ajouterChamp("pays",new Texte(pays));
-    structure->ajouterChamp("geo",geo);
+    structure->ajouterChamp(tr("type"),new Enum(type));
+    structure->ajouterChamp(tr("rue"),new Texte(rue));
+    structure->ajouterChamp(tr("zipcode"),new Texte(zipcode));
+    structure->ajouterChamp(tr("localité"),new Texte(localite));
+    structure->ajouterChamp(tr("Région"),new Texte(region));
+    structure->ajouterChamp(tr("pays"),new Texte(pays));
+    structure->ajouterChamp(tr("geo"),geo);
     return structure;
 }
 
 Champ* Contact::email(const QString nom,const QString domaine,const QString extension)
 {
     Structure * structure=new Structure();
-    structure->ajouterChamp("nom",new Texte(nom));
-    structure->ajouterChamp("domaine",new Texte(domaine));
-    structure->ajouterChamp("extension",new Texte(extension));
+    structure->ajouterChamp(tr("nom"),new Texte(nom));
+    structure->ajouterChamp(tr("domaine"),new Texte(domaine));
+    structure->ajouterChamp(tr("extension"),new Texte(extension));
     return structure;
 }
 
 Champ* Contact::site(const QString url, const QString type)
 {
     Structure * structure=new Structure();
-    structure->ajouterChamp("type",new Enum(type));
-    structure->ajouterChamp("url",new Url(url));
+    structure->ajouterChamp(tr("type"),new Enum(type));
+    structure->ajouterChamp(tr("url"),new Url(url));
     return structure;
 }
 
@@ -106,13 +106,13 @@ Champ* Contact::creerChampFromType(const QString& type)
     else if(type=="timestamp") champ=new Timestamp();
     else if(type=="url") champ=new Url();
     else */
-    if(type=="tel") champ=tel();
-    else if(type=="adresse") champ=adresse();
-    else if(type=="email") champ=email();
-    else if(type=="site") champ=site();
-    else if(type=="type") champ=gtype();
-    else if(type=="date MAJ") champ=date();
-    else if(type=="note") champ=note();
+    if(type==tr("tel")) champ=tel();
+    else if(type==tr("adresse")) champ=adresse();
+    else if(type==tr("email")) champ=email();
+    else if(type==tr("site")) champ=site();
+    else if(type==tr("type")) champ=gtype();
+    else if(type==tr("date MAJ")) champ=date();
+    else if(type==tr("note")) champ=note();
     return champ;
 }
 
@@ -139,7 +139,7 @@ bool Contact::operator==(const Contact & c) const
 
 QString Contact::nom() const
 {
-    return mChamps.value("nom")->toString();
+    return mChamps.value(tr("nom"))->toString();
 }
 
 int Contact::nombreValeurs() const
@@ -149,7 +149,7 @@ int Contact::nombreValeurs() const
 
 bool Contact::aNom() const
 {
-    return mChamps.contains("nom");
+    return mChamps.contains(tr("nom"));
 }
 
 

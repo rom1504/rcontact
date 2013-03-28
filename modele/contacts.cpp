@@ -13,7 +13,7 @@
 Contacts::Contacts(QObject *parent) :
     QObject(parent)
 {
-    mComp=new Comp(true,"nom");
+    mComp=new Comp(true,tr("nom"));
 }
 
 
@@ -85,25 +85,25 @@ void Contacts::charger(QString nomFichier)
         {
             if(nom=="END" && valeur=="VCARD")
             {
-                if(!(contact->aNom())) contact->ajouterChamp("nom",Personne::gnom("",""));
+                if(!(contact->aNom())) contact->ajouterChamp(tr("nom"),Personne::gnom("",""));
                 ajouterContact(contact);
                 contact=NULL;
             }
-            else if(vnom=="N") contact->ajouterChamp("nom",Personne::gnom(valeurs.length()>0 ? valeurs[0] : "",valeurs.length()>1 ? valeurs[1] : ""));
-            else if(vnom=="ADR") contact->ajouterChamp("adresse",Contact::adresse(parseString(valeurs[2])));
+            else if(vnom=="N") contact->ajouterChamp(tr("nom"),Personne::gnom(valeurs.length()>0 ? valeurs[0] : "",valeurs.length()>1 ? valeurs[1] : ""));
+            else if(vnom=="ADR") contact->ajouterChamp(tr("adresse"),Contact::adresse(parseString(valeurs[2])));
             else if(vnom=="NOTE")
             {
                 while((ligne=flux.readLine())!="END:VCARD") valeur+=ligne;
-                contact->ajouterChamp("note",Contact::note(parseString(valeur))); // pb avec les notes multi lignes
-                if(!(contact->aNom())) contact->ajouterChamp("nom",Personne::gnom("",""));
+                contact->ajouterChamp(tr("note"),Contact::note(parseString(valeur))); // pb avec les notes multi lignes
+                if(!(contact->aNom())) contact->ajouterChamp(tr("nom"),Personne::gnom("",""));
                 ajouterContact(contact);
                 contact=NULL;
             }
-            else if(vnom=="TEL") contact->ajouterChamp("tel",Contact::tel(valeur));
-            else if(vnom=="EMAIL") contact->ajouterChamp("mail",Contact::email(valeur));
-            else if(vnom=="BDAY") contact->ajouterChamp("date de naissance",Contact::date(valeur));
+            else if(vnom=="TEL") contact->ajouterChamp(tr("tel"),Contact::tel(valeur));
+            else if(vnom=="EMAIL") contact->ajouterChamp(tr("mail"),Contact::email(valeur));
+            else if(vnom=="BDAY") contact->ajouterChamp(tr("date de naissance"),Contact::date(valeur));
             else if(vnom=="FN") 1; // que faire ????
-            else if(vnom=="URL") contact->ajouterChamp("url",Contact::url(valeur));
+            else if(vnom=="URL") contact->ajouterChamp(tr("url"),Contact::url(valeur));
 //            else std::cout<<ligne.toStdString()<<"\n";
         }
     }
@@ -120,7 +120,7 @@ void Contacts::enregistrer(QString nomFichier) const
         flux<<"BEGIN:VCARD\n";
         Contact * contact=mContacts[i];
         const Champ * champ=NULL;
-        if((champ=(*contact)["nom"])) flux<<"N:"<<champ->toString()<<"\n"; // pas encore ça
+        if((champ=(*contact)[tr("nom")])) flux<<"N:"<<champ->toString()<<"\n"; // pas encore ça
         flux<<"END:VCARD\n";
     }
     fichier.close();

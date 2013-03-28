@@ -68,5 +68,5 @@ Qt::ItemFlags ModeleAfficherStructure::flags ( const QModelIndex & index ) const
 
 QVariant ModeleAfficherStructure::headerData ( int section, Qt::Orientation orientation, int role) const
 {
-    return role != Qt::DisplayRole ? QVariant() : (orientation == Qt::Horizontal ?( section==0 ? "Champ" : "Valeur") : QString::number(section));
+    return role != Qt::DisplayRole ? QVariant() : (orientation == Qt::Horizontal ?( section==0 ? tr("Champ") : tr("Valeur")) : QString::number(section));
 }

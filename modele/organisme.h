@@ -24,7 +24,7 @@ public:
      * @param raisonSociale Le paramètre "raison sociale" du champ
      * @return Un pointeur vers le champ créé
      */
-    static Champ* gnom(const QString nom="Nom",const QString raisonSociale="raison sociale");
+    static Champ* gnom(const QString nom=tr("Nom"),const QString raisonSociale=tr("raison sociale"));
 
     /**
      * @brief logo créé un champ sensé décrire un logo d'Organisme initialisé avec les valeurs passées en paramètre
@@ -32,7 +32,7 @@ public:
      * @param type Le paramètre "type" du champ
      * @return Un pointeur vers le champ créé
      */
-    static Champ* logo(const QString url="",const QString type="JPEG");
+    static Champ* logo(const QString url="",const QString type=tr("JPEG"));
 
     /**
      * @brief membre créé un champ sensé décrire un membre d'Organisme initialisé avec les valeurs passées en paramètre

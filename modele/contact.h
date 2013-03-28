@@ -108,7 +108,7 @@ public:
      * @param typeDonnees Le paramètre "typeDonnees" du champ
      * @return Un pointeur vers le champ créé
      */
-    static Champ* tel(const QString numero="",const QString type="work",const QString typeTel="fixe",const QString typeDonnees="voice");
+    static Champ* tel(const QString numero="",const QString type=tr("work"),const QString typeTel=tr("fixe"),const QString typeDonnees=tr("voice"));
 
     /**
      * @brief adresse créé un champ sensé décrire une adresse de Contact initialisé avec les valeurs passées en paramètre
@@ -121,7 +121,7 @@ public:
      * @param geo Le paramètre "geo" du champ
      * @return Un pointeur vers le champ créé
      */
-    static Champ* adresse(const QString rue="",const QString zipcode="",const QString localite="",const QString region="",const QString pays="",const QString type="home",Loc * geo=new Loc());
+    static Champ* adresse(const QString rue="",const QString zipcode="",const QString localite="",const QString region="",const QString pays="",const QString type=tr("home"),Loc * geo=new Loc());
 
     /**
      * @brief email créé un champ sensé décrire une adresse e-mail de Contact initialisé avec les valeurs passées en paramètre
@@ -138,7 +138,7 @@ public:
      * @param type Le paramètre "type" du champ
      * @return Un pointeur vers le champ créé
      */
-    static Champ* site(const QString url="",const QString type="web");
+    static Champ* site(const QString url="",const QString type=tr("web"));
 
     /**
      * @brief gtype créé un champ sensé décrire un type de Contact initialisé avec la valeur passée en paramètre

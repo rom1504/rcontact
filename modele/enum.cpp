@@ -7,35 +7,35 @@ QList<QStringList> Enum::mEnumListe;
 
 void Enum::remplirEnums()
 {
-    mEnumTypeListe<<"typeImage";
+    mEnumTypeListe<<tr("typeImage");
     QStringList typeImage;
-    typeImage<<"JPEG"<<"GIF"<<"PNG";
+    typeImage<<tr("JPEG")<<tr("GIF")<<tr("PNG");
     mEnumListe<<typeImage;
 
-    mEnumTypeListe<<"typeSite";
+    mEnumTypeListe<<tr("typeSite");
     QStringList typeSite;
-    typeSite<<"web"<<"facebook"<<"google";
+    typeSite<<tr("web")<<tr("facebook")<<tr("google");
     mEnumListe<<typeSite;
 
-    mEnumTypeListe<<"endroit";
+    mEnumTypeListe<<tr("endroit");
     QStringList endroit;
-    endroit<<"work"<<"home";
+    endroit<<tr("work")<<tr("home");
     mEnumListe<<endroit;
 
-    mEnumTypeListe<<"typeTel";
+    mEnumTypeListe<<tr("typeTel");
     QStringList typeTel;
-    typeTel<<"fixe"<<"cellulaire";
+    typeTel<<tr("fixe")<<tr("cellulaire");
     mEnumListe<<typeTel;
 
-    mEnumTypeListe<<"typeDonnees";
+    mEnumTypeListe<<tr("typeDonnees");
     QStringList typeDonnees;
-    typeDonnees<<"voice"<<"data";
+    typeDonnees<<tr("voice")<<tr("data");
     mEnumListe<<typeDonnees;
 
 
-    mEnumTypeListe<<"sexe";
+    mEnumTypeListe<<tr("sexe");
     QStringList sexe;
-    sexe<<"homme"<<"femme";
+    sexe<<tr("homme")<<tr("femme");
     mEnumListe<<sexe;
 }
 

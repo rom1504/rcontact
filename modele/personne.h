@@ -27,14 +27,14 @@ public:
      * @param surnom Le paramètre "surnom" du champ
      * @return Un pointeur vers le champ créé
      */
-    static Champ* gnom(const QString nom="Nom",const QString prenom="Prénom",const QString prefixe="",const QString surnom="");
+    static Champ* gnom(const QString nom=tr("Nom"),const QString prenom=tr("Prénom"),const QString prefixe="",const QString surnom="");
 
     /**
      * @brief sexe créé un champ sensé décrire un sexe de Personne initialisé avec la valeur passée en paramètre
      * @param sexe La valeur initiale du champ
      * @return Un pointeur vers le champ créé
      */
-    static Champ* sexe(const QString sexe="homme");
+    static Champ* sexe(const QString sexe=tr("homme"));
 
     /**
      * @brief photo créé un champ sensé décrire une photo de Personne initialisé avec les valeurs passées en paramètre
@@ -42,7 +42,7 @@ public:
      * @param type Le paramètre "type" du champ
      * @return Un pointeur vers le champ créé
      */
-    static Champ* photo(const QString url="",const QString type="JPEG");
+    static Champ* photo(const QString url="",const QString type=tr("JPEG"));
 
     /**
      * @brief organisation créé un champ sensé décrire une organisation initialisée avec la valeur passée en paramètre

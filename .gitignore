@@ -1,3 +1,8 @@
 ProjetLOA.pro.user
 html/
 latex/
+bin/
+temp/
+*~
+*/*~
+*/*/*~

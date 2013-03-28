@@ -132,6 +132,7 @@ void Contacts::trier()
     std::stable_sort(mContacts.begin(), mContacts.end(), *mComp); // ne marche pas avec un std::sort , grand mystère
 }
 
+// n'existe que dans c++11 (qui n'est pas disponible sur la yaka)
 template <class InputIterator, class OutputIterator, class UnaryPredicate>
   OutputIterator copy_if (InputIterator first, InputIterator last,
                           OutputIterator result, UnaryPredicate pred)

@@ -22,4 +22,7 @@ bool Champ::fromVariant(const QVariant v)
     return fromString(v.toString());
 }
 
-
+QVariant Champ::image()
+{
+    return QVariant();
+}

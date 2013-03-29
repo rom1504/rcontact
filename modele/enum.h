@@ -83,6 +83,8 @@ public:
      */
     bool fromVariant(const QVariant v);
 
+    QVariant image();
+
 private:
     /**
      * @brief mEnumTypeListe est la liste des noms énumérations impémentées.

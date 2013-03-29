@@ -46,6 +46,8 @@ public:
      */
     virtual bool fromVariant(const QVariant v);
 
+    virtual QVariant image();
+
     virtual ~Champ();
 
 signals:

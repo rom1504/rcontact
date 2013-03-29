@@ -18,7 +18,7 @@ QString Timestamp::toString() const
 
 bool Timestamp::fromString(const QString s)
 {
-    mT=QDateTime::fromString(s).toTime_t();
+    mT=QDateTime::fromString(s,Qt::ISODate).toTime_t();
     //mT=s.toUInt();
     emit dataChanged();
     return true;

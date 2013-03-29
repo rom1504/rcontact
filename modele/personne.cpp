@@ -1,4 +1,5 @@
 #include "personne.h"
+#include "nom.h"
 
 Personne::Personne(QObject * parent) : Contact(parent)
 {
@@ -23,12 +24,12 @@ Contact* Personne::creerDefaut()
 
 Champ* Personne::gnom(const QString nom, const QString prenom, const QString prefixe, const QString surnom)
 {
-    Structure * structure=new Structure();
-    structure->ajouterChamp(tr("Préfixe"),new Texte(prefixe));
-    structure->ajouterChamp(tr("Nom"),new Texte(nom));
-    structure->ajouterChamp(tr("Prénom"),new Texte(prenom));
-    structure->ajouterChamp(tr("Surnom"),new Texte(surnom));
-    return structure;
+    Nom * snom=new Nom();
+    snom->ajouterChamp(tr("Préfixe"),new Texte(prefixe));
+    snom->ajouterChamp(tr("Nom"),new Texte(nom));
+    snom->ajouterChamp(tr("Prénom"),new Texte(prenom));
+    snom->ajouterChamp(tr("Surnom"),new Texte(surnom));
+    return snom;
 }
 
 Champ* Personne::sexe(const QString sexe)

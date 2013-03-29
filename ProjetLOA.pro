@@ -44,7 +44,11 @@ SOURCES += main.cpp\
     vue/criterestri.cpp \
     modele/comp.cpp \
     vue/rechercher.cpp \
-    modele/search.cpp
+    modele/search.cpp \
+    vue/structureoutexteedit.cpp \
+    modele/nom.cpp \
+    modele/structureoutexte.cpp \
+    modele/tel.cpp
 
 HEADERS  += vue/mainwindow.h \
     modele/contacts.h \
@@ -74,7 +78,11 @@ HEADERS  += vue/mainwindow.h \
     vue/criterestri.h \
     modele/comp.h \
     vue/rechercher.h \
-    modele/search.h
+    modele/search.h \
+    vue/structureoutexteedit.h \
+    modele/nom.h \
+    modele/structureoutexte.h \
+    modele/tel.h
 
 FORMS    += vue/mainwindow.ui \
     vue/listecontacts.ui \
@@ -84,7 +92,8 @@ FORMS    += vue/mainwindow.ui \
     vue/structureedit.ui \
     vue/ajouterchamp.ui \
     vue/criterestri.ui \
-    vue/rechercher.ui
+    vue/rechercher.ui \
+    vue/structureoutexteedit.ui
 
 
 TRANSLATIONS = ProjetLOA_en.ts

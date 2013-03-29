@@ -6,6 +6,7 @@
 #include "texte.h"
 #include "timestamp.h"
 #include "url.h"
+#include "tel.h"
 
 Contact::Contact(QObject *parent) : QObject(parent)
 {
@@ -15,6 +16,11 @@ Contact::Contact(QObject *parent) : QObject(parent)
 Contact::~Contact()
 {
 
+}
+
+void Contact::remplacer(QString s,Champ * c)
+{
+    mChamps.replace(s,c);
 }
 
 Contact::Contact(const Contact & c,QObject * parent=0) : QObject(parent)
@@ -32,12 +38,12 @@ void Contact::ajouterChamp(const QString & nomChamp, Champ* valeurChamp)
 
 Champ* Contact::tel(const QString numero, const QString type, const QString typeTel, const QString typeDonnees)
 {
-    Structure * structure=new Structure();
-    structure->ajouterChamp(tr("type"),new Enum(type));
-    structure->ajouterChamp(tr("type tel"),new Enum(typeTel));
-    structure->ajouterChamp(tr("type données"),new Enum(typeDonnees));
-    structure->ajouterChamp(tr("n°"),new Texte(numero));
-    return structure;
+    Tel * tel=new Tel();
+    tel->ajouterChamp(tr("type"),new Enum(type));
+    tel->ajouterChamp(tr("type tel"),new Enum(typeTel));
+    tel->ajouterChamp(tr("type données"),new Enum(typeDonnees));
+    tel->ajouterChamp(tr("n°"),new Texte(numero));
+    return tel;
 }
 
 Champ* Contact::adresse(const QString rue,const QString zipcode,const QString localite,const QString region,const QString pays,const QString type,Loc * geo)
@@ -155,7 +161,9 @@ bool Contact::aNom() const
 
 const QPair<QString,Champ*> Contact::operator[](const int n) const
 {
-    return qMakePair((mChamps.keys())[n],(mChamps.values())[n]);
+    QList<QString> lk=(mChamps.keys());
+    QList<Champ*> lv=(mChamps.values());
+    return  qMakePair(lk.length()<=n ? "" : lk[n],lv.length()<=n ? NULL : lv[n]);
 }
 
 int Contact::supprimerChamp(const int index)

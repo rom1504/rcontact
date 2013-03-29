@@ -120,7 +120,11 @@ void Contacts::enregistrer(QString nomFichier) const
         flux<<"BEGIN:VCARD\n";
         Contact * contact=mContacts[i];
         const Champ * champ=NULL;
-        if((champ=(*contact)[tr("nom")])) flux<<"N:"<<champ->toString()<<"\n"; // pas encore ça
+        if((champ=(*contact)[tr("nom")]))
+        {
+
+            flux<<"N:"<<champ->toString()<<"\n"; // pas encore ça
+        }
         flux<<"END:VCARD\n";
     }
     fichier.close();

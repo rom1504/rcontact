@@ -43,13 +43,13 @@ public:
      * @brief toString convertit l'objet en format lisible
      * @return une QString contenant un format lisible du champ
      */
-    QString toString() const;
+    virtual QString toString() const;
     /**
      * @brief fromString convertit un QString en Structure
      * @param s La QString à convertir
      * @return true si la conversion a réussi, false sinon
      */
-    bool fromString(const QString s);
+    virtual bool fromString(const QString s);
 
 
     /**
@@ -58,8 +58,16 @@ public:
     const QPair<QString,Champ*> operator[](const int n) const;
 
 
-    QVariant toVariant();
-    bool fromVariant(const QVariant v);
+    /**
+     * @brief operator d'accès qui utilise le nom du champ
+     * @param s Le nom du champ à accéder
+     * @return Un pointeur vers le premier Champ qui porte le nom passé en paramètre.
+     */
+    const Champ* operator[](const QString s) const;
+
+
+    virtual QVariant toVariant();
+    virtual bool fromVariant(const QVariant v);
 
     /**
      * @brief nombreValeurs
@@ -67,8 +75,16 @@ public:
      */
     int nombreValeurs() const;
 
+    void remplacer(QString s,Champ * c);
 
-private:
+    QVariant image();
+
+protected:
+    void vider();
+    QString avoirChamp(QString nom) const;
+
+
+protected:
     /**
      * @brief mChamps contient la liste des champs contenu dans la structure
      */

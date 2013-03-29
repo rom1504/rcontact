@@ -10,6 +10,8 @@
 #include "modele/loc.h"
 #include "modele/timestamp.h"
 #include "modele/enum.h"
+#include "modele/nom.h"
+#include "modele/tel.h"
 
 Controleur::Controleur(QObject *parent) :
     QObject(parent)
@@ -32,6 +34,15 @@ Controleur::Controleur(QObject *parent) :
 //    Texte * valeur2=new Texte("valeur2");
 
 //    Contact * contact1=new Personne();
+//    Nom * n=new Nom();
+//    Tel * t=new Tel();
+//    Tel * s=new Tel();
+//    t->ajouterChamp("n°",new Texte(""));
+//    n->fromString("Romain Beaumont");
+//    contact1->ajouterChamp("nom",n);
+//    contact1->ajouterChamp("s",s);
+//    mContacts->ajouterContact(contact1);
+
 //    contact1->ajouterChamp("champ1",valeur1);
 //    contact1->ajouterChamp("champ2",valeur2);
 //    contact1->ajouterChamp("url",new Url("http://www.google.fr/"));

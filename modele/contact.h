@@ -100,6 +100,8 @@ public:
      */
     const Champ* operator[](const QString s) const;
 
+    void remplacer(QString s,Champ * c);
+
     /**
      * @brief tel créé un champ sensé décrire un tel de Contact initialisé avec les valeurs passées en paramètre
      * @param numero Le paramètre "numero" du champ

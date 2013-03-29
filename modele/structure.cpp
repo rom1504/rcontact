@@ -1,6 +1,8 @@
 #include "structure.h"
 #include "texte.h"
+#include <QIcon>
 #include <QStringList>
+#include <QPainter>
 
 Structure::Structure(QObject *parent) : Champ(parent)
 {
@@ -32,6 +34,15 @@ int Structure::supprimerChamp(const int index)
     return supprimerChamp(p.first,p.second);
 }
 
+const Champ* Structure::operator[](const QString s) const
+{
+    return mChamps.value(s,NULL);
+}
+
+void Structure::vider()
+{
+    mChamps.clear();
+}
 
 bool Structure::operator==(const Structure & c) const
 {// pas bon
@@ -76,9 +87,49 @@ QString Structure::toString() const
     return s;
 }
 
+QVariant Structure::image()
+{
+
+    QList<QPixmap> t_images;//list with all the Pictures, PicA, PicB, Pic...
+    const int S_iconSize = 15;     //The pictures are all quadratic.
+
+
+    QList<Champ*> vs=mChamps.values();
+    for (int j = 0; j < vs.size(); ++j)
+    {
+        if(vs[j]->image().isValid())
+            t_images<<vs[j]->image().value<QIcon>().pixmap(S_iconSize,S_iconSize);
+    }
+    if(t_images.length()==0) return QVariant();
+    QImage resultImage(S_iconSize*t_images.size(), S_iconSize, QImage::Format_ARGB32_Premultiplied);
+    QPainter painter;
+
+    painter.begin(&resultImage);
+    for(int i=0; i < t_images.size(); ++i)
+    {
+        painter.drawImage(S_iconSize*i, 0, t_images.at(i).toImage(), 0, 0, S_iconSize, S_iconSize, Qt::AutoColor);
+    }
+    painter.end();
+
+    QPixmap resultingCollagePixmap = QPixmap::fromImage(resultImage);
+    return resultingCollagePixmap;
+}
+
+void Structure::remplacer(QString s,Champ * c)
+{
+    mChamps.replace(s,c);
+}
+
 QVariant Structure::toVariant()
 {
     return QVariant::fromValue(this);
+}
+
+QString Structure::avoirChamp(QString nom) const
+{
+    const Champ * c=operator[](nom);
+    if(c==NULL) return "";
+    return c->toString()+" ";
 }
 
 bool Structure::fromVariant(const QVariant v)

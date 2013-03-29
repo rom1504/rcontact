@@ -11,6 +11,8 @@
 #include <QFileDialog>
 #include "criterestri.h"
 #include "rechercher.h"
+#include "structureoutexteedit.h"
+#include "../modele/nom.h"
 
 
 
@@ -25,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     factory->registerEditor((QVariant::Type)qMetaTypeId<Loc*>(), new QStandardItemEditorCreator<LocEdit>());
     factory->registerEditor((QVariant::Type)qMetaTypeId<Enum*>(), new QStandardItemEditorCreator<EnumEdit>());
     factory->registerEditor((QVariant::Type)qMetaTypeId<Structure*>(), new QStandardItemEditorCreator<StructureEdit>());
+    factory->registerEditor((QVariant::Type)qMetaTypeId<StructureOuTexte*>(), new QStandardItemEditorCreator<StructureOuTexteEdit>());
     QItemEditorFactory::setDefaultFactory(factory);
 
 

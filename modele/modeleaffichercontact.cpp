@@ -48,6 +48,8 @@ QVariant ModeleAfficherContact::data(const QModelIndex & index,int role) const
          return index.column()==0 ? (*mContact)[index.row()].first : (*mContact)[index.row()].second->toVariant();
      else if(role == Qt::ForegroundRole && index.column()==0)
          return QColor("gray");
+     else if(role == Qt::DecorationRole && index.column()==1)
+         return mContact==NULL || (*mContact)[index.row()].second==NULL ? QVariant() : (*mContact)[index.row()].second->image();
      else
          return QVariant();
 }

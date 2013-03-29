@@ -1,4 +1,5 @@
 #include "enum.h"
+#include <QIcon>
 
 QStringList Enum::mEnumTypeListe;
 
@@ -37,6 +38,11 @@ void Enum::remplirEnums()
     QStringList sexe;
     sexe<<tr("homme")<<tr("femme");
     mEnumListe<<sexe;
+}
+
+QVariant Enum::image()
+{
+    return QIcon::fromTheme("call-start");
 }
 
 Enum::Enum(const int enum_,const int valeur,QObject * parent) : Champ(parent),mEnum(enum_),mValeur(valeur)

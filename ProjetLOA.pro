@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -50,7 +50,8 @@ SOURCES += main.cpp\
     modele/structureoutexte.cpp \
     modele/tel.cpp \
     modele/adresse.cpp \
-    modele/email.cpp
+    modele/email.cpp \
+    modele/image.cpp
 
 HEADERS  += vue/mainwindow.h \
     modele/contacts.h \
@@ -86,7 +87,8 @@ HEADERS  += vue/mainwindow.h \
     modele/structureoutexte.h \
     modele/tel.h \
     modele/adresse.h \
-    modele/email.h
+    modele/email.h \
+    modele/image.h
 
 FORMS    += vue/mainwindow.ui \
     vue/listecontacts.ui \

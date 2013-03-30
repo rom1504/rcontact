@@ -1,5 +1,6 @@
 #include "personne.h"
 #include "nom.h"
+#include "image.h"
 
 Personne::Personne(QObject * parent) : Contact(parent)
 {
@@ -39,10 +40,10 @@ Champ* Personne::sexe(const QString sexe)
 
 Champ* Personne::photo(const QString url, const QString type)
 {
-    Structure * structure=new Structure();
-    structure->ajouterChamp(tr("type"),new Enum(type));
-    structure->ajouterChamp(tr("url"),new Url(url));
-    return structure;
+    Image * image=new Image();
+    image->ajouterChamp(tr("type"),new Enum(type));
+    image->ajouterChamp(tr("url"),new Url(url));
+    return image;
 }
 
 Champ* Personne::organisation(Card *card)

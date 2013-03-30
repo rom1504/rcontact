@@ -79,12 +79,9 @@ QString Structure::toString() const
     {
         QList<Champ*> vs=mChamps.values(ks[i]);
         for (int j = 0; j < vs.size(); ++j)
-        {
-//            s+=ks[i]+":"+vs[j]->toString()+";";
-            s+=vs[j]->toString()+" ";
-        }
+            if(QString(vs[j]->metaObject()->className())!="Enum") s+=vs[j]->toString()+" ";
     }
-    return s;
+    return s.trimmed();
 }
 
 QVariant Structure::image()
@@ -129,7 +126,7 @@ QString Structure::avoirChamp(QString nom) const
 {
     const Champ * c=operator[](nom);
     if(c==NULL) return "";
-    return c->toString()+" ";
+    return c->toString();
 }
 
 bool Structure::fromVariant(const QVariant v)

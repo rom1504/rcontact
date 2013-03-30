@@ -48,7 +48,9 @@ SOURCES += main.cpp\
     vue/structureoutexteedit.cpp \
     modele/nom.cpp \
     modele/structureoutexte.cpp \
-    modele/tel.cpp
+    modele/tel.cpp \
+    modele/adresse.cpp \
+    modele/email.cpp
 
 HEADERS  += vue/mainwindow.h \
     modele/contacts.h \
@@ -82,7 +84,9 @@ HEADERS  += vue/mainwindow.h \
     vue/structureoutexteedit.h \
     modele/nom.h \
     modele/structureoutexte.h \
-    modele/tel.h
+    modele/tel.h \
+    modele/adresse.h \
+    modele/email.h
 
 FORMS    += vue/mainwindow.ui \
     vue/listecontacts.ui \

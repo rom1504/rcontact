@@ -6,6 +6,8 @@ QStringList Enum::mEnumTypeListe;
 
 QList<QStringList> Enum::mEnumListe;
 
+QList<QList<QIcon> > Enum::mIconeEnumListe;
+
 void Enum::remplirEnums()
 {
     mEnumTypeListe<<tr("typeImage");
@@ -13,36 +15,65 @@ void Enum::remplirEnums()
     typeImage<<tr("JPEG")<<tr("GIF")<<tr("PNG");
     mEnumListe<<typeImage;
 
+    QList<QIcon> iconesTypeImage;
+    iconesTypeImage<<QIcon()<<QIcon()<<QIcon();
+    mIconeEnumListe<<iconesTypeImage;
+
+
     mEnumTypeListe<<tr("typeSite");
     QStringList typeSite;
     typeSite<<tr("web")<<tr("facebook")<<tr("google");
     mEnumListe<<typeSite;
+
+    QList<QIcon> iconesTypeSite;
+    iconesTypeSite<<QIcon()<<QIcon()<<QIcon();
+    mIconeEnumListe<<iconesTypeSite;
+
 
     mEnumTypeListe<<tr("endroit");
     QStringList endroit;
     endroit<<tr("work")<<tr("home");
     mEnumListe<<endroit;
 
+    QList<QIcon> iconesEndroit;
+    iconesEndroit<<QIcon()<<QIcon();
+    mIconeEnumListe<<iconesEndroit;
+
+
     mEnumTypeListe<<tr("typeTel");
     QStringList typeTel;
     typeTel<<tr("fixe")<<tr("cellulaire");
     mEnumListe<<typeTel;
+
+    QList<QIcon> iconesTypeTel;
+    iconesTypeTel<<QIcon()<<QIcon();
+    mIconeEnumListe<<iconesTypeTel;
+
 
     mEnumTypeListe<<tr("typeDonnees");
     QStringList typeDonnees;
     typeDonnees<<tr("voice")<<tr("data");
     mEnumListe<<typeDonnees;
 
+    QList<QIcon> iconesTypeDonnees;
+    iconesTypeDonnees<<QIcon()<<QIcon();
+    mIconeEnumListe<<iconesTypeDonnees;
+
 
     mEnumTypeListe<<tr("sexe");
     QStringList sexe;
     sexe<<tr("homme")<<tr("femme");
     mEnumListe<<sexe;
+
+    QList<QIcon> iconesSexe;
+    iconesSexe<<QIcon::fromTheme("call-start")<<QIcon();
+    mIconeEnumListe<<iconesSexe;
 }
 
 QVariant Enum::image()
 {
-    return QIcon::fromTheme("call-start");
+    if(mIconeEnumListe[mEnum][mValeur].isNull()) return QVariant();
+    else return mIconeEnumListe[mEnum][mValeur];
 }
 
 Enum::Enum(const int enum_,const int valeur,QObject * parent) : Champ(parent),mEnum(enum_),mValeur(valeur)

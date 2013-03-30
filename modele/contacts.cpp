@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <iterator>
 #include "search.h"
+#include "email.h"
 
 Contacts::Contacts(QObject *parent) :
     QObject(parent)
@@ -100,7 +101,12 @@ void Contacts::charger(QString nomFichier)
                 contact=NULL;
             }
             else if(vnom=="TEL") contact->ajouterChamp(tr("tel"),Contact::tel(valeur));
-            else if(vnom=="EMAIL") contact->ajouterChamp(tr("mail"),Contact::email(valeur));
+            else if(vnom=="EMAIL")
+            {
+                Email * e=new Email();
+                e->fromString(valeur);
+                contact->ajouterChamp(tr("mail"),e);
+            }
             else if(vnom=="BDAY") contact->ajouterChamp(tr("date de naissance"),Contact::date(valeur));
             else if(vnom=="FN") 1; // que faire ????
             else if(vnom=="URL") contact->ajouterChamp(tr("url"),Contact::url(valeur));

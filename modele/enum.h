@@ -99,6 +99,9 @@ private:
      */
     static QList<QStringList> mEnumListe;
 
+
+    static QList<QList<QIcon> > mIconeEnumListe;
+
     /**
      * @brief mEnum contient l'index du nom de l'énumération du champ actuel (dans mEnumTypeListe)
      */

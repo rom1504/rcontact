@@ -7,6 +7,8 @@
 #include "timestamp.h"
 #include "url.h"
 #include "tel.h"
+#include "adresse.h"
+#include "email.h"
 
 Contact::Contact(QObject *parent) : QObject(parent)
 {
@@ -48,24 +50,24 @@ Champ* Contact::tel(const QString numero, const QString type, const QString type
 
 Champ* Contact::adresse(const QString rue,const QString zipcode,const QString localite,const QString region,const QString pays,const QString type,Loc * geo)
 {
-    Structure * structure=new Structure();
-    structure->ajouterChamp(tr("type"),new Enum(type));
-    structure->ajouterChamp(tr("rue"),new Texte(rue));
-    structure->ajouterChamp(tr("zipcode"),new Texte(zipcode));
-    structure->ajouterChamp(tr("localité"),new Texte(localite));
-    structure->ajouterChamp(tr("Région"),new Texte(region));
-    structure->ajouterChamp(tr("pays"),new Texte(pays));
-    structure->ajouterChamp(tr("geo"),geo);
-    return structure;
+    Adresse * adresse=new Adresse();
+    adresse->ajouterChamp(tr("type"),new Enum(type));
+    adresse->ajouterChamp(tr("rue"),new Texte(rue));
+    adresse->ajouterChamp(tr("zipcode"),new Texte(zipcode));
+    adresse->ajouterChamp(tr("localité"),new Texte(localite));
+    adresse->ajouterChamp(tr("Région"),new Texte(region));
+    adresse->ajouterChamp(tr("pays"),new Texte(pays));
+    adresse->ajouterChamp(tr("geo"),geo);
+    return adresse;
 }
 
 Champ* Contact::email(const QString nom,const QString domaine,const QString extension)
 {
-    Structure * structure=new Structure();
-    structure->ajouterChamp(tr("nom"),new Texte(nom));
-    structure->ajouterChamp(tr("domaine"),new Texte(domaine));
-    structure->ajouterChamp(tr("extension"),new Texte(extension));
-    return structure;
+    Email * email=new Email();// dans constructeur ?
+    email->ajouterChamp(tr("nom"),new Texte(nom));
+    email->ajouterChamp(tr("domaine"),new Texte(domaine));
+    email->ajouterChamp(tr("extension"),new Texte(extension));
+    return email;
 }
 
 Champ* Contact::site(const QString url, const QString type)

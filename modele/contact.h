@@ -132,7 +132,7 @@ public:
      * @param extension Le paramètre "extension" du champ
      * @return Un pointeur vers le champ créé
      */
-    static Champ* email(const QString nom="",const QString domaine="",const QString extension="");
+    static Champ* email(const QString nom="nom",const QString domaine="domaine",const QString extension="ext");
 
     /**
      * @brief site créé un champ sensé décrire une url de site de Contact initialisé avec les valeurs passées en paramètre

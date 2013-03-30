@@ -13,7 +13,7 @@ Nom::Nom(QObject *parent) :
  */
 QString Nom::toString() const
 {
-    return (avoirChamp(tr("Préfixe"))+avoirChamp(tr("Prénom"))+avoirChamp(tr("Nom"))+avoirChamp(tr("Surnom"))).trimmed();
+    return (avoirChamp(tr("Préfixe"))+" "+avoirChamp(tr("Prénom"))+" "+avoirChamp(tr("Nom"))+" "+avoirChamp(tr("Surnom"))).trimmed();
 }
 
 /**

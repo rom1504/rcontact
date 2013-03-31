@@ -105,3 +105,6 @@ FORMS    += vue/mainwindow.ui \
 TRANSLATIONS = ProjetLOA_en.ts
 
 CODECFORTR = UTF-8
+
+RESOURCES += \
+    ressources.qrc

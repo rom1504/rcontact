@@ -100,6 +100,7 @@ QVariant Structure::image()
     }
     if(t_images.length()==0) return QVariant();
     QImage resultImage(S_iconSize*t_images.size(), S_iconSize, QImage::Format_ARGB32_Premultiplied);
+    resultImage.fill(Qt::transparent);
     QPainter painter;
 
     painter.begin(&resultImage);

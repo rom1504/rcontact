@@ -26,7 +26,7 @@ void Enum::remplirEnums()
     mEnumListe<<typeSite;
 
     QList<QIcon> iconesTypeSite;
-    iconesTypeSite<<QIcon()<<QIcon()<<QIcon();
+    iconesTypeSite<<QIcon(":/icones/web.png")<<QIcon(":/icones/facebook.png")<<QIcon(":/icones/googleplus.png");
     mIconeEnumListe<<iconesTypeSite;
 
 
@@ -36,7 +36,7 @@ void Enum::remplirEnums()
     mEnumListe<<endroit;
 
     QList<QIcon> iconesEndroit;
-    iconesEndroit<<QIcon()<<QIcon();
+    iconesEndroit<<QIcon(":/icones/work.png")<<QIcon(":/icones/home.png");
     mIconeEnumListe<<iconesEndroit;
 
 
@@ -46,7 +46,7 @@ void Enum::remplirEnums()
     mEnumListe<<typeTel;
 
     QList<QIcon> iconesTypeTel;
-    iconesTypeTel<<QIcon()<<QIcon();
+    iconesTypeTel<<QIcon(":/icones/fixe.png")<<QIcon(":/icones/mobile.png");
     mIconeEnumListe<<iconesTypeTel;
 
 
@@ -56,7 +56,7 @@ void Enum::remplirEnums()
     mEnumListe<<typeDonnees;
 
     QList<QIcon> iconesTypeDonnees;
-    iconesTypeDonnees<<QIcon()<<QIcon();
+    iconesTypeDonnees<<QIcon(":/icones/voice.png")<<QIcon(":/icones/data.png");
     mIconeEnumListe<<iconesTypeDonnees;
 
 
@@ -66,7 +66,7 @@ void Enum::remplirEnums()
     mEnumListe<<sexe;
 
     QList<QIcon> iconesSexe;
-    iconesSexe<<QIcon::fromTheme("call-start")<<QIcon();
+    iconesSexe<<QIcon(":/icones/homme.png")<<QIcon(":/icones/femme.png");
     mIconeEnumListe<<iconesSexe;
 }
 

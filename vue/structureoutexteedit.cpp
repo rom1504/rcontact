@@ -20,8 +20,8 @@ void StructureOuTexteEdit::on_pushButtonBasculer_clicked()
     if(ui->lineEdit->isHidden())
     {
         ui->lineEdit->setText(mStructureOuTexte->toString());
-        ui->structureEdit->hide();
         ui->lineEdit->show();
+        ui->structureEdit->hide();
     }
     else
     {

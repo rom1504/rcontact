@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     //locale="en";
 
      QTranslator translator;
-     translator.load(QString("ProjetLOA_") + locale);
+     translator.load(QString(":/ProjetLOA_") + locale);
      a.installTranslator(&translator);
      QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
 

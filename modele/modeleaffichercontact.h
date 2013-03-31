@@ -83,7 +83,6 @@ public:
     
 signals:
 
-
 private:
     /**
     * @brief mContact est le contact dont ce modèle est le modèle

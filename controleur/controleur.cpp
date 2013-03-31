@@ -69,7 +69,7 @@ Controleur::Controleur(QObject *parent) :
 
 void Controleur::afficherContact(int index)
 {
-    mVue.setModeleAfficherContact(index==-1 ? NULL : new ModeleAfficherContact((*mContacts)[index]));
+    mVue.setModeleAfficherContact(index==-1 || mContacts->nombre()<=index ? NULL : new ModeleAfficherContact((*mContacts)[index]));
 }
 
 void Controleur::editerContact(int index)

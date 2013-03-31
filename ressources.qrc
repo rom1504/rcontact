@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icones/femme.png</file>
+        <file>icones/homme.png</file>
+        <file>ProjetLOA_en.qm</file>
+        <file>icones/mobile.png</file>
+        <file>icones/home.png</file>
+        <file>icones/supprimer.png</file>
+        <file>icones/precedent.png</file>
+        <file>icones/quitter.png</file>
+        <file>icones/enregistrer.png</file>
+        <file>icones/gestionnaire_contact.png</file>
+        <file>icones/ajouter.png</file>
+        <file>icones/ouvrir.png</file>
+        <file>icones/trier.png</file>
+        <file>icones/rechercher.png</file>
+        <file>icones/data.png</file>
+        <file>icones/facebook.png</file>
+        <file>icones/fixe.png</file>
+        <file>icones/googleplus.png</file>
+        <file>icones/voice.png</file>
+        <file>icones/web.png</file>
+        <file>icones/work.png</file>
+    </qresource>
+</RCC>

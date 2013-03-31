@@ -119,7 +119,7 @@ Champ* Contact::creerChampFromType(const QString& type)
     else if(type==tr("email")) champ=email();
     else if(type==tr("site")) champ=site();
     else if(type==tr("type")) champ=gtype();
-    else if(type==tr("date MAJ")) champ=date();
+    else if(type==tr("date")) champ=date();
     else if(type==tr("note")) champ=note();
     return champ;
 }

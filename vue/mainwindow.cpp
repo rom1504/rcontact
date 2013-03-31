@@ -13,7 +13,8 @@
 #include "rechercher.h"
 #include "structureoutexteedit.h"
 #include "../modele/nom.h"
-
+#include <QCalendarWidget>
+#include "dateedit.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -22,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     showMaximized();
     QItemEditorFactory *factory = new QItemEditorFactory();
-    factory->registerEditor(QVariant::DateTime, new QStandardItemEditorCreator<QDateTimeEdit>());
+    factory->registerEditor(QVariant::DateTime, new QStandardItemEditorCreator<DateEdit>());
     factory->registerEditor(QVariant::String, new QStandardItemEditorCreator<QLineEdit>());
     factory->registerEditor((QVariant::Type)qMetaTypeId<Loc*>(), new QStandardItemEditorCreator<LocEdit>());
     factory->registerEditor((QVariant::Type)qMetaTypeId<Enum*>(), new QStandardItemEditorCreator<EnumEdit>());

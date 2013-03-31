@@ -17,6 +17,7 @@ public:
      */
     QString toString() const;
     QVariant image();
+    QString toVCard() const;
 
 private slots:
     void slot_netwManagerFinished(QNetworkReply *reply);

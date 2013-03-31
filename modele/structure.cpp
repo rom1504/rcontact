@@ -3,6 +3,7 @@
 #include <QIcon>
 #include <QStringList>
 #include <QPainter>
+#include <algorithm>
 
 Structure::Structure(QObject *parent) : Champ(parent)
 {

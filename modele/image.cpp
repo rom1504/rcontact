@@ -36,6 +36,11 @@ void Image::chargerImage()
     }
 }
 
+QString Image::toVCard() const
+{
+    return avoirChamp("url");
+}
+
 
 void Image::slot_netwManagerFinished(QNetworkReply *reply)
 {

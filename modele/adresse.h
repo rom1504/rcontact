@@ -21,6 +21,8 @@ public:
      */
     bool fromString(const QString s);
 
+    QString toVCard() const;
+
 signals:
     
 public slots:

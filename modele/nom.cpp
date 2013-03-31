@@ -32,3 +32,7 @@ bool Nom::fromString(const QString s)
     return true;
 }
 
+QString Nom::toVCard() const
+{
+    return avoirChamp(tr("Nom"))+";"+avoirChamp(tr("Prénom"))+";"+avoirChamp(tr("Préfixe"))+";"+avoirChamp(tr("Surnom"))+";";// ?
+}

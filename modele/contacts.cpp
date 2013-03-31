@@ -52,6 +52,11 @@ QString parseString(QString s)
     return s.replace("\\n","\n").replace("\\,",",").replace("\\\"","\"");
 }
 
+QString unParseString(QString s)
+{
+    return s.replace("\n","\\n").replace(",","\\,").replace("\"","\\\"");
+}
+
 void Contacts::changerTri(Comp * comp)
 {
     mComp=comp;
@@ -124,13 +129,20 @@ void Contacts::enregistrer(QString nomFichier) const
     for (int i = 0; i < mContacts.size(); ++i)
     {
         flux<<"BEGIN:VCARD\n";
+        flux<<"VERSION:4.0\n";
         Contact * contact=mContacts[i];
         const Champ * champ=NULL;
         if((champ=(*contact)[tr("nom")]))
         {
-
-            flux<<"N:"<<champ->toString()<<"\n"; // pas encore ça
+            flux<<"FN:"<<champ->toString()<<"\n";
+            flux<<"N:"<<champ->toVCard()<<"\n";
         }
+        if((champ=(*contact)[tr("adresse")])) flux<<"ADR:"<<unParseString(champ->toVCard())<<"\n";
+        if((champ=(*contact)[tr("tel")])) flux<<"TEL:"<<champ->toVCard()<<"\n";
+        if((champ=(*contact)[tr("mail")])) flux<<"EMAIL:"<<champ->toVCard()<<"\n";
+        if((champ=(*contact)[tr("date de naissance")])) flux<<"BDAY:"<<champ->toVCard()<<"\n";
+        if((champ=(*contact)[tr("url")])) flux<<"URL:"<<champ->toVCard()<<"\n";
+        if((champ=(*contact)[tr("note")])) flux<<"NOTE:"<<unParseString(champ->toVCard())<<"\n";
         flux<<"END:VCARD\n";
     }
     fichier.close();

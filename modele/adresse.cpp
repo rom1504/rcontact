@@ -18,6 +18,11 @@ QString Adresse::toString() const
     return (avoirChamp(tr("rue"))+" "+avoirChamp(tr("zipcode"))+" "+avoirChamp(tr("localité"))+" "+avoirChamp(tr("Région"))+" "+avoirChamp(tr("pays"))+" "+avoirChamp(tr("géo"))).trimmed();
 }
 
+QString Adresse::toVCard() const
+{
+    return ";;"+avoirChamp(tr("rue"))+";;;;";
+}
+
 /**
  * @brief fromString convertit un QString en Structure
  * @param s La QString à convertir

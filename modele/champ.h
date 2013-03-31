@@ -48,6 +48,8 @@ public:
 
     virtual QVariant image();
 
+    virtual QString toVCard() const;
+
     virtual ~Champ();
 
 signals:

@@ -79,9 +79,12 @@ public:
 
     QVariant image();
 
+
+    QString avoirChamp(QString nom) const;
+
+
 protected:
     void vider();
-    QString avoirChamp(QString nom) const;
 
 
 protected:

@@ -26,3 +26,8 @@ QVariant Champ::image()
 {
     return QVariant();
 }
+
+QString Champ::toVCard() const
+{
+    return toString();
+}

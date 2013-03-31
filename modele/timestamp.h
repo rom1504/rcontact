@@ -44,6 +44,9 @@ public:
      * @return true si la conversion a réussi
      */
     virtual bool fromVariant(const QVariant v);
+
+    QString toVCard() const;
+
 private:
     /**
      * @brief mT est le timestamp au moment de la dernière modification

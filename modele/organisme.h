@@ -12,6 +12,13 @@ public:
      */
     Organisme(QObject * parent=0);
 
+
+    /**
+     * @brief image
+     * @return Le logo de l'organisme
+     */
+    QVariant image() const;
+
     /**
      * @brief creerOrganisme créer un contact avec des champs caractéristiques d'un personne morale
      * @return un pointeur vers le contact créé

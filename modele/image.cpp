@@ -2,7 +2,7 @@
 #include <QtNetwork/QNetworkAccessManager>
 #include <QUrl>
 #include <QDebug>
-#include <QtNetwork/QNetworkReply>
+#include <QNetworkReply>
 
 Image::Image(QObject *parent) :
     Structure(parent)
@@ -27,7 +27,7 @@ void Image::chargerImage()
     QString urls;
     if((urls=avoirChamp("url"))!="")
     {
-        QNetworkAccessManager * m_netwManager = new QNetworkAccessManager(this);
+        m_netwManager = new QNetworkAccessManager(this);
         connect(m_netwManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(slot_netwManagerFinished(QNetworkReply*)));
 
         QUrl url(urls);
@@ -52,5 +52,8 @@ void Image::slot_netwManagerFinished(QNetworkReply *reply)
     QByteArray jpegData = reply->readAll();
     mImage.loadFromData(jpegData);
     mImage=mImage.scaledToWidth(100);
+    disconnect(this,SIGNAL(dataChanged()),this,SLOT(chargerImage()));
+    emit dataChanged();
+    connect(this,SIGNAL(dataChanged()),this,SLOT(chargerImage()));
 }
 

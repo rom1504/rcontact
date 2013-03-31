@@ -10,6 +10,7 @@ ListeContacts::ListeContacts(QWidget *parent) :
     connect(ui->pushButtonAfficher,SIGNAL(clicked()),this,SLOT(afficherContactCourant()));
     connect(ui->pushButtonSupprimer,SIGNAL(clicked()),this,SLOT(supprimerContactCourant()));
     connect(ui->pushButtonEditer,SIGNAL(clicked()),this,SLOT(editerContactCourant()));
+    ui->listeContacts->setResizeMode(QListView::Adjust);
 }
 
 ListeContacts::~ListeContacts()
@@ -32,17 +33,17 @@ void ListeContacts::setModel ( ModeleListeContacts * model )
 
 void ListeContacts::supprimerContactCourant()
 {
-    ui->listeContacts->model()->removeRow(ui->listeContacts->currentIndex().row());
+    if(ui->listeContacts->selectionModel()->currentIndex().isValid()) ui->listeContacts->model()->removeRow(ui->listeContacts->selectionModel()->currentIndex().row());
 }
 
 void ListeContacts::afficherContactCourant()
 {
-    afficherContact(ui->listeContacts->currentIndex());
+    if(ui->listeContacts->selectionModel()->currentIndex().isValid()) afficherContact(ui->listeContacts->selectionModel()->currentIndex());
 }
 
 void ListeContacts::editerContactCourant()
 {
-    emit contactEdite(ui->listeContacts->currentIndex().row());
+    if(ui->listeContacts->selectionModel()->currentIndex().isValid()) emit contactEdite(ui->listeContacts->selectionModel()->currentIndex().row());
 }
 
 void ListeContacts::afficherContact(const QModelIndex & index)
@@ -53,5 +54,5 @@ void ListeContacts::afficherContact(const QModelIndex & index)
 void ListeContacts::creerContact()
 {
     ui->listeContacts->model()->insertRow(ui->listeContacts->model()->rowCount());
-    emit contactEdite(ui->listeContacts->model()->rowCount()-1);
+    emit contactEdite(ui->listeContacts->model()->rowCount()-1);// ne marche pas (tri)
 }

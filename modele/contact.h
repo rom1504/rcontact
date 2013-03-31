@@ -75,6 +75,12 @@ public:
     QString nom() const;
 
     /**
+     * @brief image
+     * @return L'image du contact
+     */
+    virtual QVariant image() const=0;
+
+    /**
      * @brief aNom permet de vérifier si le contact a un nom (car ce champ est obligatoire)
      * @return true si le contact possède un champ libelé "nom", false sinon
      */
@@ -177,13 +183,12 @@ signals:
      */
     void dataChanged();
 
-private:
+protected:
+
     /**
      * @brief mChamps est un multimap associant des libelés de champs (les QString) à des valeurs (les *Champ)
      */
     QMultiMap<QString,Champ*> mChamps;
-
-protected:
 
     /**
      * @brief creerChampFromType créé un champ de base à partir du type passé en paramètre.

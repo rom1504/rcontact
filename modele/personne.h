@@ -13,6 +13,13 @@ public:
      */
     Personne(QObject * parent=0);
 
+
+    /**
+     * @brief image
+     * @return La photo de la personne
+     */
+    QVariant image() const;
+
     /**
      * @brief creerPersonne créer un contact avec des champs caractéristiques d'un personne physique
      * @return Un pointeur vers le contact créé

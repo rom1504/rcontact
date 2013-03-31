@@ -2,7 +2,8 @@
 #define IMAGE_H
 
 #include "structure.h"
-#include <QtNetwork/QNetworkReply>
+#include <QNetworkReply>
+#include <QNetworkAccessManager>
 #include <QPixmap>
 
 class Image : public Structure
@@ -25,6 +26,7 @@ private slots:
 
 private:
     QPixmap mImage;
+    QNetworkAccessManager * m_netwManager;
     
 };
 

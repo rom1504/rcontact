@@ -1,6 +1,7 @@
 #include "modelelistecontacts.h"
 #include "structure.h"
 #include "texte.h"
+#include <iostream>
 
 ModeleListeContacts::ModeleListeContacts(Contacts & contacts,QObject *parent) :
     QAbstractListModel(parent),mContacts(contacts)
@@ -18,6 +19,8 @@ QVariant ModeleListeContacts::data(const QModelIndex & index,int role) const
 
      if (role == Qt::DisplayRole)
          return mContacts[index.row()]->nom();
+     else if(role == Qt::DecorationRole)
+         return mContacts[index.row()]->image();
      else
          return QVariant();
 }

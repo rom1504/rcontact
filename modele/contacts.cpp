@@ -106,6 +106,7 @@ void Contacts::charger(QString nomFichier)
                 contact=NULL;
             }
             else if(vnom=="TEL") contact->ajouterChamp(tr("tel"),Contact::tel(valeur));
+            else if(vnom=="PHOTO") contact->ajouterChamp(tr("photo"),Personne::photo(valeur));
             else if(vnom=="EMAIL")
             {
                 Email * e=new Email();
@@ -142,6 +143,7 @@ void Contacts::enregistrer(QString nomFichier) const
         if((champ=(*contact)[tr("mail")])) flux<<"EMAIL:"<<champ->toVCard()<<"\n";
         if((champ=(*contact)[tr("date de naissance")])) flux<<"BDAY:"<<champ->toVCard()<<"\n";
         if((champ=(*contact)[tr("url")])) flux<<"URL:"<<champ->toVCard()<<"\n";
+        if((champ=(*contact)[tr("photo")]))flux<<"PHOTO:"<<champ->toVCard()<<"\n";
         if((champ=(*contact)[tr("note")])) flux<<"NOTE:"<<unParseString(champ->toVCard())<<"\n";
         flux<<"END:VCARD\n";
     }

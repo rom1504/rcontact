@@ -1,25 +1,40 @@
 #include "personne.h"
 #include "nom.h"
 #include "image.h"
+#include <QPixmap>
 
 Personne::Personne(QObject * parent) : Contact(parent)
 {
 }
 
+
+QVariant Personne::image() const
+{
+    Champ * champ=mChamps.value("photo",NULL);
+    if(champ==NULL) return QVariant();
+    QVariant v=champ->image();
+    if(!(v.isValid())) return QVariant();
+    QPixmap p=champ->image().value<QPixmap>();
+    if(p.isNull()) return QVariant();
+    p=p.scaledToWidth(60);
+    return p;
+}
+
+
 Contact* Personne::creerDefaut()
 {
     Contact * nouveau = new Personne();
     nouveau->creerChamp(tr("nom"),tr("nom"));
-    nouveau->creerChamp(tr("sexe"),tr("sexe"));
-    nouveau->creerChamp(tr("tel"),tr("tel"));
-    nouveau->creerChamp(tr("adresse"),tr("adresse"));
-    nouveau->creerChamp(tr("email"),tr("email"));
-    nouveau->creerChamp(tr("site"),tr("site"));
-    nouveau->creerChamp(tr("photo"),tr("photo"));
-    nouveau->creerChamp(tr("organisation"),tr("organisation"));
-    nouveau->creerChamp(tr("type"),tr("type"));
-    nouveau->creerChamp(tr("date MAJ"),tr("date MAJ"));
-    nouveau->creerChamp(tr("note"),tr("note"));
+//    nouveau->creerChamp(tr("sexe"),tr("sexe"));
+//    nouveau->creerChamp(tr("tel"),tr("tel"));
+//    nouveau->creerChamp(tr("adresse"),tr("adresse"));
+//    nouveau->creerChamp(tr("email"),tr("email"));
+//    nouveau->creerChamp(tr("site"),tr("site"));
+//    nouveau->creerChamp(tr("photo"),tr("photo"));
+//    nouveau->creerChamp(tr("organisation"),tr("organisation"));
+//    nouveau->creerChamp(tr("type"),tr("type"));
+//    nouveau->creerChamp(tr("date MAJ"),tr("date MAJ"));
+//    nouveau->creerChamp(tr("note"),tr("note"));
     return nouveau;
 }
 
@@ -38,6 +53,7 @@ Champ* Personne::sexe(const QString sexe)
     return new Enum(sexe);
 }
 
+
 Champ* Personne::photo(const QString url, const QString type)
 {
     Image * image=new Image();
@@ -50,6 +66,7 @@ Champ* Personne::organisation(Card *card)
 {
     return card;
 }
+
 
 void Personne::creerChamp(const QString& nomChamp, const QString& type)
 {

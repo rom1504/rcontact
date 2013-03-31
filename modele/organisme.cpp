@@ -1,7 +1,20 @@
 #include "organisme.h"
+#include <QPixmap>
 
 Organisme::Organisme(QObject * parent) : Contact(parent)
 {
+}
+
+QVariant Organisme::image() const
+{
+    Champ * champ=mChamps.value("logo",NULL);
+    if(champ==NULL) return QVariant();
+    QVariant v=champ->image();
+    if(!(v.isValid())) return QVariant();
+    QPixmap p=champ->image().value<QPixmap>();
+    if(p.isNull()) return QVariant();
+    p.scaledToWidth(20);
+    return p;
 }
 
 Contact* Organisme::creerDefaut()

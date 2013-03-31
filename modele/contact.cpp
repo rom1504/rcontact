@@ -160,7 +160,6 @@ bool Contact::aNom() const
     return mChamps.contains(tr("nom"));
 }
 
-
 const QPair<QString,Champ*> Contact::operator[](const int n) const
 {
     QList<QString> lk=(mChamps.keys());

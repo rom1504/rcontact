@@ -83,6 +83,9 @@ public:
     
 signals:
 
+private slots:
+    void maj();
+
 private:
     /**
     * @brief mContact est le contact dont ce modèle est le modèle
@@ -92,6 +95,7 @@ private:
     * @brief mEditable est à true si le modèle est éditable
     */
    bool mEditable;
+
     
 };
 

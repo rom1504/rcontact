@@ -7,11 +7,18 @@ ModeleAfficherContact::ModeleAfficherContact(Contact * contact,QObject *parent) 
     QAbstractTableModel(parent),mContact(contact)
 {
     mEditable=false;
+    connect(mContact,SIGNAL(dataChanged()),this,SLOT(maj()));
+}
+
+void ModeleAfficherContact::maj()
+{
+    reset();
 }
 
 void ModeleAfficherContact::rendreEditable()
 {
     mEditable=true;
+    disconnect(mContact,SIGNAL(dataChanged()),this,SLOT(maj()));
 }
 
 int ModeleAfficherContact::rowCount ( const QModelIndex &) const

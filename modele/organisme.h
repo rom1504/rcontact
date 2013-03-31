@@ -23,7 +23,7 @@ public:
      * @brief creerOrganisme créer un contact avec des champs caractéristiques d'un personne morale
      * @return un pointeur vers le contact créé
      */
-    static Contact* creerDefaut();
+    static Organisme *creerDefaut();
 
     /**
      * @brief gnom créé un champ sensé décrire un nom d'Organisme initialisé avec les valeurs passées en paramètre

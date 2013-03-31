@@ -28,7 +28,7 @@ public:
     /**
      * @brief ajouterContact ajoute un contact avec des valeurs par défaut
      */
-    void ajouterContact();
+    Contact * ajouterContact();
 
     /**
      * @brief supprimerContact supprime un contact dans la liste

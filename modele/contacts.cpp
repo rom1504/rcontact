@@ -25,10 +25,11 @@ void Contacts::ajouterContact(Contact * contact)
     connect(contact,SIGNAL(dataChanged()),this,SIGNAL(dataChanged()));
 }
 
-void Contacts::ajouterContact()
+Contact * Contacts::ajouterContact()
 {
     Contact * nouveau=Personne::creerDefaut();
     ajouterContact(nouveau);
+    return nouveau;
 }
 
 void Contacts::supprimerContact(const int n)

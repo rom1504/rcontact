@@ -21,9 +21,9 @@ QVariant Personne::image() const
 }
 
 
-Contact* Personne::creerDefaut()
+Personne *Personne::creerDefaut()
 {
-    Contact * nouveau = new Personne();
+    Personne * nouveau = new Personne();
     nouveau->creerChamp(tr("nom"),tr("nom"));
 //    nouveau->creerChamp(tr("sexe"),tr("sexe"));
 //    nouveau->creerChamp(tr("tel"),tr("tel"));

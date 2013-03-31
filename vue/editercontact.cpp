@@ -46,7 +46,7 @@ int max(int a,int b)
 
 void EditerContact::redimensionner(QModelIndex index)
 {
-    if(index.column()!=0)
+    if(index.isValid() && index.column()!=0)
     {
         ui->tableViewChamps->verticalHeader()->resizeSection(index.row(),max(ui->tableViewChamps->verticalHeader()->sectionSize(index.row()),ui->tableViewChamps->indexWidget(index)->sizeHint().height()));
         ui->tableViewChamps->horizontalHeader()->resizeSection(index.column(),max(ui->tableViewChamps->horizontalHeader()->sectionSize(index.column()),ui->tableViewChamps->indexWidget(index)->sizeHint().width()));

@@ -17,9 +17,9 @@ QVariant Organisme::image() const
     return p;
 }
 
-Contact* Organisme::creerDefaut()
+Organisme *Organisme::creerDefaut()
 {
-    Contact * nouveau = new Organisme();
+    Organisme * nouveau = new Organisme();
     nouveau->creerChamp(tr("nom"),tr("nom"));
     nouveau->creerChamp(tr("tel"),tr("tel"));
     nouveau->creerChamp(tr("adresse"),tr("adresse"));

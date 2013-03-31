@@ -49,6 +49,9 @@ public:
      * @return true si les lignes ont effectivement été insérées
      */
     bool insertRows (int row, int count, const QModelIndex &parent) ;
+
+    Contact * ajouterContact();
+
     void charger(QString nomFichier);
     void changerTri(Comp *comp);
 

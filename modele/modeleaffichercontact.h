@@ -82,8 +82,7 @@ public:
     bool insertRows ( int row, int count, const QModelIndex & parent  );
     
 signals:
-    
-public slots:
+
 
 private:
     /**

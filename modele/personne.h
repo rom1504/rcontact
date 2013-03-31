@@ -24,7 +24,7 @@ public:
      * @brief creerPersonne créer un contact avec des champs caractéristiques d'un personne physique
      * @return Un pointeur vers le contact créé
      */
-    static Contact* creerDefaut();
+    static Personne* creerDefaut();
 
     /**
      * @brief gnom créé un champ sensé décrire un nom de Personne initialisé avec les valeurs passées en paramètre

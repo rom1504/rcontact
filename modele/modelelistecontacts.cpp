@@ -2,6 +2,7 @@
 #include "structure.h"
 #include "texte.h"
 #include <iostream>
+#include "contact.h"
 
 ModeleListeContacts::ModeleListeContacts(Contacts & contacts,QObject *parent) :
     QAbstractListModel(parent),mContacts(contacts)
@@ -72,4 +73,13 @@ bool ModeleListeContacts::insertRows ( int row, int count, const QModelIndex &  
     }
     endInsertRows();
     return true;
+}
+
+
+Contact * ModeleListeContacts::ajouterContact()
+{
+    beginInsertRows(QModelIndex(),rowCount(),rowCount());
+    Contact * c=mContacts.ajouterContact();
+    endInsertRows();
+    return c;
 }

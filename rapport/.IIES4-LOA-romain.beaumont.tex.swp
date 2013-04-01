@@ -126,7 +126,7 @@ Il y a également deux foncteurs : \texttt{Comp} et \texttt{Search}. Elles sont 
 
 \section{Vue}
 
-\includegraphics[scale=0.5]{../dia/ClassDiagramView.png}
+\includegraphics[scale=0.35]{../dia/ClassDiagramView.png}
 
 La vue est composée d'une \texttt{MainWindow} et de six widgets \texttt{ListeContact}, \texttt{EditerContact}, \texttt{AfficherContact}, \texttt{LocEdit}, \texttt{StructureEdit} et \texttt{EnumEdit} qui servent à l'affichage et l'édition des champs et des contact dans la fenêtre.
 

@@ -80,12 +80,35 @@ L'objectif de ce projet est de réaliser un gestionnaire de contact en utilisant
 
 \chapter{Hierarchie des classes}
 \par
+Les classes sont séparés en plusieurs catégories :\\
+-modèle : ces classes permettent de gérer les données et de les adapter à la vue\\
+-vue : ces classes permettent d'afficher et editer les données\\
+-controleur : une classe qui contient les vue et les modèles et qui permet de faire le lien entre les deux (entre autre par des signaux)\\
+
 
 \chapter{Fonctionnalités implémentés}
 \par
+Toutes les fonctionnalités demandées ont été implémentées, on peut tester sur le fichier d'exemple que on peut :\\
+-Afficher une liste triée de contact (et sélectionner le critère de tri grâce à au menu)\\
+-Afficher un contact de cette liste\\
+-Editer un contact de cette liste (grâce au bouton éditer)\\
+-Créer un nouveau contact : soit créer une nouvelle personne, soit créer un nouvel organisme : cela ouvre une fenêtre permettant d'entrer les données voulues\\
+-Supprimer un contact : c'est le bon supprimer\\
+-Rechercher un contact satisfaisant plusieurs critères : c'est possible grâce au menu\\
+-Enregistrer la liste de contact au format vCard\\
+-Import la liste de contact au format vCard\\
 
 \chapter{Interface graphique}
 \par
+L'interface graphique contient une liste de contact à gauche et l'affichage ou bien l'édition des contacts à droite. On peut aussi sélectionner plusieurs boutons dans le menu afin d'afficher une fenêtre de recherche, de tri, d'ouverture de fichier, d'enregistrement de fichier.
+\par
+Chaque contact est précédé d'une image qui le représente (un logo ou une photo) si ce champ est renseigné.
+\par
+La vue des contacts est composé d'une liste de champ accompagné de leur valeur et pour certains champs d'icones renseignants sur les champs (par exemple le type de téléphone : fixe,mobile, ou bien le type d'adresse : home,work )
+\par
+En mode édition chaque champ est modifiable par un widget particulier : par exemple l'édition des dates peut se faire via l'affichage d'un calendrier, l'édition des adresses peut se faire ou bien via une ligne d'édition de texte ou bien via un tableau afin d'éditer chaque sous-champ séparé. Les autres type de champs sont eux aussi être édités par des widgets dédiés.
+\par
+Les photos sont chargés à partir d'internet.
 
 
 \chapter{Conclusion}

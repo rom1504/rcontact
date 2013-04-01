@@ -21,6 +21,11 @@ public:
      */
     bool fromString(const QString s);
 
+    /**
+     * @brief toVCard fait l'export en vCard
+     * @return une QString qui contient le vCard
+     */
+
     QString toVCard() const;
 
 signals:

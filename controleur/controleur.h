@@ -28,9 +28,14 @@ private:
      */
     MainWindow mVue;
     /**
-     * @brief mContacts contient le modèle
+     * @brief mContacts contient le modèle (peut être une partie du modèle en cas de recherche)
      */
     Contacts * mContacts;
+
+
+    /**
+     * @brief mContactsEntier contient le modèle entier
+     */
 
     Contacts * mContactsEntier;
 
@@ -46,7 +51,16 @@ private slots:
      */
     void editerContact(int index);
 
+    /**
+     * @brief rechercherContacts est le slot appelé quand on souhaite rechercher des contacts
+     * @param search foncteur permettant de faire la recherche
+     */
+
     void rechercherContacts(Search * search);
+
+    /**
+     * @brief finirLaRecherche permet de revenir au modèle complet
+     */
 
     void finirLaRecherche();
 

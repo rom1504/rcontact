@@ -13,6 +13,11 @@ class Champ : public QObject
     Q_OBJECT
 public:
 
+    /**
+     * @brief Champ constructeur par défaut
+     * @param parent fourni le parent ou QObject
+     */
+
     Champ(QObject * parent=0);
 
     /**
@@ -46,15 +51,36 @@ public:
      */
     virtual bool fromVariant(const QVariant v);
 
+    /**
+     * @brief image fourni une image à afficher
+     * @return sous la forme d'un QVariant (QPixmap ou QIcon ou QImage)
+     */
+
     virtual QVariant image();
+
+    /**
+     * @brief toVCard fait l'export en vCard
+     * @return une QString qui contient le vCard
+     */
 
     virtual QString toVCard() const;
 
+    /**
+     * @brief essayerEncore méthode à appeler si quelque chose doit être réésayé (utilisé en particulier dans Card)
+     */
+
     virtual void essayerEncore();
+
+    /**
+     * @brief ~Champ destructeur
+     */
 
     virtual ~Champ();
 
 signals:
+    /**
+     * @brief dataChanged émis quand des données changent
+     */
     void dataChanged();
 };
 

@@ -158,15 +158,6 @@ Voici la liste des fonctions non-implémentées (et la raison à cela):
 
 \chapter{Interface graphique}
 \par
-L'interface graphique contient une liste de contact à gauche et l'affichage ou bien l'édition des contacts à droite. On peut aussi sélectionner plusieurs boutons dans le menu afin d'afficher une fenêtre de recherche, de tri, d'ouverture de fichier, d'enregistrement de fichier.
-\par
-Chaque contact est précédé d'une image qui le représente (un logo ou une photo) si ce champ est renseigné.
-\par
-La vue des contacts est composé d'une liste de champ accompagné de leur valeur et pour certains champs d'icones renseignants sur les champs (par exemple le type de téléphone : fixe,mobile, ou bien le type d'adresse : home,work )
-\par
-En mode édition chaque champ est modifiable par un widget particulier : par exemple l'édition des dates peut se faire via l'affichage d'un calendrier, l'édition des adresses peut se faire ou bien via une ligne d'édition de texte ou bien via un tableau afin d'éditer chaque sous-champ séparé. Les autres type de champs sont eux aussi être édités par des widgets dédiés.
-\par
-Les photos sont chargés à partir d'internet.
 
 L'interface graphique se compose d'une barre de menu, d'une barre de raccourcis et d'un layout central.
 

@@ -7,11 +7,18 @@ ModeleAfficherContact::ModeleAfficherContact(Contact * contact,QObject *parent) 
     QAbstractTableModel(parent),mContact(contact)
 {
     mEditable=false;
+    connect(mContact,SIGNAL(dataChanged()),this,SLOT(maj()));
+}
+
+void ModeleAfficherContact::maj()
+{
+    reset();
 }
 
 void ModeleAfficherContact::rendreEditable()
 {
     mEditable=true;
+    disconnect(mContact,SIGNAL(dataChanged()),this,SLOT(maj()));
 }
 
 int ModeleAfficherContact::rowCount ( const QModelIndex &) const
@@ -77,7 +84,7 @@ bool ModeleAfficherContact::insertRows ( int row, int count, const QModelIndex &
     beginInsertRows(parent,row,row+count-1);
     for(int i=0;i<count;i++)
     {
-        QPair<QString,QString> p=AjouterChamp::get();
+        QPair<QString,QString> p=AjouterChamp::get(mContact->metaObject()->className());
         if(p.second!=NULL) mContact->creerChamp(p.first,p.second);
         else
         {

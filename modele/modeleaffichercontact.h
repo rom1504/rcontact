@@ -82,8 +82,9 @@ public:
     bool insertRows ( int row, int count, const QModelIndex & parent  );
     
 signals:
-    
-public slots:
+
+private slots:
+    void maj();
 
 private:
     /**
@@ -94,6 +95,7 @@ private:
     * @brief mEditable est à true si le modèle est éditable
     */
    bool mEditable;
+
     
 };
 

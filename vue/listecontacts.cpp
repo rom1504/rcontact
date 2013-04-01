@@ -1,6 +1,9 @@
 #include "listecontacts.h"
 #include "ui_listecontacts.h"
+#include "../modele/modeleaffichercontact.h"
 #include "../modele/modelelistecontacts.h"
+#include "editercontact.h"
+#include "../modele/personne.h"
 
 ListeContacts::ListeContacts(QWidget *parent) :
     QWidget(parent),
@@ -51,8 +54,24 @@ void ListeContacts::afficherContact(const QModelIndex & index)
     emit contactActive(index.row());
 }
 
-void ListeContacts::creerContact()
+void ListeContacts::creerPersonne()
 {
-    ui->listeContacts->model()->insertRow(ui->listeContacts->model()->rowCount());
-    emit contactEdite(ui->listeContacts->model()->rowCount()-1);// ne marche pas (tri)
+    creerContact(mModel->ajouterPersonne());
+}
+
+
+void ListeContacts::creerOrganisme()
+{
+    creerContact(mModel->ajouterOrganisme());
+}
+
+void ListeContacts::creerContact(Contact * contact) // rendre modal ?
+{
+   EditerContact * editerContact=new EditerContact();
+   ModeleAfficherContact * modeleAfficherContact=new ModeleAfficherContact(contact);
+   modeleAfficherContact->rendreEditable();
+   editerContact->move(300,150);
+   editerContact->setModel(modeleAfficherContact);
+   editerContact->setWindowModality(Qt::ApplicationModal);
+   editerContact->show();
 }

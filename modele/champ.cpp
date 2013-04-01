@@ -31,3 +31,8 @@ QString Champ::toVCard() const
 {
     return toString();
 }
+
+void Champ::essayerEncore()
+{
+
+}

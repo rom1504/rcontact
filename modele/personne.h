@@ -24,7 +24,7 @@ public:
      * @brief creerPersonne créer un contact avec des champs caractéristiques d'un personne physique
      * @return Un pointeur vers le contact créé
      */
-    static Contact* creerDefaut();
+    static Personne* creerDefaut();
 
     /**
      * @brief gnom créé un champ sensé décrire un nom de Personne initialisé avec les valeurs passées en paramètre
@@ -56,7 +56,7 @@ public:
      * @param card Un pointeur vers une Card décrivant l'organisation
      * @return Un pointeur vers le champ créé
      */
-    static Champ* organisation(Card *card=new Card());
+    static Champ* organisation(QString card="");
 
     /**
      * @brief creerChamp créé et ajoute un champ

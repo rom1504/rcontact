@@ -82,6 +82,8 @@ public:
 
     QString avoirChamp(QString nom) const;
 
+    void essayerEncore();
+
 
 protected:
     void vider();

@@ -20,6 +20,17 @@ Contact::~Contact()
 
 }
 
+void essayerEncore_(Champ * c)
+{
+    c->essayerEncore();
+}
+
+void Contact::essayerEncore()
+{
+    QList<Champ*> vs=mChamps.values();
+    std::for_each(vs.begin(),vs.end(),essayerEncore_);
+}
+
 void Contact::remplacer(QString s,Champ * c)
 {
     mChamps.replace(s,c);
@@ -119,7 +130,7 @@ Champ* Contact::creerChampFromType(const QString& type)
     else if(type==tr("email")) champ=email();
     else if(type==tr("site")) champ=site();
     else if(type==tr("type")) champ=gtype();
-    else if(type==tr("date MAJ")) champ=date();
+    else if(type==tr("date")) champ=date();
     else if(type==tr("note")) champ=note();
     return champ;
 }

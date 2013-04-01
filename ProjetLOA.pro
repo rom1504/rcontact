@@ -51,7 +51,9 @@ SOURCES += main.cpp\
     modele/tel.cpp \
     modele/adresse.cpp \
     modele/email.cpp \
-    modele/image.cpp
+    modele/image.cpp \
+    vue/dateedit.cpp \
+    modele/membre.cpp
 
 HEADERS  += vue/mainwindow.h \
     modele/contacts.h \
@@ -88,7 +90,9 @@ HEADERS  += vue/mainwindow.h \
     modele/tel.h \
     modele/adresse.h \
     modele/email.h \
-    modele/image.h
+    modele/image.h \
+    vue/dateedit.h \
+    modele/membre.h
 
 FORMS    += vue/mainwindow.ui \
     vue/listecontacts.ui \
@@ -105,3 +109,6 @@ FORMS    += vue/mainwindow.ui \
 TRANSLATIONS = ProjetLOA_en.ts
 
 CODECFORTR = UTF-8
+
+RESOURCES += \
+    ressources.qrc

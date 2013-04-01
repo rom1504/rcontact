@@ -41,14 +41,12 @@ public:
      */
     bool removeRows (int row, int count, const QModelIndex & parent = QModelIndex());
 
-    /**
-     * @brief insertRows permet d'insérer des lignes
-     * @param row L'index où on veut insérer les lignes
-     * @param count Le nombre de lignes à insérer
-     * @param parent L'objeet parent
-     * @return true si les lignes ont effectivement été insérées
-     */
-    bool insertRows (int row, int count, const QModelIndex &parent) ;
+    Contact * ajouterContact();
+
+    Personne * ajouterPersonne();
+
+    Organisme * ajouterOrganisme();
+
     void charger(QString nomFichier);
     void changerTri(Comp *comp);
 

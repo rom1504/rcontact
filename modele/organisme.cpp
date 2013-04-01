@@ -1,5 +1,7 @@
 #include "organisme.h"
 #include <QPixmap>
+#include "image.h"
+#include "membre.h"
 
 Organisme::Organisme(QObject * parent) : Contact(parent)
 {
@@ -13,22 +15,22 @@ QVariant Organisme::image() const
     if(!(v.isValid())) return QVariant();
     QPixmap p=champ->image().value<QPixmap>();
     if(p.isNull()) return QVariant();
-    p.scaledToWidth(20);
+    p=p.scaledToWidth(60);
     return p;
 }
 
-Contact* Organisme::creerDefaut()
+Organisme *Organisme::creerDefaut()
 {
-    Contact * nouveau = new Organisme();
+    Organisme * nouveau = new Organisme();
     nouveau->creerChamp(tr("nom"),tr("nom"));
-    nouveau->creerChamp(tr("tel"),tr("tel"));
-    nouveau->creerChamp(tr("adresse"),tr("adresse"));
-    nouveau->creerChamp(tr("email"),tr("email"));
-    nouveau->creerChamp(tr("site"),tr("site"));
-    nouveau->creerChamp(tr("logo"),tr("logo"));
-    nouveau->creerChamp(tr("membre"),tr("membre"));
-    nouveau->creerChamp(tr("date MAJ"),tr("date MAJ"));
-    nouveau->creerChamp(tr("note"),tr("note"));
+//    nouveau->creerChamp(tr("tel"),tr("tel"));
+//    nouveau->creerChamp(tr("adresse"),tr("adresse"));
+//    nouveau->creerChamp(tr("email"),tr("email"));
+//    nouveau->creerChamp(tr("site"),tr("site"));
+//    nouveau->creerChamp(tr("logo"),tr("logo"));
+//    nouveau->creerChamp(tr("membre"),tr("membre"));
+//    nouveau->creerChamp(tr("date MAJ"),tr("date"));
+//    nouveau->creerChamp(tr("note"),tr("note"));
     return nouveau;
 }
 
@@ -42,18 +44,18 @@ Champ* Organisme::gnom(const QString nom,const QString raisonSociale)
 
 Champ* Organisme::logo(const QString url, const QString type)
 {
-    Structure * structure=new Structure();
-    structure->ajouterChamp(tr("type"),new Enum(type));
-    structure->ajouterChamp(tr("url"),new Url(url));
-    return structure;
+    Image * image=new Image();
+    image->ajouterChamp(tr("type"),new Enum(type));
+    image->ajouterChamp(tr("url"),new Url(url));
+    return image;
 }
 
-Champ* Organisme::membre(const QString fonction, Card *card)
+Champ* Organisme::membre(const QString fonction, QString card)
 {
-    Structure * structure=new Structure();
-    structure->ajouterChamp(tr("card"),card);
-    structure->ajouterChamp(tr("fonction"),new Texte(fonction));
-    return structure;
+    Membre * membre=new Membre();
+    membre->ajouterChamp(tr("card"),new Card(false,card));
+    membre->ajouterChamp(tr("fonction"),new Texte(fonction));
+    return membre;
 }
 
 

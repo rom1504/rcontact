@@ -23,7 +23,7 @@ public:
      * @brief creerOrganisme créer un contact avec des champs caractéristiques d'un personne morale
      * @return un pointeur vers le contact créé
      */
-    static Contact* creerDefaut();
+    static Organisme *creerDefaut();
 
     /**
      * @brief gnom créé un champ sensé décrire un nom d'Organisme initialisé avec les valeurs passées en paramètre
@@ -47,7 +47,7 @@ public:
      * @param card Le paramètre "card" du champ
      * @return Un pointeur vers le champ créé
      */
-    static Champ* membre(const QString fonction="",Card * card=new Card());
+    static Champ* membre(const QString fonction="",QString card="");
 
     /**
      * @brief creerChamp créé et ajoute un champ

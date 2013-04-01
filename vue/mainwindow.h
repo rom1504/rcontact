@@ -20,6 +20,7 @@ public:
     void setModeleListeContacts ( ModeleListeContacts * model );
     void setModeleAfficherContact ( QAbstractItemModel * model );
     void setModeleEditerContact ( QAbstractItemModel * model );
+    void cacherContact();
 
 private slots:
 

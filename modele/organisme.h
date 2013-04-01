@@ -47,7 +47,7 @@ public:
      * @param card Le paramètre "card" du champ
      * @return Un pointeur vers le champ créé
      */
-    static Champ* membre(const QString fonction="",Card * card=new Card());
+    static Champ* membre(const QString fonction="",QString card="");
 
     /**
      * @brief creerChamp créé et ajoute un champ

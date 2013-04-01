@@ -84,7 +84,7 @@ bool ModeleAfficherContact::insertRows ( int row, int count, const QModelIndex &
     beginInsertRows(parent,row,row+count-1);
     for(int i=0;i<count;i++)
     {
-        QPair<QString,QString> p=AjouterChamp::get();
+        QPair<QString,QString> p=AjouterChamp::get(mContact->metaObject()->className());
         if(p.second!=NULL) mContact->creerChamp(p.first,p.second);
         else
         {

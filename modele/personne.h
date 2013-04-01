@@ -56,7 +56,7 @@ public:
      * @param card Un pointeur vers une Card décrivant l'organisation
      * @return Un pointeur vers le champ créé
      */
-    static Champ* organisation(Card *card=new Card());
+    static Champ* organisation(QString card="");
 
     /**
      * @brief creerChamp créé et ajoute un champ

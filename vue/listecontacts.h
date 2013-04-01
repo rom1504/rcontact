@@ -49,7 +49,9 @@ public slots:
     void supprimerContactCourant();
     void editerContactCourant();
     void afficherContactCourant();
-    void creerContact();
+    void creerPersonne();
+    void creerOrganisme();
+    void creerContact(Contact * contact);
 
 private slots:
     void afficherContact(const QModelIndex & index);

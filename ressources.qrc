@@ -21,5 +21,6 @@
         <file>icones/voice.png</file>
         <file>icones/web.png</file>
         <file>icones/work.png</file>
+        <file>icones/ajouterOrganisme.png</file>
     </qresource>
 </RCC>

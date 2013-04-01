@@ -32,6 +32,8 @@ void EditerContact::setModel ( QAbstractItemModel * model )
 void EditerContact::ajouterChamp()
 {
     ui->tableViewChamps->model()->insertRow(ui->tableViewChamps->model()->rowCount());
+    ui->tableViewChamps->resizeColumnsToContents();
+    ui->tableViewChamps->resizeRowsToContents();
 }
 
 void EditerContact::supprimerChampCourant()

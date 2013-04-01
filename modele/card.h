@@ -4,6 +4,7 @@
 #include "champ.h"
 
 class Contact;
+class Contacts;
 
 /**
  * @brief La classe Card représente un champ contenant un contact (une personne ou une organisation)
@@ -12,11 +13,10 @@ class Card : public Champ
 {
     Q_OBJECT
 public:
-    /**
-     * @brief Le constructeur de classe prenant en argument le Contact à stocker.
-     * @param contact Le contact à enregistrer
-     */
-    Card(const Contact * contact=NULL,QObject * parent=0);
+
+    Card(bool appartientAUnePersonne, QString nom="", QObject * parent=0);
+
+
     /**
      * @brief L'opérateur d'égalité
      */
@@ -30,12 +30,20 @@ public:
      * @brief fromString ne fait rien
      * @return false
      */
-    bool fromString(const QString);
+    bool fromString(const QString nom);
+
+    static Contacts * mContacts;
+
+    QVariant image();
+
 private:
+
     /**
      * @brief mContact est le contact reprsenté par le champ Card
      */
-    const Contact * mContact;
+    Contact * mContact;
+    bool mAppartientAUnePersonne;
+
 };
 
 #endif // CARD_H

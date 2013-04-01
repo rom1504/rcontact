@@ -16,6 +16,7 @@ Rechercher::~Rechercher()
 Search * Rechercher::get()
 {
     Rechercher* rechercher=new Rechercher();
-    if(rechercher->exec() == QDialog::Accepted) return new Search(rechercher->ui->lineEditNom->text(),rechercher->ui->checkBoxCase->isChecked());
+    if(rechercher->exec() == QDialog::Accepted) return new Search(rechercher->ui->lineEditNom->text(),rechercher->ui->checkBoxCase->isChecked(),
+                                                                  rechercher->ui->checkBoxPersonne->isChecked(),rechercher->ui->checkBoxOrganisme->isChecked());
     return NULL;
 }

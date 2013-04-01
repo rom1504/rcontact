@@ -33,7 +33,7 @@ Personne *Personne::creerDefaut()
 //    nouveau->creerChamp(tr("photo"),tr("photo"));
 //    nouveau->creerChamp(tr("organisation"),tr("organisation"));
 //    nouveau->creerChamp(tr("type"),tr("type"));
-//    nouveau->creerChamp(tr("date MAJ"),tr("date MAJ"));
+//    nouveau->creerChamp(tr("date MAJ"),tr("date"));
 //    nouveau->creerChamp(tr("note"),tr("note"));
     return nouveau;
 }
@@ -62,9 +62,9 @@ Champ* Personne::photo(const QString url, const QString type)
     return image;
 }
 
-Champ* Personne::organisation(Card *card)
+Champ* Personne::organisation(QString card)
 {
-    return card;
+    return new Card(true,card);
 }
 
 

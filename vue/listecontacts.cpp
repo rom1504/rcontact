@@ -54,11 +54,21 @@ void ListeContacts::afficherContact(const QModelIndex & index)
     emit contactActive(index.row());
 }
 
-void ListeContacts::creerContact()
+void ListeContacts::creerPersonne()
+{
+    creerContact(mModel->ajouterPersonne());
+}
+
+
+void ListeContacts::creerOrganisme()
+{
+    creerContact(mModel->ajouterOrganisme());
+}
+
+void ListeContacts::creerContact(Contact * contact) // rendre modal ?
 {
    EditerContact * editerContact=new EditerContact();
-   Contact * personne=mModel->ajouterContact();
-   ModeleAfficherContact * modeleAfficherContact=new ModeleAfficherContact(personne);
+   ModeleAfficherContact * modeleAfficherContact=new ModeleAfficherContact(contact);
    modeleAfficherContact->rendreEditable();
    editerContact->move(300,150);
    editerContact->setModel(modeleAfficherContact);

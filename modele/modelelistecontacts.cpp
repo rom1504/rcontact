@@ -64,22 +64,21 @@ bool ModeleListeContacts::removeRows (int row, int count, const QModelIndex & pa
     return true;
 }
 
-bool ModeleListeContacts::insertRows ( int row, int count, const QModelIndex &  parent )
+
+Personne * ModeleListeContacts::ajouterPersonne()
 {
-    beginInsertRows(parent,row,row+count-1);
-    for(int i=0;i<count;i++)
-    {
-        mContacts.ajouterContact();
-    }
+    beginInsertRows(QModelIndex(),rowCount(),rowCount());
+    Personne * c=mContacts.ajouterPersonne();
     endInsertRows();
-    return true;
+    return c;
 }
 
 
-Contact * ModeleListeContacts::ajouterContact()
+
+Organisme * ModeleListeContacts::ajouterOrganisme()
 {
     beginInsertRows(QModelIndex(),rowCount(),rowCount());
-    Contact * c=mContacts.ajouterContact();
+    Organisme * c=mContacts.ajouterOrganisme();
     endInsertRows();
     return c;
 }

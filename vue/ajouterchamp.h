@@ -20,14 +20,14 @@ public:
      * @brief get ouvre la boîte de dialogue, attend que l'utilisateur confirme et renvoie les données qui en résulte
      * @return Les données entrée par l'utilisateur dans la boîte de dialogue
      */
-    static QPair<QString, QString> get();
+    static QPair<QString, QString> get(QString nomClasse);
 
     
 private:
     /**
      * @brief Le constructeur par défaut
      */
-    explicit AjouterChamp(QWidget *parent = 0);
+    explicit AjouterChamp(QString nomClasse, QWidget *parent = 0);
     virtual ~AjouterChamp();
 
     /**

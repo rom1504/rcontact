@@ -6,6 +6,8 @@
 #include "contact.h"
 #include "comp.h"
 #include "search.h"
+#include "personne.h"
+#include "organisme.h"
 
 /**
  * @brief La classe Contacts représente un anuaire de contacts
@@ -26,9 +28,14 @@ public:
     void ajouterContact(Contact * contact);
 
     /**
-     * @brief ajouterContact ajoute un contact avec des valeurs par défaut
+     * @brief ajouterOrganisme ajoute un organisme avec des valeurs par défaut
      */
-    Contact * ajouterContact();
+    Organisme * ajouterOrganisme();
+
+    /**
+     * @brief ajouterPersonne ajoute une personne avec des valeurs par défaut
+     */
+    Personne * ajouterPersonne();
 
     /**
      * @brief supprimerContact supprime un contact dans la liste

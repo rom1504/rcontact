@@ -84,29 +84,39 @@ QString Structure::toString() const
     }
     return s.trimmed();
 }
+QSize max(QSize,QSize);
 
 QVariant Structure::image()
 {
 
-    QList<QPixmap> t_images;//list with all the Pictures, PicA, PicB, Pic...
-    const int S_iconSize = 15;     //The pictures are all quadratic.
+    QList<QPixmap> t_images;
 
 
     QList<Champ*> vs=mChamps.values();
+    QSize M(0,0);
     for (int j = 0; j < vs.size(); ++j)
     {
         if(vs[j]->image().isValid())
-            t_images<<vs[j]->image().value<QIcon>().pixmap(S_iconSize,S_iconSize);
+        {
+            QPixmap p=vs[j]->image().value<QPixmap>();
+            if(p.isNull()) p=vs[j]->image().value<QIcon>().pixmap(15,15);
+            if(!(p.isNull()))
+            {
+                t_images<<p;
+                M=max(M,p.size());
+            }
+        }
     }
     if(t_images.length()==0) return QVariant();
-    QImage resultImage(S_iconSize*t_images.size(), S_iconSize, QImage::Format_ARGB32_Premultiplied);
+
+    QImage resultImage(M.width()*t_images.size(), M.height(), QImage::Format_ARGB32_Premultiplied);
     resultImage.fill(Qt::transparent);
     QPainter painter;
 
     painter.begin(&resultImage);
     for(int i=0; i < t_images.size(); ++i)
     {
-        painter.drawImage(S_iconSize*i, 0, t_images.at(i).toImage(), 0, 0, S_iconSize, S_iconSize, Qt::AutoColor);
+        painter.drawImage(M.width()*i, 0, t_images.at(i).toImage(), 0, 0, M.width(), M.height(), Qt::AutoColor);
     }
     painter.end();
 

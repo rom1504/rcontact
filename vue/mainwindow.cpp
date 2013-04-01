@@ -34,7 +34,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
     setWindowIcon(QIcon::fromTheme("preferences-desktop-personal",QIcon(":icones/gestionnaire_contact.png")));
-    ui->actionNouveau_contact->setIcon(QIcon::fromTheme("contact-new",QIcon(":/icones/ajouter.png")));
+    ui->actionNouvelle_personne->setIcon(QIcon::fromTheme("contact-new",QIcon(":/icones/ajouter.png")));
+    ui->actionNouveau_organisme->setIcon(QIcon(":/icones/ajouterOrganisme.png"));
     ui->actionCharger->setIcon(QIcon::fromTheme("document-open",QIcon(":/icones/ouvrir.png")));
     ui->actionEnregistrer->setIcon(QIcon::fromTheme("document-save-as",QIcon(":/icones/enregistrer.png")));
     ui->actionRechercher->setIcon(QIcon::fromTheme("edit-find",QIcon(":/icones/rechercher.png")));
@@ -46,7 +47,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->listeContacts,SIGNAL(contactActive(int)),this,SIGNAL(contactActive(int)));
     connect(ui->listeContacts,SIGNAL(contactEdite(int)),this,SIGNAL(contactEdite(int)));
     connect(ui->actionSupprimer,SIGNAL(triggered()),ui->listeContacts,SLOT(supprimerContactCourant()));
-    connect(ui->actionNouveau_contact,SIGNAL(triggered()),ui->listeContacts,SLOT(creerContact()));
+    connect(ui->actionNouvelle_personne,SIGNAL(triggered()),ui->listeContacts,SLOT(creerPersonne()));
+    connect(ui->actionNouveau_organisme,SIGNAL(triggered()),ui->listeContacts,SLOT(creerOrganisme()));
     cacherContact();
     ui->horizontalLayout->setStretch(1,1);
     ui->horizontalLayout->setStretch(2,1);

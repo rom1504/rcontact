@@ -20,6 +20,7 @@ Controleur::Controleur(QObject *parent) :
     Enum::remplirEnums();
     mContacts=new Contacts();
     mContactsEntier=mContacts;
+    Card::mContacts=mContactsEntier;
     ModeleListeContacts * modeleListeContacts=new ModeleListeContacts(*mContacts);
     mVue.setModeleListeContacts(modeleListeContacts);
     connect(&mVue,SIGNAL(contactActive(int)),this,SLOT(afficherContact(int)));

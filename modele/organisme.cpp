@@ -1,6 +1,7 @@
 #include "organisme.h"
 #include <QPixmap>
 #include "image.h"
+#include "membre.h"
 
 Organisme::Organisme(QObject * parent) : Contact(parent)
 {
@@ -51,10 +52,10 @@ Champ* Organisme::logo(const QString url, const QString type)
 
 Champ* Organisme::membre(const QString fonction, QString card)
 {
-    Structure * structure=new Structure();
-    structure->ajouterChamp(tr("card"),new Card(false,card));
-    structure->ajouterChamp(tr("fonction"),new Texte(fonction));
-    return structure;
+    Membre * membre=new Membre();
+    membre->ajouterChamp(tr("card"),new Card(false,card));
+    membre->ajouterChamp(tr("fonction"),new Texte(fonction));
+    return membre;
 }
 
 

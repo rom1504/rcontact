@@ -15,6 +15,14 @@ Structure::Structure(const Structure & s,QObject * parent) : Champ(parent),mCham
 
 }
 
+void essayerEncore_(Champ * c);
+
+void Structure::essayerEncore()
+{
+    QList<Champ*> vs=mChamps.values();
+    std::for_each(vs.begin(),vs.end(),essayerEncore_);
+}
+
 void Structure::ajouterChamp(const QString & nomChamp,Champ * valeurChamp)
 {
     mChamps.insert(nomChamp,valeurChamp);

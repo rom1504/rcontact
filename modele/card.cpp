@@ -23,6 +23,7 @@ QString Card::toString() const
 
 bool Card::fromString(const QString nom)
 {
+    mTempNom=nom;
     if(nom=="") return false;
     Contacts * contacts=mContacts->rechercher(new Search(nom,false,!mAppartientAUnePersonne,mAppartientAUnePersonne));
     if(contacts->nombre()>=1)
@@ -38,4 +39,9 @@ QVariant Card::image()
 {
     if(mContact!=NULL) return mContact->image();
     return QVariant();
+}
+
+void Card::essayerEncore()
+{
+    fromString(mTempNom);
 }

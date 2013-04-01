@@ -176,6 +176,7 @@ public:
      */
     static Champ* url(const QString texte="");
 
+    void essayerEncore();
 
 signals:
     /**

@@ -50,6 +50,8 @@ public:
 
     virtual QString toVCard() const;
 
+    virtual void essayerEncore();
+
     virtual ~Champ();
 
 signals:

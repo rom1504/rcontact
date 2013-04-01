@@ -52,7 +52,8 @@ SOURCES += main.cpp\
     modele/adresse.cpp \
     modele/email.cpp \
     modele/image.cpp \
-    vue/dateedit.cpp
+    vue/dateedit.cpp \
+    modele/membre.cpp
 
 HEADERS  += vue/mainwindow.h \
     modele/contacts.h \
@@ -90,7 +91,8 @@ HEADERS  += vue/mainwindow.h \
     modele/adresse.h \
     modele/email.h \
     modele/image.h \
-    vue/dateedit.h
+    vue/dateedit.h \
+    modele/membre.h
 
 FORMS    += vue/mainwindow.ui \
     vue/listecontacts.ui \

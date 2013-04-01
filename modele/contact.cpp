@@ -20,6 +20,17 @@ Contact::~Contact()
 
 }
 
+void essayerEncore_(Champ * c)
+{
+    c->essayerEncore();
+}
+
+void Contact::essayerEncore()
+{
+    QList<Champ*> vs=mChamps.values();
+    std::for_each(vs.begin(),vs.end(),essayerEncore_);
+}
+
 void Contact::remplacer(QString s,Champ * c)
 {
     mChamps.replace(s,c);

@@ -36,6 +36,8 @@ public:
 
     QVariant image();
 
+    void essayerEncore();
+
 private:
 
     /**
@@ -43,6 +45,7 @@ private:
      */
     Contact * mContact;
     bool mAppartientAUnePersonne;
+    QString mTempNom;
 
 };
 

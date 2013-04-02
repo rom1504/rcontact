@@ -29,10 +29,11 @@ QVariant ModeleListeContacts::data(const QModelIndex & index,int role) const
 void ModeleListeContacts::charger(QString nomFichier,QString type)
 {
     disconnect(&mContacts,SIGNAL(dataChanged()),this,SLOT(trier()));
-    beginResetModel();
+   // beginResetModel();
     mContacts.charger(nomFichier,type);
     mContacts.trier();
-    endResetModel();
+    //endResetModel();
+    reset();
     connect(&mContacts,SIGNAL(dataChanged()),this,SLOT(trier()));
 }
 

@@ -1,12 +1,24 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef EMAIL_H
 #define EMAIL_H
 
 #include "structureoutexte.h"
 
+/**
+ * @brief La classe Email représente un champ où l'utilisateur doit inscrire une adresse email
+ */
 class Email : public StructureOuTexte
 {
     Q_OBJECT
 public:
+
+    /**
+     * @brief Constructeur par défaut
+     */
     explicit Email(QObject *parent = 0);
 
     /**

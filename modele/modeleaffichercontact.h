@@ -1,3 +1,8 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef MODELEAFFICHERCONTACT_H
 #define MODELEAFFICHERCONTACT_H
 
@@ -84,6 +89,9 @@ public:
 signals:
 
 private slots:
+    /**
+     * @brief maj est le slot appelé lorsqu'on met à jour le modèle
+     */
     void maj();
 
 private:

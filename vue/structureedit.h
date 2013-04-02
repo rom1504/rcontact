@@ -1,3 +1,8 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef STRUCTUREEDIT_H
 #define STRUCTUREEDIT_H
 

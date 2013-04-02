@@ -1,3 +1,8 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 

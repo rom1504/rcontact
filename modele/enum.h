@@ -1,3 +1,8 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef ENUM_H
 #define ENUM_H
 
@@ -18,7 +23,9 @@ public:
      */
     Enum(const QString s="",QObject * parent=0);
 
-
+    /**
+     * @brief Constructeur de copie
+     */
     Enum(const Enum &e, QObject * parent=0);
 
     /**
@@ -83,6 +90,10 @@ public:
      */
     bool fromVariant(const QVariant v);
 
+    /**
+     * @brief image renvoie l'image associé à la valeur de l'énumération (pour afficher des images dans la liste de choix)
+     * @return Un QVariant contenant l'image du choix actuel
+     */
     QVariant image();
 
 private:
@@ -99,7 +110,9 @@ private:
      */
     static QList<QStringList> mEnumListe;
 
-
+    /**
+     * @brief mIconeEnumListe représente la liste des icones pour les choix associés
+     */
     static QList<QList<QIcon> > mIconeEnumListe;
 
     /**

@@ -1,3 +1,8 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef STRUCTURE_H
 #define STRUCTURE_H
 
@@ -16,6 +21,9 @@ public:
      */
     explicit Structure(QObject * parent=0);
 
+    /**
+     * @brief Constructeur de copie
+     */
     Structure(const Structure &s, QObject * parent=0);
     /**
      * @brief ajouterChamp ajoute un champ dans la structure.

@@ -1,8 +1,16 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef PERSONNE_H
 #define PERSONNE_H
 
 #include "contact.h"
 
+/**
+ * @brief La classe Personne représente un contact avec le template d'une personne
+ */
 class Personne : public Contact
 {
     Q_OBJECT

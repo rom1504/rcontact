@@ -1,3 +1,8 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef MODELEAFFICHERSTRUCTURE_H
 #define MODELEAFFICHERSTRUCTURE_H
 

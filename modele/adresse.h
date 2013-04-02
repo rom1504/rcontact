@@ -1,3 +1,8 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef ADRESSE_H
 #define ADRESSE_H
 
@@ -7,6 +12,9 @@ class Adresse : public StructureOuTexte
 {
     Q_OBJECT
 public:
+    /**
+     * @brief Constructeur par défaut
+     */
     explicit Adresse(QObject *parent = 0);
 
     /**

@@ -1,3 +1,8 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef CARD_H
 #define CARD_H
 
@@ -14,6 +19,11 @@ class Card : public Champ
     Q_OBJECT
 public:
 
+    /**
+     * @brief Constructeur
+     * @param appartientAUnePersonne Un booléen qui permet de savoir si la Card représente une personne ou un organisme
+     * @param nom Le nom
+     */
     Card(bool appartientAUnePersonne, QString nom="", QObject * parent=0);
 
 
@@ -35,20 +45,17 @@ public:
     /**
      * @brief mContacts contient un pointeur vers l'ensemble des contacts (nécessaire pour rechercher parmi les contact celui qui a ce nom
      */
-
     static Contacts * mContacts;
 
     /**
      * @brief image fourni une image à afficher
      * @return sous la forme d'un QVariant (QPixmap ou QIcon ou QImage)
      */
-
     QVariant image();
 
     /**
      * @brief essayerEncore permet de tenter de trouver le contact associé si on a pas réussi la première fois (nécessaire lors de l'import)
      */
-
     void essayerEncore();
 
 private:

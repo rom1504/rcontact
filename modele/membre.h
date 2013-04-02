@@ -1,3 +1,8 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef MEMBRE_H
 #define MEMBRE_H
 #include "structure.h"

@@ -1,8 +1,16 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef ORGANISME_H
 #define ORGANISME_H
 
 #include "contact.h"
 
+/**
+ * @brief La classe Organisme représente un contact avec le template d'un organisme
+ */
 class Organisme : public Contact
 {
     Q_OBJECT

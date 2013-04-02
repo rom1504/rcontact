@@ -1,3 +1,8 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef AFFICHERCONTACT_H
 #define AFFICHERCONTACT_H
 

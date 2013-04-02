@@ -1,12 +1,23 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef TEL_H
 #define TEL_H
 
 #include "structureoutexte.h"
 
+/**
+ * @brief La classe Tel représente
+ */
 class Tel : public StructureOuTexte
 {
     Q_OBJECT
 public:
+    /**
+     * @brief Constructeur par défaut
+     */
     explicit Tel(QObject *parent = 0);
     
     /**

@@ -1,3 +1,8 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef AJOUTERCHAMP_H
 #define AJOUTERCHAMP_H
 

@@ -1,3 +1,8 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef MODELELISTECONTACTS_H
 #define MODELELISTECONTACTS_H
 
@@ -41,17 +46,42 @@ public:
      */
     bool removeRows (int row, int count, const QModelIndex & parent = QModelIndex());
 
+    /**
+     * @brief ajouterContact ajoute un contact vide dans la liste
+     * @return Un pointeur vers le contact ajouté
+     */
     Contact * ajouterContact();
 
+    /**
+     * @brief ajouterPersonne ajoute un contact de type Personne dans la liste
+     * @return Un pointeur vers la personne ajoutée
+     */
     Personne * ajouterPersonne();
 
+    /**
+     * @brief ajouterOrganisme ajoute un contact de type Organisme dans la liste
+     * @return Un pointeur vers l'organisme ajouté
+     */
     Organisme * ajouterOrganisme();
 
+    /**
+     * @brief charger charge la liste de contact depuis un fichier
+     * @param nomFichier Le nom du fichier à charger
+     * @param type vCard ou XML
+     */
     void charger(QString nomFichier, QString type);
+
+    /**
+     * @brief changerTri change la manière de trier
+     * @param comp Le nouveau foncteur de comparaison pour le tri
+     */
     void changerTri(Comp *comp);
 
 
 private slots:
+    /**
+     * @brief trier est le slot qui trie la liste
+     */
     void trier();
 
 private:

@@ -1,3 +1,8 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef IMAGE_H
 #define IMAGE_H
 
@@ -6,6 +11,9 @@
 #include <QNetworkAccessManager>
 #include <QPixmap>
 
+/**
+ * @brief La classe Image représente un champ représentant une image
+ */
 class Image : public Structure
 {
     Q_OBJECT
@@ -17,6 +25,11 @@ public:
      * @return une QString contenant un format lisible du champ
      */
     QString toString() const;
+
+    /**
+     * @brief image est la conversion du champ en QVariant
+     * @return Une QVariant représentant le champ
+     */
     QVariant image();
     QString toVCard() const;
 

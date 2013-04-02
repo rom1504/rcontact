@@ -1,3 +1,8 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef CONTACT_H
 #define CONTACT_H
 
@@ -106,6 +111,11 @@ public:
      */
     const Champ* operator[](const QString s) const;
 
+    /**
+     * @brief remplacer remplace le champ appelé s par la valeur c
+     * @param s Le nom du champ à remplacer
+     * @param c La nouvelle valeur du champ
+     */
     void remplacer(QString s,Champ * c);
 
     /**
@@ -176,12 +186,28 @@ public:
      */
     static Champ* url(const QString texte="");
 
+    /**
+     * @brief essayerEncore ne fait rien
+     */
     void essayerEncore();
 
+    /**
+     * @brief toXML convertit le contact en XML
+     * @return une QString contenant la conversion
+     */
     QString toXML() const;
 
+    /**
+     * @brief toVCard convertit le contact en vCard
+     * @return une QString contenant la conversion
+     */
     QString toVCard() const;
 
+    /**
+     * @brief at renvoie le champ libelé s
+     * @param s Le nom du champ à renvoyer
+     * @return Le champ libelé s
+     */
     const Champ* at(const QString s) const;
 
 signals:

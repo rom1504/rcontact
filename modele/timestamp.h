@@ -1,3 +1,8 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef TIMESTAMP_H
 #define TIMESTAMP_H
 #include <ctime>
@@ -45,6 +50,10 @@ public:
      */
     virtual bool fromVariant(const QVariant v);
 
+    /**
+     * @brief toVCard convertit le champ en vCard
+     * @return Un QString contenant la conversion
+     */
     QString toVCard() const;
 
 private:

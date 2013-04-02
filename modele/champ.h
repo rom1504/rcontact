@@ -1,3 +1,8 @@
+/**
+  * @author Romain BEAUMOUNT
+  * @author Thomas LOURSEYRE
+  */
+
 #ifndef CHAMP_H
 #define CHAMP_H
 
@@ -65,6 +70,10 @@ public:
 
     virtual QString toVCard() const;
 
+    /**
+     * @brief toXML fait l'export en XML
+     * @return une QString qui contient le XML
+     */
     virtual QString toXML() const;
 
     /**

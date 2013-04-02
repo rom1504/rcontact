@@ -20,6 +20,50 @@ Contact::~Contact()
 
 }
 
+QString Contact::toXML() const
+{
+    QString r="";
+    QList<QString> ks=mChamps.keys();
+    QList<Champ*> vs=mChamps.values();
+    for(int i=0;i<ks.size();i++)
+    {
+        r+="<"+QString(vs[i]->metaObject()->className())+" nomChamp=\""+ks[i]+"\">\n";
+        r+=vs[i]->toXML()+"\n";
+        r+="</"+QString(vs[i]->metaObject()->className())+">";
+    }
+    return r;
+}
+
+QString parseString(QString s);
+
+QString unParseString(QString s);
+
+QString Contact::toVCard() const
+{
+    QString r="";
+    r+=QString("BEGIN:VCARD\n");
+    r+=QString("VERSION:4.0\n");
+    r+=QString("KIND:")+(QString(metaObject()->className())=="Personne" ? "individual" : "organism")+"\n";
+    const Champ * champ=NULL;
+    if((champ=at(tr("nom"))))
+    {
+        r+="FN:"+champ->toString()+"\n";
+        r+="N:"+champ->toVCard()+"\n";
+    }
+    if((champ=at(tr("adresse")))) r+="ADR:"+unParseString(champ->toVCard())+"\n";
+    if((champ=at(tr("tel")))) r+="TEL:"+champ->toVCard()+"\n";
+    if((champ=at(tr("mail")))) r+="EMAIL:"+champ->toVCard()+"\n";
+    if((champ=at(tr("date de naissance")))) r+="BDAY:"+champ->toVCard()+"\n";
+    if((champ=at(tr("url")))) r+="URL:"+champ->toVCard()+"\n";
+    if((champ=at(tr("photo")))) r+="PHOTO:"+champ->toVCard()+"\n";
+    if((champ=at(tr("organisation")))) r+="ORG:"+champ->toVCard()+"\n";
+    if((champ=at(tr("membre")))) r+="MEMBER:"+champ->toVCard()+"\n";
+    if((champ=at(tr("logo")))) r+="LOGO:"+champ->toVCard()+"\n";
+    if((champ=at(tr("note")))) r+="NOTE:"+unParseString(champ->toVCard())+"\n";
+    r+="END:VCARD\n";
+    return r;
+}
+
 void essayerEncore_(Champ * c)
 {
     c->essayerEncore();
@@ -109,9 +153,14 @@ Champ* Contact::url(const QString texte)
     return new Url(texte);
 }
 
-const Champ* Contact::operator[](const QString s) const
+const Champ* Contact::at(const QString s) const
 {
     return mChamps.value(s,NULL);
+}
+
+const Champ* Contact::operator[](const QString s) const
+{
+    return at(s);
 }
 
 Champ* Contact::creerChampFromType(const QString& type)

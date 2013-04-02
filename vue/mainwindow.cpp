@@ -90,11 +90,12 @@ void MainWindow::setModeleEditerContact ( QAbstractItemModel * model )
 void MainWindow::on_actionCharger_triggered()
 {
     QString nomFichier;
-    if((nomFichier = QFileDialog::getOpenFileName(this, tr("Ouvrir fichier"),"",tr("vCard (*.vcf)")))!="")
+    QString type=tr("vCard(*.vcf)");
+    if((nomFichier = QFileDialog::getOpenFileName(this, tr("Ouvrir fichier"),"",tr("vCard(*.vcf);;XML(*.xml)"),&type))!="")
     {
         ui->afficherContact->hide();
         ui->editerContact->hide();
-        mModelListeContacts->charger(nomFichier);
+        mModelListeContacts->charger(nomFichier,type.split("(")[0]);
     }
 }
 
@@ -118,8 +119,9 @@ void MainWindow::on_actionFinir_la_recherche_triggered()
 void MainWindow::on_actionEnregistrer_triggered()
 {
     QString nomFichier;
-    if((nomFichier = QFileDialog::getSaveFileName(this, tr("Enregistrer fichier"),"",tr("vCard (*.vcf)")))!="")
+    QString type=tr("vCard(*.vcf)");
+    if((nomFichier = QFileDialog::getSaveFileName(this, tr("Enregistrer fichier"),"",tr("vCard(*.vcf);;XML(*.xml)"),&type))!="")
     {
-        emit enregistrerContacts(nomFichier);
+        emit enregistrerContacts(nomFichier,type.split("(")[0]);
     }
 }

@@ -26,11 +26,11 @@ QVariant ModeleListeContacts::data(const QModelIndex & index,int role) const
          return QVariant();
 }
 
-void ModeleListeContacts::charger(QString nomFichier)
+void ModeleListeContacts::charger(QString nomFichier,QString type)
 {
     disconnect(&mContacts,SIGNAL(dataChanged()),this,SLOT(trier()));
     beginResetModel();
-    mContacts.charger(nomFichier);
+    mContacts.charger(nomFichier,type);
     mContacts.trier();
     endResetModel();
     connect(&mContacts,SIGNAL(dataChanged()),this,SLOT(trier()));

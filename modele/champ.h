@@ -65,6 +65,8 @@ public:
 
     virtual QString toVCard() const;
 
+    virtual QString toXML() const;
+
     /**
      * @brief essayerEncore méthode à appeler si quelque chose doit être réésayé (utilisé en particulier dans Card)
      */

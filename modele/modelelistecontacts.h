@@ -47,7 +47,7 @@ public:
 
     Organisme * ajouterOrganisme();
 
-    void charger(QString nomFichier);
+    void charger(QString nomFichier, QString type);
     void changerTri(Comp *comp);
 
 

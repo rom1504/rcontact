@@ -178,6 +178,12 @@ public:
 
     void essayerEncore();
 
+    QString toXML() const;
+
+    QString toVCard() const;
+
+    const Champ* at(const QString s) const;
+
 signals:
     /**
      * @brief dataChanged est un signal déclenché quand un donnée du contact a été modifiées

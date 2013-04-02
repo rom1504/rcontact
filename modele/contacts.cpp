@@ -10,6 +10,12 @@
 #include <iterator>
 #include "search.h"
 #include "email.h"
+#include "adresse.h"
+#include "nom.h"
+#include "tel.h"
+#include "image.h"
+#include "membre.h"
+#include <QDomElement>
 
 Contacts::Contacts(QObject *parent) :
     QObject(parent)
@@ -78,7 +84,76 @@ void essayerEncore(Contact * c)
     c->essayerEncore();
 }
 
-void Contacts::charger(QString nomFichier)
+void Contacts::charger(QString nomFichier, QString type)
+{
+    if(type=="vCard") chargerVCard(nomFichier);
+    else if(type=="XML") chargerXML(nomFichier);
+}
+
+Champ * qDomElementToChamp(QDomElement & unElement,bool dansPersonne)
+{
+    Champ * champ=NULL;
+    Structure * structure=NULL;
+    if(unElement.tagName() == "Adresse") structure=new Adresse();
+    else if(unElement.tagName() == "Card") champ=new Card(dansPersonne);
+    else if(unElement.tagName() == "Email") structure=new Email();
+    else if(unElement.tagName() == "Enum") champ=new Enum();
+    else if(unElement.tagName() == "Image") structure=new Image();
+    else if(unElement.tagName() == "Loc") champ=new Loc();
+    else if(unElement.tagName() == "Membre") structure=new Membre();
+    else if(unElement.tagName() == "Nom") structure=new Nom();
+    else if(unElement.tagName() == "Structure") structure=new Structure();
+    else if(unElement.tagName() == "Tel") structure=new Tel();
+    else if(unElement.tagName() == "Texte") champ=new Texte();
+    else if(unElement.tagName() == "Timestamp") champ=new Timestamp();
+    else if(unElement.tagName() == "Url") champ=new Url();
+
+    if(unElement.tagName() == "Adresse" || unElement.tagName() == "Email" || unElement.tagName() == "Image"
+        || unElement.tagName() == "Membre"  || unElement.tagName() == "Nom" || unElement.tagName() == "Tel" || unElement.tagName() == "Structure")
+    {
+        QDomElement unElement2 = unElement.firstChildElement();
+        while(!unElement2.isNull())
+        {
+            structure->ajouterChamp(unElement2.attribute("nomChamp"),qDomElementToChamp(unElement2,dansPersonne));
+            unElement2 = unElement2.nextSiblingElement();
+        }
+        champ=structure;
+    }
+    else champ->fromString(unElement.text().trimmed());
+    return champ;
+}
+
+void Contacts::chargerXML(QString nomFichier)
+{
+    mContacts.clear();
+    QFile fichier(nomFichier);
+    fichier.open(QFile::ReadOnly | QFile::Text);
+    QDomDocument doc;
+    doc.setContent(&fichier, false);
+    QDomElement racine = doc.documentElement();
+    racine = racine.firstChildElement();
+
+    while(!racine.isNull())
+    {
+        Contact * contact=NULL;
+        if(racine.tagName() == "Personne") contact=new Personne();
+        else if(racine.tagName() == "Organisme") contact=new Organisme();
+
+        QDomElement unElement = racine.firstChildElement();
+        while(!unElement.isNull())
+        {
+            contact->ajouterChamp(unElement.attribute("nomChamp"),qDomElementToChamp(unElement,racine.tagName() == "Personne"));
+            unElement = unElement.nextSiblingElement();
+        }
+        racine = racine.nextSiblingElement();
+        ajouterContact(contact);
+        contact=NULL;
+    }
+    std::for_each(mContacts.begin(),mContacts.end(),essayerEncore);
+    fichier.close();
+}
+
+void Contacts::chargerVCard(QString nomFichier)
 {
 
     mContacts.clear();
@@ -162,37 +237,38 @@ void Contacts::charger(QString nomFichier)
 }
 
 
-void Contacts::enregistrer(QString nomFichier) const
+void Contacts::enregistrer(QString nomFichier,QString type) const
+{
+    if(type=="vCard") enregistrerEnVCard(nomFichier);
+    else if(type=="XML") enregistrerEnXML(nomFichier);
+}
+
+void Contacts::enregistrerEnXML(QString nomFichier) const
 {
     QFile fichier(nomFichier);
     fichier.open(QIODevice::WriteOnly | QIODevice::Text);
     QTextStream flux(&fichier);
+    flux<<"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+    flux<<"<Contacts>\n";
     for (int i = 0; i < mContacts.size(); ++i)
     {
-        flux<<"BEGIN:VCARD\n";
-        flux<<"VERSION:4.0\n";
-        Contact * contact=mContacts[i];
-        flux<<"KIND:"<<(QString(contact->metaObject()->className())=="Personne" ? "individual" : "organism")<<"\n";
-        const Champ * champ=NULL;
-        if((champ=(*contact)[tr("nom")]))
-        {
-            flux<<"FN:"<<champ->toString()<<"\n";
-            flux<<"N:"<<champ->toVCard()<<"\n";
-        }
-        if((champ=(*contact)[tr("adresse")])) flux<<"ADR:"<<unParseString(champ->toVCard())<<"\n";
-        if((champ=(*contact)[tr("tel")])) flux<<"TEL:"<<champ->toVCard()<<"\n";
-        if((champ=(*contact)[tr("mail")])) flux<<"EMAIL:"<<champ->toVCard()<<"\n";
-        if((champ=(*contact)[tr("date de naissance")])) flux<<"BDAY:"<<champ->toVCard()<<"\n";
-        if((champ=(*contact)[tr("url")])) flux<<"URL:"<<champ->toVCard()<<"\n";
-        if((champ=(*contact)[tr("photo")]))flux<<"PHOTO:"<<champ->toVCard()<<"\n";
-        if((champ=(*contact)[tr("organisation")]))flux<<"ORG:"<<champ->toVCard()<<"\n";
-        if((champ=(*contact)[tr("membre")]))flux<<"MEMBER:"<<champ->toVCard()<<"\n";
-        if((champ=(*contact)[tr("logo")]))flux<<"LOGO:"<<champ->toVCard()<<"\n";
-        if((champ=(*contact)[tr("note")])) flux<<"NOTE:"<<unParseString(champ->toVCard())<<"\n";
-        flux<<"END:VCARD\n";
+        flux<<"<"+QString(mContacts[i]->metaObject()->className())+">\n";
+        flux<<mContacts[i]->toXML()+"\n";
+        flux<<"</"+QString(mContacts[i]->metaObject()->className())+">\n";
     }
+    flux<<"</Contacts>\n";
     fichier.close();
 }
+
+void Contacts::enregistrerEnVCard(QString nomFichier) const
+{
+    QFile fichier(nomFichier);
+    fichier.open(QIODevice::WriteOnly | QIODevice::Text);
+    QTextStream flux(&fichier);
+    for (int i = 0; i < mContacts.size(); ++i) flux<<mContacts[i]->toVCard();
+    fichier.close();
+}
+
 
 
 void Contacts::trier()

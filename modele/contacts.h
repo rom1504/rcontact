@@ -50,10 +50,24 @@ public:
     int nombre() const;
 
     /**
+     * @brief charger charge un contact à partir d'un fichier au format voulu
+     * @param nomFichier Le nom du fichier contenant les informations de la liste de contacts à charger
+     */
+    void charger(QString nomFichier,QString type);
+
+
+    /**
      * @brief charger charge un contact à partir d'un fichier au format vCard
      * @param nomFichier Le nom du fichier contenant les informations de la liste de contacts à charger
      */
-    void charger(QString nomFichier);
+    void chargerVCard(QString nomFichier);
+
+
+    /**
+     * @brief charger charge un contact à partir d'un fichier au format XML
+     * @param nomFichier Le nom du fichier contenant les informations de la liste de contacts à charger
+     */
+    void chargerXML(QString nomFichier);
 
 
 
@@ -66,6 +80,18 @@ public:
      */
     Contact * operator[](const int n) const;
 
+    /**
+     * @brief enregistrerEnVCard sauvegarde un contact au format vCard dans un fichier
+     * @param nomFichier Le nom du fichier dans lequel on souhaite sauvegarder la liste de contacts
+     */
+    void enregistrerEnVCard(QString nomFichier) const;
+
+    /**
+     * @brief enregistrerEnVCard sauvegarde un contact au format XML dans un fichier
+     * @param nomFichier Le nom du fichier dans lequel on souhaite sauvegarder la liste de contacts
+     */
+    void enregistrerEnXML(QString nomFichier) const;
+
 public slots:
     /**
      * @brief trier Trie les contacts de la liste, selon ordre et critère
@@ -73,10 +99,14 @@ public slots:
     void trier();
 
     /**
-     * @brief enregistrer sauvegarde un contact au format vCard dans un fichier
+     * @brief enregistrer sauvegarde un contact au format voulu dans un fichier
      * @param nomFichier Le nom du fichier dans lequel on souhaite sauvegarder la liste de contacts
+     * @param type type du fichier à enregistrer
      */
-    void enregistrer(QString nomFichier) const;
+    void enregistrer(QString nomFichier, QString type) const;
+
+
+
 
 
 private:

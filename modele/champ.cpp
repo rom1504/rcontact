@@ -1,4 +1,5 @@
 #include "champ.h"
+#include <QTextDocument>
 
 Champ::~Champ() {}
 
@@ -35,4 +36,9 @@ QString Champ::toVCard() const
 void Champ::essayerEncore()
 {
 
+}
+
+QString Champ::toXML() const
+{
+    return Qt::escape(toString());
 }

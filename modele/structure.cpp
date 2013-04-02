@@ -15,6 +15,20 @@ Structure::Structure(const Structure & s,QObject * parent) : Champ(parent),mCham
 
 }
 
+QString Structure::toXML() const
+{
+    QString r="";
+    QList<QString> ks=mChamps.keys();
+    QList<Champ*> vs=mChamps.values();
+    for(int i=0;i<ks.size();i++)
+    {
+        r+="<"+QString(vs[i]->metaObject()->className())+" nomChamp=\""+ks[i]+"\">\n";
+        r+=vs[i]->toXML()+"\n";
+        r+="</"+QString(vs[i]->metaObject()->className())+">\n";
+    }
+    return r;
+}
+
 void essayerEncore_(Champ * c);
 
 void Structure::essayerEncore()

@@ -39,7 +39,7 @@ signals:
     void contactEdite(const int index);
     void rechercherContacts(Search * search);
     void finirLaRecherche();
-    void enregistrerContacts(QString nomFichier);
+    void enregistrerContacts(QString nomFichier,QString type);
     
 private:
     Ui::MainWindow *ui;

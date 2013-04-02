@@ -84,6 +84,8 @@ public:
 
     void essayerEncore();
 
+    QString toXML() const;
+
 
 protected:
     void vider();

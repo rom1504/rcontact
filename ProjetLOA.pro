@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network
+QT       += core gui network xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -14,7 +14,6 @@ OBJECTS_DIR = temp/
 MOC_DIR = $$OBJECTS_DIR
 RCC_DIR = $$OBJECTS_DIR
 UI_DIR = $$OBJECTS_DIR
-
 
 SOURCES += main.cpp\
         vue/mainwindow.cpp \

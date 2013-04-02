@@ -3,6 +3,7 @@
 #include <QUrl>
 #include <QDebug>
 #include <QNetworkReply>
+#include <QNetworkProxy>
 
 Image::Image(QObject *parent) :
     Structure(parent)
@@ -27,11 +28,14 @@ void Image::chargerImage()
     QString urls;
     if((urls=avoirChamp("url"))!="")
     {
+        QNetworkAccessManager * m_netwManager;
         m_netwManager = new QNetworkAccessManager(this);
+        m_netwManager->setProxy(QNetworkProxy(QNetworkProxy::DefaultProxy));
         connect(m_netwManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(slot_netwManagerFinished(QNetworkReply*)));
 
         QUrl url(urls);
         QNetworkRequest request(url);
+        //  QSslSocket::setProtocol(QSsl::SslV3);
         m_netwManager->get(request);
     }
 }

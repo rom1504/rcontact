@@ -48,7 +48,7 @@
      <x>0</x>
      <y>0</y>
      <width>992</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
@@ -84,6 +84,7 @@
    <addaction name="actionNouveau_organisme"/>
    <addaction name="actionCharger"/>
    <addaction name="actionEnregistrer"/>
+   <addaction name="actionTrier"/>
    <addaction name="actionRechercher"/>
    <addaction name="actionFinir_la_recherche"/>
    <addaction name="actionSupprimer"/>
@@ -94,50 +95,72 @@
    <property name="text">
     <string>Nouveau personne</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
   </action>
   <action name="actionCharger">
    <property name="text">
     <string>Charger</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="actionEnregistrer">
    <property name="text">
     <string>Enregistrer</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
   </action>
   <action name="actionRechercher">
    <property name="text">
     <string>Rechercher</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
    </property>
   </action>
   <action name="actionSupprimer">
    <property name="text">
     <string>Supprimer</string>
    </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
   </action>
   <action name="actionQuitter">
    <property name="text">
     <string>Quitter</string>
    </property>
-  </action>
-  <action name="actionTrier_par">
-   <property name="text">
-    <string>Trier par</string>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
    </property>
   </action>
   <action name="actionTrier">
    <property name="text">
     <string>Trier</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
+   </property>
   </action>
   <action name="actionFinir_la_recherche">
    <property name="text">
     <string>Finir la recherche</string>
    </property>
+   <property name="shortcut">
+    <string>Backspace</string>
+   </property>
   </action>
   <action name="actionNouveau_organisme">
    <property name="text">
     <string>Nouveau organisme</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+N</string>
    </property>
   </action>
  </widget>

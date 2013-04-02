@@ -5,9 +5,7 @@
 #include <QLibraryInfo>
 #include <iostream>
 #include <QNetworkProxy>
-#include <QSslSocket>
-#include <QSslConfiguration>
-#include <QSslCipher>
+#include <QProcess>
 
 int main(int argc, char *argv[])
 {
@@ -26,12 +24,19 @@ int main(int argc, char *argv[])
      translator.load(QString(":/ProjetLOA_") + locale);
      a.installTranslator(&translator);
      QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
-     //QSslConfiguration config;
-    // config.setProtocol(QSsl::SslV3);
-    // config.setCiphers(QSslSocket::supportedCiphers());
 
-    // QSslConfiguration::setDefaultConfiguration(config);
-    // QNetworkProxy::setApplicationProxy (QNetworkProxy(QNetworkProxy::HttpProxy,"http-proxy.ensiie.fr",3128));
+     QStringList environment = QProcess::systemEnvironment();
+     QString proxy="";
+     for(int i=0;i<environment.size();i++)
+     {
+         QStringList l=environment[i].split("=");
+         if(l[0]=="http_proxy") proxy=l.length()>=2 ? l[1] : "";
+     }
+     if(proxy!="")
+     {
+         QStringList l2=proxy.split(":");
+         QNetworkProxy::setApplicationProxy (QNetworkProxy(QNetworkProxy::HttpProxy,l2[0],l2.length()>=2 ? l2[1].toInt() : 3128));
+     }
 
     Controleur c;
     c.run();

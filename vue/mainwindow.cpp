@@ -33,16 +33,16 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     ui->setupUi(this);
-    setWindowIcon(QIcon::fromTheme("preferences-desktop-personal",QIcon(":icones/gestionnaire_contact.png")));
-    ui->actionNouvelle_personne->setIcon(QIcon::fromTheme("contact-new",QIcon(":/icones/ajouter.png")));
+    setWindowIcon(/*QIcon::fromTheme("preferences-desktop-personal",*/QIcon(":icones/gestionnaire_contact.png")/*)*/);
+    ui->actionNouvelle_personne->setIcon(/*QIcon::fromTheme("contact-new",*/QIcon(":/icones/ajouter.png")/*)*/);
     ui->actionNouveau_organisme->setIcon(QIcon(":/icones/ajouterOrganisme.png"));
-    ui->actionCharger->setIcon(QIcon::fromTheme("document-open",QIcon(":/icones/ouvrir.png")));
-    ui->actionEnregistrer->setIcon(QIcon::fromTheme("document-save-as",QIcon(":/icones/enregistrer.png")));
-    ui->actionRechercher->setIcon(QIcon::fromTheme("edit-find",QIcon(":/icones/rechercher.png")));
-    ui->actionSupprimer->setIcon(QIcon::fromTheme("edit-delete",QIcon(":/icones/supprimer.png")));
-    ui->actionQuitter->setIcon(QIcon::fromTheme("application-exit",QIcon(":/icones/quitter.png")));
-    ui->actionFinir_la_recherche->setIcon(QIcon::fromTheme("go-previous",QIcon(":/icones/precedent.png")));
-    ui->actionTrier->setIcon(QIcon::fromTheme("view-sort-ascending",QIcon(":/icones/trier.png")));
+    ui->actionCharger->setIcon(/*QIcon::fromTheme("document-open",*/QIcon(":/icones/ouvrir.png")/*)*/);
+    ui->actionEnregistrer->setIcon(/*QIcon::fromTheme("document-save-as",*/QIcon(":/icones/enregistrer.png")/*)*/);
+    ui->actionRechercher->setIcon(/*QIcon::fromTheme("edit-find",*/QIcon(":/icones/rechercher.png")/*)*/);
+    ui->actionSupprimer->setIcon(/*QIcon::fromTheme("edit-delete",*/QIcon(":/icones/supprimer.png")/*)*/);
+    ui->actionQuitter->setIcon(/*QIcon::fromTheme("application-exit",*/QIcon(":/icones/quitter.png")/*)*/);
+    ui->actionFinir_la_recherche->setIcon(/*QIcon::fromTheme("go-previous",*/QIcon(":/icones/precedent.png")/*)*/);
+    ui->actionTrier->setIcon(/*QIcon::fromTheme("view-sort-ascending",*/QIcon(":/icones/trier.png")/*)*/);
 
     connect(ui->listeContacts,SIGNAL(contactActive(int)),this,SIGNAL(contactActive(int)));
     connect(ui->listeContacts,SIGNAL(contactEdite(int)),this,SIGNAL(contactEdite(int)));

@@ -22,5 +22,6 @@
         <file>icones/web.png</file>
         <file>icones/work.png</file>
         <file>icones/ajouterOrganisme.png</file>
+        <file>icones/nouvelleListe.png</file>
     </qresource>
 </RCC>

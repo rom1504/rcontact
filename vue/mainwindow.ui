@@ -55,6 +55,7 @@
     <property name="title">
      <string>Fichier</string>
     </property>
+    <addaction name="actionNouvelle_liste"/>
     <addaction name="actionNouvelle_personne"/>
     <addaction name="actionNouveau_organisme"/>
     <addaction name="actionCharger"/>
@@ -80,6 +81,7 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionNouvelle_liste"/>
    <addaction name="actionNouvelle_personne"/>
    <addaction name="actionNouveau_organisme"/>
    <addaction name="actionCharger"/>
@@ -96,7 +98,7 @@
     <string>Nouveau personne</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+N</string>
+    <string>Ctrl+T</string>
    </property>
   </action>
   <action name="actionCharger">
@@ -144,7 +146,7 @@
     <string>Trier</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+T</string>
+    <string>Ctrl+R</string>
    </property>
   </action>
   <action name="actionFinir_la_recherche">
@@ -160,7 +162,15 @@
     <string>Nouveau organisme</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+N</string>
+    <string>Ctrl+Shift+T</string>
+   </property>
+  </action>
+  <action name="actionNouvelle_liste">
+   <property name="text">
+    <string>Nouvelle liste</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
    </property>
   </action>
  </widget>

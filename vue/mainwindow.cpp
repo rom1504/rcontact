@@ -43,6 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionQuitter->setIcon(/*QIcon::fromTheme("application-exit",*/QIcon(":/icones/quitter.png")/*)*/);
     ui->actionFinir_la_recherche->setIcon(/*QIcon::fromTheme("go-previous",*/QIcon(":/icones/precedent.png")/*)*/);
     ui->actionTrier->setIcon(/*QIcon::fromTheme("view-sort-ascending",*/QIcon(":/icones/trier.png")/*)*/);
+    ui->actionNouvelle_liste->setIcon(QIcon(":/icones/nouvelleListe.png"));
 
     connect(ui->listeContacts,SIGNAL(contactActive(int)),this,SIGNAL(contactActive(int)));
     connect(ui->listeContacts,SIGNAL(contactEdite(int)),this,SIGNAL(contactEdite(int)));
@@ -124,4 +125,10 @@ void MainWindow::on_actionEnregistrer_triggered()
     {
         emit enregistrerContacts(nomFichier,type.split("(")[0]);
     }
+}
+
+void MainWindow::on_actionNouvelle_liste_triggered()
+{
+    mModelListeContacts->vider();
+   cacherContact();
 }

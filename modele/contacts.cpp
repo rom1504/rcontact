@@ -123,6 +123,11 @@ Champ * qDomElementToChamp(QDomElement & unElement,bool dansPersonne)
     return champ;
 }
 
+void Contacts::vider()
+{
+    mContacts.clear();
+}
+
 void Contacts::chargerXML(QString nomFichier)
 {
     mContacts.clear();

@@ -77,6 +77,13 @@ public:
      */
     void changerTri(Comp *comp);
 
+    /**
+     * @brief vider vide la liste de contacts
+     */
+
+    void vider();
+
+
 
 private slots:
     /**

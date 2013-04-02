@@ -54,6 +54,12 @@ void ModeleListeContacts::changerTri(Comp * comp)
    // endResetModel();
 }
 
+void ModeleListeContacts::vider()
+{
+    mContacts.vider();
+    reset();
+}
+
 int ModeleListeContacts::rowCount ( const QModelIndex & ) const
 {
     return mContacts.nombre();

@@ -75,6 +75,8 @@ private slots:
      */
     void on_actionEnregistrer_triggered();
 
+    void on_actionNouvelle_liste_triggered();
+
 signals:
     /**
      * @brief contactActive est le signal déclenché lorsqu'on sélectionne un contact dans la liste

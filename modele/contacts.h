@@ -62,6 +62,11 @@ public:
 
 
     /**
+     * @brief vider vide la liste de contact
+     */
+    void vider();
+
+    /**
      * @brief charger charge un contact à partir d'un fichier au format vCard
      * @param nomFichier Le nom du fichier contenant les informations de la liste de contacts à charger
      */

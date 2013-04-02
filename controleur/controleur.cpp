@@ -28,7 +28,7 @@ Controleur::Controleur(QObject *parent) :
     connect(&mVue,SIGNAL(rechercherContacts(Search *)),this,SLOT(rechercherContacts(Search *)));
     connect(&mVue,SIGNAL(finirLaRecherche()),this,SLOT(finirLaRecherche()));
     connect(&mVue,SIGNAL(enregistrerContacts(QString,QString)),mContacts,SLOT(enregistrer(QString,QString)));
-   // modeleListeContacts->charger("exemple.vcf","vCard");
+   modeleListeContacts->charger("exemple.vcf","vCard");
 
     // exemples (voués à disparaitre grâce à l'ajout et à l'import)
 //    Texte * valeur1=new Texte("valeur1");

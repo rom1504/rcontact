@@ -18,6 +18,10 @@ class Image : public Structure
 {
     Q_OBJECT
 public:
+
+    /**
+     * @brief Constructeur par défaut
+     */
     explicit Image(QObject *parent = 0);
 
     /**

@@ -78,12 +78,12 @@
     </message>
     <message>
         <location filename="vue/ajouterchamp.cpp" line="11"/>
-        <location filename="vue/ajouterchamp.cpp" line="14"/>
+        <location filename="vue/ajouterchamp.cpp" line="16"/>
         <source>nom</source>
         <translation>name</translation>
     </message>
     <message>
-        <location filename="vue/ajouterchamp.cpp" line="11"/>
+        <location filename="vue/ajouterchamp.cpp" line="12"/>
         <source>sexe</source>
         <translation>sex</translation>
     </message>
@@ -109,13 +109,28 @@
     </message>
     <message>
         <location filename="vue/ajouterchamp.cpp" line="11"/>
+        <source>date</source>
+        <translation>date</translation>
+    </message>
+    <message>
+        <location filename="vue/ajouterchamp.cpp" line="12"/>
         <source>photo</source>
         <translation>photo</translation>
     </message>
     <message>
-        <location filename="vue/ajouterchamp.cpp" line="11"/>
+        <location filename="vue/ajouterchamp.cpp" line="12"/>
         <source>organisation</source>
         <translation>organisation</translation>
+    </message>
+    <message>
+        <location filename="vue/ajouterchamp.cpp" line="13"/>
+        <source>logo</source>
+        <translation>logo</translation>
+    </message>
+    <message>
+        <location filename="vue/ajouterchamp.cpp" line="13"/>
+        <source>membre</source>
+        <translation>member</translation>
     </message>
     <message>
         <location filename="vue/ajouterchamp.cpp" line="11"/>
@@ -123,9 +138,8 @@
         <translation>type</translation>
     </message>
     <message>
-        <location filename="vue/ajouterchamp.cpp" line="11"/>
         <source>date MAJ</source>
-        <translation>date MAJ</translation>
+        <translation type="obsolete">date MAJ</translation>
     </message>
     <message>
         <location filename="vue/ajouterchamp.cpp" line="11"/>
@@ -136,132 +150,171 @@
 <context>
     <name>Contact</name>
     <message>
-        <location filename="modele/contact.cpp" line="44"/>
-        <location filename="modele/contact.cpp" line="54"/>
-        <location filename="modele/contact.cpp" line="76"/>
-        <location filename="modele/contact.cpp" line="121"/>
+        <location filename="modele/contact.cpp" line="110"/>
+        <location filename="modele/contact.cpp" line="120"/>
+        <location filename="modele/contact.cpp" line="142"/>
+        <location filename="modele/contact.cpp" line="192"/>
         <source>type</source>
         <translation>type</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="45"/>
+        <location filename="modele/contact.cpp" line="111"/>
         <source>type tel</source>
         <translation>type tel</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="46"/>
+        <location filename="modele/contact.cpp" line="112"/>
         <source>type données</source>
         <translation>type data</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="47"/>
+        <location filename="modele/contact.cpp" line="113"/>
         <source>n°</source>
         <translation>n°</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="55"/>
+        <location filename="modele/contact.cpp" line="121"/>
         <source>rue</source>
         <translation>road</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="56"/>
+        <location filename="modele/contact.cpp" line="122"/>
         <source>zipcode</source>
         <translation>zipcode</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="57"/>
+        <location filename="modele/contact.cpp" line="123"/>
         <source>localité</source>
         <translation>locality</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="58"/>
+        <location filename="modele/contact.cpp" line="124"/>
         <source>Région</source>
         <translation>region</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="59"/>
+        <location filename="modele/contact.cpp" line="125"/>
         <source>pays</source>
         <translation>country</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="60"/>
+        <location filename="modele/contact.cpp" line="126"/>
         <source>geo</source>
         <translation>geo</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="67"/>
-        <location filename="modele/contact.cpp" line="150"/>
-        <location filename="modele/contact.cpp" line="160"/>
+        <location filename="modele/contact.cpp" line="193"/>
+        <source>date</source>
+        <translation>date</translation>
+    </message>
+    <message>
+        <location filename="modele/contact.cpp" line="48"/>
+        <location filename="modele/contact.cpp" line="133"/>
+        <location filename="modele/contact.cpp" line="221"/>
+        <location filename="modele/contact.cpp" line="231"/>
         <source>nom</source>
         <translation>name</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="68"/>
+        <location filename="modele/contact.cpp" line="55"/>
+        <source>mail</source>
+        <translation>mail</translation>
+    </message>
+    <message>
+        <location filename="modele/contact.cpp" line="56"/>
+        <source>date de naissance</source>
+        <translation>birthday</translation>
+    </message>
+    <message>
+        <location filename="modele/contact.cpp" line="58"/>
+        <source>photo</source>
+        <translation>photo</translation>
+    </message>
+    <message>
+        <location filename="modele/contact.cpp" line="59"/>
+        <source>organisation</source>
+        <translation>organization</translation>
+    </message>
+    <message>
+        <location filename="modele/contact.cpp" line="60"/>
+        <source>membre</source>
+        <translation>member</translation>
+    </message>
+    <message>
+        <location filename="modele/contact.cpp" line="61"/>
+        <source>logo</source>
+        <translation>logo</translation>
+    </message>
+    <message>
+        <location filename="modele/contact.cpp" line="134"/>
         <source>domaine</source>
         <translation>domain</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="69"/>
+        <location filename="modele/contact.cpp" line="135"/>
         <source>extension</source>
         <translation>extension</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="77"/>
+        <location filename="modele/contact.cpp" line="57"/>
+        <location filename="modele/contact.cpp" line="143"/>
         <source>url</source>
         <translation>url</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="117"/>
+        <location filename="modele/contact.cpp" line="54"/>
+        <location filename="modele/contact.cpp" line="188"/>
         <source>tel</source>
         <translation>tel</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="118"/>
+        <location filename="modele/contact.cpp" line="53"/>
+        <location filename="modele/contact.cpp" line="189"/>
         <source>adresse</source>
         <translation>adress</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="119"/>
+        <location filename="modele/contact.cpp" line="190"/>
         <source>email</source>
         <translation>email</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="120"/>
+        <location filename="modele/contact.cpp" line="191"/>
         <source>site</source>
         <translation>site</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="122"/>
         <source>date MAJ</source>
-        <translation>date MAJ</translation>
+        <translation type="obsolete">date MAJ</translation>
     </message>
     <message>
-        <location filename="modele/contact.cpp" line="123"/>
+        <location filename="modele/contact.cpp" line="62"/>
+        <location filename="modele/contact.cpp" line="194"/>
         <source>note</source>
         <translation>note</translation>
     </message>
     <message>
-        <location filename="modele/contact.h" line="119"/>
+        <location filename="modele/contact.h" line="129"/>
         <source>work</source>
         <translation>work</translation>
     </message>
     <message>
-        <location filename="modele/contact.h" line="119"/>
+        <location filename="modele/contact.h" line="129"/>
         <source>fixe</source>
         <translation>landline</translation>
     </message>
     <message>
-        <location filename="modele/contact.h" line="119"/>
+        <location filename="modele/contact.h" line="129"/>
         <source>voice</source>
         <translation>voice</translation>
     </message>
     <message>
-        <location filename="modele/contact.h" line="132"/>
+        <location filename="modele/contact.h" line="142"/>
         <source>home</source>
         <translation>home</translation>
     </message>
     <message>
-        <location filename="modele/contact.h" line="149"/>
+        <location filename="modele/contact.h" line="159"/>
         <source>web</source>
         <translation>web</translation>
     </message>
@@ -269,45 +322,60 @@
 <context>
     <name>Contacts</name>
     <message>
-        <location filename="modele/contacts.cpp" line="17"/>
-        <location filename="modele/contacts.cpp" line="95"/>
-        <location filename="modele/contacts.cpp" line="99"/>
-        <location filename="modele/contacts.cpp" line="105"/>
+        <location filename="modele/contacts.cpp" line="23"/>
+        <location filename="modele/contacts.cpp" line="200"/>
+        <location filename="modele/contacts.cpp" line="207"/>
+        <location filename="modele/contacts.cpp" line="214"/>
         <source>nom</source>
         <translation>name</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="100"/>
+        <location filename="modele/contacts.cpp" line="209"/>
         <source>adresse</source>
         <translation>adress</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="104"/>
+        <location filename="modele/contacts.cpp" line="213"/>
         <source>note</source>
         <translation>note</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="109"/>
+        <location filename="modele/contacts.cpp" line="218"/>
         <source>tel</source>
         <translation>tel</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="110"/>
+        <location filename="modele/contacts.cpp" line="219"/>
         <source>photo</source>
         <translation>photo</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="115"/>
+        <location filename="modele/contacts.cpp" line="220"/>
+        <source>logo</source>
+        <translation>logo</translation>
+    </message>
+    <message>
+        <location filename="modele/contacts.cpp" line="221"/>
+        <source>organisation</source>
+        <translation>organization</translation>
+    </message>
+    <message>
+        <location filename="modele/contacts.cpp" line="222"/>
+        <source>membre</source>
+        <translation>member</translation>
+    </message>
+    <message>
+        <location filename="modele/contacts.cpp" line="227"/>
         <source>mail</source>
         <translation>mail</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="117"/>
+        <location filename="modele/contacts.cpp" line="229"/>
         <source>date de naissance</source>
         <translation>birthday</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="119"/>
+        <location filename="modele/contacts.cpp" line="231"/>
         <source>url</source>
         <translation>url</translation>
     </message>
@@ -562,86 +630,118 @@
         <translation>Cards</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="63"/>
+        <location filename="vue/mainwindow.ui" line="56"/>
         <source>Fichier</source>
         <translation>File</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="73"/>
+        <location filename="vue/mainwindow.ui" line="67"/>
         <source>Edition</source>
         <translation>Edit</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="100"/>
         <source>Nouveau contact</source>
-        <translation>New contact</translation>
+        <translation type="obsolete">New contact</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="105"/>
+        <location filename="vue/mainwindow.ui" line="95"/>
+        <source>Nouveau personne</source>
+        <translation>New person</translation>
+    </message>
+    <message>
+        <location filename="vue/mainwindow.ui" line="100"/>
         <source>Charger</source>
         <translation>Load</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="110"/>
+        <location filename="vue/mainwindow.ui" line="105"/>
         <source>Enregistrer</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="115"/>
+        <location filename="vue/mainwindow.ui" line="110"/>
         <source>Rechercher</source>
         <translation>Search</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="120"/>
+        <location filename="vue/mainwindow.ui" line="115"/>
         <source>Supprimer</source>
         <translation>Remove</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="125"/>
+        <location filename="vue/mainwindow.ui" line="120"/>
         <source>Quitter</source>
         <translation>Quit</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="130"/>
+        <location filename="vue/mainwindow.ui" line="125"/>
         <source>Trier par</source>
         <translation>Sort by</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="135"/>
+        <location filename="vue/mainwindow.ui" line="130"/>
         <source>Trier</source>
         <translation>Sort</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="140"/>
+        <location filename="vue/mainwindow.ui" line="135"/>
         <source>Finir la recherche</source>
         <translation>End search</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.cpp" line="90"/>
+        <location filename="vue/mainwindow.ui" line="140"/>
+        <source>Nouveau organisme</source>
+        <translation>New organization</translation>
+    </message>
+    <message>
+        <location filename="vue/mainwindow.cpp" line="93"/>
+        <location filename="vue/mainwindow.cpp" line="122"/>
+        <source>vCard(*.vcf)</source>
+        <translation>vCard(*.vcf)</translation>
+    </message>
+    <message>
+        <location filename="vue/mainwindow.cpp" line="94"/>
         <source>Ouvrir fichier</source>
         <translation>Open file</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.cpp" line="90"/>
-        <location filename="vue/mainwindow.cpp" line="118"/>
-        <source>vCard (*.vcf)</source>
-        <translation>vCard (*.vcf)</translation>
+        <location filename="vue/mainwindow.cpp" line="94"/>
+        <location filename="vue/mainwindow.cpp" line="123"/>
+        <source>vCard(*.vcf);;XML(*.xml)</source>
+        <translation>vCard(*.vcf);;XML(*.xml)</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.cpp" line="118"/>
+        <source>vCard (*.vcf)</source>
+        <translation type="obsolete">vCard (*.vcf)</translation>
+    </message>
+    <message>
+        <location filename="vue/mainwindow.cpp" line="123"/>
         <source>Enregistrer fichier</source>
         <translation>Save file</translation>
     </message>
 </context>
 <context>
+    <name>Membre</name>
+    <message>
+        <location filename="modele/membre.cpp" line="10"/>
+        <source>card</source>
+        <translation>card</translation>
+    </message>
+    <message>
+        <location filename="modele/membre.cpp" line="10"/>
+        <source>fonction</source>
+        <translation>function</translation>
+    </message>
+</context>
+<context>
     <name>ModeleAfficherContact</name>
     <message>
-        <location filename="modele/modeleaffichercontact.cpp" line="99"/>
+        <location filename="modele/modeleaffichercontact.cpp" line="106"/>
         <source>Champ</source>
         <translation>Field</translation>
     </message>
     <message>
-        <location filename="modele/modeleaffichercontact.cpp" line="99"/>
+        <location filename="modele/modeleaffichercontact.cpp" line="106"/>
         <source>Valeur</source>
         <translation>Value</translation>
     </message>
@@ -693,91 +793,83 @@
 <context>
     <name>Organisme</name>
     <message>
-        <location filename="modele/organisme.cpp" line="23"/>
-        <location filename="modele/organisme.cpp" line="64"/>
+        <location filename="modele/organisme.cpp" line="25"/>
+        <location filename="modele/organisme.cpp" line="66"/>
         <source>nom</source>
         <translation>name</translation>
     </message>
     <message>
-        <location filename="modele/organisme.cpp" line="24"/>
         <source>tel</source>
-        <translation>tel</translation>
+        <translation type="obsolete">tel</translation>
     </message>
     <message>
-        <location filename="modele/organisme.cpp" line="25"/>
         <source>adresse</source>
-        <translation>adress</translation>
+        <translation type="obsolete">adress</translation>
     </message>
     <message>
-        <location filename="modele/organisme.cpp" line="26"/>
         <source>email</source>
-        <translation>email</translation>
+        <translation type="obsolete">email</translation>
     </message>
     <message>
-        <location filename="modele/organisme.cpp" line="27"/>
         <source>site</source>
-        <translation>site</translation>
+        <translation type="obsolete">site</translation>
     </message>
     <message>
-        <location filename="modele/organisme.cpp" line="28"/>
-        <location filename="modele/organisme.cpp" line="65"/>
+        <location filename="modele/organisme.cpp" line="67"/>
         <source>logo</source>
         <translation>logo</translation>
     </message>
     <message>
-        <location filename="modele/organisme.cpp" line="29"/>
-        <location filename="modele/organisme.cpp" line="66"/>
+        <location filename="modele/organisme.cpp" line="68"/>
         <source>membre</source>
         <translation>member</translation>
     </message>
     <message>
-        <location filename="modele/organisme.cpp" line="30"/>
         <source>date MAJ</source>
-        <translation>date MAJ</translation>
+        <translation type="obsolete">date MAJ</translation>
     </message>
     <message>
-        <location filename="modele/organisme.cpp" line="31"/>
         <source>note</source>
-        <translation>note</translation>
+        <translation type="obsolete">note</translation>
     </message>
     <message>
-        <location filename="modele/organisme.cpp" line="38"/>
-        <location filename="modele/organisme.h" line="34"/>
+        <location filename="modele/organisme.cpp" line="40"/>
+        <location filename="modele/organisme.h" line="42"/>
         <source>Nom</source>
         <translation>Name</translation>
     </message>
     <message>
-        <location filename="modele/organisme.cpp" line="39"/>
+        <location filename="modele/organisme.cpp" line="41"/>
         <source>Raison sociale</source>
         <translation>Company name</translation>
     </message>
     <message>
-        <location filename="modele/organisme.cpp" line="46"/>
+        <location filename="modele/organisme.cpp" line="48"/>
         <source>type</source>
         <translation>type</translation>
     </message>
     <message>
-        <location filename="modele/organisme.cpp" line="47"/>
+        <location filename="modele/organisme.cpp" line="49"/>
         <source>url</source>
         <translation>url</translation>
     </message>
     <message>
-        <location filename="modele/organisme.cpp" line="54"/>
+        <location filename="modele/organisme.cpp" line="56"/>
         <source>card</source>
         <translation>card</translation>
     </message>
     <message>
-        <location filename="modele/organisme.cpp" line="55"/>
+        <location filename="modele/organisme.cpp" line="57"/>
         <source>fonction</source>
         <translation>function</translation>
     </message>
     <message>
-        <location filename="modele/organisme.h" line="34"/>
+        <location filename="modele/organisme.h" line="42"/>
         <source>raison sociale</source>
         <translation>company name</translation>
     </message>
     <message>
-        <location filename="modele/organisme.h" line="42"/>
+        <location filename="modele/organisme.h" line="50"/>
         <source>JPEG</source>
         <translation>JPEG</translation>
     </message>
@@ -841,13 +933,13 @@
     </message>
     <message>
         <location filename="modele/personne.cpp" line="45"/>
-        <location filename="modele/personne.h" line="37"/>
+        <location filename="modele/personne.h" line="45"/>
         <source>Nom</source>
         <translation>Name</translation>
     </message>
     <message>
         <location filename="modele/personne.cpp" line="46"/>
-        <location filename="modele/personne.h" line="37"/>
+        <location filename="modele/personne.h" line="45"/>
         <source>Prénom</source>
         <translation>First name</translation>
     </message>
@@ -862,12 +954,12 @@
         <translation>url</translation>
     </message>
     <message>
-        <location filename="modele/personne.h" line="44"/>
+        <location filename="modele/personne.h" line="52"/>
         <source>homme</source>
         <translation>male</translation>
     </message>
     <message>
-        <location filename="modele/personne.h" line="52"/>
+        <location filename="modele/personne.h" line="60"/>
         <source>JPEG</source>
         <translation>JPEG</translation>
     </message>
@@ -893,6 +985,16 @@
         <location filename="vue/rechercher.ui" line="41"/>
         <source>Case</source>
         <translation>Case</translation>
+    </message>
+    <message>
+        <location filename="vue/rechercher.ui" line="50"/>
+        <source>Personne</source>
+        <translation>Person</translation>
+    </message>
+    <message>
+        <location filename="vue/rechercher.ui" line="60"/>
+        <source>Organisme</source>
+        <translation>Organization</translation>
     </message>
 </context>
 <context>

@@ -39,7 +39,6 @@ private slots:
 
 private:
     QPixmap mImage;
-    QNetworkAccessManager * m_netwManager;
     
 };
 

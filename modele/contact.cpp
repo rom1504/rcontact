@@ -69,10 +69,21 @@ void essayerEncore_(Champ * c)
     c->essayerEncore();
 }
 
+// car pas dispo sur la yaka (??)
+template<class InputIterator, class Function>
+  Function for_each(InputIterator first, InputIterator last, Function fn)
+{
+  while (first!=last) {
+    fn (*first);
+    ++first;
+  }
+  return fn;      // or, since C++11: return move(fn);
+}
+
 void Contact::essayerEncore()
 {
     QList<Champ*> vs=mChamps.values();
-    std::for_each(vs.begin(),vs.end(),essayerEncore_);
+    for_each(vs.begin(),vs.end(),essayerEncore_);
 }
 
 void Contact::remplacer(QString s,Champ * c)

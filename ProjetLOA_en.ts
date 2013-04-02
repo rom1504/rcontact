@@ -323,59 +323,59 @@
     <name>Contacts</name>
     <message>
         <location filename="modele/contacts.cpp" line="23"/>
-        <location filename="modele/contacts.cpp" line="200"/>
-        <location filename="modele/contacts.cpp" line="207"/>
-        <location filename="modele/contacts.cpp" line="214"/>
+        <location filename="modele/contacts.cpp" line="205"/>
+        <location filename="modele/contacts.cpp" line="212"/>
+        <location filename="modele/contacts.cpp" line="219"/>
         <source>nom</source>
         <translation>name</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="209"/>
+        <location filename="modele/contacts.cpp" line="214"/>
         <source>adresse</source>
         <translation>adress</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="213"/>
+        <location filename="modele/contacts.cpp" line="218"/>
         <source>note</source>
         <translation>note</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="218"/>
+        <location filename="modele/contacts.cpp" line="223"/>
         <source>tel</source>
         <translation>tel</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="219"/>
+        <location filename="modele/contacts.cpp" line="224"/>
         <source>photo</source>
         <translation>photo</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="220"/>
+        <location filename="modele/contacts.cpp" line="225"/>
         <source>logo</source>
         <translation>logo</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="221"/>
+        <location filename="modele/contacts.cpp" line="226"/>
         <source>organisation</source>
         <translation>organization</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="222"/>
+        <location filename="modele/contacts.cpp" line="227"/>
         <source>membre</source>
         <translation>member</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="227"/>
+        <location filename="modele/contacts.cpp" line="232"/>
         <source>mail</source>
         <translation>mail</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="229"/>
+        <location filename="modele/contacts.cpp" line="234"/>
         <source>date de naissance</source>
         <translation>birthday</translation>
     </message>
     <message>
-        <location filename="modele/contacts.cpp" line="231"/>
+        <location filename="modele/contacts.cpp" line="236"/>
         <source>url</source>
         <translation>url</translation>
     </message>
@@ -635,7 +635,7 @@
         <translation>File</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="67"/>
+        <location filename="vue/mainwindow.ui" line="68"/>
         <source>Edition</source>
         <translation>Edit</translation>
     </message>
@@ -644,69 +644,123 @@
         <translation type="obsolete">New contact</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="95"/>
+        <location filename="vue/mainwindow.ui" line="98"/>
         <source>Nouveau personne</source>
         <translation>New person</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="100"/>
+        <location filename="vue/mainwindow.ui" line="101"/>
+        <source>Ctrl+T</source>
+        <translation>Ctrl+T</translation>
+    </message>
+    <message>
+        <location filename="vue/mainwindow.ui" line="106"/>
         <source>Charger</source>
         <translation>Load</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="105"/>
+        <location filename="vue/mainwindow.ui" line="109"/>
+        <source>Ctrl+O</source>
+        <translation>Ctrl+O</translation>
+    </message>
+    <message>
+        <location filename="vue/mainwindow.ui" line="114"/>
         <source>Enregistrer</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="110"/>
+        <location filename="vue/mainwindow.ui" line="117"/>
+        <source>Ctrl+S</source>
+        <translation>Ctrl+S</translation>
+    </message>
+    <message>
+        <location filename="vue/mainwindow.ui" line="122"/>
         <source>Rechercher</source>
         <translation>Search</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="115"/>
+        <location filename="vue/mainwindow.ui" line="125"/>
+        <source>Ctrl+F</source>
+        <translation>Ctrl+F</translation>
+    </message>
+    <message>
+        <location filename="vue/mainwindow.ui" line="130"/>
         <source>Supprimer</source>
         <translation>Remove</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="120"/>
+        <location filename="vue/mainwindow.ui" line="133"/>
+        <source>Del</source>
+        <translation>Del</translation>
+    </message>
+    <message>
+        <location filename="vue/mainwindow.ui" line="138"/>
         <source>Quitter</source>
         <translation>Quit</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="125"/>
-        <source>Trier par</source>
-        <translation>Sort by</translation>
+        <location filename="vue/mainwindow.ui" line="141"/>
+        <source>Ctrl+Q</source>
+        <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="130"/>
+        <location filename="vue/mainwindow.ui" line="165"/>
+        <source>Ctrl+Shift+T</source>
+        <translation>Ctrl+Shift+T</translation>
+    </message>
+    <message>
+        <location filename="vue/mainwindow.ui" line="170"/>
+        <source>Nouvelle liste</source>
+        <translation>New list</translation>
+    </message>
+    <message>
+        <location filename="vue/mainwindow.ui" line="173"/>
+        <source>Ctrl+N</source>
+        <translation>Ctrl+N</translation>
+    </message>
+    <message>
+        <source>Trier par</source>
+        <translation type="obsolete">Sort by</translation>
+    </message>
+    <message>
+        <location filename="vue/mainwindow.ui" line="146"/>
         <source>Trier</source>
         <translation>Sort</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="135"/>
+        <location filename="vue/mainwindow.ui" line="149"/>
+        <source>Ctrl+R</source>
+        <translation>Ctrl+R</translation>
+    </message>
+    <message>
+        <location filename="vue/mainwindow.ui" line="154"/>
         <source>Finir la recherche</source>
         <translation>End search</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.ui" line="140"/>
+        <location filename="vue/mainwindow.ui" line="157"/>
+        <source>Backspace</source>
+        <translation>Backspace</translation>
+    </message>
+    <message>
+        <location filename="vue/mainwindow.ui" line="162"/>
         <source>Nouveau organisme</source>
         <translation>New organization</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.cpp" line="93"/>
-        <location filename="vue/mainwindow.cpp" line="122"/>
+        <location filename="vue/mainwindow.cpp" line="94"/>
+        <location filename="vue/mainwindow.cpp" line="123"/>
         <source>vCard(*.vcf)</source>
         <translation>vCard(*.vcf)</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.cpp" line="94"/>
+        <location filename="vue/mainwindow.cpp" line="95"/>
         <source>Ouvrir fichier</source>
         <translation>Open file</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.cpp" line="94"/>
-        <location filename="vue/mainwindow.cpp" line="123"/>
+        <location filename="vue/mainwindow.cpp" line="95"/>
+        <location filename="vue/mainwindow.cpp" line="124"/>
         <source>vCard(*.vcf);;XML(*.xml)</source>
         <translation>vCard(*.vcf);;XML(*.xml)</translation>
     </message>
@@ -715,7 +769,7 @@
         <translation type="obsolete">vCard (*.vcf)</translation>
     </message>
     <message>
-        <location filename="vue/mainwindow.cpp" line="123"/>
+        <location filename="vue/mainwindow.cpp" line="124"/>
         <source>Enregistrer fichier</source>
         <translation>Save file</translation>
     </message>

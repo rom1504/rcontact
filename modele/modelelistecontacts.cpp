@@ -38,16 +38,19 @@ void ModeleListeContacts::charger(QString nomFichier,QString type)
 
 void ModeleListeContacts::trier()
 {
-    beginResetModel();
+    // car pas dispo sur la yaka
+  //  beginResetModel();
     mContacts.trier();
-    endResetModel();
+    reset();
+  //  endResetModel();
 }
 
 void ModeleListeContacts::changerTri(Comp * comp)
 {
-    beginResetModel();
+   // beginResetModel();
     mContacts.changerTri(comp);
-    endResetModel();
+    reset();
+   // endResetModel();
 }
 
 int ModeleListeContacts::rowCount ( const QModelIndex & ) const

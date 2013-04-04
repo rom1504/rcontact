@@ -13,12 +13,12 @@
 #include "modele/nom.h"
 #include "modele/tel.h"
 
-Controleur::Controleur(QObject *parent) :
+Controleur::Controleur(QString locale, QTranslator *translator, QObject *parent) :
     QObject(parent)
 {
 
     Enum::remplirEnums();
-    mContacts=new Contacts();
+    mContacts=new Contacts(locale,translator);
     mContactsEntier=mContacts;
     Card::mContacts=mContactsEntier;
     ModeleListeContacts * modeleListeContacts=new ModeleListeContacts(*mContacts);

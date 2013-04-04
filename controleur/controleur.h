@@ -21,7 +21,7 @@ public:
      * @brief Controleur est le constructeur de la classe
      * @param parent Le Qobject parent (à laisser null par défaut)
      */
-    explicit Controleur(QObject *parent = 0);
+    explicit Controleur(QString locale,QTranslator * translator,QObject *parent = 0);
     /**
      * @brief run lance le controleur
      */

@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Contacts>
+<lang>fr_FR</lang>
 <Personne>
-<Nom nomChamp="name">
-<Texte nomChamp="First name">
-François
-</Texte>
-<Texte nomChamp="Name">
+<Nom nomChamp="nom">
+<Texte nomChamp="Nom">
 Hollande
 </Texte>
-<Texte nomChamp="Nick name">
+<Texte nomChamp="Préfixe">
 
 </Texte>
-<Texte nomChamp="Prefix">
+<Texte nomChamp="Prénom">
+François
+</Texte>
+<Texte nomChamp="Surnom">
 
 </Texte>
 
-</Nom><Card nomChamp="organization">
+</Nom><Card nomChamp="organisation">
 Parti socialiste
 </Card><Image nomChamp="photo">
 <Enum nomChamp="type">
@@ -28,17 +29,17 @@ http://media.meltybuzz.fr/article-1367339-ajust_930/francois-hollande-prefere-en
 </Image>
 </Personne>
 <Personne>
-<Nom nomChamp="name">
-<Texte nomChamp="First name">
-François
-</Texte>
-<Texte nomChamp="Name">
+<Nom nomChamp="nom">
+<Texte nomChamp="Nom">
 Mitterrand
 </Texte>
-<Texte nomChamp="Nick name">
+<Texte nomChamp="Préfixe">
 
 </Texte>
-<Texte nomChamp="Prefix">
+<Texte nomChamp="Prénom">
+François
+</Texte>
+<Texte nomChamp="Surnom">
 
 </Texte>
 
@@ -53,17 +54,17 @@ data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPD
 </Image>
 </Personne>
 <Personne>
-<Nom nomChamp="name">
-<Texte nomChamp="First name">
-Georges
-</Texte>
-<Texte nomChamp="Name">
+<Nom nomChamp="nom">
+<Texte nomChamp="Nom">
 Pompidou
 </Texte>
-<Texte nomChamp="Nick name">
+<Texte nomChamp="Préfixe">
 
 </Texte>
-<Texte nomChamp="Prefix">
+<Texte nomChamp="Prénom">
+Georges
+</Texte>
+<Texte nomChamp="Surnom">
 
 </Texte>
 
@@ -78,17 +79,17 @@ data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBhQSEBUUEhQVFRQVFBUVF
 </Image>
 </Personne>
 <Personne>
-<Nom nomChamp="name">
-<Texte nomChamp="First name">
-Giscard
-</Texte>
-<Texte nomChamp="Name">
+<Nom nomChamp="nom">
+<Texte nomChamp="Nom">
 d'Estaing
 </Texte>
-<Texte nomChamp="Nick name">
+<Texte nomChamp="Préfixe">
 
 </Texte>
-<Texte nomChamp="Prefix">
+<Texte nomChamp="Prénom">
+Giscard
+</Texte>
+<Texte nomChamp="Surnom">
 
 </Texte>
 
@@ -103,17 +104,17 @@ http://cdn-lejdd.ladmedia.fr/var/lejdd/storage/images/media/images/politique/val
 </Image>
 </Personne>
 <Personne>
-<Nom nomChamp="name">
-<Texte nomChamp="First name">
-Jacques
-</Texte>
-<Texte nomChamp="Name">
+<Nom nomChamp="nom">
+<Texte nomChamp="Nom">
 Chirac
 </Texte>
-<Texte nomChamp="Nick name">
+<Texte nomChamp="Préfixe">
 
 </Texte>
-<Texte nomChamp="Prefix">
+<Texte nomChamp="Prénom">
+Jacques
+</Texte>
+<Texte nomChamp="Surnom">
 
 </Texte>
 
@@ -128,21 +129,23 @@ data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPD
 </Image>
 </Personne>
 <Personne>
-<Nom nomChamp="name">
-<Texte nomChamp="First name">
-Nicolas
-</Texte>
-<Texte nomChamp="Name">
+<Nom nomChamp="nom">
+<Texte nomChamp="Nom">
 Sarkozy
 </Texte>
-<Texte nomChamp="Nick name">
+<Texte nomChamp="Préfixe">
 
 </Texte>
-<Texte nomChamp="Prefix">
+<Texte nomChamp="Prénom">
+Nicolas
+</Texte>
+<Texte nomChamp="Surnom">
 
 </Texte>
 
-</Nom><Image nomChamp="photo">
+</Nom><Card nomChamp="organisation">
+UMP
+</Card><Image nomChamp="photo">
 <Enum nomChamp="type">
 JPEG
 </Enum>
@@ -161,36 +164,101 @@ JPEG
 data:image/jpeg;base64,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
 </Url>
 
-</Image><Membre nomChamp="member">
+</Image><Membre nomChamp="membre">
 <Card nomChamp="card">
 François Hollande
 </Card>
-<Texte nomChamp="function">
+<Texte nomChamp="fonction">
 membre
 </Texte>
 
-</Membre><Structure nomChamp="name">
-<Texte nomChamp="Company name">
-
-</Texte>
-<Texte nomChamp="Name">
+</Membre><Structure nomChamp="nom">
+<Texte nomChamp="Nom">
 Parti socialiste
+</Texte>
+<Texte nomChamp="Raison sociale">
+
 </Texte>
 
 </Structure>
 </Organisme>
-<Personne>
-<Nom nomChamp="name">
-<Texte nomChamp="First name">
-de
-</Texte>
-<Texte nomChamp="Name">
-Gaulle
-</Texte>
-<Texte nomChamp="Nick name">
+<Organisme>
+<Adresse nomChamp="adresse">
+<Texte nomChamp="Région">
 
 </Texte>
-<Texte nomChamp="Prefix">
+<Loc nomChamp="geo">
+0,0
+</Loc>
+<Texte nomChamp="localité">
+
+</Texte>
+<Texte nomChamp="pays">
+
+</Texte>
+<Texte nomChamp="rue">
+TSA 41557
+75901 Paris Cedex 15
+</Texte>
+<Enum nomChamp="type">
+home
+</Enum>
+<Texte nomChamp="zipcode">
+
+</Texte>
+
+</Adresse><Image nomChamp="logo">
+<Enum nomChamp="type">
+JPEG
+</Enum>
+<Url nomChamp="url">
+http://ronanloas.files.wordpress.com/2012/10/ump-subventions-sarkozy.jpg?w=1200
+</Url>
+
+</Image><Membre nomChamp="membre">
+<Card nomChamp="card">
+Nicolas Sarkozy
+</Card>
+<Texte nomChamp="fonction">
+
+</Texte>
+
+</Membre><Structure nomChamp="nom">
+<Texte nomChamp="Nom">
+UMP
+</Texte>
+<Texte nomChamp="Raison sociale">
+
+</Texte>
+
+</Structure><Tel nomChamp="tel">
+<Texte nomChamp="n°">
+01 40 76 60 00
+</Texte>
+<Enum nomChamp="type">
+work
+</Enum>
+<Enum nomChamp="type données">
+voice
+</Enum>
+<Enum nomChamp="type tel">
+fixe
+</Enum>
+
+</Tel>
+</Organisme>
+<Personne>
+<Nom nomChamp="nom">
+<Texte nomChamp="Nom">
+Gaulle
+</Texte>
+<Texte nomChamp="Préfixe">
+
+</Texte>
+<Texte nomChamp="Prénom">
+de
+</Texte>
+<Texte nomChamp="Surnom">
 
 </Texte>
 

@@ -13,6 +13,7 @@
 #include "search.h"
 #include "personne.h"
 #include "organisme.h"
+#include <QTranslator>
 
 /**
  * @brief La classe Contacts représente un anuaire de contacts
@@ -25,7 +26,7 @@ public:
      * @brief Le constructeur par défaut de la classe
      * @param parent Le QObject parent
      */
-    explicit Contacts(QObject *parent = 0);
+    explicit Contacts(QString locale,QTranslator * translator,QObject *parent = 0);
     /**
      * @brief ajouterContact ajoute un contact dans l'anuaire
      * @param contact Un poiteur vers le contact à ajouter
@@ -126,6 +127,10 @@ private:
     QList<Contact*> mContacts;
 
     Comp * mComp;
+
+    QString mLocale;
+
+    QTranslator * mTranslator;
 
 signals:
     /**

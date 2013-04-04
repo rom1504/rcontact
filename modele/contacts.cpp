@@ -16,9 +16,11 @@
 #include "image.h"
 #include "membre.h"
 #include <QDomElement>
+#include <QApplication>
+#include <QTranslator>
 
-Contacts::Contacts(QObject *parent) :
-    QObject(parent)
+Contacts::Contacts(QString locale, QTranslator *translator, QObject *parent) :
+    QObject(parent),mLocale(locale),mTranslator(translator)
 {
     mComp=new Comp(true,tr("nom"));
 }
@@ -138,6 +140,14 @@ void Contacts::chargerXML(QString nomFichier)
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
 
+    QApplication::removeTranslator(mTranslator);
+
+    mLocale=racine.text();
+    mTranslator=new QTranslator();
+    mTranslator->load(QString(":/ProjetLOA_") + mLocale);
+    QApplication::installTranslator(mTranslator);
+    racine = racine.nextSiblingElement();
+
     while(!racine.isNull())
     {
         Contact * contact=NULL;
@@ -160,7 +170,6 @@ void Contacts::chargerXML(QString nomFichier)
 
 void Contacts::chargerVCard(QString nomFichier)
 {
-
     mContacts.clear();
     QFile fichier(nomFichier);
     fichier.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -255,6 +264,7 @@ void Contacts::enregistrerEnXML(QString nomFichier) const
     QTextStream flux(&fichier);
     flux<<"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
     flux<<"<Contacts>\n";
+    flux<<"<lang>"+mLocale+"</lang>\n";
     for (int i = 0; i < mContacts.size(); ++i)
     {
         flux<<"<"+QString(mContacts[i]->metaObject()->className())+">\n";
@@ -298,7 +308,7 @@ template <class InputIterator, class OutputIterator, class UnaryPredicate>
 
 Contacts * Contacts::rechercher(Search *search) const
 {
-    Contacts * nContacts=new Contacts();
+    Contacts * nContacts=new Contacts(mLocale,mTranslator);
     copy_if(mContacts.begin(), mContacts.end(),std::inserter(nContacts->mContacts,nContacts->mContacts.begin()), *search);
     return nContacts;
 }

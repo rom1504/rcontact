@@ -13,16 +13,17 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     QString locale = QLocale::system().name();
     //locale="fr_FR";
+    locale="en";
 
     // cette partie semble ne pas marcher
     QTranslator qtTranslator;
     qtTranslator.load("qt_" + locale,QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-    a.installTranslator(&qtTranslator);
+    QApplication::installTranslator(&qtTranslator);
 
 
      QTranslator translator;
      translator.load(QString(":/ProjetLOA_") + locale);
-     a.installTranslator(&translator);
+     QApplication::installTranslator(&translator);
      QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
 
      QStringList environment = QProcess::systemEnvironment();
@@ -38,8 +39,8 @@ int main(int argc, char *argv[])
          QNetworkProxy::setApplicationProxy (QNetworkProxy(QNetworkProxy::HttpProxy,l2[0],l2.length()>=2 ? l2[1].toInt() : 3128));
      }
 
-    Controleur c;
-    c.run();
+     Controleur c(locale,&translator);
+      c.run();
 
 
     return a.exec();

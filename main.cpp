@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     QString locale = QLocale::system().name();
     //locale="fr_FR";
-    locale="en";
+    //locale="en";
 
     // cette partie semble ne pas marcher
     QTranslator qtTranslator;

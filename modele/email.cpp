@@ -7,22 +7,12 @@ Email::Email(QObject *parent) :
 {
 }
 
-
-/**
- * @brief toString convertit l'objet en format lisible
- * @return une QString contenant un format lisible du champ
- */
 QString Email::toString() const
 {
     QString s=(avoirChamp(tr("nom"))+"@"+avoirChamp(tr("domaine"))+"."+avoirChamp(tr("extension"))).trimmed();
     return s=="." ? "" : s;
 }
 
-/**
- * @brief fromString convertit un QString en Structure
- * @param s La QString à convertir
- * @return true si la conversion a réussi, false sinon
- */
 bool Email::fromString(const QString s)
 {
     vider();

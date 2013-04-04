@@ -15,7 +15,6 @@ int main(int argc, char *argv[])
     //locale="fr_FR";
     //locale="en";
 
-    // cette partie semble ne pas marcher
     QTranslator qtTranslator;
     qtTranslator.load("qt_" + locale,QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     QApplication::installTranslator(&qtTranslator);

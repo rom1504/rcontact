@@ -14,9 +14,15 @@ QString Adresse::toString() const
     return (avoirChamp(tr("rue"))+" "+avoirChamp(tr("zipcode"))+" "+avoirChamp(tr("localité"))+" "+avoirChamp(tr("Région"))+" "+avoirChamp(tr("pays"))+" "+avoirChamp(tr("géo"))).trimmed();
 }
 
+QString unParseString(QString s);
+
+//the post office box; the extended address; the street
+//address; the locality (e.g., city); the region (e.g., state or
+//province); the postal code; the country name
 QString Adresse::toVCard() const
 {
-    return ";;"+avoirChamp(tr("rue"))+";;;;";
+    return ";TYPE="+avoirChamp(tr("type"))+":;;"+unParseString(avoirChamp(tr("rue")))+";"+unParseString(avoirChamp(tr("localité")))+";"+
+            unParseString(avoirChamp(tr("Région")))+";"+avoirChamp(tr("zipcode"))+";"+unParseString(avoirChamp(tr("pays")));
 }
 
 bool Adresse::fromString(const QString s)

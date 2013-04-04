@@ -7,5 +7,5 @@ Membre::Membre(QObject *parent) :
 
 QString Membre::toVCard() const
 {
-    return avoirChamp(tr("card"))+";"+avoirChamp(tr("fonction"));
+    return ":"+avoirChamp(tr("card"))+";"+avoirChamp(tr("fonction"));
 }

@@ -14,16 +14,24 @@ QString Nom::toString() const
 
 bool Nom::fromString(const QString s)
 {
-    QStringList l=s.split(" ");
-    vider();
-    ajouterChamp(tr("Préfixe"),new Texte(l.length()>=3 ? l.takeFirst() : ""));
-    ajouterChamp(tr("Prénom"),new Texte(l.length()>=1 ? l.takeFirst() : ""));
-    ajouterChamp(tr("Nom"),new Texte(l.length()>=1 ? l.takeFirst() : ""));
-    ajouterChamp(tr("Surnom"),new Texte(l.join(" ")));
-    return true;
+    if(s!=toString())
+    {
+        QStringList l=s.split(" ");
+        vider();
+        ajouterChamp(tr("Préfixe"),new Texte(l.length()>=4 ? l.takeFirst() : ""));
+        ajouterChamp(tr("Prénom"),new Texte(l.length()>=1 ? l.takeFirst() : ""));
+        ajouterChamp(tr("Nom"),new Texte(l.length()>=1 ? l.takeFirst() : ""));
+        ajouterChamp(tr("Surnom"),new Texte(l.join(" ")));
+        return true;
+    }
+    return false;
 }
 
+QString unParseString(QString s);
+
+//            the Family Name, Given Name, Additional Names, Honorific
+//               Prefixes, and Honorific Suffixes
 QString Nom::toVCard() const
 {
-    return avoirChamp(tr("Nom"))+";"+avoirChamp(tr("Prénom"))+";"+avoirChamp(tr("Préfixe"))+";"+avoirChamp(tr("Surnom"))+";";// ?
+    return ":"+unParseString(avoirChamp(tr("Nom"))+";"+avoirChamp(tr("Prénom"))+";"+avoirChamp(tr("Surnom"))+";"+avoirChamp(tr("Préfixe"))+";");// ?
 }

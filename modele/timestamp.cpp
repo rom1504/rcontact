@@ -39,5 +39,5 @@ bool Timestamp::fromVariant(const QVariant v)
 
 QString Timestamp::toVCard() const
 {
-    return QDateTime::fromTime_t(mT).toString("yyyy-MM-dd");
+    return ":"+QDateTime::fromTime_t(mT).toString("yyyy-MM-dd");
 }

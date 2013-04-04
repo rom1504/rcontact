@@ -40,9 +40,11 @@ void Image::chargerImage()
     }
 }
 
+QString unParseString(QString s);
+
 QString Image::toVCard() const
 {
-    return avoirChamp("url");
+    return ";TYPE="+avoirChamp("type")+":"+unParseString(avoirChamp("url"));
 }
 
 

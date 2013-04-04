@@ -66,12 +66,12 @@ Contact * Contacts::operator[](const int n) const
 
 QString parseString(QString s)
 {
-    return s.replace("\\n","\n").replace("\\,",",").replace("\\\"","\"");
+    return s.replace("\\n","\n").replace("\\,",",").replace("\\\"","\"").replace("\\:",":");
 }
 
 QString unParseString(QString s)
 {
-    return s.replace("\n","\\n").replace(",","\\,").replace("\"","\\\"");
+    return s.replace("\n","\\n").replace(",","\\,").replace("\"","\\\"").replace(":","\\:");
 }
 
 void Contacts::changerTri(Comp * comp)
@@ -188,6 +188,15 @@ void Contacts::chargerVCard(QString nomFichier)
         QString nom=l.first();
         l.pop_front();
         QStringList noms=nom.split(";");
+        QStringList types;
+        if(noms.length()>1)
+        {
+            QStringList tt=noms[1].split("=");
+            if(tt.length()>1 && tt[0]=="TYPE")
+            {
+                types=tt[1].split(",");
+            }
+        }
         QString vnom=noms[0];
         QString valeur=l.join(":");
         QStringList valeurs=valeur.split(";");
@@ -218,9 +227,17 @@ void Contacts::chargerVCard(QString nomFichier)
                 version="";
                 kind="individual";
             }
-            else if(vnom=="N") contact->ajouterChamp(tr("nom"),kind=="individual" ? Personne::gnom(valeurs.length()>0 ? valeurs[0] : "",valeurs.length()>1 ? valeurs[1] : "")
-                                                                                  : Organisme::gnom(valeurs.length()>0 ? valeurs[0] : "",valeurs.length()>1 ? valeurs[1] : ""));
-            else if(vnom=="ADR") contact->ajouterChamp(tr("adresse"),Contact::adresse(parseString(valeurs[2])));
+//            the Family Name, Given Name, Additional Names, Honorific
+//               Prefixes, and Honorific Suffixes
+            else if(vnom=="N") contact->ajouterChamp(tr("nom"),kind=="individual" ? Personne::gnom(valeurs.length()>0 ? parseString(valeurs[0]) : "",valeurs.length()>1 ? parseString(valeurs[1]) : "",
+                                                                                                   valeurs.length()>3 ? parseString(valeurs[3]) : "",valeurs.length()>2 ? parseString(valeurs[2]) : "")
+                                                                                  : Organisme::gnom(valeurs.length()>0 ? parseString(valeurs[0]) : "",valeurs.length()>1 ? parseString(valeurs[1]) : ""));
+//            the post office box; the extended address; the street
+//               address; the locality (e.g., city); the region (e.g., state or
+//               province); the postal code; the country name
+            else if(vnom=="ADR") contact->ajouterChamp(tr("adresse"),Contact::adresse(valeurs.length()>2 ? parseString(valeurs[2]) : "",valeurs.length()>5 ?
+                                                                                          valeurs[5] : "",valeurs.length()>3 ? valeurs[3] : "",valeurs.length()>4 ?  valeurs[4] : ""
+                                                                                                                                                                     ,valeurs.length()>6 ? valeurs[6] : "",types.contains("home",Qt::CaseInsensitive) ? tr("home") : tr("work")));
             else if(vnom=="NOTE")
             {
                 while((ligne=flux.readLine())!="END:VCARD") valeur+=ligne;
@@ -229,9 +246,13 @@ void Contacts::chargerVCard(QString nomFichier)
                 ajouterContact(contact);
                 contact=NULL;
             }
-            else if(vnom=="TEL") contact->ajouterChamp(tr("tel"),Contact::tel(valeur));
-            else if(vnom=="PHOTO") contact->ajouterChamp(tr("photo"),Personne::photo(valeur));
-            else if(vnom=="LOGO") contact->ajouterChamp(tr("logo"),Organisme::logo(valeur));
+            else if(vnom=="TEL") contact->ajouterChamp(tr("tel"),Contact::tel(valeur,
+                                                                              types.contains("home",Qt::CaseInsensitive) ? tr("home") : tr("work"),
+                                                                              types.contains("cell",Qt::CaseInsensitive) ? tr("cellulaire") : tr("fixe"),
+                                                                              types.contains("data",Qt::CaseInsensitive) ? tr("data") : tr("voice")
+                                                                              ));
+            else if(vnom=="PHOTO") contact->ajouterChamp(tr("photo"),Personne::photo(parseString(valeur),types.contains("JPEG",Qt::CaseInsensitive) ? "JPEG" : (types.contains("PNG",Qt::CaseInsensitive) ? "PNG" : (types.contains("GIF",Qt::CaseInsensitive) ? "GIF" : "JPEG"))));
+            else if(vnom=="LOGO") contact->ajouterChamp(tr("logo"),Organisme::logo(parseString(valeur),types.contains("JPEG",Qt::CaseInsensitive) ? "JPEG" : (types.contains("PNG",Qt::CaseInsensitive) ? "PNG" : (types.contains("GIF",Qt::CaseInsensitive) ? "GIF" : "JPEG"))));
             else if(vnom=="ORG") contact->ajouterChamp(tr("organisation"),Personne::organisation(valeur));
             else if(vnom=="MEMBER") contact->ajouterChamp(tr("membre"),Organisme::membre(valeurs.length()>1 ? valeurs[1] : "",valeurs.length()>0 ? valeurs[0] : ""));
             else if(vnom=="EMAIL")
@@ -242,7 +263,7 @@ void Contacts::chargerVCard(QString nomFichier)
             }
             else if(vnom=="BDAY") contact->ajouterChamp(tr("date de naissance"),Contact::date(valeur));
             //else if(vnom=="FN") 1; // que faire ????
-            else if(vnom=="URL") contact->ajouterChamp(tr("url"),Contact::url(valeur));
+            else if(vnom=="URL") contact->ajouterChamp(tr("url"),Contact::url(parseString(valeur)));
 //            else std::cout<<ligne.toStdString()<<"\n";
         }
     }

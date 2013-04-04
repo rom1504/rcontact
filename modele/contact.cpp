@@ -48,18 +48,18 @@ QString Contact::toVCard() const
     if((champ=at(tr("nom"))))
     {
         r+="FN:"+champ->toString()+"\n";
-        r+="N:"+champ->toVCard()+"\n";
+        r+="N"+champ->toVCard()+"\n";
     }
-    if((champ=at(tr("adresse")))) r+="ADR:"+unParseString(champ->toVCard())+"\n";
-    if((champ=at(tr("tel")))) r+="TEL:"+champ->toVCard()+"\n";
-    if((champ=at(tr("mail")))) r+="EMAIL:"+champ->toVCard()+"\n";
-    if((champ=at(tr("date de naissance")))) r+="BDAY:"+champ->toVCard()+"\n";
-    if((champ=at(tr("url")))) r+="URL:"+champ->toVCard()+"\n";
-    if((champ=at(tr("photo")))) r+="PHOTO:"+champ->toVCard()+"\n";
-    if((champ=at(tr("organisation")))) r+="ORG:"+champ->toVCard()+"\n";
-    if((champ=at(tr("membre")))) r+="MEMBER:"+champ->toVCard()+"\n";
-    if((champ=at(tr("logo")))) r+="LOGO:"+champ->toVCard()+"\n";
-    if((champ=at(tr("note")))) r+="NOTE:"+unParseString(champ->toVCard())+"\n";
+    if((champ=at(tr("adresse")))) r+="ADR"+champ->toVCard()+"\n";
+    if((champ=at(tr("tel")))) r+="TEL"+champ->toVCard()+"\n";
+    if((champ=at(tr("mail")))) r+="EMAIL"+champ->toVCard()+"\n";
+    if((champ=at(tr("date de naissance")))) r+="BDAY"+champ->toVCard()+"\n";
+    if((champ=at(tr("url")))) r+="URL"+champ->toVCard()+"\n";
+    if((champ=at(tr("photo")))) r+="PHOTO"+champ->toVCard()+"\n";
+    if((champ=at(tr("organisation")))) r+="ORG"+champ->toVCard()+"\n";
+    if((champ=at(tr("membre")))) r+="MEMBER"+champ->toVCard()+"\n";
+    if((champ=at(tr("logo")))) r+="LOGO"+champ->toVCard()+"\n";
+    if((champ=at(tr("note")))) r+="NOTE"+champ->toVCard()+"\n";
     r+="END:VCARD\n";
     return r;
 }

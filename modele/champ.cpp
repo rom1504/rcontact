@@ -28,9 +28,11 @@ QVariant Champ::image()
     return QVariant();
 }
 
+QString unParseString(QString s);
+
 QString Champ::toVCard() const
 {
-    return toString();
+    return ":"+unParseString(toString());
 }
 
 void Champ::essayerEncore()

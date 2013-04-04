@@ -1,5 +1,6 @@
 #include "modeleafficherstructure.h"
 #include <QPair>
+#include <QColor>
 
 ModeleAfficherStructure::ModeleAfficherStructure(Structure * structure,QObject *parent) :
     QAbstractTableModel(parent),mStructure(structure)
@@ -38,6 +39,8 @@ QVariant ModeleAfficherStructure::data(const QModelIndex & index,int role) const
          return index.column()==0 ? (*mStructure)[index.row()].first : (*mStructure)[index.row()].second->toString();
      else if (role == Qt::EditRole)
          return index.column()==0 ? (*mStructure)[index.row()].first : (*mStructure)[index.row()].second->toVariant();
+     else if(role == Qt::ForegroundRole && index.column()==0)
+         return QColor("gray");
      else
          return QVariant();
 }

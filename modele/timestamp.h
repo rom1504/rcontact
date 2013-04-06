@@ -56,6 +56,13 @@ public:
      */
     QString toVCard() const;
 
+    /**
+     * @brief toXML converti le champ en XML
+     * @return Un QString contenant la conversion
+     */
+
+    QString toXML() const;
+
 private:
     /**
      * @brief mT est le timestamp au moment de la dernière modification

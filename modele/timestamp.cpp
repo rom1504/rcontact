@@ -41,3 +41,9 @@ QString Timestamp::toVCard() const
 {
     return ":"+QDateTime::fromTime_t(mT).toString("yyyy-MM-dd");
 }
+
+
+QString Timestamp::toXML() const
+{
+    return QDateTime::fromTime_t(mT).toString("yyyy-MM-dd");
+}

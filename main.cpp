@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 
 
      QTranslator translator;
-     translator.load(QString(":/ProjetLOA_") + locale);
+     translator.load(QString(":/rcontact_") + locale);
      QApplication::installTranslator(&translator);
      QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
 

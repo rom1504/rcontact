@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file>icones/femme.png</file>
         <file>icones/homme.png</file>
-        <file>ProjetLOA_en.qm</file>
         <file>icones/mobile.png</file>
         <file>icones/home.png</file>
         <file>icones/supprimer.png</file>
@@ -23,5 +22,6 @@
         <file>icones/work.png</file>
         <file>icones/ajouterOrganisme.png</file>
         <file>icones/nouvelleListe.png</file>
+        <file>rcontact_en.qm</file>
     </qresource>
 </RCC>

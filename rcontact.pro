@@ -8,7 +8,7 @@ QT       += core gui network xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = bin/ProjetLOA
+TARGET = bin/rcontact
 TEMPLATE = app
 OBJECTS_DIR = temp/
 MOC_DIR = $$OBJECTS_DIR
@@ -105,7 +105,7 @@ FORMS    += vue/mainwindow.ui \
     vue/structureoutexteedit.ui
 
 
-TRANSLATIONS = ProjetLOA_en.ts
+TRANSLATIONS = rcontact_en.ts
 
 CODECFORTR = UTF-8
 

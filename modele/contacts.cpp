@@ -144,7 +144,7 @@ void Contacts::chargerXML(QString nomFichier)
 
     mLocale=racine.text();
     mTranslator=new QTranslator();
-    mTranslator->load(QString(":/ProjetLOA_") + mLocale);
+    mTranslator->load(QString(":/rcontact_") + mLocale);
     QApplication::installTranslator(mTranslator);
     racine = racine.nextSiblingElement();
 

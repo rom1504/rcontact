@@ -12,13 +12,13 @@ Adresse::Adresse(QObject *parent) :
 Adresse::Adresse(const QString rue,const QString zipcode,const QString localite,const QString region,const QString pays,const QString type,Loc * geo,QObject *parent) :
     StructureOuTexte(parent)
 {
-    ajouterChamp(tr("type"),new Enum(type));
-    ajouterChamp(tr("rue"),new Texte(rue));
-    ajouterChamp(tr("zipcode"),new Texte(zipcode));
-    ajouterChamp(tr("localité"),new Texte(localite));
-    ajouterChamp(tr("Région"),new Texte(region));
-    ajouterChamp(tr("pays"),new Texte(pays));
-    ajouterChamp(tr("geo"),geo);
+    ajouterChamp(tr("type"),new Enum(type),0);
+    ajouterChamp(tr("rue"),new Texte(rue),1);
+    ajouterChamp(tr("zipcode"),new Texte(zipcode),2);
+    ajouterChamp(tr("localité"),new Texte(localite),3);
+    ajouterChamp(tr("Région"),new Texte(region),4);
+    ajouterChamp(tr("pays"),new Texte(pays),5);
+    ajouterChamp(tr("geo"),geo,6);
 }
 
 QString Adresse::toString() const
@@ -45,13 +45,13 @@ bool Adresse::fromString(const QString s)
         vider();
 
         // à améliorer ou bien repasser en juste Structure ?
-        ajouterChamp(tr("rue"),new Texte(s));
-        ajouterChamp(tr("type"),new Enum("work"));
-        ajouterChamp(tr("zipcode"),new Texte(""));
-        ajouterChamp(tr("localité"),new Texte(""));
-        ajouterChamp(tr("Région"),new Texte(""));
-        ajouterChamp(tr("pays"),new Texte(""));
-        ajouterChamp(tr("geo"),new Loc());
+        ajouterChamp(tr("rue"),new Texte(s),0);
+        ajouterChamp(tr("type"),new Enum("work"),1);
+        ajouterChamp(tr("zipcode"),new Texte(""),2);
+        ajouterChamp(tr("localité"),new Texte(""),3);
+        ajouterChamp(tr("Région"),new Texte(""),4);
+        ajouterChamp(tr("pays"),new Texte(""),5);
+        ajouterChamp(tr("geo"),new Loc(),6);
         return true;
     }
     return false;

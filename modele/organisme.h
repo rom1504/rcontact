@@ -21,6 +21,15 @@ public:
     Organisme(QObject * parent=0);
 
 
+
+    /**
+     * @brief creerChamp créé et ajoute un champ
+     * @param nomChamp le nom du champ à créer
+     * @param type Le type du champ à créer
+     */
+    void creerChamp(const QString& nomChamp, const QString& type);
+
+
     /**
      * @brief image
      * @return Le logo de l'organisme
@@ -57,12 +66,6 @@ public:
      */
     static Champ* membre(const QString fonction="",QString card="");
 
-    /**
-     * @brief creerChamp créé et ajoute un champ
-     * @param nomChamp le nom du champ à créer
-     * @param type Le type du champ à créer
-     */
-    void creerChamp(const QString& nomChamp, const QString& type);
 };
 
 #endif // ORGANISME_H

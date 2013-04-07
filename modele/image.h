@@ -36,7 +36,7 @@ public:
      * @brief image est la conversion du champ en QVariant
      * @return Une QVariant représentant le champ
      */
-    QVariant image();
+    QVariant image() const;
     QString toVCard() const;
 
 

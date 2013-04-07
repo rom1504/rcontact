@@ -10,7 +10,7 @@ Personne::Personne(QObject * parent) : Contact(parent)
 
 QVariant Personne::image() const
 {
-    Champ * champ=mChamps.value("photo",NULL);
+    const Champ * champ=at("photo");
     if(champ==NULL) return QVariant();
     QVariant v=champ->image();
     if(!(v.isValid())) return QVariant();
@@ -62,12 +62,13 @@ Champ* Personne::organisation(QString card)
 
 void Personne::creerChamp(const QString& nomChamp, const QString& type)
 {
-    Champ* champ = Contact::creerChampFromType(type);
+    QPair<Champ*,int> pa = Contact::creerChampFromType(type);
+    Champ* champ=pa.first;
+    int p=pa.second;
+    if(type==tr("nom")) {champ=gnom();p=0;}
+    else if(type==tr("sexe")) {champ=sexe();p=2;}
+    else if(type==tr("photo")) {champ=photo();p=3;}
+    else if(type==tr("organisation")) {champ=organisation();p=4;}
 
-    if(type==tr("nom")) champ=gnom();
-    else if(type==tr("sexe")) champ=sexe();
-    else if(type==tr("photo")) champ=photo();
-    else if(type==tr("organisation")) champ=organisation();
-
-    ajouterChamp(nomChamp, champ);
+    ajouterChamp(nomChamp,champ,p);
 }

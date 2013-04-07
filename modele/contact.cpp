@@ -24,13 +24,11 @@ Contact::~Contact()
 QString Contact::toXML() const
 {
     QString r="";
-    QList<QString> ks=mChamps.keys();
-    QList<Champ*> vs=mChamps.values();
-    for(int i=0;i<ks.size();i++)
+    for(int i=0;i<mChampsListe.size();i++)
     {
-        r+="<"+QString(vs[i]->metaObject()->className())+" nomChamp=\""+ks[i]+"\">";
-        r+=vs[i]->toXML();
-        r+="</"+QString(vs[i]->metaObject()->className())+">";
+        r+="<"+QString(mChampsListe[i].valeur->metaObject()->className())+" nomChamp=\""+mChampsListe[i].nom+"\" priorite=\""+QString::number(mChampsListe[i].priorite)+"\">";
+        r+=mChampsListe[i].valeur->toXML();
+        r+="</"+QString(mChampsListe[i].valeur->metaObject()->className())+">";
     }
     return r;
 }
@@ -53,7 +51,7 @@ QString Contact::toVCard() const
     }
     if((champ=at(tr("adresse")))) r+="ADR"+champ->toVCard()+"\n";
     if((champ=at(tr("tel")))) r+="TEL"+champ->toVCard()+"\n";
-    if((champ=at(tr("mail")))) r+="EMAIL"+champ->toVCard()+"\n";
+    if((champ=at(tr("email")))) r+="EMAIL"+champ->toVCard()+"\n";
     if((champ=at(tr("date de naissance")))) r+="BDAY"+champ->toVCard()+"\n";
     if((champ=at(tr("url")))) r+="URL"+champ->toVCard()+"\n";
     if((champ=at(tr("photo")))) r+="PHOTO"+champ->toVCard()+"\n";
@@ -89,12 +87,41 @@ void Contact::essayerEncore()
 
 void Contact::remplacer(QString s,Champ * c)
 {
-    mChamps.replace(s,c);
+    QList<BChamp> nouveau;
+    int p=0;
+    for(int i=0;i<mChampsListe.size();i++)
+    {
+        if(mChampsListe[i].nom!=s) nouveau<<mChampsListe[i];
+        else p=mChampsListe[i].priorite;
+    }
+    mChampsListe=nouveau;
+
+    mChamps.remove(s);
+
+    ajouterChamp(s,c,p);
 }
 
-void Contact::ajouterChamp(const QString & nomChamp, Champ* valeurChamp)
+void Contact::ajouterChamp(const QString & nomChamp, Champ* valeurChamp, int priorite)
 {
     mChamps.insert(nomChamp,valeurChamp);
+
+
+    int j=mChampsListe.size();
+    for(int i=0;i<mChampsListe.size();i++)
+    {
+        if(mChampsListe[i].priorite>priorite)
+        {
+            j=i;
+            break;
+        }
+    }
+    BChamp bChamp;
+    bChamp.nom=nomChamp;
+    bChamp.valeur=valeurChamp;
+    bChamp.priorite=priorite;
+    mChampsListe.insert(j,bChamp);
+
+
     emit dataChanged();
     connect(valeurChamp,SIGNAL(dataChanged()),this,SIGNAL(dataChanged()));
 }
@@ -117,8 +144,8 @@ Champ* Contact::email(const QString nom,const QString domaine,const QString exte
 Champ* Contact::site(const QString url, const QString type)
 {
     Structure * structure=new Structure();
-    structure->ajouterChamp(tr("type"),new Enum(type));
-    structure->ajouterChamp(tr("url"),new Url(url));
+    structure->ajouterChamp(tr("type"),new Enum(type),0);
+    structure->ajouterChamp(tr("url"),new Url(url),1);
     return structure;
 }
 
@@ -152,32 +179,27 @@ const Champ* Contact::operator[](const QString s) const
     return at(s);
 }
 
-Champ* Contact::creerChampFromType(const QString& type)
+QPair<Champ*,int> Contact::creerChampFromType(const QString& type)
 {
     Champ * champ=NULL;
-    /*if(type=="card") champ=new Card();
-    else if(type=="enum") champ=new Enum();
-    else if(type=="loc") champ=new Loc();
-    else if(type=="structure") champ=new Structure();
-    else if(type=="texte") champ=new Texte();
-    else if(type=="timestamp") champ=new Timestamp();
-    else if(type=="url") champ=new Url();
-    else */
-    if(type==tr("tel")) champ=tel();
-    else if(type==tr("adresse")) champ=adresse();
-    else if(type==tr("email")) champ=email();
-    else if(type==tr("site")) champ=site();
-    else if(type==tr("type")) champ=gtype();
-    else if(type==tr("date")) champ=date();
-    else if(type==tr("note")) champ=note();
-    return champ;
+    int p=0;
+    if(type==tr("tel")) {champ=tel();p=5;}
+    else if(type==tr("adresse")) {champ=adresse();p=6;}
+    else if(type==tr("email")) {champ=email();p=7;}
+    else if(type==tr("site")) {champ=site();p=8;}
+    else if(type==tr("type")) {champ=gtype();p=9;}
+    else if(type==tr("date")) {champ=date();p=10;}
+    else if(type==tr("note")) {champ=note();p=11;}
+    return qMakePair(champ,p);
 }
 
 
 
 QString Contact::nom() const
 {
-    return mChamps.value(tr("nom"))->toString();
+    const Champ * nom=at(tr("nom"));
+    if(nom==NULL) return "";
+    return nom->toString();
 }
 
 int Contact::nombreValeurs() const
@@ -192,22 +214,15 @@ bool Contact::aNom() const
 
 const QPair<QString,Champ*> Contact::operator[](const int n) const
 {
-    QList<QString> lk=(mChamps.keys());
-    QList<Champ*> lv=(mChamps.values());
-    return  qMakePair(lk.length()<=n ? "" : lk[n],lv.length()<=n ? NULL : lv[n]);
+    BChamp b=mChampsListe[n];
+    return qMakePair(b.nom,b.valeur);
 }
 
 int Contact::supprimerChamp(const int index)
 {
-
+    mChampsListe.removeAt(index);
     QPair<QString,Champ*> p=(*this)[index];
-    return supprimerChamp(p.first,p.second);
-}
-
-int Contact::supprimerChamp(const QString & nomChamp,Champ * valeurChamp)
-{
-    int nb=mChamps.remove(nomChamp,valeurChamp);// pas bon : que si même pointeur... : à faire en utilisant les iterateurs.
-    //: en fait ça va : passer en privé ?
+    int nb=mChamps.remove(p.first,p.second);
     emit dataChanged();
     return nb;
 }

@@ -13,13 +13,11 @@ Structure::Structure(QObject *parent) : Champ(parent)
 QString Structure::toXML() const
 {
     QString r="";
-    QList<QString> ks=mChamps.keys();
-    QList<Champ*> vs=mChamps.values();
-    for(int i=0;i<ks.size();i++)
+    for(int i=0;i<mChampsListe.size();i++)
     {
-        r+="<"+QString(vs[i]->metaObject()->className())+" nomChamp=\""+ks[i]+"\">";
-        r+=vs[i]->toXML();
-        r+="</"+QString(vs[i]->metaObject()->className())+">";
+        r+="<"+QString(mChampsListe[i].valeur->metaObject()->className())+" nomChamp=\""+mChampsListe[i].nom+"\" priorite=\""+QString::number(mChampsListe[i].priorite)+"\">";
+        r+=mChampsListe[i].valeur->toXML();
+        r+="</"+QString(mChampsListe[i].valeur->metaObject()->className())+">";
     }
     return r;
 }
@@ -43,24 +41,38 @@ void Structure::essayerEncore()
     for_each(vs.begin(),vs.end(),essayerEncore_);
 }
 
-void Structure::ajouterChamp(const QString & nomChamp,Champ * valeurChamp)
+void Structure::ajouterChamp(const QString & nomChamp, Champ * valeurChamp, int priorite)
 {
     mChamps.insert(nomChamp,valeurChamp);
+
+
+    int j=mChampsListe.size();
+    for(int i=0;i<mChampsListe.size();i++)
+    {
+        if(mChampsListe[i].priorite>priorite)
+        {
+            j=i;
+            break;
+        }
+    }
+    BChamp bChamp;
+    bChamp.nom=nomChamp;
+    bChamp.valeur=valeurChamp;
+    bChamp.priorite=priorite;
+    mChampsListe.insert(j,bChamp);
+
+
     emit dataChanged();
     connect(valeurChamp,SIGNAL(dataChanged()),this,SIGNAL(dataChanged()));
 }
 
-int Structure::supprimerChamp(const QString & nomChamp, Champ * valeurChamp)
-{
-    int n=mChamps.remove(nomChamp,valeurChamp);
-    emit dataChanged();
-    return n;
-}
-
 int Structure::supprimerChamp(const int index)
 {
+    mChampsListe.removeAt(index);
     QPair<QString,Champ*> p=(*this)[index];
-    return supprimerChamp(p.first,p.second);
+    int nb=mChamps.remove(p.first,p.second);
+    emit dataChanged();
+    return nb;
 }
 
 const Champ* Structure::operator[](const QString s) const
@@ -71,12 +83,9 @@ const Champ* Structure::operator[](const QString s) const
 void Structure::vider()
 {
     mChamps.clear();
+    mChampsListe.clear();
 }
 
-/**
- * @brief nombreValeurs
- * @return le nombre de valeur totales
- */
 int Structure::nombreValeurs() const
 {
     return mChamps.count();
@@ -96,7 +105,7 @@ QString Structure::toString() const
 }
 QSize max(QSize,QSize);
 
-QVariant Structure::image()
+QVariant Structure::image() const
 {
 
     QList<QPixmap> t_images;
@@ -136,7 +145,18 @@ QVariant Structure::image()
 
 void Structure::remplacer(QString s,Champ * c)
 {
-    mChamps.replace(s,c);
+    QList<BChamp> nouveau;
+    int p=0;
+    for(int i=0;i<mChampsListe.size();i++)
+    {
+        if(mChampsListe[i].nom!=s) nouveau<<mChampsListe[i];
+        else p=mChampsListe[i].priorite;
+    }
+    mChampsListe=nouveau;
+
+    mChamps.remove(s);
+
+    ajouterChamp(s,c,p);
 }
 
 QVariant Structure::toVariant()
@@ -154,13 +174,15 @@ QString Structure::avoirChamp(QString nom) const
 bool Structure::fromVariant(const QVariant v)
 {
     mChamps=v.value<Structure*>()->mChamps;
+    mChampsListe=v.value<Structure*>()->mChampsListe;
     emit dataChanged();
     return true;
 }
 
 const QPair<QString,Champ*> Structure::operator[](const int n) const
 {
-    return qMakePair((mChamps.keys())[n],(mChamps.values())[n]);
+    BChamp b=mChampsListe[n];
+    return qMakePair(b.nom,b.valeur);
 }
 
 bool Structure::fromString(const QString s) // pas utilisé normalement...
@@ -175,7 +197,7 @@ bool Structure::fromString(const QString s) // pas utilisé normalement...
             QStringList l2=l[i].split(":");
             Texte * t=new Texte(); // à changer
             t->fromString(l2[1]);
-            ajouterChamp(l2[0],t);
+            ajouterChamp(l2[0],t,0);
         }
     }
     emit dataChanged();

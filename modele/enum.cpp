@@ -70,7 +70,7 @@ void Enum::remplirEnums()
     mIconeEnumListe<<iconesSexe;
 }
 
-QVariant Enum::image()
+QVariant Enum::image() const
 {
     if(mIconeEnumListe[mEnum][mValeur].isNull()) return QVariant();
     else return mIconeEnumListe[mEnum][mValeur];

@@ -46,7 +46,7 @@ public:
      * @brief image fourni une image à afficher
      * @return sous la forme d'un QVariant (QPixmap ou QIcon ou QImage)
      */
-    QVariant image();
+    QVariant image() const;
 
     /**
      * @brief essayerEncore permet de tenter de trouver le contact associé si on a pas réussi la première fois (nécessaire lors de l'import)

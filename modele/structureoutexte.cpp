@@ -13,7 +13,5 @@ QVariant StructureOuTexte::toVariant()
 
 bool StructureOuTexte::fromVariant(const QVariant v)
 {
-    mChamps=v.value<StructureOuTexte*>()->mChamps;
-    emit dataChanged();
-    return true;
+    return Structure::fromVariant(QVariant::fromValue((Structure*)v.value<StructureOuTexte*>()));
 }

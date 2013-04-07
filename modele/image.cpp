@@ -15,9 +15,10 @@ Image::Image(QObject *parent) : Structure(parent)
 Image::Image(const QString url, const QString type, QObject *parent) :
     Structure(parent)
 {
-    ajouterChamp(tr("type"),new Enum(type));
-    ajouterChamp(tr("url"),new Url(url));
+    ajouterChamp(tr("type"),new Enum(type),0);
+    ajouterChamp(tr("url"),new Url(url),1);
     connect(this,SIGNAL(dataChanged()),this,SLOT(chargerImage()));
+    chargerImage();
 }
 
 QVariant Image::toVariant()
@@ -25,11 +26,10 @@ QVariant Image::toVariant()
     return QVariant::fromValue(this);
 }
 
+
 bool Image::fromVariant(const QVariant v)
 {
-    mChamps=v.value<Image*>()->mChamps;
-    emit dataChanged();
-    return true;
+    return Structure::fromVariant(QVariant::fromValue((Structure*)v.value<Image*>()));
 }
 
 
@@ -38,7 +38,7 @@ QString Image::toString() const
     return "";
 }
 
-QVariant Image::image()
+QVariant Image::image() const
 {
     if(mImage.isNull()) return QVariant();
     else return mImage;
@@ -79,7 +79,7 @@ void Image::slot_netwManagerFinished(QNetworkReply *reply)
 
     QByteArray jpegData = reply->readAll();
     mImage.loadFromData(jpegData);
-    mImage=mImage.scaledToWidth(100);
+    mImage=mImage.scaledToWidth(200);
     disconnect(this,SIGNAL(dataChanged()),this,SLOT(chargerImage()));
     emit dataChanged();
     connect(this,SIGNAL(dataChanged()),this,SLOT(chargerImage()));

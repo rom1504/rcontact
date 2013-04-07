@@ -9,9 +9,9 @@ Email::Email(QObject *parent) :
 
 Email::Email(const QString nom,const QString domaine,const QString extension)
 {
-    ajouterChamp(tr("nom"),new Texte(nom));
-    ajouterChamp(tr("domaine"),new Texte(domaine));
-    ajouterChamp(tr("extension"),new Texte(extension));
+    ajouterChamp(tr("nom"),new Texte(nom),0);
+    ajouterChamp(tr("domaine"),new Texte(domaine),1);
+    ajouterChamp(tr("extension"),new Texte(extension),2);
 }
 
 QString Email::toString() const
@@ -39,9 +39,9 @@ bool Email::fromString(const QString s)
             }
         }
     }
-    ajouterChamp(tr("nom"),new Texte(nom));
-    ajouterChamp(tr("domaine"),new Texte(domaine));
-    ajouterChamp(tr("extension"),new Texte(extension));
+    ajouterChamp(tr("nom"),new Texte(nom),0);
+    ajouterChamp(tr("domaine"),new Texte(domaine),1);
+    ajouterChamp(tr("extension"),new Texte(extension),2);
     return true;
 }
 

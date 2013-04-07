@@ -9,7 +9,7 @@ Organisme::Organisme(QObject * parent) : Contact(parent)
 
 QVariant Organisme::image() const
 {
-    Champ * champ=mChamps.value("logo",NULL);
+    const Champ * champ=at("logo");
     if(champ==NULL) return QVariant();
     QVariant v=champ->image();
     if(!(v.isValid())) return QVariant();
@@ -37,8 +37,8 @@ Organisme *Organisme::creerDefaut()
 Champ* Organisme::gnom(const QString nom,const QString raisonSociale)
 {
     Structure * structure=new Structure();
-    structure->ajouterChamp(tr("Nom"),new Texte(nom));
-    structure->ajouterChamp(tr("Raison sociale"),new Texte(raisonSociale));
+    structure->ajouterChamp(tr("Nom"),new Texte(nom),0);
+    structure->ajouterChamp(tr("Raison sociale"),new Texte(raisonSociale),1);
     return structure;
 }
 
@@ -50,18 +50,19 @@ Champ* Organisme::logo(const QString url, const QString type)
 Champ* Organisme::membre(const QString fonction, QString card)
 {
     Membre * membre=new Membre();
-    membre->ajouterChamp(tr("card"),new Card(false,card));
-    membre->ajouterChamp(tr("fonction"),new Texte(fonction));
+    membre->ajouterChamp(tr("card"),new Card(false,card),0);
+    membre->ajouterChamp(tr("fonction"),new Texte(fonction),1);
     return membre;
 }
 
 
 void Organisme::creerChamp(const QString& nomChamp, const QString& type)
 {
-    Champ* champ = Contact::creerChampFromType(type);
-
-    if(type==tr("nom")) champ=gnom();
-    else if(type==tr("logo")) champ=logo();
-    else if(type==tr("membre")) champ=membre();
-    ajouterChamp(nomChamp, champ);
+    QPair<Champ*,int> pa = Contact::creerChampFromType(type);
+    Champ* champ=pa.first;
+    int p=pa.second;
+    if(type==tr("nom")) {champ=gnom();p=0;}
+    else if(type==tr("logo")) {champ=logo();p=3;}
+    else if(type==tr("membre")) {champ=membre();p=4;}
+    ajouterChamp(nomChamp,champ,p);
 }

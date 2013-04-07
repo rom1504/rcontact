@@ -30,7 +30,7 @@ bool Card::fromString(const QString nom)
     return false;
 }
 
-QVariant Card::image()
+QVariant Card::image() const
 {
     if(mContact!=NULL) return mContact->image();
     return QVariant();

@@ -84,7 +84,7 @@ public:
      * @brief image renvoie l'image associé à la valeur de l'énumération (pour afficher des images dans la liste de choix)
      * @return Un QVariant contenant l'image du choix actuel
      */
-    QVariant image();
+    QVariant image() const;
 
 private:
     /**

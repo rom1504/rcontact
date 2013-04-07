@@ -55,7 +55,7 @@ public:
      * @return sous la forme d'un QVariant (QPixmap ou QIcon ou QImage)
      */
 
-    virtual QVariant image();
+    virtual QVariant image() const;
 
     /**
      * @brief toVCard fait l'export en vCard

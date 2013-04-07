@@ -9,10 +9,10 @@ Tel::Tel(QObject *parent) :
 
 Tel::Tel(const QString numero, const QString type, const QString typeTel, const QString typeDonnees)
 {
-    ajouterChamp(tr("type"),new Enum(type));
-    ajouterChamp(tr("type tel"),new Enum(typeTel));
-    ajouterChamp(tr("type données"),new Enum(typeDonnees));
-    ajouterChamp(tr("n°"),new Texte(numero));
+    ajouterChamp(tr("type"),new Enum(type),1);
+    ajouterChamp(tr("type tel"),new Enum(typeTel),2);
+    ajouterChamp(tr("type données"),new Enum(typeDonnees),3);
+    ajouterChamp(tr("n°"),new Texte(numero),0);
 }
 
 QString Tel::toString() const

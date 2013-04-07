@@ -23,6 +23,14 @@ public:
 
 
     /**
+     * @brief creerChamp créé et ajoute un champ
+     * @param nomChamp le nom du champ à créer
+     * @param type Le type du champ à créer
+     */
+    void creerChamp(const QString& nomChamp, const QString& type);
+
+
+    /**
      * @brief image
      * @return La photo de la personne
      */
@@ -66,12 +74,6 @@ public:
      */
     static Champ* organisation(QString card="");
 
-    /**
-     * @brief creerChamp créé et ajoute un champ
-     * @param nomChamp le nom du champ à créer
-     * @param type Le type du champ à créer
-     */
-    void creerChamp(const QString& nomChamp, const QString& type);
 };
 
 #endif // PERSONNE_H

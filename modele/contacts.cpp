@@ -118,7 +118,7 @@ Champ * qDomElementToChamp(QDomElement & unElement,bool dansPersonne)
         QDomElement unElement2 = unElement.firstChildElement();
         while(!unElement2.isNull())
         {
-            structure->ajouterChamp(unElement2.attribute("nomChamp"),qDomElementToChamp(unElement2,dansPersonne));
+            structure->ajouterChamp(unElement2.attribute("nomChamp"),qDomElementToChamp(unElement2,dansPersonne),unElement.attribute("priorite","0").toInt());
             unElement2 = unElement2.nextSiblingElement();
         }
         champ=structure;
@@ -159,7 +159,7 @@ void Contacts::chargerXML(QString nomFichier)
         QDomElement unElement = racine.firstChildElement();
         while(!unElement.isNull())
         {
-            contact->ajouterChamp(unElement.attribute("nomChamp"),qDomElementToChamp(unElement,racine.tagName() == "Personne"));
+            contact->ajouterChamp(unElement.attribute("nomChamp"),qDomElementToChamp(unElement,racine.tagName() == "Personne"),unElement.attribute("priorite","0").toInt());
             unElement = unElement.nextSiblingElement();
         }
         racine = racine.nextSiblingElement();
@@ -222,7 +222,7 @@ void Contacts::chargerVCard(QString nomFichier)
         {
             if(nom=="END" && valeur=="VCARD")
             {
-                if(!(contact->aNom())) contact->ajouterChamp(tr("nom"),kind=="individual" ? Personne::gnom("","") : Organisme::gnom("",""));
+                if(!(contact->aNom())) contact->ajouterChamp(tr("nom"),kind=="individual" ? Personne::gnom("","") : Organisme::gnom("",""),0);
                 ajouterContact(contact);
                 contact=NULL;
                 ini=0;
@@ -233,18 +233,18 @@ void Contacts::chargerVCard(QString nomFichier)
 //               Prefixes, and Honorific Suffixes
             else if(vnom=="N") contact->ajouterChamp(tr("nom"),kind=="individual" ? Personne::gnom(valeurs.length()>0 ? parseString(valeurs[0]) : "",valeurs.length()>1 ? parseString(valeurs[1]) : "",
                                                                                                    valeurs.length()>3 ? parseString(valeurs[3]) : "",valeurs.length()>2 ? parseString(valeurs[2]) : "")
-                                                                                  : Organisme::gnom(valeurs.length()>0 ? parseString(valeurs[0]) : "",valeurs.length()>1 ? parseString(valeurs[1]) : ""));
+                                                                                  : Organisme::gnom(valeurs.length()>0 ? parseString(valeurs[0]) : "",valeurs.length()>1 ? parseString(valeurs[1]) : ""),0);
 //            the post office box; the extended address; the street
 //               address; the locality (e.g., city); the region (e.g., state or
 //               province); the postal code; the country name
             else if(vnom=="ADR") contact->ajouterChamp(tr("adresse"),Contact::adresse(valeurs.length()>2 ? parseString(valeurs[2]) : "",valeurs.length()>5 ?
                                                                                           valeurs[5] : "",valeurs.length()>3 ? valeurs[3] : "",valeurs.length()>4 ?  valeurs[4] : ""
-                                                                                                                                                                     ,valeurs.length()>6 ? valeurs[6] : "",types.contains("home",Qt::CaseInsensitive) ? tr("home") : tr("work")));
+                                                                                                                                                                     ,valeurs.length()>6 ? valeurs[6] : "",types.contains("home",Qt::CaseInsensitive) ? tr("home") : tr("work")),6);
             else if(vnom=="NOTE")
             {
                 while((ligne=flux.readLine())!="END:VCARD") valeur+=ligne;
-                contact->ajouterChamp(tr("note"),Contact::note(parseString(valeur)));
-                if(!(contact->aNom())) contact->ajouterChamp(tr("nom"),kind=="individual" ? Personne::gnom("","") : Organisme::gnom("",""));
+                contact->ajouterChamp(tr("note"),Contact::note(parseString(valeur)),11);
+                if(!(contact->aNom())) contact->ajouterChamp(tr("nom"),kind=="individual" ? Personne::gnom("","") : Organisme::gnom("",""),11);
                 ajouterContact(contact);
                 contact=NULL;
             }
@@ -252,20 +252,20 @@ void Contacts::chargerVCard(QString nomFichier)
                                                                               types.contains("home",Qt::CaseInsensitive) ? tr("home") : tr("work"),
                                                                               types.contains("cell",Qt::CaseInsensitive) ? tr("cellulaire") : tr("fixe"),
                                                                               types.contains("data",Qt::CaseInsensitive) ? tr("data") : tr("voice")
-                                                                              ));
-            else if(vnom=="PHOTO") contact->ajouterChamp(tr("photo"),Personne::photo(parseString(valeur),types.contains("JPEG",Qt::CaseInsensitive) ? "JPEG" : (types.contains("PNG",Qt::CaseInsensitive) ? "PNG" : (types.contains("GIF",Qt::CaseInsensitive) ? "GIF" : "JPEG"))));
-            else if(vnom=="LOGO") contact->ajouterChamp(tr("logo"),Organisme::logo(parseString(valeur),types.contains("JPEG",Qt::CaseInsensitive) ? "JPEG" : (types.contains("PNG",Qt::CaseInsensitive) ? "PNG" : (types.contains("GIF",Qt::CaseInsensitive) ? "GIF" : "JPEG"))));
-            else if(vnom=="ORG") contact->ajouterChamp(tr("organisation"),Personne::organisation(valeur));
-            else if(vnom=="MEMBER") contact->ajouterChamp(tr("membre"),Organisme::membre(valeurs.length()>1 ? valeurs[1] : "",valeurs.length()>0 ? valeurs[0] : ""));
+                                                                              ),5);
+            else if(vnom=="PHOTO") contact->ajouterChamp(tr("photo"),Personne::photo(parseString(valeur),types.contains("JPEG",Qt::CaseInsensitive) ? "JPEG" : (types.contains("PNG",Qt::CaseInsensitive) ? "PNG" : (types.contains("GIF",Qt::CaseInsensitive) ? "GIF" : "JPEG"))),3);
+            else if(vnom=="LOGO") contact->ajouterChamp(tr("logo"),Organisme::logo(parseString(valeur),types.contains("JPEG",Qt::CaseInsensitive) ? "JPEG" : (types.contains("PNG",Qt::CaseInsensitive) ? "PNG" : (types.contains("GIF",Qt::CaseInsensitive) ? "GIF" : "JPEG"))),3);
+            else if(vnom=="ORG") contact->ajouterChamp(tr("organisation"),Personne::organisation(valeur),4);
+            else if(vnom=="MEMBER") contact->ajouterChamp(tr("membre"),Organisme::membre(valeurs.length()>1 ? valeurs[1] : "",valeurs.length()>0 ? valeurs[0] : ""),4);
             else if(vnom=="EMAIL")
             {
                 Email * e=new Email();
                 e->fromString(valeur);
-                contact->ajouterChamp(tr("mail"),e);
+                contact->ajouterChamp(tr("email"),e,7);
             }
-            else if(vnom=="BDAY") contact->ajouterChamp(tr("date de naissance"),Contact::date(valeur));
+            else if(vnom=="BDAY") contact->ajouterChamp(tr("date de naissance"),Contact::date(valeur),10);
             //else if(vnom=="FN") 1; // que faire ????
-            else if(vnom=="URL") contact->ajouterChamp(tr("url"),Contact::url(parseString(valeur)));
+            else if(vnom=="URL") contact->ajouterChamp(tr("url"),Contact::url(parseString(valeur)),12); // ??
 //            else std::cout<<ligne.toStdString()<<"\n";
         }
     }

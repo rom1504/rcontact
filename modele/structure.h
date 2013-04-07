@@ -27,29 +27,35 @@ public:
      * @param nomChamp Le nom du champ à ajouter
      * @param valeurChamp Un pointeur vers la valeur par défaut du champ
      */
-    void ajouterChamp(const QString & nomChamp,Champ * valeurChamp);
-    /**
-     * @brief supprimerChamp supprime un champ dans la structure
-     * @param nomChamp La nom du champ à supprimer
-     * @param valeurChamp Un pointeur vers la valeur du champ à supprimer
-     * @return le nombre de champs supprimés
-     */
-    int supprimerChamp(const QString & nomChamp, Champ *valeurChamp);
+    void ajouterChamp(const QString & nomChamp,Champ * valeurChamp,int priorite);
 
 
     int supprimerChamp(const int index);
 
-    /**
-     * @brief toString convertit l'objet en format lisible
-     * @return une QString contenant un format lisible du champ
-     */
-    virtual QString toString() const;
+    void remplacer(QString s,Champ * c);
+
+
+    void essayerEncore();
+
+
     /**
      * @brief fromString convertit un QString en Structure
      * @param s La QString à convertir
      * @return true si la conversion a réussi, false sinon
      */
     virtual bool fromString(const QString s);
+
+
+    virtual QVariant toVariant();
+
+    virtual bool fromVariant(const QVariant v);
+
+
+    /**
+     * @brief toString convertit l'objet en format lisible
+     * @return une QString contenant un format lisible du champ
+     */
+    virtual QString toString() const;
 
 
     /**
@@ -66,8 +72,6 @@ public:
     const Champ* operator[](const QString s) const;
 
 
-    virtual QVariant toVariant();
-    virtual bool fromVariant(const QVariant v);
 
     /**
      * @brief nombreValeurs
@@ -75,14 +79,10 @@ public:
      */
     int nombreValeurs() const;
 
-    void remplacer(QString s,Champ * c);
-
-    QVariant image();
+    QVariant image() const;
 
 
     QString avoirChamp(QString nom) const;
-
-    void essayerEncore();
 
     QString toXML() const;
 
@@ -91,11 +91,21 @@ protected:
     void vider();
 
 
-protected:
+private:
+
     /**
      * @brief mChamps contient la liste des champs contenu dans la structure
      */
     QMultiMap<QString,Champ*> mChamps;
+
+    struct BChamp
+    {
+        QString nom;
+        Champ* valeur;
+        int priorite;
+    };
+
+    QList<BChamp> mChampsListe;
 };
 
 Q_DECLARE_METATYPE (Structure*)

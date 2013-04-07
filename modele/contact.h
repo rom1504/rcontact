@@ -36,24 +36,12 @@ public:
      * @brief ajouterChamp ajoute le champs libelé nomChamp avec la valeur valeurChamp
      * @param nomChamp Le nom du champ à ajouter (ex : "nom", "téléphone", ...)
      * @param valeurChamp La valeur du champ à ajouter
+     * @param la priorité : permet de savoir où placer le champ
      */
-    void ajouterChamp(const QString & nomChamp, Champ* valeurChamp);
-
-    /**
-     * @brief creerChamp créé un champ à partir de son nom et son type, et l'ajoute
-     * @param nomChamp Le nom du champ à créer
-     * @param type Le type du champ à créer
-     */
-    virtual void creerChamp(const QString & nomChamp, const QString& type)=0;
+    void ajouterChamp(const QString & nomChamp,Champ* valeurChamp,int priorite);
 
 
-    /**
-     * @brief supprimerChamp supprime le champ libelé nomChamp qui a la valeur valeurChamp
-     * @param nomChamp Le nom du champ à supprimer
-     * @param valeurChamp La valeur du champ à supprimer
-     * @return le nombre de valeurs supprimées
-     */
-    int supprimerChamp(const QString & nomChamp, Champ * valeurChamp);
+
 
     /**
      * @brief supprimerChamp supprime le champ à l'index indiqué
@@ -61,6 +49,28 @@ public:
      * @return le nombre de valeurs supprimées (0 ou 1 donc)
      */
     int supprimerChamp(const int index);
+
+    /**
+     * @brief remplacer remplace le champ appelé s par la valeur c
+     * @param s Le nom du champ à remplacer
+     * @param c La nouvelle valeur du champ
+     */
+    void remplacer(QString s,Champ * c);
+
+
+
+    /**
+     * @brief essayerEncore appelle le essayerEncore au dessous
+     */
+    void essayerEncore();
+
+
+    /**
+     * @brief creerChamp créé un champ à partir de son nom et son type, et l'ajoute
+     * @param nomChamp Le nom du champ à créer
+     * @param type Le type du champ à créer
+     */
+    virtual void creerChamp(const QString & nomChamp, const QString& type)=0;
 
     /**
      * @brief nombreValeurs
@@ -101,12 +111,6 @@ public:
      */
     const Champ* operator[](const QString s) const;
 
-    /**
-     * @brief remplacer remplace le champ appelé s par la valeur c
-     * @param s Le nom du champ à remplacer
-     * @param c La nouvelle valeur du champ
-     */
-    void remplacer(QString s,Champ * c);
 
     /**
      * @brief tel créé un champ sensé décrire un tel de Contact initialisé avec les valeurs passées en paramètre
@@ -176,10 +180,6 @@ public:
      */
     static Champ* url(const QString texte="");
 
-    /**
-     * @brief essayerEncore ne fait rien
-     */
-    void essayerEncore();
 
     /**
      * @brief toXML convertit le contact en XML
@@ -206,12 +206,23 @@ signals:
      */
     void dataChanged();
 
-protected:
+private:
 
     /**
      * @brief mChamps est un multimap associant des libelés de champs (les QString) à des valeurs (les *Champ)
      */
     QMultiMap<QString,Champ*> mChamps;
+
+    struct BChamp
+    {
+        QString nom;
+        Champ* valeur;
+        int priorite;
+    };
+
+    QList<BChamp> mChampsListe;
+
+protected:
 
     /**
      * @brief creerChampFromType créé un champ de base à partir du type passé en paramètre.
@@ -219,7 +230,7 @@ protected:
      * @param type Le type du champ à créer
      * @return Le champ créé
      */
-    static Champ* creerChampFromType(const QString& type);
+    static QPair<Champ *, int> creerChampFromType(const QString& type);
 
 
 };

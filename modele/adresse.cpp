@@ -9,6 +9,18 @@ Adresse::Adresse(QObject *parent) :
 {
 }
 
+Adresse::Adresse(const QString rue,const QString zipcode,const QString localite,const QString region,const QString pays,const QString type,Loc * geo,QObject *parent) :
+    StructureOuTexte(parent)
+{
+    ajouterChamp(tr("type"),new Enum(type));
+    ajouterChamp(tr("rue"),new Texte(rue));
+    ajouterChamp(tr("zipcode"),new Texte(zipcode));
+    ajouterChamp(tr("localité"),new Texte(localite));
+    ajouterChamp(tr("Région"),new Texte(region));
+    ajouterChamp(tr("pays"),new Texte(pays));
+    ajouterChamp(tr("geo"),geo);
+}
+
 QString Adresse::toString() const
 {
     return (avoirChamp(tr("rue"))+" "+avoirChamp(tr("zipcode"))+" "+avoirChamp(tr("localité"))+" "+avoirChamp(tr("Région"))+" "+avoirChamp(tr("pays"))+" "+avoirChamp(tr("géo"))).trimmed();

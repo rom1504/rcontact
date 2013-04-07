@@ -1,9 +1,18 @@
 #include "tel.h"
 #include "texte.h"
+#include "enum.h"
 
 Tel::Tel(QObject *parent) :
     StructureOuTexte(parent)
 {
+}
+
+Tel::Tel(const QString numero, const QString type, const QString typeTel, const QString typeDonnees)
+{
+    ajouterChamp(tr("type"),new Enum(type));
+    ajouterChamp(tr("type tel"),new Enum(typeTel));
+    ajouterChamp(tr("type données"),new Enum(typeDonnees));
+    ajouterChamp(tr("n°"),new Texte(numero));
 }
 
 QString Tel::toString() const

@@ -20,6 +20,7 @@ public:
      * @brief Constructeur par défaut
      */
     explicit Email(QObject *parent = 0);
+    explicit Email(const QString nom,const QString domaine,const QString extension);
 
     /**
      * @brief toString convertit l'objet en format lisible

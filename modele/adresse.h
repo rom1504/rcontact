@@ -7,6 +7,7 @@
 #define ADRESSE_H
 
 #include "structureoutexte.h"
+#include "loc.h"
 
 class Adresse : public StructureOuTexte
 {
@@ -16,6 +17,9 @@ public:
      * @brief Constructeur par défaut
      */
     explicit Adresse(QObject *parent = 0);
+
+
+    explicit Adresse(const QString rue,const QString zipcode,const QString localite,const QString region,const QString pays,const QString type,Loc * geo,QObject *parent = 0);
 
     /**
      * @brief toString convertit l'objet en format lisible

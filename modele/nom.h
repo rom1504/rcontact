@@ -21,6 +21,8 @@ public:
      */
     explicit Nom(QObject *parent = 0);
 
+    explicit Nom(const QString nom, const QString prenom, const QString prefixe, const QString surnom);
+
     /**
      * @brief toString convertit l'objet en format lisible
      * @return une QString contenant un format lisible du champ

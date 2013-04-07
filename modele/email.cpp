@@ -7,6 +7,13 @@ Email::Email(QObject *parent) :
 {
 }
 
+Email::Email(const QString nom,const QString domaine,const QString extension)
+{
+    ajouterChamp(tr("nom"),new Texte(nom));
+    ajouterChamp(tr("domaine"),new Texte(domaine));
+    ajouterChamp(tr("extension"),new Texte(extension));
+}
+
 QString Email::toString() const
 {
     QString s=(avoirChamp(tr("nom"))+"@"+avoirChamp(tr("domaine"))+"."+avoirChamp(tr("extension"))).trimmed();

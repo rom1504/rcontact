@@ -7,6 +7,14 @@ Nom::Nom(QObject *parent) :
 {
 }
 
+Nom::Nom(const QString nom, const QString prenom, const QString prefixe, const QString surnom)
+{
+    ajouterChamp(tr("Préfixe"),new Texte(prefixe));
+    ajouterChamp(tr("Nom"),new Texte(nom));
+    ajouterChamp(tr("Prénom"),new Texte(prenom));
+    ajouterChamp(tr("Surnom"),new Texte(surnom));
+}
+
 QString Nom::toString() const
 {
     return (avoirChamp(tr("Préfixe"))+" "+avoirChamp(tr("Prénom"))+" "+avoirChamp(tr("Nom"))+" "+avoirChamp(tr("Surnom"))).trimmed();

@@ -40,12 +40,7 @@ Personne *Personne::creerDefaut()
 
 Champ* Personne::gnom(const QString nom, const QString prenom, const QString prefixe, const QString surnom)
 {
-    Nom * snom=new Nom();
-    snom->ajouterChamp(tr("Préfixe"),new Texte(prefixe));
-    snom->ajouterChamp(tr("Nom"),new Texte(nom));
-    snom->ajouterChamp(tr("Prénom"),new Texte(prenom));
-    snom->ajouterChamp(tr("Surnom"),new Texte(surnom));
-    return snom;
+    return new Nom(nom,prenom,prefixe,surnom);
 }
 
 Champ* Personne::sexe(const QString sexe)

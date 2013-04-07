@@ -19,6 +19,8 @@ public:
      * @brief Constructeur par défaut
      */
     explicit Tel(QObject *parent = 0);
+
+    explicit Tel(const QString numero, const QString type, const QString typeTel, const QString typeDonnees);
     
     /**
      * @brief toString convertit l'objet en format lisible

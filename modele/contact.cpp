@@ -100,34 +100,17 @@ void Contact::ajouterChamp(const QString & nomChamp, Champ* valeurChamp)
 
 Champ* Contact::tel(const QString numero, const QString type, const QString typeTel, const QString typeDonnees)
 {
-    Tel * tel=new Tel();
-    tel->ajouterChamp(tr("type"),new Enum(type));
-    tel->ajouterChamp(tr("type tel"),new Enum(typeTel));
-    tel->ajouterChamp(tr("type données"),new Enum(typeDonnees));
-    tel->ajouterChamp(tr("n°"),new Texte(numero));
-    return tel;
+    return new Tel(numero,type,typeTel,typeDonnees);
 }
 
 Champ* Contact::adresse(const QString rue,const QString zipcode,const QString localite,const QString region,const QString pays,const QString type,Loc * geo)
 {
-    Adresse * adresse=new Adresse();
-    adresse->ajouterChamp(tr("type"),new Enum(type));
-    adresse->ajouterChamp(tr("rue"),new Texte(rue));
-    adresse->ajouterChamp(tr("zipcode"),new Texte(zipcode));
-    adresse->ajouterChamp(tr("localité"),new Texte(localite));
-    adresse->ajouterChamp(tr("Région"),new Texte(region));
-    adresse->ajouterChamp(tr("pays"),new Texte(pays));
-    adresse->ajouterChamp(tr("geo"),geo);
-    return adresse;
+    return new Adresse(rue,zipcode,localite,region,pays,type,geo);
 }
 
 Champ* Contact::email(const QString nom,const QString domaine,const QString extension)
 {
-    Email * email=new Email();// dans constructeur ?
-    email->ajouterChamp(tr("nom"),new Texte(nom));
-    email->ajouterChamp(tr("domaine"),new Texte(domaine));
-    email->ajouterChamp(tr("extension"),new Texte(extension));
-    return email;
+    return new Email(nom,domaine,extension);
 }
 
 Champ* Contact::site(const QString url, const QString type)

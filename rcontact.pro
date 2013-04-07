@@ -53,7 +53,9 @@ SOURCES += main.cpp\
     modele/image.cpp \
     vue/dateedit.cpp \
     modele/membre.cpp \
-    vue/imageedit.cpp
+    vue/imageedit.cpp \
+    modele/grandtexte.cpp \
+    vue/grandtexteedit.cpp
 
 HEADERS  += vue/mainwindow.h \
     modele/contacts.h \
@@ -93,7 +95,9 @@ HEADERS  += vue/mainwindow.h \
     modele/image.h \
     vue/dateedit.h \
     modele/membre.h \
-    vue/imageedit.h
+    vue/imageedit.h \
+    modele/grandtexte.h \
+    vue/grandtexteedit.h
 
 FORMS    += vue/mainwindow.ui \
     vue/listecontacts.ui \

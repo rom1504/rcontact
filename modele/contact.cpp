@@ -9,6 +9,7 @@
 #include "tel.h"
 #include "adresse.h"
 #include "email.h"
+#include "grandtexte.h"
 
 Contact::Contact(QObject *parent) : QObject(parent)
 {
@@ -133,7 +134,7 @@ Champ* Contact::date(const QString timestamp)
 
 Champ* Contact::note(const QString note)
 {
-    return new Texte(note);
+    return new GrandTexte(note);
 }
 
 Champ* Contact::url(const QString texte)

@@ -18,6 +18,7 @@
 #include <QDomElement>
 #include <QApplication>
 #include <QTranslator>
+#include "grandtexte.h"
 
 Contacts::Contacts(QString locale, QTranslator *translator, QObject *parent) :
     QObject(parent),mLocale(locale),mTranslator(translator)
@@ -107,6 +108,7 @@ Champ * qDomElementToChamp(QDomElement & unElement,bool dansPersonne)
     else if(unElement.tagName() == "Structure") structure=new Structure();
     else if(unElement.tagName() == "Tel") structure=new Tel();
     else if(unElement.tagName() == "Texte") champ=new Texte();
+    else if(unElement.tagName() == "GrandTexte") champ=new GrandTexte();
     else if(unElement.tagName() == "Timestamp") champ=new Timestamp();
     else if(unElement.tagName() == "Url") champ=new Url();
 

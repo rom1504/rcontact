@@ -18,6 +18,7 @@
 #include "../modele/image.h"
 #include "imageedit.h"
 #include <QSettings>
+#include "grandtexteedit.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -33,6 +34,7 @@ MainWindow::MainWindow(QWidget *parent) :
     factory->registerEditor((QVariant::Type)qMetaTypeId<Structure*>(), new QStandardItemEditorCreator<StructureEdit>());
     factory->registerEditor((QVariant::Type)qMetaTypeId<StructureOuTexte*>(), new QStandardItemEditorCreator<StructureOuTexteEdit>());
     factory->registerEditor((QVariant::Type)qMetaTypeId<Image*>(), new QStandardItemEditorCreator<ImageEdit>());
+    factory->registerEditor((QVariant::Type)qMetaTypeId<GrandTexte*>(), new QStandardItemEditorCreator<GrandTexteEdit>());
     QItemEditorFactory::setDefaultFactory(factory);
 
 

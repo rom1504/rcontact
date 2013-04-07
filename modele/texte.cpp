@@ -24,3 +24,14 @@ bool Texte::fromString(const QString s)
     return true;
 }
 
+
+
+void Texte::setValue(const QString value)
+{
+    mValue=value;
+}
+
+QString Texte::value() const
+{
+    return mValue;
+}

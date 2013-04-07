@@ -4,12 +4,34 @@
 #include <QDebug>
 #include <QNetworkReply>
 #include <QNetworkProxy>
+#include "enum.h"
+#include "url.h"
 
-Image::Image(QObject *parent) :
-    Structure(parent)
+Image::Image(QObject *parent) : Structure(parent)
 {
     connect(this,SIGNAL(dataChanged()),this,SLOT(chargerImage()));
 }
+
+Image::Image(const QString url, const QString type, QObject *parent) :
+    Structure(parent)
+{
+    ajouterChamp(tr("type"),new Enum(type));
+    ajouterChamp(tr("url"),new Url(url));
+    connect(this,SIGNAL(dataChanged()),this,SLOT(chargerImage()));
+}
+
+QVariant Image::toVariant()
+{
+    return QVariant::fromValue(this);
+}
+
+bool Image::fromVariant(const QVariant v)
+{
+    mChamps=v.value<Image*>()->mChamps;
+    emit dataChanged();
+    return true;
+}
+
 
 QString Image::toString() const
 {

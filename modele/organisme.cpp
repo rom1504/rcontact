@@ -44,10 +44,7 @@ Champ* Organisme::gnom(const QString nom,const QString raisonSociale)
 
 Champ* Organisme::logo(const QString url, const QString type)
 {
-    Image * image=new Image();
-    image->ajouterChamp(tr("type"),new Enum(type));
-    image->ajouterChamp(tr("url"),new Url(url));
-    return image;
+    return new Image(url,type);
 }
 
 Champ* Organisme::membre(const QString fonction, QString card)

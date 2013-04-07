@@ -15,6 +15,8 @@
 #include "../modele/nom.h"
 #include <QCalendarWidget>
 #include "dateedit.h"
+#include "../modele/image.h"
+#include "imageedit.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -29,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
     factory->registerEditor((QVariant::Type)qMetaTypeId<Enum*>(), new QStandardItemEditorCreator<EnumEdit>());
     factory->registerEditor((QVariant::Type)qMetaTypeId<Structure*>(), new QStandardItemEditorCreator<StructureEdit>());
     factory->registerEditor((QVariant::Type)qMetaTypeId<StructureOuTexte*>(), new QStandardItemEditorCreator<StructureOuTexteEdit>());
+    factory->registerEditor((QVariant::Type)qMetaTypeId<Image*>(), new QStandardItemEditorCreator<ImageEdit>());
     QItemEditorFactory::setDefaultFactory(factory);
 
 

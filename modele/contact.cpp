@@ -27,8 +27,8 @@ QString Contact::toXML() const
     QList<Champ*> vs=mChamps.values();
     for(int i=0;i<ks.size();i++)
     {
-        r+="<"+QString(vs[i]->metaObject()->className())+" nomChamp=\""+ks[i]+"\">\n";
-        r+=vs[i]->toXML()+"\n";
+        r+="<"+QString(vs[i]->metaObject()->className())+" nomChamp=\""+ks[i]+"\">";
+        r+=vs[i]->toXML();
         r+="</"+QString(vs[i]->metaObject()->className())+">";
     }
     return r;

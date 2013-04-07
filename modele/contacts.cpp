@@ -283,16 +283,16 @@ void Contacts::enregistrerEnXML(QString nomFichier) const
     QFile fichier(nomFichier);
     fichier.open(QIODevice::WriteOnly | QIODevice::Text);
     QTextStream flux(&fichier);
-    flux<<"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-    flux<<"<Contacts>\n";
-    flux<<"<lang>"+mLocale+"</lang>\n";
+    flux<<"<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+    flux<<"<Contacts>";
+    flux<<"<lang>"+mLocale+"</lang>";
     for (int i = 0; i < mContacts.size(); ++i)
     {
-        flux<<"<"+QString(mContacts[i]->metaObject()->className())+">\n";
-        flux<<mContacts[i]->toXML()+"\n";
-        flux<<"</"+QString(mContacts[i]->metaObject()->className())+">\n";
+        flux<<"<"+QString(mContacts[i]->metaObject()->className())+">";
+        flux<<mContacts[i]->toXML();
+        flux<<"</"+QString(mContacts[i]->metaObject()->className())+">";
     }
-    flux<<"</Contacts>\n";
+    flux<<"</Contacts>";
     fichier.close();
 }
 

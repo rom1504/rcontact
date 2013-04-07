@@ -56,10 +56,7 @@ Champ* Personne::sexe(const QString sexe)
 
 Champ* Personne::photo(const QString url, const QString type)
 {
-    Image * image=new Image();
-    image->ajouterChamp(tr("type"),new Enum(type));
-    image->ajouterChamp(tr("url"),new Url(url));
-    return image;
+    return new Image(url,type);
 }
 
 Champ* Personne::organisation(QString card)

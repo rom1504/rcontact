@@ -52,7 +52,8 @@ SOURCES += main.cpp\
     modele/email.cpp \
     modele/image.cpp \
     vue/dateedit.cpp \
-    modele/membre.cpp
+    modele/membre.cpp \
+    vue/imageedit.cpp
 
 HEADERS  += vue/mainwindow.h \
     modele/contacts.h \
@@ -91,7 +92,8 @@ HEADERS  += vue/mainwindow.h \
     modele/email.h \
     modele/image.h \
     vue/dateedit.h \
-    modele/membre.h
+    modele/membre.h \
+    vue/imageedit.h
 
 FORMS    += vue/mainwindow.ui \
     vue/listecontacts.ui \
@@ -102,7 +104,8 @@ FORMS    += vue/mainwindow.ui \
     vue/ajouterchamp.ui \
     vue/criterestri.ui \
     vue/rechercher.ui \
-    vue/structureoutexteedit.ui
+    vue/structureoutexteedit.ui \
+    vue/imageedit.ui
 
 
 TRANSLATIONS = rcontact_en.ts

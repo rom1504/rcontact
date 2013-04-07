@@ -81,12 +81,6 @@ Enum::Enum(const int enum_,const int valeur,QObject * parent) : Champ(parent),mE
 
 }
 
-Enum::Enum(const Enum & e,QObject * parent) : Champ(parent),mEnum(e.mEnum),mValeur(e.mValeur)
-{
-
-}
-
-
 Enum::Enum(const QString s, QObject *parent) : Champ(parent)
 {
     if(!fromString(s))
@@ -121,11 +115,6 @@ bool Enum::fromVariant(const QVariant v)
    mEnum=v.value<Enum*>()->mEnum;
    mValeur=v.value<Enum*>()->mValeur;
    return true;
-}
-
-bool Enum::operator==(const Enum & c) const
-{
-    return mEnum==c.mEnum && mValeur==c.mValeur;
 }
 
 QString Enum::toString() const

@@ -26,11 +26,6 @@ public:
      */
     Card(bool appartientAUnePersonne, QString nom="", QObject * parent=0);
 
-
-    /**
-     * @brief L'opérateur d'égalité
-     */
-    bool operator==(const Card & c) const;
     /**
      * @brief toString affiche le contenu de la classe (i.e. le contact stocké)
      * @return une QString qui contient la description du contact stocké.

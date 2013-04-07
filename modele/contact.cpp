@@ -91,12 +91,6 @@ void Contact::remplacer(QString s,Champ * c)
     mChamps.replace(s,c);
 }
 
-Contact::Contact(const Contact & c,QObject * parent=0) : QObject(parent)
-{
-    mChamps=c.mChamps;
-}
-
-
 void Contact::ajouterChamp(const QString & nomChamp, Champ* valeurChamp)
 {
     mChamps.insert(nomChamp,valeurChamp);
@@ -195,25 +189,6 @@ Champ* Contact::creerChampFromType(const QString& type)
     return champ;
 }
 
-
-
-bool Contact::operator==(const Contact & c) const
-{ // pas bon
-    bool b = false; // Mis à true si on trouve une correspondance
-    QMultiMap<QString,Champ*>::const_iterator it1 = mChamps.begin();
-    while (it1 != mChamps.end() && !b)
-    {
-        QMultiMap<QString,Champ*>::const_iterator it2 = c.mChamps.begin();
-        while (it2 != c.mChamps.end() && !b)
-        {
-            // Comparaison des clés et des valeurs.
-            b = (it1.key() == it2.key()) && (*(it1.value()) == *(it2.value()));
-            it2++;
-        }
-        it1++;
-    }
-    return b;
-}
 
 
 QString Contact::nom() const

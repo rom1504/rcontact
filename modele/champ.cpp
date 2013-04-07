@@ -8,11 +8,6 @@ Champ::Champ(QObject * parent) : QObject(parent)
 
 }
 
-bool Champ::operator==(const Champ &) const
-{
-    return false;
-}
-
 QVariant Champ::toVariant()
 {
     return toString();

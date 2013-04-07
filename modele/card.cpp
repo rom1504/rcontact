@@ -11,11 +11,6 @@ Card::Card(bool appartientAUnePersonne, QString nom, QObject * parent) : Champ(p
 }
 
 
-bool Card::operator==(const Card & c) const
-{
-    return mContact!=NULL && c.mContact!=NULL && (*mContact)==*(c.mContact);
-}
-
 QString Card::toString() const
 {
     return mContact==NULL ? "" : mContact->nom();

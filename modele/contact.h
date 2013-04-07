@@ -29,11 +29,6 @@ public:
      * @brief Le constructeur par défaut de la classe
      */
     explicit Contact(QObject * parent=0);
-    /**
-     * @brief Le constructeur de copie
-     * @param c le Contact a copier
-     */
-    Contact(const Contact & c, QObject *parent);
 
     ~Contact();
 
@@ -90,11 +85,6 @@ public:
      * @return true si le contact possède un champ libelé "nom", false sinon
      */
     bool aNom() const;
-
-    /**
-     * @brief L'opérateur d'égalité
-     */
-    bool operator==(const Contact & c) const; // problème : ne sera pas utilisé dans le QMultiMap car ce sont des pointeurs qui sont stockés... : à vérifier...
 
     /**
      * @brief opérateur d'accès qui utilise l'index

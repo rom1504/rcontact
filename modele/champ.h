@@ -26,12 +26,6 @@ public:
     Champ(QObject * parent=0);
 
     /**
-     * @brief Cette implémentation permet de renvoyer false par défaut quand on compare deux champs
-     * Les champs comparables sont seulement les champs qui on le même type, l'opérateur de comparaison générique renvoie donc false puis est surchargé dans chaque fille
-     * @return false
-     */
-    virtual bool operator==(const Champ &) const;
-    /**
      * @brief toString convertit l'objet en format lisible
      * @return une QString contenant un format lisible du champ
      */

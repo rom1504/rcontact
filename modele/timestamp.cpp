@@ -6,11 +6,6 @@ Timestamp::Timestamp(const QString s, QObject *parent) : Champ(parent)
      if(!fromString(s)) mT=0;
 }
 
-bool Timestamp::operator==(const Timestamp & c) const
-{
-    return mT==c.mT;
-}
-
 QString Timestamp::toString() const
 {
     return QDateTime::fromTime_t(mT).toString();

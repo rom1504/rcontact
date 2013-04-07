@@ -22,10 +22,6 @@ public:
     explicit Structure(QObject * parent=0);
 
     /**
-     * @brief Constructeur de copie
-     */
-    Structure(const Structure &s, QObject * parent=0);
-    /**
      * @brief ajouterChamp ajoute un champ dans la structure.
      * Si le nom renseigné n'existe pas, il créer un champ portant ce nom, sinon il en augmente l'arité
      * @param nomChamp Le nom du champ à ajouter
@@ -43,10 +39,6 @@ public:
 
     int supprimerChamp(const int index);
 
-    /**
-     * @brief L'opérateur de comparaison
-     */
-    bool operator==(const Structure & c) const;
     /**
      * @brief toString convertit l'objet en format lisible
      * @return une QString contenant un format lisible du champ

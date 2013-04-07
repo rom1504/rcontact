@@ -17,12 +17,6 @@ public:
      */
     Loc(const double latitude=0,const double longitude=0,QObject * parent=0);
 
-    Loc(const Loc & l,QObject * parent=0);
-
-    /**
-     * @brief L'opérateur de comparaison
-     */
-    bool operator==(const Loc & c) const;
     /**
      * @brief toString convertit l'objet en format lisible
      * @return une QString contenant un format lisible du champ

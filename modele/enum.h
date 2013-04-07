@@ -24,21 +24,11 @@ public:
     Enum(const QString s="",QObject * parent=0);
 
     /**
-     * @brief Constructeur de copie
-     */
-    Enum(const Enum &e, QObject * parent=0);
-
-    /**
      * @brief Un constructeur qui utilise les index pour initialiser l'enumération
      * @param enum_ L'index de type d'énumération
      * @param valeur L'index de valeur d'énumération
      */
     Enum(const int enum_,const int valeur,QObject * parent=0);
-
-    /**
-     * @brief L'opérateur d'égalité
-     */
-    bool operator==(const Enum & c) const;
 
     /**
      * @brief toString convertit l'objet en format lisible

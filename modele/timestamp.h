@@ -21,10 +21,7 @@ public:
      * @param s La valeur par défaut (utilise fromString pour convertir la QString en le type approprié)
      */
     Timestamp(const QString s="",QObject * parent=0);
-    /**
-     * @brief L'opérateur de comparaison
-     */
-    bool operator==(const Timestamp & c) const;
+
     /**
      * @brief toString convertit l'objet en format lisible
      * @return une QString contenant un format lisible du champ

@@ -7,16 +7,6 @@ Loc::Loc(const double latitude, const double longitude, QObject *parent)
 
 }
 
-Loc::Loc(const Loc & l,QObject * parent) : Champ(parent),mLatitude(l.mLatitude),mLongitude(l.mLongitude)
-{
-
-}
-
-
-bool Loc::operator==(const Loc & c) const
-{
-    return mLatitude!=c.mLatitude && mLongitude!=mLongitude;
-}
 
 QString Loc::toString() const
 {

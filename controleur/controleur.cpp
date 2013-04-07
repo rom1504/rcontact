@@ -12,6 +12,7 @@
 #include "modele/enum.h"
 #include "modele/nom.h"
 #include "modele/tel.h"
+#include <QSettings>
 
 Controleur::Controleur(QString locale, QTranslator *translator, QObject *parent) :
     QObject(parent)
@@ -28,7 +29,8 @@ Controleur::Controleur(QString locale, QTranslator *translator, QObject *parent)
     connect(&mVue,SIGNAL(rechercherContacts(Search *)),this,SLOT(rechercherContacts(Search *)));
     connect(&mVue,SIGNAL(finirLaRecherche()),this,SLOT(finirLaRecherche()));
     connect(&mVue,SIGNAL(enregistrerContacts(QString,QString)),mContacts,SLOT(enregistrer(QString,QString)));
-   modeleListeContacts->charger("exemple.vcf","vCard");
+    QSettings settings("rom1504","rcontact");
+    mVue.charger(settings.value("fichierParDefaut").toString(),settings.value("typeParDefaut").toString());
 
     // exemples (voués à disparaitre grâce à l'ajout et à l'import)
 //    Texte * valeur1=new Texte("valeur1");

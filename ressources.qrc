@@ -23,5 +23,6 @@
         <file>icones/ajouterOrganisme.png</file>
         <file>icones/nouvelleListe.png</file>
         <file>rcontact_en.qm</file>
+        <file>icones/enregistrer_sous.png</file>
     </qresource>
 </RCC>

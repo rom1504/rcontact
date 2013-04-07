@@ -59,7 +59,9 @@
     <addaction name="actionNouvelle_personne"/>
     <addaction name="actionNouveau_organisme"/>
     <addaction name="actionCharger"/>
+    <addaction name="actionDefinir_comme_fichier_par_defaut"/>
     <addaction name="actionEnregistrer"/>
+    <addaction name="actionEnregistrer_sous"/>
     <addaction name="actionTrier"/>
     <addaction name="actionQuitter"/>
    </widget>
@@ -86,6 +88,7 @@
    <addaction name="actionNouveau_organisme"/>
    <addaction name="actionCharger"/>
    <addaction name="actionEnregistrer"/>
+   <addaction name="actionEnregistrer_sous"/>
    <addaction name="actionTrier"/>
    <addaction name="actionRechercher"/>
    <addaction name="actionFinir_la_recherche"/>
@@ -171,6 +174,16 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionEnregistrer_sous">
+   <property name="text">
+    <string>Enregistrer sous</string>
+   </property>
+  </action>
+  <action name="actionDefinir_comme_fichier_par_defaut">
+   <property name="text">
+    <string>Définir comme fichier par défaut</string>
    </property>
   </action>
  </widget>

@@ -17,11 +17,12 @@
 #include "dateedit.h"
 #include "../modele/image.h"
 #include "imageedit.h"
+#include <QSettings>
 
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow),mModelListeContacts(NULL)
+    ui(new Ui::MainWindow),mModelListeContacts(NULL),mFichierOuvert(""),mTypeFichierOuvert("")
 {
     showMaximized();
     QItemEditorFactory *factory = new QItemEditorFactory();
@@ -47,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionFinir_la_recherche->setIcon(/*QIcon::fromTheme("go-previous",*/QIcon(":/icones/precedent.png")/*)*/);
     ui->actionTrier->setIcon(/*QIcon::fromTheme("view-sort-ascending",*/QIcon(":/icones/trier.png")/*)*/);
     ui->actionNouvelle_liste->setIcon(QIcon(":/icones/nouvelleListe.png"));
+    ui->actionEnregistrer_sous->setIcon(QIcon(":/icones/enregistrer_sous.png"));
 
     connect(ui->listeContacts,SIGNAL(contactActive(int)),this,SIGNAL(contactActive(int)));
     connect(ui->listeContacts,SIGNAL(contactEdite(int)),this,SIGNAL(contactEdite(int)));
@@ -91,15 +93,24 @@ void MainWindow::setModeleEditerContact ( QAbstractItemModel * model )
     ui->editerContact->setModel(model);
 }
 
+void MainWindow::charger(QString fichier,QString type)
+{
+    if(fichier!="" && type!="")
+    {
+        cacherContact();
+        mFichierOuvert=fichier;
+        mTypeFichierOuvert=type;
+        mModelListeContacts->charger(mFichierOuvert,mTypeFichierOuvert);
+    }
+}
+
 void MainWindow::on_actionCharger_triggered()
 {
     QString nomFichier;
     QString type=tr("vCard(*.vcf)");
     if((nomFichier = QFileDialog::getOpenFileName(this, tr("Ouvrir fichier"),"",tr("vCard(*.vcf);;XML(*.xml)"),&type))!="")
     {
-        ui->afficherContact->hide();
-        ui->editerContact->hide();
-        mModelListeContacts->charger(nomFichier,type.split("(")[0]);
+        charger(nomFichier,type.split("(")[0]);
     }
 }
 
@@ -122,16 +133,33 @@ void MainWindow::on_actionFinir_la_recherche_triggered()
 
 void MainWindow::on_actionEnregistrer_triggered()
 {
-    QString nomFichier;
-    QString type=tr("vCard(*.vcf)");
-    if((nomFichier = QFileDialog::getSaveFileName(this, tr("Enregistrer fichier"),"",tr("vCard(*.vcf);;XML(*.xml)"),&type))!="")
-    {
-        emit enregistrerContacts(nomFichier,type.split("(")[0]);
-    }
+    if(mFichierOuvert=="" || mTypeFichierOuvert=="") on_actionEnregistrer_sous_triggered();
+    if(mFichierOuvert!="" && mTypeFichierOuvert!="") emit enregistrerContacts(mFichierOuvert,mTypeFichierOuvert);
 }
 
 void MainWindow::on_actionNouvelle_liste_triggered()
 {
+    mFichierOuvert="";
+    mTypeFichierOuvert="";
     mModelListeContacts->vider();
-   cacherContact();
+    cacherContact();
+}
+
+void MainWindow::on_actionEnregistrer_sous_triggered()
+{
+    QString nomFichier;
+    QString type=tr("vCard(*.vcf)");
+    if((nomFichier = QFileDialog::getSaveFileName(this, tr("Enregistrer fichier"),"",tr("vCard(*.vcf);;XML(*.xml)"),&type))!="")
+    {
+        mFichierOuvert=nomFichier;
+        mTypeFichierOuvert=type.split("(")[0];
+        on_actionEnregistrer_triggered();
+    }
+}
+
+void MainWindow::on_actionDefinir_comme_fichier_par_defaut_triggered()
+{
+    QSettings settings("rom1504","rcontact");
+    settings.setValue("fichierParDefaut",mFichierOuvert);
+    settings.setValue("typeParDefaut",mTypeFichierOuvert);
 }

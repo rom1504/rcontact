@@ -48,6 +48,14 @@ public:
      */
     void cacherContact();
 
+    /**
+     * @brief charger permet de charger un fichier
+     * @param fichier nom du fichier
+     * @param type type du fichier
+     */
+
+    void charger(QString fichier,QString type);
+
 private slots:
 
     /**
@@ -76,6 +84,10 @@ private slots:
     void on_actionEnregistrer_triggered();
 
     void on_actionNouvelle_liste_triggered();
+
+    void on_actionEnregistrer_sous_triggered();
+
+    void on_actionDefinir_comme_fichier_par_defaut_triggered();
 
 signals:
     /**
@@ -113,6 +125,15 @@ private:
      * @brief mModelListeContacts est le modèle représentant la liste de contacts
      */
     ModeleListeContacts * mModelListeContacts;
+    /**
+     * @brief mFichierOuvert est la liste de contact ouverte
+     */
+    QString mFichierOuvert;
+
+    /**
+     * @brief mTypeFichierOuvert est le type du fichier ouvert
+     */
+    QString mTypeFichierOuvert;
 };
 
 #endif // MAINWINDOW_H

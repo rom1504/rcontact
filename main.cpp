@@ -9,7 +9,7 @@
 
 int main(int argc, char *argv[])
 {
-    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
+//    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
     QApplication a(argc, argv);
     QString locale = QLocale::system().name();
     //locale="fr_FR";
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
      QTranslator translator;
      translator.load(QString(":/rcontact_") + locale);
      QApplication::installTranslator(&translator);
-     QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
+//     QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
 
      QStringList environment = QProcess::systemEnvironment();
      QString proxy="";

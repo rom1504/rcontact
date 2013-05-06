@@ -12,7 +12,8 @@ ModeleAfficherContact::ModeleAfficherContact(Contact * contact,QObject *parent) 
 
 void ModeleAfficherContact::maj()
 {
-    reset();
+    beginResetModel();
+    endResetModel();
 }
 
 void ModeleAfficherContact::rendreEditable()

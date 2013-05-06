@@ -37,5 +37,5 @@ void Champ::essayerEncore()
 
 QString Champ::toXML() const
 {
-    return Qt::escape(toString());
+    return toString().toHtmlEscaped();
 }

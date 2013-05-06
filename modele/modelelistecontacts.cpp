@@ -29,35 +29,33 @@ QVariant ModeleListeContacts::data(const QModelIndex & index,int role) const
 void ModeleListeContacts::charger(QString nomFichier,QString type)
 {
     disconnect(&mContacts,SIGNAL(dataChanged()),this,SLOT(trier()));
-   // beginResetModel();
+    beginResetModel();
     mContacts.charger(nomFichier,type);
     mContacts.trier();
-    //endResetModel();
-    reset();
+    endResetModel();
     connect(&mContacts,SIGNAL(dataChanged()),this,SLOT(trier()));
 }
 
 void ModeleListeContacts::trier()
 {
-    // car pas dispo sur la yaka
-  //  beginResetModel();
+   beginResetModel();
     mContacts.trier();
-    reset();
-  //  endResetModel();
+  endResetModel();
 }
 
 void ModeleListeContacts::changerTri(Comp * comp)
 {
-   // beginResetModel();
+   beginResetModel();
     mContacts.changerTri(comp);
-    reset();
-   // endResetModel();
+   endResetModel();
 }
 
 void ModeleListeContacts::vider()
 {
+
+    beginResetModel();
     mContacts.vider();
-    reset();
+    endResetModel();
 }
 
 int ModeleListeContacts::rowCount ( const QModelIndex & ) const

@@ -6,8 +6,8 @@ AfficherContact::AfficherContact(QWidget *parent) :
     ui(new Ui::AfficherContact)
 {
     ui->setupUi(this);
-    ui->tableViewChamps->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
-    ui->tableViewChamps->verticalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+    ui->tableViewChamps->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    ui->tableViewChamps->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
 AfficherContact::~AfficherContact()

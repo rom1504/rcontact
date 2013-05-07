@@ -116,3 +116,6 @@ CODECFORTR = UTF-8
 
 RESOURCES += \
     ressources.qrc
+
+QMAKE_CXXFLAGS += -std=c++11
+

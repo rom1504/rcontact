@@ -24,21 +24,11 @@ QString Structure::toXML() const
 
 void essayerEncore_(Champ * c);
 
-// car pas dispo sur la yaka (??)
-template<class InputIterator, class Function>
-  Function for_each(InputIterator first, InputIterator last, Function fn)
-{
-  while (first!=last) {
-    fn (*first);
-    ++first;
-  }
-  return fn;      // or, since C++11: return move(fn);
-}
 
 void Structure::essayerEncore()
 {
     QList<Champ*> vs=mChamps.values();
-    for_each(vs.begin(),vs.end(),essayerEncore_);
+    std::for_each(vs.begin(),vs.end(),essayerEncore_);
 }
 
 void Structure::ajouterChamp(const QString & nomChamp, Champ * valeurChamp, int priorite)

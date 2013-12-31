@@ -114,6 +114,9 @@ TRANSLATIONS = rcontact_en.ts
 
 CODECFORTR = UTF-8
 
+QMAKE_CC = gcc-4.8
+QMAKE_CXX = g++-4.8
+
 RESOURCES += \
     ressources.qrc
 

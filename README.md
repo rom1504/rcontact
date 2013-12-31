@@ -1,6 +1,8 @@
 #rcontact
 Gestionnaire de contacts
 
+[![Build Status](https://travis-ci.org/rom1504/rcontact.png?branch=master)](https://travis-ci.org/rom1504/rcontact)
+
 Organisation en Modèle, vue, controleur.
 
 Pour lier la vue au modèle on utilise des modèles Qt : 
